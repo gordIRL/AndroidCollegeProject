@@ -1,0 +1,7 @@
+C:\AndroidCollegeProject\ProofOfConcept\projectXML\myXML_app_1\myXML_app_1\bin\Debug\myXML_app_1.exe.config
+C:\AndroidCollegeProject\ProofOfConcept\projectXML\myXML_app_1\myXML_app_1\bin\Debug\myXML_app_1.exe
+C:\AndroidCollegeProject\ProofOfConcept\projectXML\myXML_app_1\myXML_app_1\bin\Debug\myXML_app_1.pdb
+C:\AndroidCollegeProject\ProofOfConcept\projectXML\myXML_app_1\myXML_app_1\obj\Debug\myXML_app_1.csprojResolveAssemblyReference.cache
+C:\AndroidCollegeProject\ProofOfConcept\projectXML\myXML_app_1\myXML_app_1\obj\Debug\myXML_app_1.csproj.CoreCompileInputs.cache
+C:\AndroidCollegeProject\ProofOfConcept\projectXML\myXML_app_1\myXML_app_1\obj\Debug\myXML_app_1.exe
+C:\AndroidCollegeProject\ProofOfConcept\projectXML\myXML_app_1\myXML_app_1\obj\Debug\myXML_app_1.pdb
