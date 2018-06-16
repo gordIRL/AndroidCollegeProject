@@ -1,0 +1,222 @@
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\Alarm Manager.dll
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\Alarm Manager.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\Alarm_Manager.Alarm_Manager.apk
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\Alarm_Manager.Alarm_Manager-Signed.apk
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\Xamarin.Android.Arch.Core.Common.dll
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\Xamarin.Android.Arch.Lifecycle.Common.dll
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\Xamarin.Android.Arch.Lifecycle.Runtime.dll
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\Xamarin.Android.Support.Annotations.dll
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\Xamarin.Android.Support.Compat.dll
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\Xamarin.Android.Support.Core.UI.dll
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\Xamarin.Android.Support.Core.Utils.dll
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\Xamarin.Android.Support.Fragment.dll
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\Xamarin.Android.Support.Media.Compat.dll
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\Xamarin.Android.Support.v4.dll
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\Alarm Manager.csproj.CoreCompileInputs.cache
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\Alarm Manager.csproj.CopyComplete
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\Alarm Manager.dll
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\Alarm Manager.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\android\bin\Alarm_Manager.Alarm_Manager.apk
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\res\layout\testnotificationslayout.xml
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\res\layout\main.xml
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\res\values\strings.xml
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\res\drawable\icon.png
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\R.cs.flag
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\uploadflags.txt
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\Mono.Android.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\mscorlib.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\System.Core.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\System.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\System.Xml.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\System.Xml.Linq.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\System.Net.Http.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\System.Runtime.Serialization.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\System.ServiceModel.Internals.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\Mono.Security.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\bin\Debug\System.ComponentModel.Composition.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\linksrc\Mono.Android.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\linksrc\mscorlib.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\linksrc\System.Core.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\linksrc\System.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\linksrc\System.Xml.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\linksrc\System.Xml.Linq.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\linksrc\System.Net.Http.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\linksrc\System.Runtime.Serialization.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\linksrc\System.ServiceModel.Internals.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\linksrc\Mono.Security.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\linksrc\System.ComponentModel.Composition.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Xamarin-Alarm-Manager-master\Xamarin-Alarm-Manager-master\Alarm Manager\obj\Debug\linksrc\Alarm Manager.dll.mdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Alarm Manager.dll
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Alarm Manager.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Alarm_Manager.Alarm_Manager.apk
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Alarm_Manager.Alarm_Manager-Signed.apk
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Arch.Core.Common.dll
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Arch.Lifecycle.Common.dll
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Arch.Lifecycle.Runtime.dll
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Support.Annotations.dll
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Support.Compat.dll
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Support.Core.UI.dll
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Support.Core.Utils.dll
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Support.Fragment.dll
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Support.Media.Compat.dll
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Support.v4.dll
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\Alarm Manager.csprojResolveAssemblyReference.cache
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\Alarm Manager.csproj.CoreCompileInputs.cache
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\Alarm Manager.csproj.CopyComplete
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\Alarm Manager.dll
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\Alarm Manager.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\android\bin\Alarm_Manager.Alarm_Manager.apk
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\res\layout\testnotificationslayout.xml
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\res\layout\main.xml
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\res\values\strings.xml
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\res\drawable\icon.png
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\R.cs.flag
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\uploadflags.txt
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Mono.Android.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\mscorlib.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\System.Core.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\System.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\System.Xml.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\System.Xml.Linq.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\System.Net.Http.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\System.Runtime.Serialization.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\System.ServiceModel.Internals.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Mono.Security.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\System.ComponentModel.Composition.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\Mono.Android.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\mscorlib.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\System.Core.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\System.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\System.Xml.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\System.Xml.Linq.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\System.Net.Http.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\System.Runtime.Serialization.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\System.ServiceModel.Internals.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\Mono.Security.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\System.ComponentModel.Composition.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\Alarm Manager.dll.mdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Alarm Manager.dll.mdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\android\assets\Alarm Manager.dll.mdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\android\assets\Mono.Android.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\android\assets\Mono.Security.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\android\assets\mscorlib.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\android\assets\System.ComponentModel.Composition.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\android\assets\System.Core.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\android\assets\System.Net.Http.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\android\assets\System.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\android\assets\System.Runtime.Serialization.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\android\assets\System.ServiceModel.Internals.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\android\assets\System.Xml.Linq.pdb
+C:\AndroidCollegeProject\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\android\assets\System.Xml.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Alarm Manager.dll
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Alarm Manager.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Alarm_Manager.Alarm_Manager.apk
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Alarm_Manager.Alarm_Manager-Signed.apk
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Arch.Core.Common.dll
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Arch.Lifecycle.Common.dll
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Arch.Lifecycle.Runtime.dll
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Support.Annotations.dll
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Support.Compat.dll
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Support.Core.UI.dll
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Support.Core.Utils.dll
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Support.Fragment.dll
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Support.Media.Compat.dll
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Xamarin.Android.Support.v4.dll
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\Alarm Manager.csproj.CoreCompileInputs.cache
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\Alarm Manager.csproj.CopyComplete
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\Alarm Manager.dll
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\Alarm Manager.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\android\bin\Alarm_Manager.Alarm_Manager.apk
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\res\layout\testnotificationslayout.xml
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\res\layout\main.xml
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\res\values\strings.xml
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\res\drawable\icon.png
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\R.cs.flag
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\uploadflags.txt
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Mono.Android.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\Mono.Security.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\mscorlib.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\System.ComponentModel.Composition.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\System.Core.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\System.Net.Http.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\System.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\System.Runtime.Serialization.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\System.ServiceModel.Internals.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\System.Xml.Linq.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\bin\Debug\System.Xml.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\Mono.Android.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\mscorlib.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\System.Core.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\System.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\System.Xml.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\System.Xml.Linq.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\System.Net.Http.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\System.Runtime.Serialization.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\System.ServiceModel.Internals.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\Mono.Security.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\System.ComponentModel.Composition.pdb
+C:\Users\Gord\Downloads\AndroidCollegeProject-master\AndroidCollegeProject-master\ProofOfConcept\Alarms\Alarm Manager\obj\Debug\linksrc\Alarm Manager.dll.mdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\Alarm Manager.dll
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\Alarm Manager.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\Alarm_Manager.Alarm_Manager.apk
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\Alarm_Manager.Alarm_Manager-Signed.apk
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\Xamarin.Android.Arch.Core.Common.dll
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\Xamarin.Android.Arch.Lifecycle.Common.dll
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\Xamarin.Android.Arch.Lifecycle.Runtime.dll
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\Xamarin.Android.Support.Annotations.dll
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\Xamarin.Android.Support.Compat.dll
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\Xamarin.Android.Support.Core.UI.dll
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\Xamarin.Android.Support.Core.Utils.dll
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\Xamarin.Android.Support.Fragment.dll
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\Xamarin.Android.Support.Media.Compat.dll
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\Xamarin.Android.Support.v4.dll
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\Alarm Manager.csproj.CoreCompileInputs.cache
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\Alarm Manager.csproj.CopyComplete
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\Alarm Manager.dll
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\Alarm Manager.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\android\bin\Alarm_Manager.Alarm_Manager.apk
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\res\layout\testnotificationslayout.xml
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\res\layout\main.xml
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\res\values\strings.xml
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\res\drawable\icon.png
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\R.cs.flag
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\uploadflags.txt
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\Mono.Android.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\mscorlib.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\System.Core.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\System.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\System.Xml.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\System.Xml.Linq.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\System.Net.Http.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\System.Runtime.Serialization.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\System.ServiceModel.Internals.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\Mono.Security.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\System.ComponentModel.Composition.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\linksrc\Mono.Android.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\linksrc\mscorlib.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\linksrc\System.Core.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\linksrc\System.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\linksrc\System.Xml.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\linksrc\System.Xml.Linq.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\linksrc\System.Net.Http.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\linksrc\System.Runtime.Serialization.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\linksrc\System.ServiceModel.Internals.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\linksrc\Mono.Security.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\linksrc\System.ComponentModel.Composition.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\linksrc\Alarm Manager.dll.mdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\Alarm Manager.dll.mdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\android\assets\Alarm Manager.dll.mdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\android\assets\Mono.Android.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\android\assets\Mono.Security.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\android\assets\mscorlib.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\android\assets\System.ComponentModel.Composition.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\android\assets\System.Core.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\android\assets\System.Net.Http.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\android\assets\System.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\android\assets\System.Runtime.Serialization.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\android\assets\System.ServiceModel.Internals.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\android\assets\System.Xml.Linq.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\android\assets\System.Xml.pdb
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\Alarm Manager.csprojResolveAssemblyReference.cache
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\bin\Debug\Alarm Manager.dll
+C:\Users\Gord\Downloads\Android\Android\Prf\Alms\Alarm Manager\obj\Debug\linksrc\Alarm Manager.dll.mdb
