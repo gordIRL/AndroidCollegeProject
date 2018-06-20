@@ -5,4 +5,9 @@
   <color name="accent">#FFC107</color>
   <color name="window_background">#F5F5F5</color>
   <color name="splash_background">#000000</color>
+
+  <color name="my_blue">#3498DB</color>
+  <color name="my_green">#77D065</color>
+  <color name="my_purple">#B45B66</color>
+  <color name="my_gray">#738182</color>
 </resources>

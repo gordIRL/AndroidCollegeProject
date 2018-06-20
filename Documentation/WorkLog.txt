@@ -78,6 +78,10 @@
 
 		Emailed update to Dhoot.
 
+19/June/2018	Toolbars / 2 toolbars in one activity / appCompat Toolbar (4hrs)
+5 1/2 hrs	Research: Themes / Material Theme / appCompat themes (1 1/5 hrs)
+
+
 
 
 

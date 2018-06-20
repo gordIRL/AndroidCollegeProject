@@ -31,7 +31,8 @@ MainActivity must have an appCompat theme associated with it
 
 namespace CurrencyAlertApp
 {
-    [Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
+    [Activity(Theme = "@style/MyTheme.Splash",   NoHistory = true)]
+    // MainLauncher = true,
     public class SplashActivity : AppCompatActivity
     {
         static readonly string TAG = "X:" + typeof(SplashActivity).Name;
