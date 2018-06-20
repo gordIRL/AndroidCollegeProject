@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:local="http://schemas.android.com/apk/res-auto">
   <item
-       android:id="@+id/menu_cut"
-       android:icon="@mipmap/ic_home_black_24dp"
-       local:showAsAction="ifRoom"
-       android:title="Cut" />
+    android:id="@+id/menu_cut"
+    android:icon="@mipmap/ic_menu_cut_holo_dark"
+    local:showAsAction="ifRoom"
+    android:title="Cut" />
   <item
-       android:id="@+id/menu_copy"
-       android:icon="@mipmap/ic_home_black_24dp"
-       local:showAsAction="ifRoom"
-       android:title="Copy" />
+    android:id="@+id/menu_copy"
+    android:icon="@mipmap/ic_menu_copy_holo_dark"
+    local:showAsAction="ifRoom"
+    android:title="Copy" />
   <item
-       android:id="@+id/menu_paste"
-       android:icon="@mipmap/ic_home_black_24dp"
-       local:showAsAction="ifRoom"
-       android:title="Paste" />
+    android:id="@+id/menu_paste"
+    android:icon="@mipmap/ic_menu_paste_holo_dark"
+    local:showAsAction="ifRoom"
+    android:title="Paste" />
 </menu>
