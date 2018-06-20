@@ -10,7 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/main_content"
-        android:layout_below="@id/toolbar">       
+        android:layout_below="@id/toolbar">
         <Button
             android:id="@+id/MyButton"
             android:layout_width="fill_parent"
@@ -18,12 +18,15 @@
             android:text="Activity 2 - Test"
             android:layout_marginTop="0dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp" 
-            android:background="@drawable/button_state"/>
-       <ImageView
+            android:layout_marginRight="20dp"
+            android:background="@drawable/button_state" />
+        <ListView
+            android:minWidth="25px"
+            android:minHeight="25px"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:id="@+id/listView1" />
         <android.support.v7.widget.Toolbar
             android:id="@+id/edit_toolbar"
             android:minHeight="?attr/actionBarSize"

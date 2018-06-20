@@ -5,6 +5,24 @@ using Android.Support.V7.App;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Content;
 using Android.Views;
+using System.Collections.Generic;
+
+using System;
+
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+// to pass a XDocument add reference:    System.Xml.Linq.
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.XPath;
+
+
+
+using System.IO;
+using System.Reflection;
+using Android.Content.Res;
 
 namespace CurrencyAlertApp
 {
@@ -15,6 +33,8 @@ namespace CurrencyAlertApp
     public class MainActivity : AppCompatActivity  
     {
         Button MyButton;
+        ListView listView1;
+        List<string> myList = new List<string>();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -41,8 +61,27 @@ namespace CurrencyAlertApp
             {
                 Intent intent = new Intent(this, typeof(GordTestActivity));
                 StartActivity(intent);
-            };            
-        }
+            };
+
+
+
+            listView1 = FindViewById<ListView>(Resource.Id.listView1);
+
+            // set up list    
+            SetUpData();
+            //for (int i = 0; i < 20; i++)
+            //{
+            //    myList.Add("Item no: " + i.ToString());
+            //}
+
+            ArrayAdapter adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, myList);
+            listView1.Adapter = adapter;
+           
+            listView1.ItemClick += (sender, e) =>
+            {
+                Toast.MakeText(this, $"You selected item no: {e.Position}:\n{myList[e.Position]}", ToastLength.Short).Show();
+            };
+        }// end onCreate
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
@@ -55,6 +94,57 @@ namespace CurrencyAlertApp
             Toast.MakeText(this, "Action selected: " + item.TitleFormatted, ToastLength.Short).Show();
             return base.OnOptionsItemSelected(item);
         }
+
+        void SetUpData()
+        {
+            // select xml file to read
+            XDocument xmlFile = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
+
+            ////displays all raw data in XML file
+            //foreach (var item in xmlFile.Root.Elements())
+            //{
+            //    myList.Add(item.Value.Trim() + "");
+            //}
+
+            // display all XML data - formatted             
+            foreach (var item in xmlFile.Descendants("event"))
+            {
+                myList.Add(
+                            item.Element("country").Value + "\n" +
+                            item.Element("impact").Value + "\n" +
+                            item.Element("date").Value + "\n" +
+                            item.Element("time").Value + "\n" +
+                            item.Element("title").Value
+                            ); // .Value - removes surrounding tags
+            }
+
+
+
+
+            ////// sample selection using LINQ - GBP & USD currencies with 'High' impact status
+            ////var highestImpact = from myVar in xmlFile.Descendants("event")
+            ////                    where myVar.Element("impact").Value == "High" &&
+            ////                    (myVar.Element("country").Value == "GBP"
+            ////                    || myVar.Element("country").Value == "USD")
+            ////                    select myVar;
+
+
+            ////// display the result of LINQ query
+            ////foreach (var item in highestImpact)
+            ////{
+            ////    myList.Add(
+            ////               item.Element("country").Value + "\n" +
+            ////               item.Element("impact").Value + "\n" +
+            ////               item.Element("date").Value + "\n" +
+            ////               item.Element("time").Value + "\n" +
+            ////               item.Element("title").Value
+            ////               ); // .Value - removes surrounding tags
+            ////}
+
+
+
+
+        }// end SetUpData
     }
 }
 
