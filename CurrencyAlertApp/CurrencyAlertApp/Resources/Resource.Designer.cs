@@ -2050,23 +2050,26 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f0b0073
 			public const int media_actions = 2131427443;
 			
-			// aapt resource value: 0x7f0b0082
-			public const int menu_copy = 2131427458;
+			// aapt resource value: 0x7f0b0084
+			public const int menu_data_LINQ_query = 2131427460;
 			
 			// aapt resource value: 0x7f0b0081
-			public const int menu_cut = 2131427457;
-			
-			// aapt resource value: 0x7f0b0084
-			public const int menu_edit = 2131427460;
+			public const int menu_data_default = 2131427457;
 			
 			// aapt resource value: 0x7f0b0083
-			public const int menu_paste = 2131427459;
+			public const int menu_data_formatted = 2131427459;
 			
-			// aapt resource value: 0x7f0b0086
-			public const int menu_preferences = 2131427462;
+			// aapt resource value: 0x7f0b0082
+			public const int menu_data_raw = 2131427458;
 			
 			// aapt resource value: 0x7f0b0085
-			public const int menu_save = 2131427461;
+			public const int menu_edit = 2131427461;
+			
+			// aapt resource value: 0x7f0b0087
+			public const int menu_preferences = 2131427463;
+			
+			// aapt resource value: 0x7f0b0086
+			public const int menu_save = 2131427462;
 			
 			// aapt resource value: 0x7f0b0080
 			public const int message = 2131427456;

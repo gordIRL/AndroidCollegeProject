@@ -82,15 +82,16 @@
 5 1/2 hrs	Research: Themes / Material Theme / appCompat themes (1 1/5 hrs)
 
 20/June/2018	Added 2 toolbars to App / set up various appCompat styling themes / added 'change button state' via xml
-4 hrs		simple list view added between toolbar at top of screen and 2nd toolbar at bottom of screen (3 hrs)
+5 hrs		simple list view added between toolbar at top of screen and 2nd toolbar at bottom of screen (3 hrs)
 
 		Tried to add Proof of concept xml to linq code to app. Didn't work.
 		Needed to add a reference: System.Xml.Linq. (1hr  !!!!)
 
 		Added xml data file to Assets folder / 
 		to read file used:  XDocument xmlFile = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));  (30 mins)
+		several loops to add LINQ sorted data to a listView (30 mins)
 
-		6pm
+	
 
 
 
