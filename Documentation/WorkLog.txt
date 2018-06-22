@@ -96,8 +96,9 @@
 
 
 
-22/June/2018	Context(?) menu (Alert using builder) added to ItemClick - uses array in Resources/Values/Strings - calls next activity & passes data accross(string) 
+22/June/2018	Context(?) menu (Alert using builder) added to ItemClick - uses array in Resources/Values/Strings - calls next activity & passes data across(string) 
 		via a method contained in the 2nd/called activity. (2hrs)
+		Wiring up toolbar(top) (30 mins)
 	
 
 

@@ -99,9 +99,12 @@
     <Compile Include="DataAccess\SetUpData.cs" />
     <Compile Include="GordTestActivity.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="PersonalAlarmsActivity.cs" />
+    <Compile Include="Receiver1.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SplashActivity.cs" />
+    <Compile Include="TestNotificationsActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
@@ -112,6 +115,10 @@
     <AndroidResource Include="Resources\layout\gordTestLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\PersonalAlarms.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\TestNotificationsLayout.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">

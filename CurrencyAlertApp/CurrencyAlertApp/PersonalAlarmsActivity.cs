@@ -1,18 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
 using Android.App;
 using Android.Content;
-using Android.Widget;
 using Android.OS;
+using Android.Runtime;
 using Android.Views;
+using Android.Widget;
 using Java.Lang;
-using Android.Support.V4;
-using Android.Support.V4.App;
 
-
-namespace Alarm_Manager
-{    
-    [Activity(Label = "Alarm_Manager", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : Activity
+namespace CurrencyAlertApp
+{
+    [Activity(Label = "PersonalAlarmsActivity")]
+    public class PersonalAlarmsActivity : Activity
     {
         // Instructions for use:
         //
@@ -33,12 +35,10 @@ namespace Alarm_Manager
         EditText edtTimeMinutes;
         Button btnSubmitTime;
 
-        protected override void OnCreate(Bundle bundle)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(bundle);
-
-            // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Main);
+            base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.PersonalAlarms);
 
             // wire up controls for Set Alarm via seconds
             timeTxt = FindViewById<EditText>(Resource.Id.timeTxt);
@@ -54,13 +54,12 @@ namespace Alarm_Manager
             btnSubmitTime.Click += BtnSubmitTime_Click;
         }
 
-
         // click event for for Set Alarm via seconds
         void StartBtn_Click(object sender, EventArgs e)
         {
             //GET TIME IN SECONDS AND INITIALIZE INTENT
             int time = Convert.ToInt32(timeTxt.Text);
-            Intent i = new Intent(this, typeof(MyReceiver));
+            Intent i = new Intent(this, typeof(Receiver1));
 
             //PASS CONTEXT,YOUR PRIVATE REQUEST CODE,INTENT OBJECT AND FLAG
             PendingIntent pi = PendingIntent.GetBroadcast(this, 0, i, 0);
@@ -99,7 +98,7 @@ namespace Alarm_Manager
                 txtOffSetTime.Text += $"Offset = updated {myOffset.ToString()}";
 
                 //GET TIME IN SECONDS AND INITIALIZE INTENT
-                Intent i = new Intent(this, typeof(MyReceiver));
+                Intent i = new Intent(this, typeof(Receiver1));
 
                 //PASS CONTEXT,YOUR PRIVATE REQUEST CODE,INTENT OBJECT AND FLAG
                 PendingIntent pi = PendingIntent.GetBroadcast(this, 0, i, 0);
@@ -117,7 +116,7 @@ namespace Alarm_Manager
             {
                 Toast.MakeText(this, "Please enter valid time - in digits", ToastLength.Long).Show();
                 ResetUserControls();
-            }            
+            }
         }
         void ResetUserControls()
         {
@@ -126,6 +125,8 @@ namespace Alarm_Manager
             edtTimeMinutes.Text = "";
             timeTxt.Text = "";
         }
+
+
+
     }
 }
-

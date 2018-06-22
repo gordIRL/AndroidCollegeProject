@@ -26,7 +26,7 @@ using Android.Util;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Theme = "@style/MyTheme.Base", MainLauncher = true, Label = "CurrencyAlertApp")]
+    [Activity(Theme = "@style/MyTheme.Base", Label = "CurrencyAlertApp")]
     //  MainLauncher = true,  
     // must have an appCompat theme         
 
@@ -130,11 +130,11 @@ namespace CurrencyAlertApp
             // ToolBar - Top of Screen
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
-            SupportActionBar.Title = "My AppCompat Toolbar";
+            SupportActionBar.Title = "Menu";
 
             // Toolbar - Bottom of Screen
             var editToolbar = FindViewById<Toolbar>(Resource.Id.edit_toolbar);
-            editToolbar.Title = "Editing";
+            editToolbar.Title = "Refine Data";
             editToolbar.InflateMenu(Resource.Menu.edit_menus);
 
             // bottom ToolBar Menu Selection
@@ -220,8 +220,29 @@ namespace CurrencyAlertApp
 
 
         public override bool OnOptionsItemSelected(IMenuItem item) // for top toolbar
-        {
-            Toast.MakeText(this, "Action selected: " + item.TitleFormatted, ToastLength.Short).Show();
+        {   
+            // Misc toasts - not in use - for testing
+            //Toast.MakeText(this, "Action selected: " + item.TitleFormatted, ToastLength.Short).Show();
+            //Toast.MakeText(this, "Action selected: " + item.ItemId, ToastLength.Short).Show();
+
+            switch (item.ItemId)
+            {
+                case Resource.Id.menu_home:
+                    Toast.MakeText(this, "Action selected: \nHOME", ToastLength.Short).Show();
+                    break;
+                case Resource.Id.menu_setPersonAlert:
+                    Toast.MakeText(this, "Action selected: \nSet Personal Alert", ToastLength.Short).Show();
+                    Intent intent = new Intent(this, typeof(PersonalAlarmsActivity));
+                    StartActivity(intent);
+                    break;
+                case Resource.Id.menu_preferences:                    
+                    Toast.MakeText(this, "Action selected: \nPreferences - test Activity", ToastLength.Short).Show();
+                    intent = new Intent(this, typeof(GordTestActivity));
+                    StartActivity(intent);
+                    break;
+                default:
+                    break;
+            };
             return base.OnOptionsItemSelected(item);
         }
 
