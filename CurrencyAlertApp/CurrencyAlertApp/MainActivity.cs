@@ -19,11 +19,10 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
-
-
 using System.IO;
 using System.Reflection;
 using Android.Content.Res;
+using Android.Util;
 
 namespace CurrencyAlertApp
 {
@@ -71,6 +70,60 @@ namespace CurrencyAlertApp
             listView1.ItemClick += (sender, e) =>
             {
                 Toast.MakeText(this, $"You selected item no: {e.Position}:\n{myList[e.Position]}", ToastLength.Short).Show();
+
+                // alert dialog for ItenClick event
+                Android.Support.V7.App.AlertDialog.Builder builder = new Android.Support.V7.App.AlertDialog.Builder(this);
+               // builder.SetMessage("Hi there!");  // usisng this disable array of menu options - good for Ok/Cancel version
+                builder.SetTitle("Choose one:");
+
+                //var items = new string[] { "piza", "pasta", "diet coke" };
+                //builder.SetItems(items, (sender2, e2) =>
+
+                
+                builder.SetItems(Resource.Array.itemSelect_AddToWatchList, (sender2, e2) =>
+                {
+                    var index = e2.Which;
+                    Log.Debug("DEBUG", index.ToString());
+                    Log.Debug("DEBUG", e2.Which.ToString());
+
+                    switch (e2.Which)
+                    {
+                        case 0:
+                            break;
+                        case 1:
+                            // call method in next activity to pass data across via a string - this will be an object at a later date
+                            GordTestActivity.MethodToGetString(myList[e.Position]);
+                            //GordTestActivity.MethodToGetString("latest test");
+
+                            // call intent to start next activity
+                            Intent intent = new Intent(this, typeof(GordTestActivity));
+                            StartActivity(intent);
+                            break;
+                        case 2:
+                            break;
+                        default:
+                            break;
+                    };
+
+
+                    //Log.Debug("DEBUG", items[index]);
+                });
+
+
+                //// positive 1st - so it is on the left of the screen, where user is used to seeing it!
+                //builder.SetPositiveButton("OK", (sender2, e2) => {
+                //    Log.Debug("dbg", "OK clicked");
+                //});
+
+                builder.SetNegativeButton("Cancel", (sender2, e2) =>
+                {
+                    Log.Debug("dbg", "Cancel clicked");
+                });
+
+                // builder.SetNeutralButton.........
+
+                var alert = builder.Create();
+                alert.Show();
             };
 
 

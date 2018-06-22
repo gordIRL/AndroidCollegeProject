@@ -19,12 +19,21 @@ namespace CurrencyAlertApp
     // , MainLauncher = true
     public class GordTestActivity : AppCompatActivity
     {
+        public static string myResultMain = string.Empty;
+
         protected override void OnCreate(Bundle savedInstanceState)
-        {
+        {            
             base.OnCreate(savedInstanceState);
 
             // Create your application here
             SetContentView(Resource.Layout.gordTestLayout);
+            
+            Toast.MakeText(this, "Hello and welcome to TestActivity!\n" + myResultMain, ToastLength.Long).Show();
+        }
+
+        public static void MethodToGetString(string myResultInput)
+        {
+            myResultMain = myResultInput;
         }
     }
 }

@@ -91,6 +91,13 @@
 		to read file used:  XDocument xmlFile = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));  (30 mins)
 		several loops to add LINQ sorted data to a listView (30 mins)
 
+21/June/2018	3 x Linq to XML test options added to DataAccess Class & wired into menu options on toolBar (lower) on MainActivity. 
+4 1/2 hrs	Workaround for NotifyDataSetChanged not working.
+
+
+
+22/June/2018	Context(?) menu (Alert using builder) added to ItemClick - uses array in Resources/Values/Strings - calls next activity & passes data accross(string) 
+		via a method contained in the 2nd/called activity. (2hrs)
 	
 
 
