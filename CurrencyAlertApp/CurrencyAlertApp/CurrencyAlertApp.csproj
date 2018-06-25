@@ -96,7 +96,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\Alert.cs" />
     <Compile Include="DataAccess\SetUpData.cs" />
+    <Compile Include="DataAccess\Trade.cs" />
     <Compile Include="GordTestActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="PersonalAlarmsActivity.cs" />
@@ -107,6 +109,7 @@
     <Compile Include="TestNotificationsActivity.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />

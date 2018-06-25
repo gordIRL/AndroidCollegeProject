@@ -1961,8 +1961,14 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f0b002f
 			public const int bottom = 2131427375;
 			
+			// aapt resource value: 0x7f0b0083
+			public const int btnSetDate = 2131427459;
+			
+			// aapt resource value: 0x7f0b008a
+			public const int btnSetPersonalAlert = 2131427466;
+			
 			// aapt resource value: 0x7f0b0086
-			public const int btnSubmitTime = 2131427462;
+			public const int btnSetTime = 2131427462;
 			
 			// aapt resource value: 0x7f0b0066
 			public const int button1 = 2131427430;
@@ -2009,12 +2015,6 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f0b006c
 			public const int edit_toolbar = 2131427436;
 			
-			// aapt resource value: 0x7f0b0084
-			public const int edtTimeHours = 2131427460;
-			
-			// aapt resource value: 0x7f0b0085
-			public const int edtTimeMinutes = 2131427461;
-			
 			// aapt resource value: 0x7f0b0022
 			public const int end = 2131427362;
 			
@@ -2060,8 +2060,11 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f0b000a
 			public const int line3 = 2131427338;
 			
-			// aapt resource value: 0x7f0b0083
-			public const int linearLayout1 = 2131427459;
+			// aapt resource value: 0x7f0b0082
+			public const int linearLayout1 = 2131427458;
+			
+			// aapt resource value: 0x7f0b0085
+			public const int linearLayout2 = 2131427461;
 			
 			// aapt resource value: 0x7f0b000f
 			public const int listMode = 2131427343;
@@ -2078,29 +2081,29 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f0b0073
 			public const int media_actions = 2131427443;
 			
-			// aapt resource value: 0x7f0b008d
-			public const int menu_data_LINQ_query = 2131427469;
-			
-			// aapt resource value: 0x7f0b008a
-			public const int menu_data_default = 2131427466;
-			
-			// aapt resource value: 0x7f0b008c
-			public const int menu_data_formatted = 2131427468;
-			
-			// aapt resource value: 0x7f0b008b
-			public const int menu_data_raw = 2131427467;
+			// aapt resource value: 0x7f0b0091
+			public const int menu_data_LINQ_query = 2131427473;
 			
 			// aapt resource value: 0x7f0b008e
-			public const int menu_home = 2131427470;
+			public const int menu_data_default = 2131427470;
 			
 			// aapt resource value: 0x7f0b0090
-			public const int menu_preferences = 2131427472;
+			public const int menu_data_formatted = 2131427472;
 			
 			// aapt resource value: 0x7f0b008f
-			public const int menu_setPersonAlert = 2131427471;
+			public const int menu_data_raw = 2131427471;
 			
-			// aapt resource value: 0x7f0b0089
-			public const int message = 2131427465;
+			// aapt resource value: 0x7f0b0092
+			public const int menu_home = 2131427474;
+			
+			// aapt resource value: 0x7f0b0094
+			public const int menu_preferences = 2131427476;
+			
+			// aapt resource value: 0x7f0b0093
+			public const int menu_setPersonAlert = 2131427475;
+			
+			// aapt resource value: 0x7f0b008d
+			public const int message = 2131427469;
 			
 			// aapt resource value: 0x7f0b0023
 			public const int middle = 2131427363;
@@ -2246,8 +2249,8 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f0b0044
 			public const int textSpacerNoTitle = 2131427396;
 			
-			// aapt resource value: 0x7f0b0082
-			public const int textView1 = 2131427458;
+			// aapt resource value: 0x7f0b008b
+			public const int textView1 = 2131427467;
 			
 			// aapt resource value: 0x7f0b0078
 			public const int time = 2131427448;
@@ -2273,11 +2276,20 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f0b0049
 			public const int topPanel = 2131427401;
 			
+			// aapt resource value: 0x7f0b0084
+			public const int txtDate = 2131427460;
+			
+			// aapt resource value: 0x7f0b008c
+			public const int txtInfo1 = 2131427468;
+			
 			// aapt resource value: 0x7f0b0088
-			public const int txtInfo1 = 2131427464;
+			public const int txtOffSetTime = 2131427464;
 			
 			// aapt resource value: 0x7f0b0087
-			public const int txtOffSetTime = 2131427463;
+			public const int txtTime = 2131427463;
+			
+			// aapt resource value: 0x7f0b0089
+			public const int txtcombinedDateTime = 2131427465;
 			
 			// aapt resource value: 0x7f0b001f
 			public const int uniform = 2131427359;

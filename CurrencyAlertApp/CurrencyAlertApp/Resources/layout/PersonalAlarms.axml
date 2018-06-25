@@ -19,40 +19,62 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="60dp"
         android:text="Start" />
-    <TextView
-        android:layout_marginTop="25dp"
-        android:text="Set Yr/Mth/Day manually in code - digits please"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1" />
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout1">
-        <EditText
-            android:id="@+id/edtTimeHours"
-            android:hint="Hours(24hr)"
+        <Button
+            android:id="@+id/btnSetDate"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-        <EditText
-            android:id="@+id/edtTimeMinutes"
-            android:hint="Minutes:"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="5dp"
+            android:text="Set Date" />
+        <TextView
+            android:text="Date:"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:id="@+id/txtDate" />
     </LinearLayout>
-    <Button
-        android:id="@+id/btnSubmitTime"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="60dp"
-        android:layout_marginTop="5dp"
-        android:text="Submit Time" />
+        android:id="@+id/linearLayout2">
+        <Button
+            android:id="@+id/btnSetTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="5dp"
+            android:text="Set Time" />
+        <TextView
+            android:text="Time:"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:id="@+id/txtTime" />
+    </LinearLayout>
     <TextView
         android:text="OffSetTime"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtOffSetTime" />
+    <TextView
+        android:text="Date and Time Combined"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtcombinedDateTime" />
+    <Button
+        android:text="Set Personal Alert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSetPersonalAlert" />
 </LinearLayout>

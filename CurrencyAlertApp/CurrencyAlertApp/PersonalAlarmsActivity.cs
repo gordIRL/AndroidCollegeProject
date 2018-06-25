@@ -7,9 +7,11 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Java.Lang;
+using Android.Text.Format;
 
 namespace CurrencyAlertApp
 {
@@ -25,15 +27,23 @@ namespace CurrencyAlertApp
 
 
         // declare controls for Set Alarm via seconds
-        private Button startBtn;
+        private Button startBtn;       
         private EditText timeTxt;
         TextView txtOffSetTime;
         Int32 myOffset;
 
         // declare controls for set alarms by time
-        EditText edtTimeHours;
-        EditText edtTimeMinutes;
-        Button btnSubmitTime;
+        //EditText edtTimeHours;
+        //EditText edtTimeMinutes;
+        Button btnSetTime;
+        Button btnSetDate;
+        TextView txtDate;
+        TextView txtTime;
+        Button btnSetPersonalAlert;
+
+        public static DateTime combinedDateTimeObject;
+
+
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -47,12 +57,21 @@ namespace CurrencyAlertApp
             startBtn.Click += StartBtn_Click;
 
             // wire up controls for set alarms by time
-            edtTimeHours = FindViewById<EditText>(Resource.Id.edtTimeHours);
-            edtTimeMinutes = FindViewById<EditText>(Resource.Id.edtTimeMinutes);
-            btnSubmitTime = FindViewById<Button>(Resource.Id.btnSubmitTime);
+            //edtTimeHours = FindViewById<EditText>(Resource.Id.edtTimeHours);
+            //edtTimeMinutes = FindViewById<EditText>(Resource.Id.edtTimeMinutes);
+            btnSetTime = FindViewById<Button>(Resource.Id.btnSetTime);
+            btnSetDate = FindViewById<Button>(Resource.Id.btnSetDate);
+            txtDate = FindViewById<TextView>(Resource.Id.txtDate);
+            txtTime = FindViewById<TextView>(Resource.Id.txtTime);
+            btnSetPersonalAlert = FindViewById<Button>(Resource.Id.btnSetPersonalAlert);
 
-            btnSubmitTime.Click += BtnSubmitTime_Click;
+            btnSetPersonalAlert.Click += BtnSetPersonalAlert_Click;
+            btnSetTime.Click += BtnSetTime_Click;
+            btnSetDate.Click += BtnSetDate_Click;
         }
+
+       
+
 
         // click event for for Set Alarm via seconds
         void StartBtn_Click(object sender, EventArgs e)
@@ -70,23 +89,22 @@ namespace CurrencyAlertApp
             //SET THE ALARM
             alarmManager.Set(AlarmType.RtcWakeup, JavaSystem.CurrentTimeMillis() + (time * 1000), pi);
             Toast.MakeText(this, "Alarm set In: " + time + " seconds", ToastLength.Long).Show();
-
-            ResetUserControls();
+            timeTxt.Text = "";
         }
 
 
-
         // click event for set alarms by time
-        private void BtnSubmitTime_Click(object sender, EventArgs e)
+        private void BtnSetPersonalAlert_Click(object sender, EventArgs e)
         {
             try
             {
                 txtOffSetTime.Text = "Offset = updated";
-                int hours = int.Parse(edtTimeHours.Text);
-                int minutes = int.Parse(edtTimeMinutes.Text);
+                //int hours = int.Parse(edtTimeHours.Text);
+                //int minutes = int.Parse(edtTimeMinutes.Text);
 
                 DateTime now = DateTime.Now;
-                DateTime future = new DateTime(2018, 6, 22, hours, minutes, 0);  // Year, Month, Day, Hour(24), Minutes, Seconds
+                // DateTime future = new DateTime(2018, 6, 22, hours, minutes, 0);  // Year, Month, Day, Hour(24), Minutes, Seconds
+                DateTime future = combinedDateTimeObject;  // Year, Month, Day, Hour(24), Minutes, Seconds
 
                 Int32 unixTimestampNOW = (Int32)(DateTime.UtcNow.Subtract(now)).TotalSeconds;
                 Int32 unixTimestampFuture = (Int32)(DateTime.UtcNow.Subtract(future)).TotalSeconds;
@@ -109,24 +127,118 @@ namespace CurrencyAlertApp
                 //SET THE ALARM
                 alarmManager.Set(AlarmType.RtcWakeup, JavaSystem.CurrentTimeMillis() + (myOffset * 1000), pi);
                 Toast.MakeText(this, "Alarm set In: " + myOffset.ToString() + " seconds", ToastLength.Long).Show();
-
-                ResetUserControls();
             }
             catch
             {
                 Toast.MakeText(this, "Please enter valid time - in digits", ToastLength.Long).Show();
-                ResetUserControls();
             }
         }
-        void ResetUserControls()
+
+       
+
+
+//----TIME-----------------------------------------------------------------------------------------------
+       
+        private void BtnSetTime_Click(object sender, EventArgs e)
+        {            
+            TimePickerFragment frag = TimePickerFragment.NewInstance(
+                delegate (DateTime time)
+                {
+                    txtTime.Text = time.ToShortTimeString();
+                });
+            frag.Show(FragmentManager, TimePickerFragment.TAG);
+        }//
+
+
+        public class TimePickerFragment : DialogFragment, TimePickerDialog.IOnTimeSetListener
         {
-            // reset user controls
-            edtTimeHours.Text = "";
-            edtTimeMinutes.Text = "";
-            timeTxt.Text = "";
+            public static readonly string TAG = "MyTimePickerFragment";
+            Action<DateTime> timeSelectedHandler = delegate { };
+
+            public static TimePickerFragment NewInstance(Action<DateTime> onTimeSelected)
+            {
+                TimePickerFragment frag = new TimePickerFragment();
+                frag.timeSelectedHandler = onTimeSelected; return frag;
+            }
+
+            public override Dialog OnCreateDialog(Bundle savedInstanceState)
+            {
+                DateTime currentTime = DateTime.Now;
+                bool is24HourFormat = DateFormat.Is24HourFormat(Activity);
+                //is24HourFormat = true;
+                TimePickerDialog dialog = new TimePickerDialog
+                    (Activity, this, currentTime.Hour, currentTime.Minute, is24HourFormat);
+                return dialog;
+            }
+
+            public void OnTimeSet(TimePicker view, int hourOfDay, int minute)
+            {
+                DateTime currentTime = DateTime.Now;
+                DateTime selectedTime = new DateTime(currentTime.Year, currentTime.Month, currentTime.Day, hourOfDay, minute, 0);
+                Log.Debug(TAG, selectedTime.ToLongTimeString());
+                timeSelectedHandler(selectedTime);
+
+                //  my stuff
+                combinedDateTimeObject = new DateTime(combinedDateTimeObject.Year, combinedDateTimeObject.Month, combinedDateTimeObject.Day, hourOfDay, minute, 0);
+                TextView combinedDateTimeTextView = Activity.FindViewById<TextView>(Resource.Id.txtcombinedDateTime);
+                combinedDateTimeTextView.Text = combinedDateTimeObject.ToString();
+            }
         }
 
 
+        
 
-    }
-}
+
+
+        //--DATE----------------------------------------------------------------------------------------------------
+
+        private void BtnSetDate_Click(object sender, EventArgs e)
+        {
+            DatePickerFragment frag = DatePickerFragment.NewInstance(delegate (DateTime time)
+            {
+                txtDate.Text = time.ToLongDateString();
+            });
+            frag.Show(FragmentManager, DatePickerFragment.TAG);
+        }//
+
+
+        public class DatePickerFragment : DialogFragment, DatePickerDialog.IOnDateSetListener
+        {
+            // TAG can be any string of your choice.     
+            public static readonly string TAG = "X:" + typeof(DatePickerFragment).Name.ToUpper();
+            // Initialize this value to prevent NullReferenceExceptions.     
+            Action<DateTime> _dateSelectedHandler = delegate { };
+
+            public static DatePickerFragment NewInstance(Action<DateTime> onDateSelected)
+            {
+                DatePickerFragment frag = new DatePickerFragment();
+                frag._dateSelectedHandler = onDateSelected;
+                return frag;
+            }
+
+            public override Dialog OnCreateDialog(Bundle savedInstanceState)
+            {
+                DateTime currently = DateTime.Now;
+                DatePickerDialog dialog = new DatePickerDialog(Activity,
+                                                                this,
+                                                                currently.Year,
+                                                                currently.Month - 1,
+                                                                currently.Day);
+                return dialog;
+            }
+
+            public void OnDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
+            {
+                // Note: monthOfYear is a value between 0 and 11, not 1 and 12!         
+                DateTime selectedDate = new DateTime(year, monthOfYear + 1, dayOfMonth);
+                Log.Debug(TAG, selectedDate.ToLongDateString());
+                _dateSelectedHandler(selectedDate);
+
+                //  my stuff
+                combinedDateTimeObject = new DateTime(year, monthOfYear + 1, dayOfMonth, combinedDateTimeObject.Hour, combinedDateTimeObject.Minute, combinedDateTimeObject.Second);
+                TextView combinedDateTimeTextView = Activity.FindViewById<TextView>(Resource.Id.txtcombinedDateTime);
+                combinedDateTimeTextView.Text = combinedDateTimeObject.ToString();
+            }
+        }
+    }//
+}//

@@ -26,7 +26,7 @@ using Android.Util;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Theme = "@style/MyTheme.Base", Label = "CurrencyAlertApp")]
+    [Activity(Theme = "@style/MyTheme.Base", MainLauncher = true,   Label = "CurrencyAlertApp")]
     //  MainLauncher = true,  
     // must have an appCompat theme         
 
