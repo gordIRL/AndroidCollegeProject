@@ -101,7 +101,23 @@
 		Wiring up toolbar(top) (30 mins)
 		Added Set Person Alarm activity - from ProofOfConcept App (1hr)
 
-		DatePicker & Time Picker reasearch on MSDN (30mins)
+		DatePicker & Time Picker research on MSDN (30mins)
+
+
+23/June/2018	DatePicker & TimePicker MSDN tutorials & code experimentation - proof of concept app.
+4 hrs
+
+
+24/June/2018	Continued from yesterday. Challenge to get the DateTime object from DialogFrament used in MSDN code. Kept getting a 'need object reference error'.
+4 hrs		Initially solved by changing a textView control to 'static' which i didn't think was correct, despite it working. 
+		Eventually solved correctly(?) by adding a 2nd 'FindViewById' for the textview (1st one is in onCreate())  inside the fragment code. 
+		The fragment code contains a static method that was the root of my scope issue.(4 hrs)
+
+
+25/June/2018	Inyterim report, planning, brainstorming & research. (3 1/2hrs)
+5 hrs		Added DatePicker & TimePicker Proof of concept app to main project. (1 1/2 hrs)
+
+26/June/2018	Localisation - button.text names and textView.text added to Strings.xml (1 hr)
 	
 
 

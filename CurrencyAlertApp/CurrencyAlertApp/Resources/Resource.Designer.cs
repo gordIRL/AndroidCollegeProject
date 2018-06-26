@@ -2572,6 +2572,48 @@ namespace CurrencyAlertApp
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f060020
+			public const int Button_Activity2Test = 2131099680;
+			
+			// aapt resource value: 0x7f060021
+			public const int Button_ChangeColour = 2131099681;
+			
+			// aapt resource value: 0x7f060025
+			public const int PA_Btn_NoOfSeconds = 2131099685;
+			
+			// aapt resource value: 0x7f060026
+			public const int PA_Btn_SetDate = 2131099686;
+			
+			// aapt resource value: 0x7f060028
+			public const int PA_Btn_SetPersonalAlert = 2131099688;
+			
+			// aapt resource value: 0x7f060027
+			public const int PA_Btn_SetTime = 2131099687;
+			
+			// aapt resource value: 0x7f06002a
+			public const int PA_Txt_Date = 2131099690;
+			
+			// aapt resource value: 0x7f06002d
+			public const int PA_Txt_NumberOfSeconds = 2131099693;
+			
+			// aapt resource value: 0x7f06002c
+			public const int PA_Txt_OffSetTime = 2131099692;
+			
+			// aapt resource value: 0x7f06002b
+			public const int PA_Txt_Time = 2131099691;
+			
+			// aapt resource value: 0x7f060029
+			public const int PA_Txt_combinedDateTime = 2131099689;
+			
+			// aapt resource value: 0x7f060024
+			public const int SampleHelloWorldText = 2131099684;
+			
+			// aapt resource value: 0x7f060023
+			public const int ToolbarBottomTitle = 2131099683;
+			
+			// aapt resource value: 0x7f060022
+			public const int ToolbarTopTitle = 2131099682;
+			
 			// aapt resource value: 0x7f060000
 			public const int abc_action_bar_home_description = 2131099648;
 			

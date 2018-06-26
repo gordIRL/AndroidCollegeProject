@@ -46,6 +46,7 @@ namespace CurrencyAlertApp
 
             // Button to call next activity
             MyButton = FindViewById<Button>(Resource.Id.MyButton);
+            //MyButton.Text =  GetString(Resource.String.Button_Activity2Test);  // not in use
             MyButton.Click += delegate
             {
                 Intent intent = new Intent(this, typeof(GordTestActivity));
@@ -104,22 +105,12 @@ namespace CurrencyAlertApp
                         default:
                             break;
                     };
-
-
-                    //Log.Debug("DEBUG", items[index]);
-                });
-
-
-                //// positive 1st - so it is on the left of the screen, where user is used to seeing it!
-                //builder.SetPositiveButton("OK", (sender2, e2) => {
-                //    Log.Debug("dbg", "OK clicked");
-                //});
+                });               
 
                 builder.SetNegativeButton("Cancel", (sender2, e2) =>
                 {
                     Log.Debug("dbg", "Cancel clicked");
                 });
-
                 // builder.SetNeutralButton.........
 
                 var alert = builder.Create();
@@ -130,11 +121,11 @@ namespace CurrencyAlertApp
             // ToolBar - Top of Screen
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
-            SupportActionBar.Title = "Menu";
+            SupportActionBar.Title = GetString(Resource.String.ToolbarTopTitle);
 
             // Toolbar - Bottom of Screen
             var editToolbar = FindViewById<Toolbar>(Resource.Id.edit_toolbar);
-            editToolbar.Title = "Refine Data";
+            editToolbar.Title = GetString(Resource.String.ToolbarBottomTitle);
             editToolbar.InflateMenu(Resource.Menu.edit_menus);
 
             // bottom ToolBar Menu Selection
@@ -220,11 +211,7 @@ namespace CurrencyAlertApp
 
 
         public override bool OnOptionsItemSelected(IMenuItem item) // for top toolbar
-        {   
-            // Misc toasts - not in use - for testing
-            //Toast.MakeText(this, "Action selected: " + item.TitleFormatted, ToastLength.Short).Show();
-            //Toast.MakeText(this, "Action selected: " + item.ItemId, ToastLength.Short).Show();
-
+        {  
             switch (item.ItemId)
             {
                 case Resource.Id.menu_home:

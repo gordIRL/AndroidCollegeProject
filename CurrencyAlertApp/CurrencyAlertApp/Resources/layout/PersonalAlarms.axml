@@ -11,14 +11,14 @@
         android:textSize="25dp"
         android:textStyle="bold"
         android:ems="10"
-        android:hint="Number of seconds"
+        android:hint="@string/PA_Txt_NumberOfSeconds"
         android:inputType="numberDecimal" />
     <Button
         android:id="@+id/startBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="60dp"
-        android:text="Start" />
+        android:text="@string/PA_Btn_NoOfSeconds" />
     <LinearLayout
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
@@ -31,9 +31,9 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="60dp"
             android:layout_marginTop="5dp"
-            android:text="Set Date" />
+            android:text="@string/PA_Btn_SetDate" />
         <TextView
-            android:text="Date:"
+            android:text="@string/PA_Txt_Date"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -51,9 +51,9 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="60dp"
             android:layout_marginTop="5dp"
-            android:text="Set Time" />
+            android:text="@string/PA_Btn_SetTime" />
         <TextView
-            android:text="Time:"
+            android:text="@string/PA_Txt_Time"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -61,19 +61,19 @@
             android:id="@+id/txtTime" />
     </LinearLayout>
     <TextView
-        android:text="OffSetTime"
+        android:text="@string/PA_Txt_OffSetTime"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtOffSetTime" />
     <TextView
-        android:text="Date and Time Combined"
+        android:text="@string/PA_Txt_combinedDateTime"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtcombinedDateTime" />
     <Button
-        android:text="Set Personal Alert"
+        android:text="@string/PA_Btn_SetPersonalAlert"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnSetPersonalAlert" />

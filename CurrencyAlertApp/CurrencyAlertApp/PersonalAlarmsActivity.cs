@@ -18,14 +18,6 @@ namespace CurrencyAlertApp
     [Activity(Label = "PersonalAlarmsActivity")]
     public class PersonalAlarmsActivity : Activity
     {
-        // Instructions for use:
-        //
-        // Enter no of seconds until alarm will sound & notification displays
-        //
-        // OR enter time(24 hour) & minutes to set alarm & notification
-        // change date etc in the code below - line 90
-
-
         // declare controls for Set Alarm via seconds
         private Button startBtn;       
         private EditText timeTxt;
@@ -33,8 +25,6 @@ namespace CurrencyAlertApp
         Int32 myOffset;
 
         // declare controls for set alarms by time
-        //EditText edtTimeHours;
-        //EditText edtTimeMinutes;
         Button btnSetTime;
         Button btnSetDate;
         TextView txtDate;
@@ -57,8 +47,6 @@ namespace CurrencyAlertApp
             startBtn.Click += StartBtn_Click;
 
             // wire up controls for set alarms by time
-            //edtTimeHours = FindViewById<EditText>(Resource.Id.edtTimeHours);
-            //edtTimeMinutes = FindViewById<EditText>(Resource.Id.edtTimeMinutes);
             btnSetTime = FindViewById<Button>(Resource.Id.btnSetTime);
             btnSetDate = FindViewById<Button>(Resource.Id.btnSetDate);
             txtDate = FindViewById<TextView>(Resource.Id.txtDate);
@@ -103,7 +91,6 @@ namespace CurrencyAlertApp
                 //int minutes = int.Parse(edtTimeMinutes.Text);
 
                 DateTime now = DateTime.Now;
-                // DateTime future = new DateTime(2018, 6, 22, hours, minutes, 0);  // Year, Month, Day, Hour(24), Minutes, Seconds
                 DateTime future = combinedDateTimeObject;  // Year, Month, Day, Hour(24), Minutes, Seconds
 
                 Int32 unixTimestampNOW = (Int32)(DateTime.UtcNow.Subtract(now)).TotalSeconds;

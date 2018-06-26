@@ -12,10 +12,10 @@
         android:id="@+id/main_content"
         android:layout_below="@id/toolbar">
         <Button
+            android:text="@string/Button_Activity2Test"
             android:id="@+id/MyButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Activity 2 - Test"
             android:layout_marginTop="0dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
