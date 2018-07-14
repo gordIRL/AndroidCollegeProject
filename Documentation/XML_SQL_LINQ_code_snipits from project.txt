@@ -1,0 +1,101 @@
+XML CODE:
+-----------
+-----------
+
+
+// Load an internal xml file  stored in Assets Folder
+XDocument xmlFile = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));  
+
+
+
+//displays all raw data in XML file            
+foreach (var item in xmlFile.Root.Elements()) 
+{	listToReturn.Add(item.Value.Trim() + ""); }
+
+--------------
+ foreach (var item in xmlFile.Descendants("event")) // this is the <event> tag in the xml 
+--------------
+
+
+
+DATABASE ORM
+------------
+------------
+
+-----------------------------------------
+// get a single item from database
+var newsObject = conn.Get<NewsObject>(3);
+-----------------------------------------
+
+
+
+
+
+
+SQL
+---
+---
+
+-----------------------------------------------------------------------------------------------
+// get all USD from NewsObject table via SQL query
+using (SQLiteConnection conn = new SQLiteConnection(DBLocation))
+	{
+		var result = conn.Query<NewsObject>("SELECT * FROM NewsObject WHERE CountryChar = ?", "USD" );
+        foreach (var item in result)
+        {
+			Log.Debug("DEBUG", item.ToString());
+		}                
+    }
+---------------------------------------------------------------------------------------
+
+
+
+
+
+
+LINQ
+-----
+-----
+
+// sample selection using LINQ - 
+		var highestImpact = from myVar in xmlFile.Descendants("event")
+				where myVar.Element("impact").Value == "High" &&
+                (myVar.Element("country").Value == "GBP"
+                || myVar.Element("country").Value == "USD")
+		
+                select myVar;
+
+
+
+// Variation 2:   sample selection using LINQ - find object by its Primary Key ID
+		var highestImpact = from myVar in newsObjectsList
+        where myVar.NewsObjectID == 3
+        select myVar; 
+
+
+
+
+
+	
+
+DATETIME OBJECT
+---------------
+---------------
+
+//// Original code http://net-informations.com/q/faq/stringdate.html
+                //string iString = "2005-05-05 22:12 PM";
+                //DateTime oDate = DateTime.ParseExact(iString, "yyyy-MM-dd HH:mm tt", null);
+                //MessageBox.Show(oDate.ToString());
+				
+				
+				
+   // My version
+                string iString = item.DateOnly.ToString() + " " + item.TimeOnly.ToString();
+                DateTime oDate = DateTime.Parse(iString);  
+                Log.Debug("DEBUG", "NEW dateTime: " + oDate.ToString());
+				
+				
+MENUs
+------
+------
+local:showAsAction="ifRoom"

@@ -2,17 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"       
       xmlns:local="http://schemas.android.com/apk/res-auto">
   <item        
-    android:id="@+id/menu_home"        
+    android:id="@+id/menu_top_marketData"        
     android:icon="@mipmap/ic_action_content_create"        
-    local:showAsAction="ifRoom"        
-    android:title="Home" />
-  <item        
-    android:id="@+id/menu_setPersonAlert"        
-    android:icon="@mipmap/ic_action_content_save"        
-    local:showAsAction="ifRoom"        
-    android:title="Set Alert" />
-  <item        
-    android:id="@+id/menu_preferences"        
     local:showAsAction="never"        
-    android:title="Preferences" />
+    android:title="@string/TB_Top_UpdateXML" />        
+  <item        
+    android:id="@+id/menu_top_alerts"        
+    android:icon="@mipmap/ic_action_content_save"        
+    local:showAsAction="never"       
+    android:title="@string/TB_Top_Alerts" />
+  <item        
+    android:id="@+id/menu_top_preferences"        
+    local:showAsAction="never"        
+    android:title="@string/TB_Top_Preferences" />
+  <item
+  android:id="@+id/menu_top_reports"
+  local:showAsAction="never"
+  android:title="@string/TB_Top_Reports" />
 </menu>

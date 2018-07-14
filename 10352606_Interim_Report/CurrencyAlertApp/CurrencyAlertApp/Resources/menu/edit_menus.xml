@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:local="http://schemas.android.com/apk/res-auto">
+  <item
+   android:id="@+id/menu_data_default"
+   android:icon="@mipmap/ic_menu_paste_holo_dark"
+   local:showAsAction="ifRoom"
+   android:title="Default" />
+  <item
+    android:id="@+id/menu_data_raw"
+    android:icon="@mipmap/ic_menu_cut_holo_dark"
+    local:showAsAction="ifRoom"
+    android:title="Raw" />
+  <item
+    android:id="@+id/menu_data_formatted"
+    android:icon="@mipmap/ic_menu_copy_holo_dark"
+    local:showAsAction="ifRoom"
+    android:title="Formatted" />
+  <item
+    android:id="@+id/menu_data_LINQ_query"
+    android:icon="@mipmap/ic_menu_paste_holo_dark"
+    local:showAsAction="ifRoom"
+    android:title="LINQ Query" />
+</menu>
