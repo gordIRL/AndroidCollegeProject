@@ -141,12 +141,10 @@ namespace CurrencyAlertApp
 
             // variables - bottom toolbar - alert dialog - market impact
             string[] marketImpact_titlesArray = Resources.GetStringArray(Resource.Array.MarketImpactArray);
-            //List<string> marketImpact_selectedList = new List<string>();
             bool[] marketImpact_selectedBoolArray = new bool[marketImpact_titlesArray.Length];  // for selected checkboxes in MultiItemSelect 
 
             // variables - bottom toolbar - alert dialog - currencies 
             string[] currencies_titlesArray = Resources.GetStringArray(Resource.Array.CurrenciesArray);
-            //List<string> currencies_selectedList = new List<string>();
             bool[] currencies_selectedBoolArray = new bool[currencies_titlesArray.Length];  // for selected checkboxes in MultiItemSelect 
 
 
@@ -155,70 +153,53 @@ namespace CurrencyAlertApp
             {
                 switch (e.Item.ItemId)         
                 {
-                    case Resource.Id.menu_data_selectMarketImpact:
-                        // display user selection info
-                        //Toast.MakeText(this, "Bottom toolbar / Default!!!!!!:\nID: " + e.Item.ItemId + "\nTitle: " + e.Item.TitleFormatted, ToastLength.Short).Show();
-                        
+                    case Resource.Id.menu_data_clear:
+                        ClearListAndAdapter();
+                        break;
+
+                    case Resource.Id.menu_data_selectMarketImpact:                       
                         using (var dialog = new Android.Support.V7.App.AlertDialog.Builder(this))
                         {
                             dialog.SetTitle("Select Market Impact(s)");
-                            dialog.SetPositiveButton("Close", delegate {
+                            dialog.SetPositiveButton("Close", delegate {                                
+                                // clear adapter & list & populate list with LINQ query result
+                                ClearListsAndRepopulateAdapter();
                                 DebugDisplayMarketImpacts();
-
-                                // !!!  need to clear the screen of whatever data is already being displayed  !!
-                                // !!!  Market Impact selection only seems to work 2nd time around - currency selection works 1st time around !!!!
-
-                                // populate list with LINQ query result 
-                                myList = SetUpData.GetLINQResultData2(marketImpact_selectedList, currencies_selectedList);
-                                // re-populate adapter by running a 'forEach' through the list
-                                RepopulateAdapter();
-                                //adapter.NotifyDataSetChanged();
                             });
-
-
-
 
                             // Set Multichoice Items
                             dialog.SetMultiChoiceItems(marketImpact_titlesArray, marketImpact_selectedBoolArray,
                                (sender2, event2) => {
                                    int index = event2.Which;
                                    bool isChecked = event2.IsChecked;
-                                   marketImpact_selectedBoolArray[index] = isChecked;
-                                   //Toast.MakeText(this, "You clicked: " + marketImpactTitlesArray[index]
-                                   //   + "\nChecked: " + event2.IsChecked, ToastLength.Short).Show();
+                                   marketImpact_selectedBoolArray[index] = isChecked;                                  
 
                                     // add item to list if now selected - ie isChecked is now TRUE  
                                     if (isChecked)
                                        marketImpact_selectedList.Add(marketImpact_titlesArray[index]);
                                    else
                                        marketImpact_selectedList.Remove(marketImpact_titlesArray[index]);
-                               });
-                           
+                               });                           
                             dialog.Show();
-                        }// end Using                                              
+                        }                                             
                         break;
 
-                    case Resource.Id.menu_selectCurrencies:
-                        // display user selection info
-                        //Toast.MakeText(this, "Bottom toolbar / Default!!!!!!:\nID: " + e.Item.ItemId + "\nTitle: " + e.Item.TitleFormatted, ToastLength.Short).Show();
-
+                    case Resource.Id.menu_selectCurrencies:                       
                         using (var dialog = new Android.Support.V7.App.AlertDialog.Builder(this))
                         {
                             dialog.SetTitle("Select Currencies");
-                            dialog.SetPositiveButton("Close", delegate
-                            {
+                            dialog.SetPositiveButton("Close", delegate{
+                                // clear adapter & list & populate list with LINQ query result
+                                ClearListsAndRepopulateAdapter();
                                 DebugDisplayCurrencies();
                             });
 
                             // Set Multichoice Items
                             dialog.SetMultiChoiceItems(currencies_titlesArray, currencies_selectedBoolArray,
-                               (s, eEXtra) =>
-                               {
+                               (s, eEXtra) =>  {
                                    int index = eEXtra.Which;
                                    bool isChecked = eEXtra.IsChecked;
                                    currencies_selectedBoolArray[index] = isChecked;
-                                   //Toast.MakeText(this, "You clicked: " + currencyTitlesArray[index]
-                                   //    + "\nChecked: " + eEXtra.IsChecked, ToastLength.Short).Show();
 
                                    // add item to list if now selected - ie isChecked is now TRUE  
                                    if (isChecked)
@@ -234,8 +215,7 @@ namespace CurrencyAlertApp
                                });
 
                             // check all boxes and add all items to list(s)
-                            dialog.SetNeutralButton("ALL", delegate
-                            {
+                            dialog.SetNeutralButton("ALL", delegate {
                                 // clear list 1st to avoid getting duplicate entries
                                 currencies_selectedList.Clear();
 
@@ -244,7 +224,9 @@ namespace CurrencyAlertApp
                                 {
                                     currencies_selectedBoolArray[i] = true;
                                     currencies_selectedList.Add(currencies_titlesArray[i]);
-                                }
+                                }                               
+                                // clear adapter & list & populate list with LINQ query result
+                                ClearListsAndRepopulateAdapter();
                                 DebugDisplayCurrencies();
                             });
 
@@ -258,63 +240,41 @@ namespace CurrencyAlertApp
                                     currencies_selectedBoolArray[i] = false;
                                     currencies_selectedList.Remove(currencies_titlesArray[i]);
                                 }
+                                // clear adapter & list & populate list with LINQ query result
+                                ClearListsAndRepopulateAdapter();
                                 DebugDisplayCurrencies();
                             });
-
                             dialog.Show();
-                        }// end Using
+                        }
                         break;
 
 
-                    case Resource.Id.menu_data_formatted:
-                        // display user selection info
-                        Toast.MakeText(this, "Bottom toolbar / RAW:\nID: " + e.Item.ItemId + "\nTitle: " + e.Item.TitleFormatted, ToastLength.Short).Show();
-
-                        // clear adapter & clear list
+                    case Resource.Id.menu_data_all_data:
+                        // clear adapter & list &  populate list with ALL data (formatted)
                         ClearListAndAdapter();
-
-                        // populate list with ALL data - formatted 
                         myList = SetUpData.GetAllDataFormattedIntoSingleString();
+                        RepopulateAdapter();  // runs a 'forEach' through the list
+                        //adapter.NotifyDataSetChanged();
+                        break;
 
-                        // re-populate adapter by running a 'forEach' through the list
+                    case Resource.Id.menu_data_sample_LINQ_query:
+                        // clear adapter & list & populate list with LINQ query result 
+                        ClearListAndAdapter();
+                        myList = SetUpData.GetLINQResultData(); 
                         RepopulateAdapter();
                         //adapter.NotifyDataSetChanged();
                         break;
 
-
-                    case Resource.Id.menu_data_LINQ_query:
-                        // display user selection info
-                        Toast.MakeText(this, "Bottom toolbar / LINQ Query:\nID: " + e.Item.ItemId + "\nTitle:" + e.Item.TitleFormatted, ToastLength.Short).Show();
-
-                        // clear adapter & clear list
-                        ClearListAndAdapter();
-
-                        // populate list with LINQ query result 
-                        myList = SetUpData.GetLINQResultData();  // GetLINQResultData2
-
-                        // re-populate adapter by running a 'forEach' through the list
-                        RepopulateAdapter();
-                        //adapter.NotifyDataSetChanged();
-                        break;
-
-
-                    case Resource.Id.menu_test_data:
-                        // display user selection info
-                        Toast.MakeText(this, "Bottom toolbar / Default:\nID: " + e.Item.ItemId + "\nTitle: " + e.Item.TitleFormatted, ToastLength.Short).Show();
-
-                        // clear adapter & clear list
-                        ClearListAndAdapter();
-
-                        // populate list by calling method with XDocument xmlFile - declared above
+                    case Resource.Id.menu_sample_data:
+                        // clear adapter & list & populate list with a 'for' loop of sample text
+                        ClearListAndAdapter();                        
                         myList = SetUpData.NoDataToDisplay();
-
-                        // re-populate adapter by running a 'forEach' through the list
                         RepopulateAdapter();
                         //adapter.NotifyDataSetChanged();
                         break;
-
 
                     case Resource.Id.menu_debugDisplay:
+                        // displays contents of currency & marketImpact list in the Debug Output window
                         Log.Debug("DEBUG", ": Currency & Market Impact Selected Display - Starts Here");
                         foreach (var item in currencies_selectedList)
                         {
@@ -398,6 +358,13 @@ namespace CurrencyAlertApp
         }
 
        
+        void ClearListsAndRepopulateAdapter()
+        {
+            ClearListAndAdapter();
+            myList = SetUpData.GetLINQResultData2(marketImpact_selectedList, currencies_selectedList);
+            RepopulateAdapter();
+        }
+
         void ClearListAndAdapter()
         {
             adapter.Clear();
@@ -412,9 +379,7 @@ namespace CurrencyAlertApp
                 adapter.Add(item);
             }
             //adapter.NotifyDataSetChanged();
-        }        
-
-              
+        }
     }//
 }//
 

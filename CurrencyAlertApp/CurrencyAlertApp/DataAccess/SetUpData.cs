@@ -178,11 +178,8 @@ namespace CurrencyAlertApp.DataAccess
             return linqQueryResultsList;   // returning a List<String> ..... eventually will be List<newsObject> !!!!
         }
 
-
-
-
-
-        //public static List<string> GetLINQResultData2(string[] marketImpact_selectedList, string[] currencies_selectedList)
+        
+       
         public static List<string> GetLINQResultData2(List<string> marketImpact_selectedList, List<string> currencies_selectedList)
         {
             // LINQ queries (direct from database data)
@@ -209,7 +206,6 @@ namespace CurrencyAlertApp.DataAccess
                     foreach (var linqResultItem in tempLinqQueryList)
                     {
                         linqQueryResultsList.Add(
-                            "Some text!!!!" + 
                                linqResultItem.CountryChar + ":    " +
                                linqResultItem.MarketImpact + "\n" +
                                linqResultItem.DateOnly + ":    " +
@@ -223,20 +219,9 @@ namespace CurrencyAlertApp.DataAccess
                 }// end outer foreach         
             }
             //return list
-            linqQueryResultsList.Add("Some text!!!!");
             return linqQueryResultsList;   // returning a List<String> ..... eventually will be List<newsObject> !!!!
         }
-
-
-
-
-
-
-
-
-
-
-
+        
 
 
 

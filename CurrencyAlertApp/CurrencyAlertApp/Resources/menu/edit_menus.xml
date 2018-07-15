@@ -1,41 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:local="http://schemas.android.com/apk/res-auto">
-
+  
   <item
     android:id="@+id/menu_data_clear"
     local:showAsAction="never"
-    android:title="Clear" />   
+    android:title="@string/TB_Bottom_ClearCurrencyData" />   
 
   <item
-    android:id="@+id/menu_data_formatted"
+    android:id="@+id/menu_data_all_data"  
     local:showAsAction="never"
-    android:title="Formatted" />
+    android:title="@string/TB_Bottom_AllCurrencyData" />
 
   <item
     android:id="@+id/menu_data_selectMarketImpact"
     local:showAsAction="never"
-    android:title="Select Market Impact(s)" />
+    android:title="@string/TB_Bottom_SelectMarketImpacts" />
 
   <item
     android:id="@+id/menu_selectCurrencies"
     local:showAsAction="never"
-    android:title="Select Currencies" />    
+    android:title="@string/TB_Bottom_SelectCurrencies" />    
   
   <item
-    android:id="@+id/menu_test_data"
+    android:id="@+id/menu_sample_data"
     local:showAsAction="never"
-    android:title="Test Data" />
+    android:title="@string/TB_Bottom_SampleData" />
   
   <item
-    android:id="@+id/menu_data_LINQ_query"
+    android:id="@+id/menu_data_sample_LINQ_query"  
     android:icon="@mipmap/ic_menu_paste_holo_dark"
     local:showAsAction="never"
-    android:title="LINQ Query" />
+    android:title="@string/TB_Bottom_SampleLinqQuery" />
 
   <item
      android:id="@+id/menu_debugDisplay"
      android:icon="@mipmap/ic_menu_paste_holo_dark"
      local:showAsAction="never"
-     android:title="DEBUG Display" />  
+     android:title="@string/TB_Bottom_DebugDisplay" />  
 </menu>

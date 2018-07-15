@@ -2087,14 +2087,14 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f0b0074
 			public const int media_actions = 2131427444;
 			
-			// aapt resource value: 0x7f0b0094
-			public const int menu_data_LINQ_query = 2131427476;
+			// aapt resource value: 0x7f0b0090
+			public const int menu_data_all_data = 2131427472;
 			
 			// aapt resource value: 0x7f0b008f
 			public const int menu_data_clear = 2131427471;
 			
-			// aapt resource value: 0x7f0b0090
-			public const int menu_data_formatted = 2131427472;
+			// aapt resource value: 0x7f0b0094
+			public const int menu_data_sample_LINQ_query = 2131427476;
 			
 			// aapt resource value: 0x7f0b0091
 			public const int menu_data_selectMarketImpact = 2131427473;
@@ -2102,11 +2102,11 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f0b0095
 			public const int menu_debugDisplay = 2131427477;
 			
+			// aapt resource value: 0x7f0b0093
+			public const int menu_sample_data = 2131427475;
+			
 			// aapt resource value: 0x7f0b0092
 			public const int menu_selectCurrencies = 2131427474;
-			
-			// aapt resource value: 0x7f0b0093
-			public const int menu_test_data = 2131427475;
 			
 			// aapt resource value: 0x7f0b0097
 			public const int menu_top_alerts = 2131427479;
@@ -2602,35 +2602,56 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f060025
 			public const int MA_Txt_DataLastUpdated = 2131099685;
 			
-			// aapt resource value: 0x7f06002a
-			public const int PA_Btn_NoOfSeconds = 2131099690;
-			
-			// aapt resource value: 0x7f06002b
-			public const int PA_Btn_SetDate = 2131099691;
-			
-			// aapt resource value: 0x7f06002d
-			public const int PA_Btn_SetPersonalAlert = 2131099693;
-			
-			// aapt resource value: 0x7f06002c
-			public const int PA_Btn_SetTime = 2131099692;
-			
-			// aapt resource value: 0x7f06002f
-			public const int PA_Txt_Date = 2131099695;
+			// aapt resource value: 0x7f060031
+			public const int PA_Btn_NoOfSeconds = 2131099697;
 			
 			// aapt resource value: 0x7f060032
-			public const int PA_Txt_NumberOfSeconds = 2131099698;
+			public const int PA_Btn_SetDate = 2131099698;
 			
-			// aapt resource value: 0x7f060031
-			public const int PA_Txt_OffSetTime = 2131099697;
+			// aapt resource value: 0x7f060034
+			public const int PA_Btn_SetPersonalAlert = 2131099700;
 			
-			// aapt resource value: 0x7f060030
-			public const int PA_Txt_Time = 2131099696;
+			// aapt resource value: 0x7f060033
+			public const int PA_Btn_SetTime = 2131099699;
 			
-			// aapt resource value: 0x7f06002e
-			public const int PA_Txt_combinedDateTime = 2131099694;
+			// aapt resource value: 0x7f060036
+			public const int PA_Txt_Date = 2131099702;
+			
+			// aapt resource value: 0x7f060039
+			public const int PA_Txt_NumberOfSeconds = 2131099705;
+			
+			// aapt resource value: 0x7f060038
+			public const int PA_Txt_OffSetTime = 2131099704;
+			
+			// aapt resource value: 0x7f060037
+			public const int PA_Txt_Time = 2131099703;
+			
+			// aapt resource value: 0x7f060035
+			public const int PA_Txt_combinedDateTime = 2131099701;
 			
 			// aapt resource value: 0x7f060024
 			public const int SampleHelloWorldText = 2131099684;
+			
+			// aapt resource value: 0x7f06002b
+			public const int TB_Bottom_AllCurrencyData = 2131099691;
+			
+			// aapt resource value: 0x7f06002a
+			public const int TB_Bottom_ClearCurrencyData = 2131099690;
+			
+			// aapt resource value: 0x7f060030
+			public const int TB_Bottom_DebugDisplay = 2131099696;
+			
+			// aapt resource value: 0x7f06002e
+			public const int TB_Bottom_SampleData = 2131099694;
+			
+			// aapt resource value: 0x7f06002f
+			public const int TB_Bottom_SampleLinqQuery = 2131099695;
+			
+			// aapt resource value: 0x7f06002d
+			public const int TB_Bottom_SelectCurrencies = 2131099693;
+			
+			// aapt resource value: 0x7f06002c
+			public const int TB_Bottom_SelectMarketImpacts = 2131099692;
 			
 			// aapt resource value: 0x7f060027
 			public const int TB_Top_Alerts = 2131099687;

@@ -99,3 +99,13 @@ MENUs
 ------
 ------
 local:showAsAction="ifRoom"
+------
+// display user selection info
+Toast.MakeText(this, "Bottom toolbar / Default!!!!!!:\nID: " + e.Item.ItemId + "\nTitle: " + e.Item.TitleFormatted, ToastLength.Short).Show();
+-----------------
+
+// toast for SetMultiChoiceItems
+Toast.MakeText(this, "You clicked: " + currencyTitlesArray[index]  + "\nChecked: " + eEXtra.IsChecked, ToastLength.Short).Show();
+------------------
+
+                        
