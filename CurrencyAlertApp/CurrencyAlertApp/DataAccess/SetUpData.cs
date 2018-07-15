@@ -150,27 +150,27 @@ namespace CurrencyAlertApp.DataAccess
         {
             // LINQ queries (direct from database data)
             newsObjectsList.Clear();
-            
+
             // call to database & populate newsObjectList with the result
             GetAllRawDataFromDatabase();
-                     
+
             List<string> linqQueryResultsList = new List<string>();
 
             // sample selection using LINQ - GBP & USD currencies with 'High' impact status
             var highestImpact = from myVar in newsObjectsList
                                 where myVar.MarketImpact == "High" &&
                                 (myVar.CountryChar == "GBP")    // || myVar.CountryChar == "USD")
-                                select myVar;             
+                                select myVar;
 
             // Store result of query in List and Return it
             foreach (var item in highestImpact)
-                {
-                    linqQueryResultsList.Add(
-                           item.CountryChar  + ":    " +                
-                           item.MarketImpact + "\n"    +
-                           item.DateOnly     + ":    " +
-                           item.TimeOnly     + "\n"    +
-                           item.Name  );
+            {
+                linqQueryResultsList.Add(
+                       item.CountryChar + ":    " +
+                       item.MarketImpact + "\n" +
+                       item.DateOnly + ":    " +
+                       item.TimeOnly + "\n" +
+                       item.Name);
 
                 // get dateTime object by calling method combing date(string) and time(string)
                 DateTime dateAndTimeObject = ConvertString_s_ToDateTimeObject(item.DateOnly.ToString(), item.TimeOnly.ToString());
@@ -179,62 +179,53 @@ namespace CurrencyAlertApp.DataAccess
         }
 
 
-        //// not working yet
-        //public static List<string> GetLINQResultData2()
-        //{
-        //    // LINQ queries (direct from database data)
-        //    newsObjectsList.Clear();
-
-        //    // call to database & populate newsObjectList with the result
-        //    GetAllRawDataFromDatabase();
-
-        //    // store LInq results in string list
-        //    List<string> linqQueryResultsList = new List<string>();
-
-        //    List<string> selectedCurrencyList = new List<string> { "USD", "GBP",  "EUR" };  //  "CAD",
-
-        //    int optionNo;
-
-        //    if (((selectedCurrencyList[0] == "HIGH")  && (selectedCurrencyList[1]=="MEDIUM")) &&  (selectedCurrencyList[2] = "LOW")))
-        //            {
-
-        //    }
-
-
-        //    // this one works
-        //    if ((selectedCurrencyList[0] == "HIGH") && (selectedCurrencyList[1] == "MEDIUM")) 
-        //    {
-
-        //    }
 
 
 
-        //    foreach (var individualCurrency in selectedCurrencyList)
-        //    {
-        //        // use LINQ to get all results returned from an individual currency
-        //        var myHighestImpact = from myVar in newsObjectsList
-        //                            where                                               //myVar.MarketImpact == "High" &&
-        //                            (myVar.CountryChar == individualCurrency.ToString())    // || myVar.CountryChar == "USD")    //selectedCurrencyList[1])  //"GBP")                     // || myVar.CountryChar == "USD")
-        //                            select myVar;
+        //public static List<string> GetLINQResultData2(string[] marketImpact_selectedList, string[] currencies_selectedList)
+        public static List<string> GetLINQResultData2(List<string> marketImpact_selectedList, List<string> currencies_selectedList)
+        {
+            // LINQ queries (direct from database data)
+            newsObjectsList.Clear();
 
-                
-        //        // Store results of individual query in List and Return it
-        //        foreach (var item in myHighestImpact)
-        //        {
-        //            linqQueryResultsList.Add(
-        //                   item.CountryChar + ":    " +
-        //                   item.MarketImpact + "\n" +
-        //                   item.DateOnly + ":    " +
-        //                   item.TimeOnly + "\n" +
-        //                   item.Name);
-        //        }
-        //    }         
-        //    return linqQueryResultsList;   
-        //}
+            // call to database & populate newsObjectList with the result
+            GetAllRawDataFromDatabase();
+
+            List<string> linqQueryResultsList = new List<string>();
 
 
+            // loop through MarketImpact List (ie. act on each - all HIGH, all Medium, all Low events)
+            foreach (var marketImpactSelectedItem in marketImpact_selectedList)
+            {
+                foreach (var currencySelectedItem in currencies_selectedList)
+                {
+                    // use LINQ to get all the selected currencies within the current MarketImpact
+                    var tempLinqQueryList = from myVar in newsObjectsList
+                                            where myVar.MarketImpact == marketImpactSelectedItem.ToString() &&
+                                            myVar.CountryChar == currencySelectedItem.ToString()
+                                            select myVar;
 
+                    // Store result of LINQ query in List
+                    foreach (var linqResultItem in tempLinqQueryList)
+                    {
+                        linqQueryResultsList.Add(
+                            "Some text!!!!" + 
+                               linqResultItem.CountryChar + ":    " +
+                               linqResultItem.MarketImpact + "\n" +
+                               linqResultItem.DateOnly + ":    " +
+                               linqResultItem.TimeOnly + "\n" +
+                               linqResultItem.Name);
 
+                        // get dateTime object by calling method combing date(string) and time(string)
+                        DateTime dateAndTimeObject = ConvertString_s_ToDateTimeObject(linqResultItem.DateOnly.ToString(), linqResultItem.TimeOnly.ToString());
+
+                    }// end inner foreach
+                }// end outer foreach         
+            }
+            //return list
+            linqQueryResultsList.Add("Some text!!!!");
+            return linqQueryResultsList;   // returning a List<String> ..... eventually will be List<newsObject> !!!!
+        }
 
 
 

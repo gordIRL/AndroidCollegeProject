@@ -35,7 +35,10 @@ namespace CurrencyAlertApp
         List<NewsObject> newsObjectsList = new List<NewsObject>();
         ArrayAdapter adapter;
 
-       
+
+        List<string> marketImpact_selectedList = new List<string>();       
+        List<string> currencies_selectedList = new List<string>();
+
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -136,20 +139,15 @@ namespace CurrencyAlertApp
 
 
 
-            // variables for bottom toolbar - alert - market impact
-            List<string> selectedMarketImpactList = new List<string>();
-            // list of marketImpact(s) for user to select from
-            string[] marketImpactTitlesArray = Resources.GetStringArray(Resource.Array.MarketImpactArray);
-            // bool array for selected Market Impact checkboxes in MultiItemSelect 
-            bool[] selectedMarketImpactBoolArray = new bool[marketImpactTitlesArray.Length];
+            // variables - bottom toolbar - alert dialog - market impact
+            string[] marketImpact_titlesArray = Resources.GetStringArray(Resource.Array.MarketImpactArray);
+            //List<string> marketImpact_selectedList = new List<string>();
+            bool[] marketImpact_selectedBoolArray = new bool[marketImpact_titlesArray.Length];  // for selected checkboxes in MultiItemSelect 
 
-
-            // variables for bottom toolbar - alert - currencies            
-            List<string> selectedCurrencyList = new List<string>();
-            // list of currencies for user to select from
-            string[] currencyTitlesArray = Resources.GetStringArray(Resource.Array.CurrenciesArray);
-            // bool array for selected Currency checkboxes in MultiItemSelect 
-            bool[] selectedCurrenciesBoolArray = new bool[currencyTitlesArray.Length];
+            // variables - bottom toolbar - alert dialog - currencies 
+            string[] currencies_titlesArray = Resources.GetStringArray(Resource.Array.CurrenciesArray);
+            //List<string> currencies_selectedList = new List<string>();
+            bool[] currencies_selectedBoolArray = new bool[currencies_titlesArray.Length];  // for selected checkboxes in MultiItemSelect 
 
 
             // bottom ToolBar Menu Selection
@@ -166,31 +164,39 @@ namespace CurrencyAlertApp
                             dialog.SetTitle("Select Market Impact(s)");
                             dialog.SetPositiveButton("Close", delegate {
                                 DebugDisplayMarketImpacts();
+
+                                // !!!  need to clear the screen of whatever data is already being displayed  !!
+                                // !!!  Market Impact selection only seems to work 2nd time around - currency selection works 1st time around !!!!
+
+                                // populate list with LINQ query result 
+                                myList = SetUpData.GetLINQResultData2(marketImpact_selectedList, currencies_selectedList);
+                                // re-populate adapter by running a 'forEach' through the list
+                                RepopulateAdapter();
+                                //adapter.NotifyDataSetChanged();
                             });
 
+
+
+
                             // Set Multichoice Items
-                            dialog.SetMultiChoiceItems(marketImpactTitlesArray, selectedMarketImpactBoolArray,
+                            dialog.SetMultiChoiceItems(marketImpact_titlesArray, marketImpact_selectedBoolArray,
                                (sender2, event2) => {
                                    int index = event2.Which;
                                    bool isChecked = event2.IsChecked;
-                                   selectedMarketImpactBoolArray[index] = isChecked;
+                                   marketImpact_selectedBoolArray[index] = isChecked;
                                    //Toast.MakeText(this, "You clicked: " + marketImpactTitlesArray[index]
                                    //   + "\nChecked: " + event2.IsChecked, ToastLength.Short).Show();
 
                                     // add item to list if now selected - ie isChecked is now TRUE  
                                     if (isChecked)
-                                       selectedMarketImpactList.Add(marketImpactTitlesArray[index]);
+                                       marketImpact_selectedList.Add(marketImpact_titlesArray[index]);
                                    else
-                                       selectedMarketImpactList.Remove(marketImpactTitlesArray[index]);
+                                       marketImpact_selectedList.Remove(marketImpact_titlesArray[index]);
                                });
                            
                             dialog.Show();
-                        }// end Using
-                                              
+                        }// end Using                                              
                         break;
-
-
-                    //-----------------------------------------------------------------------------
 
                     case Resource.Id.menu_selectCurrencies:
                         // display user selection info
@@ -205,25 +211,25 @@ namespace CurrencyAlertApp
                             });
 
                             // Set Multichoice Items
-                            dialog.SetMultiChoiceItems(currencyTitlesArray, selectedCurrenciesBoolArray,
+                            dialog.SetMultiChoiceItems(currencies_titlesArray, currencies_selectedBoolArray,
                                (s, eEXtra) =>
                                {
                                    int index = eEXtra.Which;
                                    bool isChecked = eEXtra.IsChecked;
-                                   selectedCurrenciesBoolArray[index] = isChecked;
+                                   currencies_selectedBoolArray[index] = isChecked;
                                    //Toast.MakeText(this, "You clicked: " + currencyTitlesArray[index]
                                    //    + "\nChecked: " + eEXtra.IsChecked, ToastLength.Short).Show();
 
                                    // add item to list if now selected - ie isChecked is now TRUE  
                                    if (isChecked)
                                    {
-                                       selectedCurrencyList.Add(currencyTitlesArray[index]);
-                                       selectedCurrenciesBoolArray[index] = true;
+                                       currencies_selectedList.Add(currencies_titlesArray[index]);
+                                       currencies_selectedBoolArray[index] = true;
                                    }
                                    else
                                    {
-                                       selectedCurrencyList.Remove(currencyTitlesArray[index]);
-                                       selectedCurrenciesBoolArray[index] = false;
+                                       currencies_selectedList.Remove(currencies_titlesArray[index]);
+                                       currencies_selectedBoolArray[index] = false;
                                    }                                       
                                });
 
@@ -231,13 +237,13 @@ namespace CurrencyAlertApp
                             dialog.SetNeutralButton("ALL", delegate
                             {
                                 // clear list 1st to avoid getting duplicate entries
-                                selectedCurrencyList.Clear();
+                                currencies_selectedList.Clear();
 
                                 // set all items in bool[] selected to TRUE
-                                for (int i = 0; i < selectedCurrenciesBoolArray.Length; i++)
+                                for (int i = 0; i < currencies_selectedBoolArray.Length; i++)
                                 {
-                                    selectedCurrenciesBoolArray[i] = true;
-                                    selectedCurrencyList.Add(currencyTitlesArray[i]);
+                                    currencies_selectedBoolArray[i] = true;
+                                    currencies_selectedList.Add(currencies_titlesArray[i]);
                                 }
                                 DebugDisplayCurrencies();
                             });
@@ -245,12 +251,12 @@ namespace CurrencyAlertApp
                             // deselect all boxes & clear list
                             dialog.SetNegativeButton("Clear", delegate
                             {
-                                selectedCurrencyList.Clear();
+                                currencies_selectedList.Clear();
                                 //  clear bool[] set all items to FALSE
-                                for (int i = 0; i < selectedCurrenciesBoolArray.Length; i++)
+                                for (int i = 0; i < currencies_selectedBoolArray.Length; i++)
                                 {
-                                    selectedCurrenciesBoolArray[i] = false;
-                                    selectedCurrencyList.Remove(currencyTitlesArray[i]);
+                                    currencies_selectedBoolArray[i] = false;
+                                    currencies_selectedList.Remove(currencies_titlesArray[i]);
                                 }
                                 DebugDisplayCurrencies();
                             });
@@ -258,16 +264,6 @@ namespace CurrencyAlertApp
                             dialog.Show();
                         }// end Using
                         break;
-
-
-                    //-----------------------------------------------------------
-
-
-
-
-
-
-
 
 
                     case Resource.Id.menu_data_formatted:
@@ -293,14 +289,13 @@ namespace CurrencyAlertApp
                         // clear adapter & clear list
                         ClearListAndAdapter();
 
-                        // populate list with LINQ query result - by calling method with XDocument xmlFile - declared above
+                        // populate list with LINQ query result 
                         myList = SetUpData.GetLINQResultData();  // GetLINQResultData2
 
                         // re-populate adapter by running a 'forEach' through the list
                         RepopulateAdapter();
                         //adapter.NotifyDataSetChanged();
                         break;
-
 
 
                     case Resource.Id.menu_test_data:
@@ -321,11 +316,11 @@ namespace CurrencyAlertApp
 
                     case Resource.Id.menu_debugDisplay:
                         Log.Debug("DEBUG", ": Currency & Market Impact Selected Display - Starts Here");
-                        foreach (var item in selectedCurrencyList)
+                        foreach (var item in currencies_selectedList)
                         {
                             Log.Debug("DEBUG", item);
                         }
-                        foreach (var item in selectedMarketImpactList)
+                        foreach (var item in marketImpact_selectedList)
                         {
                             Log.Debug("DEBUG", item);
                         }
@@ -334,24 +329,26 @@ namespace CurrencyAlertApp
                     default:
                         break;
                 }
-            };    
+            };
             
+           
             void DebugDisplayCurrencies()
             {
+                // displays contentents to debug output
                 Log.Debug("DEBUG", ": Currencies Selected Display - Starts Here");
-                foreach (var item in selectedCurrencyList)
+                foreach (var item in currencies_selectedList)
                 {
                     Log.Debug("DEBUG", item);
                 }               
             }
             void DebugDisplayMarketImpacts()
             {
+                // displays contentents to debug output
                 Log.Debug("DEBUG", ": Market Impacts Selected Display - Starts Here");
-                foreach (var item in selectedMarketImpactList)
+                foreach (var item in marketImpact_selectedList)
                 {
                     Log.Debug("DEBUG", item);
                 }
-
             }
         }// end onCreate
 
@@ -417,10 +414,7 @@ namespace CurrencyAlertApp
             //adapter.NotifyDataSetChanged();
         }        
 
-        //void DebugCurrencyList()
-        //{}
-
-       
+              
     }//
 }//
 

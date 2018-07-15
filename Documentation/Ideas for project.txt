@@ -1,0 +1,9 @@
+Ideas:
+
+Splash Screen - convert Xamarin png image & add text to it.
+Add icons to list of currencies, $ £ etc.
+
+
+Used shared preferences to store 'build no' or date of last update....
+
+Store forexfactory url in database & retrieve it when necessary
