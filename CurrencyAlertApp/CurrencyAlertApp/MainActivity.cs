@@ -136,16 +136,20 @@ namespace CurrencyAlertApp
 
 
 
-            // variables for bottom toolbar
-            //<string> selectedCurrencyList = new List<string>();
+            // variables for bottom toolbar - alert - market impact
             List<string> selectedMarketImpactList = new List<string>();
-            
-            // list of items for user to select from
+            // list of marketImpact(s) for user to select from
             string[] marketImpactTitlesArray = Resources.GetStringArray(Resource.Array.MarketImpactArray);
-
-            // bool array for selected checkboxes in MultiItemSelect 
+            // bool array for selected Market Impact checkboxes in MultiItemSelect 
             bool[] selectedMarketImpactBoolArray = new bool[marketImpactTitlesArray.Length];
 
+
+            // variables for bottom toolbar - alert - currencies            
+            List<string> selectedCurrencyList = new List<string>();
+            // list of currencies for user to select from
+            string[] currencyTitlesArray = Resources.GetStringArray(Resource.Array.CurrenciesArray);
+            // bool array for selected Currency checkboxes in MultiItemSelect 
+            bool[] selectedCurrenciesBoolArray = new bool[currencyTitlesArray.Length];
 
 
             // bottom ToolBar Menu Selection
@@ -161,6 +165,7 @@ namespace CurrencyAlertApp
                         {
                             dialog.SetTitle("Select Market Impact(s)");
                             dialog.SetPositiveButton("Close", delegate {
+                                DebugDisplayMarketImpacts();
                             });
 
                             // Set Multichoice Items
@@ -169,8 +174,8 @@ namespace CurrencyAlertApp
                                    int index = event2.Which;
                                    bool isChecked = event2.IsChecked;
                                    selectedMarketImpactBoolArray[index] = isChecked;
-                                   Toast.MakeText(this, "You clicked: " + marketImpactTitlesArray[index]
-                                       + "\nChecked: " + event2.IsChecked, ToastLength.Short).Show();
+                                   //Toast.MakeText(this, "You clicked: " + marketImpactTitlesArray[index]
+                                   //   + "\nChecked: " + event2.IsChecked, ToastLength.Short).Show();
 
                                     // add item to list if now selected - ie isChecked is now TRUE  
                                     if (isChecked)
@@ -187,75 +192,83 @@ namespace CurrencyAlertApp
 
                     //-----------------------------------------------------------------------------
 
-                    //case Resource.Id.menu_selectCurrencies:
-                    //    // display user selection info
-                    //    Toast.MakeText(this, "Bottom toolbar / Default!!!!!!:\nID: " + e.Item.ItemId + "\nTitle: " + e.Item.TitleFormatted, ToastLength.Short).Show();
+                    case Resource.Id.menu_selectCurrencies:
+                        // display user selection info
+                        //Toast.MakeText(this, "Bottom toolbar / Default!!!!!!:\nID: " + e.Item.ItemId + "\nTitle: " + e.Item.TitleFormatted, ToastLength.Short).Show();
 
-                    //    List<string> selectedCurrencyList = new List<string>();
+                        using (var dialog = new Android.Support.V7.App.AlertDialog.Builder(this))
+                        {
+                            dialog.SetTitle("Select Currencies");
+                            dialog.SetPositiveButton("Close", delegate
+                            {
+                                DebugDisplayCurrencies();
+                            });
 
-                    //    // clear user's selection to begin
-                    //    selectedCurrencyList.Clear();
+                            // Set Multichoice Items
+                            dialog.SetMultiChoiceItems(currencyTitlesArray, selectedCurrenciesBoolArray,
+                               (s, eEXtra) =>
+                               {
+                                   int index = eEXtra.Which;
+                                   bool isChecked = eEXtra.IsChecked;
+                                   selectedCurrenciesBoolArray[index] = isChecked;
+                                   //Toast.MakeText(this, "You clicked: " + currencyTitlesArray[index]
+                                   //    + "\nChecked: " + eEXtra.IsChecked, ToastLength.Short).Show();
 
-                    //    // list of items for user to select from
-                    //    string[] items = Resources.GetStringArray(Resource.Array.CurrenciesArray);
+                                   // add item to list if now selected - ie isChecked is now TRUE  
+                                   if (isChecked)
+                                   {
+                                       selectedCurrencyList.Add(currencyTitlesArray[index]);
+                                       selectedCurrenciesBoolArray[index] = true;
+                                   }
+                                   else
+                                   {
+                                       selectedCurrencyList.Remove(currencyTitlesArray[index]);
+                                       selectedCurrenciesBoolArray[index] = false;
+                                   }                                       
+                               });
 
-                    //    // bool array for selected checkboxes in MultiItemSelect 
-                    //    bool[] selected = new bool[items.Length];
+                            // check all boxes and add all items to list(s)
+                            dialog.SetNeutralButton("ALL", delegate
+                            {
+                                // clear list 1st to avoid getting duplicate entries
+                                selectedCurrencyList.Clear();
 
+                                // set all items in bool[] selected to TRUE
+                                for (int i = 0; i < selectedCurrenciesBoolArray.Length; i++)
+                                {
+                                    selectedCurrenciesBoolArray[i] = true;
+                                    selectedCurrencyList.Add(currencyTitlesArray[i]);
+                                }
+                                DebugDisplayCurrencies();
+                            });
 
+                            // deselect all boxes & clear list
+                            dialog.SetNegativeButton("Clear", delegate
+                            {
+                                selectedCurrencyList.Clear();
+                                //  clear bool[] set all items to FALSE
+                                for (int i = 0; i < selectedCurrenciesBoolArray.Length; i++)
+                                {
+                                    selectedCurrenciesBoolArray[i] = false;
+                                    selectedCurrencyList.Remove(currencyTitlesArray[i]);
+                                }
+                                DebugDisplayCurrencies();
+                            });
 
-                    //    using (var dialog = new Android.Support.V7.App.AlertDialog.Builder(this))
-                    //    {
-                    //        dialog.SetTitle("Alert Title");
-                    //        dialog.SetPositiveButton("Close", delegate
-                    //        {
-                    //        });
-
-                    //        // Set Multichoice Items
-                    //        dialog.SetMultiChoiceItems(items, selected,
-                    //           (s, eEXtra) =>
-                    //           {
-                    //               int index = eEXtra.Which;
-                    //               bool isChecked = eEXtra.IsChecked;
-                    //               selected[index] = isChecked;
-                    //               Toast.MakeText(this, "You clicked: " + items[index]
-                    //                   + "\nChecked: " + eEXtra.IsChecked, ToastLength.Short).Show();
-
-                    //               // add item to list if now selected - ie isChecked is now TRUE  
-                    //               if (isChecked)
-                    //                   selectedCurrencyList.Add(items[index]);
-                    //               else
-                    //                   selectedCurrencyList.Remove(items[index]);
-                    //           });
-
-
-
-                    //        // check all boxes and add all items to list(s)
-                    //        dialog.SetNeutralButton("ALL", delegate
-                    //        {
-                    //            // clear list 1st to avoid getting duplicate entries
-                    //            selectedCurrencyList.Clear();
-
-                    //            // set all items in bool[] selected to TRUE
-                    //            for (int i = 0; i < selected.Length; i++)
-                    //            {
-                    //                selected[i] = true;
-                    //                selectedCurrencyList.Add(items[i]);
-                    //            }
-                    //        });
-
-                    //        // deselect all boxes & clear list
-                    //        dialog.SetNegativeButton("Clear", delegate
-                    //        {
-                    //            selectedCurrencyList.Clear();
-                    //        });
-
-                    //        dialog.Show();
-                    //    }// end Using
-                    //    break;
+                            dialog.Show();
+                        }// end Using
+                        break;
 
 
                     //-----------------------------------------------------------
+
+
+
+
+
+
+
+
 
                     case Resource.Id.menu_data_formatted:
                         // display user selection info
@@ -307,7 +320,11 @@ namespace CurrencyAlertApp
 
 
                     case Resource.Id.menu_debugDisplay:
-                        Log.Debug("DEBUG", ": Display Starts Here");
+                        Log.Debug("DEBUG", ": Currency & Market Impact Selected Display - Starts Here");
+                        foreach (var item in selectedCurrencyList)
+                        {
+                            Log.Debug("DEBUG", item);
+                        }
                         foreach (var item in selectedMarketImpactList)
                         {
                             Log.Debug("DEBUG", item);
@@ -317,7 +334,25 @@ namespace CurrencyAlertApp
                     default:
                         break;
                 }
-            };                    
+            };    
+            
+            void DebugDisplayCurrencies()
+            {
+                Log.Debug("DEBUG", ": Currencies Selected Display - Starts Here");
+                foreach (var item in selectedCurrencyList)
+                {
+                    Log.Debug("DEBUG", item);
+                }               
+            }
+            void DebugDisplayMarketImpacts()
+            {
+                Log.Debug("DEBUG", ": Market Impacts Selected Display - Starts Here");
+                foreach (var item in selectedMarketImpactList)
+                {
+                    Log.Debug("DEBUG", item);
+                }
+
+            }
         }// end onCreate
 
 
@@ -381,6 +416,9 @@ namespace CurrencyAlertApp
             }
             //adapter.NotifyDataSetChanged();
         }        
+
+        //void DebugCurrencyList()
+        //{}
 
        
     }//
