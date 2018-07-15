@@ -81,7 +81,10 @@ namespace CurrencyAlertApp
 		{
 			
 			// aapt resource value: 0x7f0d0001
-			public const int CurrenciesAndMarketImpactArray = 2131558401;
+			public const int CurrenciesArray = 2131558401;
+			
+			// aapt resource value: 0x7f0d0002
+			public const int MarketImpactArray = 2131558402;
 			
 			// aapt resource value: 0x7f0d0000
 			public const int itemSelect_AddToWatchList = 2131558400;
@@ -2084,32 +2087,38 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f0b0074
 			public const int media_actions = 2131427444;
 			
-			// aapt resource value: 0x7f0b0093
-			public const int menu_data_LINQ_query = 2131427475;
+			// aapt resource value: 0x7f0b0094
+			public const int menu_data_LINQ_query = 2131427476;
 			
 			// aapt resource value: 0x7f0b008f
-			public const int menu_data_default = 2131427471;
-			
-			// aapt resource value: 0x7f0b0092
-			public const int menu_data_formatted = 2131427474;
-			
-			// aapt resource value: 0x7f0b0091
-			public const int menu_data_raw = 2131427473;
+			public const int menu_data_clear = 2131427471;
 			
 			// aapt resource value: 0x7f0b0090
-			public const int menu_test_data = 2131427472;
+			public const int menu_data_formatted = 2131427472;
+			
+			// aapt resource value: 0x7f0b0091
+			public const int menu_data_selectMarketImpact = 2131427473;
 			
 			// aapt resource value: 0x7f0b0095
-			public const int menu_top_alerts = 2131427477;
+			public const int menu_debugDisplay = 2131427477;
 			
-			// aapt resource value: 0x7f0b0094
-			public const int menu_top_marketData = 2131427476;
+			// aapt resource value: 0x7f0b0092
+			public const int menu_selectCurrencies = 2131427474;
 			
-			// aapt resource value: 0x7f0b0096
-			public const int menu_top_preferences = 2131427478;
+			// aapt resource value: 0x7f0b0093
+			public const int menu_test_data = 2131427475;
 			
 			// aapt resource value: 0x7f0b0097
-			public const int menu_top_reports = 2131427479;
+			public const int menu_top_alerts = 2131427479;
+			
+			// aapt resource value: 0x7f0b0096
+			public const int menu_top_marketData = 2131427478;
+			
+			// aapt resource value: 0x7f0b0098
+			public const int menu_top_preferences = 2131427480;
+			
+			// aapt resource value: 0x7f0b0099
+			public const int menu_top_reports = 2131427481;
 			
 			// aapt resource value: 0x7f0b008e
 			public const int message = 2131427470;

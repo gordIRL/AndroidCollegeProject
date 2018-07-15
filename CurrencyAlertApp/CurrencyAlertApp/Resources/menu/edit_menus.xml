@@ -1,30 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:local="http://schemas.android.com/apk/res-auto"> 
-  
+      xmlns:local="http://schemas.android.com/apk/res-auto">
+
   <item
-   android:id="@+id/menu_data_default"
-   android:icon="@mipmap/ic_menu_paste_holo_dark"
-   local:showAsAction="ifRoom"
-   android:title="Default" />
-  <item
-   android:id="@+id/menu_test_data"
-   android:icon="@mipmap/ic_menu_paste_holo_dark"
-   local:showAsAction="ifRoom"
-   android:title="Test Data" />
-  <item
-    android:id="@+id/menu_data_raw"
-    android:icon="@mipmap/ic_menu_cut_holo_dark"
-    local:showAsAction="ifRoom"
-    android:title="Raw" />
+    android:id="@+id/menu_data_clear"
+    local:showAsAction="never"
+    android:title="Clear" />   
+
   <item
     android:id="@+id/menu_data_formatted"
-    android:icon="@mipmap/ic_menu_copy_holo_dark"
-    local:showAsAction="ifRoom"
+    local:showAsAction="never"
     android:title="Formatted" />
+
+  <item
+    android:id="@+id/menu_data_selectMarketImpact"
+    local:showAsAction="never"
+    android:title="Select Market Impact(s)" />
+
+  <item
+    android:id="@+id/menu_selectCurrencies"
+    local:showAsAction="never"
+    android:title="Select Currencies" />    
+  
+  <item
+    android:id="@+id/menu_test_data"
+    local:showAsAction="never"
+    android:title="Test Data" />
+  
   <item
     android:id="@+id/menu_data_LINQ_query"
     android:icon="@mipmap/ic_menu_paste_holo_dark"
-    local:showAsAction="ifRoom"
+    local:showAsAction="never"
     android:title="LINQ Query" />
+
+  <item
+     android:id="@+id/menu_debugDisplay"
+     android:icon="@mipmap/ic_menu_paste_holo_dark"
+     local:showAsAction="never"
+     android:title="DEBUG Display" />  
 </menu>

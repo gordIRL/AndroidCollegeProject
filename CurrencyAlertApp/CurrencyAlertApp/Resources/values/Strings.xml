@@ -7,10 +7,7 @@
     <item>Option 3</item>  
   </string-array>
 
-  <string-array name="CurrenciesAndMarketImpactArray">
-    <item>HIGH</item>
-    <item>MEDIUM</item>
-    <item>LOW</item>
+  <string-array name="CurrenciesArray">   
     <item>EUR</item>
     <item>GBP</item>
     <item>CAD</item>
@@ -20,10 +17,13 @@
     <item>LYP</item>
     <item>VIX</item>      
   </string-array>
-  
-  
- 
 
+  <string-array name="MarketImpactArray">
+    <item>HIGH</item>
+    <item>MEDIUM</item>
+    <item>LOW</item>    
+  </string-array>
+  
   <string name="Button_Activity2Test">Activity2 Test</string>
   <string name="Button_ChangeColour">Change Colour !</string>
   <string name="ToolbarTopTitle">Main Menu</string>
