@@ -11,17 +11,20 @@
     <item>EUR</item>
     <item>GBP</item>
     <item>CAD</item>
-    <item>USD</item>
-    <item>YUAN</item>
-    <item>FRC</item>
-    <item>LYP</item>
-    <item>VIX</item>      
+    <item>USD</item> 
+    <item>JPY</item>
+    <item>CNY</item>
+    <item>NZD</item>
+    <item>AUD</item>
+    <item>CHF</item>
+    <item>Events that effect All</item>    
   </string-array>
 
   <string-array name="MarketImpactArray">
     <item>High</item>
     <item>Medium</item>
-    <item>Low</item>    
+    <item>Low</item>
+    <item>Holiday</item>
   </string-array>
   
   <string name="Button_Activity2Test">Activity2 Test</string>

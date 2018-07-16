@@ -4,6 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+// to pass a XDocument add reference:    System.Xml.Linq.
+using System.Xml;
+using System.Xml.XPath;
 using Android.App;
 using Android.Content;
 using Android.Content.Res;
@@ -19,11 +22,51 @@ namespace CurrencyAlertApp.DataAccess
     public class SetUpData
     {
         // list to store newsObjects retrieved from database
-        static List<NewsObject> newsObjectsList = new List<NewsObject>();
+        static List<NewsObject> newsObjectsList = new List<NewsObject>();       
 
 
         // location of database
-        static string DBLocation = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "NewsObjects.db3");
+        static string DBLocation = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "CurrencyAlertApp.db3");
+
+        // create empty table - for program load
+        public static void CreateEmptyTable()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(DBLocation))
+            {
+                if (conn.Table<NewsObject>() == null)
+                {
+                    Log.Debug("DEBUG", "Created new table - null instance detected");
+                }
+                conn.CreateTable<NewsObject>();               
+            }                                    
+        }
+
+
+
+        public static void CreateTableForURLDownload()
+        {
+            using(SQLiteConnection conn = new SQLiteConnection(DBLocation))
+            {
+                conn.DropTable<URLObject>();
+                conn.CreateTable<URLObject>();
+                URLObject urlForexFactoryXmlDownload = new URLObject { URLAddress = "https://cdn-nfs.forexfactory.net/ff_calendar_thisweek.xml" };
+                conn.Insert(urlForexFactoryXmlDownload);
+            }
+        }
+
+
+
+        public static string GetURLForXMLDownloadFromDatabase()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(DBLocation))
+            {
+                string url = conn.Get<URLObject>(1).URLAddress;  // 1st Database is at '1' - ie not zero-based like arrays !!                
+                Log.Debug("DEBUG", "URL in DB: " + url);
+                return url;
+            }
+        }
+
+
 
 
         public static DateTime ConvertString_s_ToDateTimeObject(string dateString, string timeString)
@@ -45,7 +88,8 @@ namespace CurrencyAlertApp.DataAccess
 
             try
             {
-                XDocument xmlFile = XDocument.Load("https://cdn-nfs.forexfactory.net/ff_calendar_thisweek.xml");
+                //XDocument xmlFile = XDocument.Load("https://cdn-nfs.forexfactory.net/ff_calendar_thisweek.xml");
+                XDocument xmlFile = XDocument.Load(GetURLForXMLDownloadFromDatabase());
                 dataUpdateSuccessful = true;
                 Log.Debug("DEBUG", "XML data downloaded - SUCCESS");
 
@@ -146,41 +190,9 @@ namespace CurrencyAlertApp.DataAccess
         }
              
                 
-        public static List<string> GetLINQResultData()
-        {
-            // LINQ queries (direct from database data)
-            newsObjectsList.Clear();
-
-            // call to database & populate newsObjectList with the result
-            GetAllRawDataFromDatabase();
-
-            List<string> linqQueryResultsList = new List<string>();
-
-            // sample selection using LINQ - GBP & USD currencies with 'High' impact status
-            var highestImpact = from myVar in newsObjectsList
-                                where myVar.MarketImpact == "High" &&
-                                (myVar.CountryChar == "GBP")    // || myVar.CountryChar == "USD")
-                                select myVar;
-
-            // Store result of query in List and Return it
-            foreach (var item in highestImpact)
-            {
-                linqQueryResultsList.Add(
-                       item.CountryChar + ":    " +
-                       item.MarketImpact + "\n" +
-                       item.DateOnly + ":    " +
-                       item.TimeOnly + "\n" +
-                       item.Name);
-
-                // get dateTime object by calling method combing date(string) and time(string)
-                DateTime dateAndTimeObject = ConvertString_s_ToDateTimeObject(item.DateOnly.ToString(), item.TimeOnly.ToString());
-            }
-            return linqQueryResultsList;   // returning a List<String> ..... eventually will be List<newsObject> !!!!
-        }
-
-        
        
-        public static List<string> GetLINQResultData2(List<string> marketImpact_selectedList, List<string> currencies_selectedList)
+       
+        public static List<string> LINQ_SortAllByUserSelection(List<string> marketImpact_selectedList, List<string> currencies_selectedList)
         {
             // LINQ queries (direct from database data)
             newsObjectsList.Clear();
@@ -211,10 +223,6 @@ namespace CurrencyAlertApp.DataAccess
                                linqResultItem.DateOnly + ":    " +
                                linqResultItem.TimeOnly + "\n" +
                                linqResultItem.Name);
-
-                        // get dateTime object by calling method combing date(string) and time(string)
-                        DateTime dateAndTimeObject = ConvertString_s_ToDateTimeObject(linqResultItem.DateOnly.ToString(), linqResultItem.TimeOnly.ToString());
-
                     }// end inner foreach
                 }// end outer foreach         
             }
@@ -223,19 +231,75 @@ namespace CurrencyAlertApp.DataAccess
         }
         
 
-
-
-        // creates a list of numbers to display in Main Activity
         public static List<string> NoDataToDisplay()
+        {   
+            // display 'no data available' in Main Activity
+            List<string> listToReturn = new List<string>();
+            listToReturn.Add("No data available to display");
+            return listToReturn;
+        }
+
+
+        public static List<string> TestXMLDataFromAssetsFile(XDocument xmlTestFile)
         {
             List<string> listToReturn = new List<string>();
+            // next line won't unless - to pass an XDocument add reference:  System.Xml.Linq   !!!!
+            //  declare Xdocument in Main Activity!!!!  XDocument xmlTestFile = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
 
-            // set up tempory list for listView            
-            for (int i = 0; i < 20; i++)
+            // all raw unformatted data in xml file
+            listToReturn.Add("Unformatted Test Data");
+            foreach (var item in xmlTestFile.Root.Elements())
             {
-                listToReturn.Add("Item no: " + i.ToString() + " - no data");
+                listToReturn.Add(item.Value.Trim() + "\n");
+            }
+            // data retrieved indivudually from xml file
+            listToReturn.Add("Individually Retrieved XML Test Data");
+            foreach (var item in xmlTestFile.Descendants("event"))
+            // 'event' is the surrounding xml <tag>
+            {
+                listToReturn.Add(
+                    // uses xml <tag> names from xml file
+                    item.Element("country").Value + "\n" +
+                    item.Element("impact").Value + "\n" +
+                    item.Element("date").Value + "\n" +
+                    item.Element("time").Value + "\n" +
+                    item.Element("title").Value + "\n"
+                    ); // .Value - removes surrounding tags - giving only the value
             }
             return listToReturn;
         }
+
+
+        public static List<string> TestLINQQueryUsingXML(XDocument xmlTestFile)
+        {
+            // LINQ queries (using xml file in Assets)           
+            List<string> linqQueryResultsList = new List<string>();
+
+            // sample selection using LINQ - GBP & USD currencies with 'High' impact status
+            var highestImpact = from myVar in xmlTestFile.Descendants("event")
+                                where myVar.Element("impact").Value == "High" &&
+                                (myVar.Element("country").Value == "GBP" || myVar.Element("country").Value == "USD")
+                                select myVar;
+
+            // Store result of query in List and Return it
+            linqQueryResultsList.Add("USD & GBP Result - HIGH");
+            foreach (var item in highestImpact)
+            {
+                linqQueryResultsList.Add(
+                    // uses xml <tag> names from xml file
+                    item.Element("country").Value + "\n" +
+                    item.Element("impact").Value + "\n" +
+                    item.Element("date").Value + "\n" +
+                    item.Element("time").Value + "\n" +
+                    item.Element("title").Value + "\n"
+                    );
+
+                // ?? Not sure this is working properly - get dateTime object by calling method combing date(string) and time(string)
+                //DateTime dateAndTimeObject = ConvertString_s_ToDateTimeObject(item.DateOnly.ToString(), item.TimeOnly.ToString());
+            }
+            return linqQueryResultsList;   
+        }
+
+
     }//
 }//

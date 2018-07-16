@@ -31,14 +31,11 @@ namespace CurrencyAlertApp
         Button MyButton;
         ListView listView1;
         TextView txtDataLastUpdated;
-        List<string> myList = new List<string>();
+        List<string> DisplayListForMainActivity = new List<string>();
         List<NewsObject> newsObjectsList = new List<NewsObject>();
         ArrayAdapter adapter;
-
-
         List<string> marketImpact_selectedList = new List<string>();       
         List<string> currencies_selectedList = new List<string>();
-
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -48,10 +45,19 @@ namespace CurrencyAlertApp
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
+            // set up blank database table - should if check for null elsewhere ??
+            // SQL only creates a new table if one doesn't already exist - it won't overwrite an existing table (?)
+            SetUpData.CreateEmptyTable();
+
+            // set up table to store url for xml data download
+            SetUpData.CreateTableForURLDownload();
+            //SetUpData.GetURLForXMLDownloadFromDatabase();      // delete !!!
+
+
             // Display for last time data was updated - to be linked to XML download date.....
             txtDataLastUpdated = FindViewById<TextView>(Resource.Id.txtDataLastUpdated);
-            txtDataLastUpdated.Text += "  "  + DateTime.Now.ToShortDateString();
-            
+            txtDataLastUpdated.Text += "  "  + DateTime.Now.ToShortDateString();          
+
 
             // Button to call next activity
             MyButton = FindViewById<Button>(Resource.Id.MyButton);
@@ -64,31 +70,25 @@ namespace CurrencyAlertApp
 
 
 
-
-
             // populate list with default data (numbers) - list<string>
-            myList = SetUpData.NoDataToDisplay();
+            DisplayListForMainActivity = SetUpData.NoDataToDisplay();
 
             // wireup listView
             listView1 = FindViewById<ListView>(Resource.Id.listView1);
 
             // set up adapter for listView
-            adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, myList);
+            adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, DisplayListForMainActivity);
             listView1.Adapter = adapter;
 
             // ItemClick for listView
             listView1.ItemClick += (sender, e) =>
             {
-                Toast.MakeText(this, $"You selected item no: {e.Position}:\n{myList[e.Position]}", ToastLength.Short).Show();
+                Toast.MakeText(this, $"You selected item no: {e.Position}:\n{DisplayListForMainActivity[e.Position]}", ToastLength.Short).Show();
 
                 // alert dialog for ItenClick event
                 Android.Support.V7.App.AlertDialog.Builder builder = new Android.Support.V7.App.AlertDialog.Builder(this);
                // builder.SetMessage("Hi there!");  // usisng this disable array of menu options - good for Ok/Cancel version
                 builder.SetTitle("Choose one:");
-
-                //var items = new string[] { "piza", "pasta", "diet coke" };
-                //builder.SetItems(items, (sender2, e2) =>
-
                 
                 builder.SetItems(Resource.Array.itemSelect_AddToWatchList, (sender2, e2) =>
                 {
@@ -102,7 +102,7 @@ namespace CurrencyAlertApp
                             break;
                         case 1:
                             // call method in next activity to pass data across via a string - this will be an object at a later date
-                            GordTestActivity.MethodToGetString(myList[e.Position]);
+                            GordTestActivity.MethodToGetString(DisplayListForMainActivity[e.Position]);
                             //GordTestActivity.MethodToGetString("latest test");
 
                             // call intent to start next activity
@@ -154,7 +154,16 @@ namespace CurrencyAlertApp
                 switch (e.Item.ItemId)         
                 {
                     case Resource.Id.menu_data_clear:
+                        // clear checkboxes for MarketImpacts & Currencies via their bool arrays & clear respective lists
+                        Array.Clear(marketImpact_selectedBoolArray, 0, marketImpact_selectedBoolArray.Length);
+                        Array.Clear(currencies_selectedBoolArray, 0, currencies_selectedBoolArray.Length);
+                        marketImpact_selectedList.Clear();
+                        currencies_selectedList.Clear();
+
                         ClearListAndAdapter();
+                        DisplayListForMainActivity = SetUpData.NoDataToDisplay();
+                        RepopulateAdapter();                        
+                        //adapter.NotifyDataSetChanged();
                         break;
 
                     case Resource.Id.menu_data_selectMarketImpact:                       
@@ -252,7 +261,7 @@ namespace CurrencyAlertApp
                     case Resource.Id.menu_data_all_data:
                         // clear adapter & list &  populate list with ALL data (formatted)
                         ClearListAndAdapter();
-                        myList = SetUpData.GetAllDataFormattedIntoSingleString();
+                        DisplayListForMainActivity = SetUpData.GetAllDataFormattedIntoSingleString();
                         RepopulateAdapter();  // runs a 'forEach' through the list
                         //adapter.NotifyDataSetChanged();
                         break;
@@ -260,15 +269,18 @@ namespace CurrencyAlertApp
                     case Resource.Id.menu_data_sample_LINQ_query:
                         // clear adapter & list & populate list with LINQ query result 
                         ClearListAndAdapter();
-                        myList = SetUpData.GetLINQResultData(); 
+                        XDocument xmlTestFile1 = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
+                        DisplayListForMainActivity = SetUpData.TestLINQQueryUsingXML(xmlTestFile1); 
                         RepopulateAdapter();
                         //adapter.NotifyDataSetChanged();
                         break;
 
                     case Resource.Id.menu_sample_data:
                         // clear adapter & list & populate list with a 'for' loop of sample text
-                        ClearListAndAdapter();                        
-                        myList = SetUpData.NoDataToDisplay();
+                        ClearListAndAdapter();
+
+                        XDocument xmlTestFile2= XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
+                        DisplayListForMainActivity = SetUpData.TestXMLDataFromAssetsFile(xmlTestFile2);
                         RepopulateAdapter();
                         //adapter.NotifyDataSetChanged();
                         break;
@@ -335,7 +347,7 @@ namespace CurrencyAlertApp
                     // clear adapter & clear list
                     ClearListAndAdapter();
                     // populate list with ALL data - formatted 
-                    myList = SetUpData.GetAllDataFormattedIntoSingleString();
+                    DisplayListForMainActivity = SetUpData.GetAllDataFormattedIntoSingleString();
                     // re-populate adapter by running a 'forEach' through the list
                     RepopulateAdapter();
                     //adapter.NotifyDataSetChanged();
@@ -361,20 +373,20 @@ namespace CurrencyAlertApp
         void ClearListsAndRepopulateAdapter()
         {
             ClearListAndAdapter();
-            myList = SetUpData.GetLINQResultData2(marketImpact_selectedList, currencies_selectedList);
+            DisplayListForMainActivity = SetUpData.LINQ_SortAllByUserSelection(marketImpact_selectedList, currencies_selectedList);
             RepopulateAdapter();
         }
 
         void ClearListAndAdapter()
         {
             adapter.Clear();
-            myList.Clear();
+            DisplayListForMainActivity.Clear();
         }
 
         void RepopulateAdapter()
         {
             // re-populate adapter by running a 'forEach' through the list
-            foreach (var item in myList)
+            foreach (var item in DisplayListForMainActivity)
             {
                 adapter.Add(item);
             }
