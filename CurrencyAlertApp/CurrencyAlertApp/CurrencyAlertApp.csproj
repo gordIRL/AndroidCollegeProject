@@ -117,6 +117,7 @@
     <Compile Include="DataAccess\Alert.cs" />
     <Compile Include="DataAccess\NewsObject.cs" />
     <Compile Include="DataAccess\SetUpData.cs" />
+    <Compile Include="DataAccess\MySharedPreferencesMethods.cs" />
     <Compile Include="DataAccess\Trade.cs" />
     <Compile Include="DataAccess\URLObject.cs" />
     <Compile Include="GordTestActivity.cs" />

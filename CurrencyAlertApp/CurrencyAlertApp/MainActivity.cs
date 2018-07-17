@@ -56,7 +56,44 @@ namespace CurrencyAlertApp
 
             // Display for last time data was updated - to be linked to XML download date.....
             txtDataLastUpdated = FindViewById<TextView>(Resource.Id.txtDataLastUpdated);
-            txtDataLastUpdated.Text += "  "  + DateTime.Now.ToShortDateString();          
+            txtDataLastUpdated.Text += "  "  + DateTime.Now.ToShortDateString();
+
+
+
+
+
+
+
+            // Shared Preferences Stuff        
+
+            // instantiate object
+            MySharedPreferencesMethods mySharedPreferencesMethods = new MySharedPreferencesMethods(this);
+
+            // test
+            string testData = mySharedPreferencesMethods.FirstMethod();
+            Log.Debug("DEBUG", "Return String: " + testData);
+
+            // store data
+            bool testData2 = mySharedPreferencesMethods.StoreToSharedPrefs("Todays date is 17th July 2018!!!!!!!!!");
+            Log.Debug("DEBUG", "Return bool: " + testData2);
+
+            // retun data
+            string myDateString = mySharedPreferencesMethods.GetDataFromSharedPrefs();
+            Log.Debug("DEBUG", "Returned Data " + myDateString);
+
+            Log.Debug("DEBUG", "Pause for Break Point");
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             // Button to call next activity
