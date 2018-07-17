@@ -52,46 +52,25 @@ namespace CurrencyAlertApp
             // set up table to store url for xml data download
             SetUpData.CreateTableForURLDownload();
             //SetUpData.GetURLForXMLDownloadFromDatabase();      // delete !!!
+            
 
-
-            // Display for last time data was updated - to be linked to XML download date.....
-            txtDataLastUpdated = FindViewById<TextView>(Resource.Id.txtDataLastUpdated);
-            txtDataLastUpdated.Text += "  "  + DateTime.Now.ToShortDateString();
-
-
-
-
-
-
-
-            // Shared Preferences Stuff        
-
-            // instantiate object
+            // Display for last time data was updated - retrieved from Shared Preferences
+            txtDataLastUpdated = FindViewById<TextView>(Resource.Id.txtDataLastUpdated);            
             MySharedPreferencesMethods mySharedPreferencesMethods = new MySharedPreferencesMethods(this);
+            string dateXmlUpdated =  mySharedPreferencesMethods.GetDataFromSharedPrefs();
+            txtDataLastUpdated.Text = "Data Updated: "  + dateXmlUpdated;           
 
-            // test
-            string testData = mySharedPreferencesMethods.FirstMethod();
-            Log.Debug("DEBUG", "Return String: " + testData);
+          
 
-            // store data
-            bool testData2 = mySharedPreferencesMethods.StoreToSharedPrefs("Todays date is 17th July 2018!!!!!!!!!");
-            Log.Debug("DEBUG", "Return bool: " + testData2);
+            //// store data
+            //bool testData2 = mySharedPreferencesMethods.StoreToSharedPrefs("Todays date is 17th July 2018!!!!!!!!!");
+            //Log.Debug("DEBUG", "Return bool: " + testData2);
 
-            // retun data
-            string myDateString = mySharedPreferencesMethods.GetDataFromSharedPrefs();
-            Log.Debug("DEBUG", "Returned Data " + myDateString);
+            //// retun data
+            //string myDateString = mySharedPreferencesMethods.GetDataFromSharedPrefs();
+            //Log.Debug("DEBUG", "Returned Data " + myDateString);
 
-            Log.Debug("DEBUG", "Pause for Break Point");
-
-
-
-
-
-
-
-
-
-
+            //Log.Debug("DEBUG", "Pause for Break Point");
 
 
 
@@ -378,7 +357,18 @@ namespace CurrencyAlertApp
                     DataAccess.SetUpData.DropNewsObjectTable();
 
                     bool dataUpdateSuccessful = DataAccess.SetUpData.DownloadNewXMLAndStoreInDatabase();
-                    Toast.MakeText(this, "data update: " + dataUpdateSuccessful, ToastLength.Short).Show();
+                    if (dataUpdateSuccessful)
+                    {
+                        Toast.MakeText(this, "data update: " + dataUpdateSuccessful, ToastLength.Short).Show();
+                        DateTime dateTime = DateTime.Now;
+                        MySharedPreferencesMethods mySharedPreferencesMethods = new MySharedPreferencesMethods(this);
+                        string dateInPreferedFormat = dateTime.ToShortDateString();
+                        mySharedPreferencesMethods.StoreToSharedPrefs(dateInPreferedFormat);
+                        txtDataLastUpdated.Text = "Data Updated: " + dateInPreferedFormat;
+                    }
+                    else
+                        txtDataLastUpdated.Text = "Data Not Updated";
+                    
 
                     ///////// REFACTOR THIS ????
                     // clear adapter & clear list

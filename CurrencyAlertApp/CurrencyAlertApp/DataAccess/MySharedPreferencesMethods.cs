@@ -20,12 +20,7 @@ namespace CurrencyAlertApp.DataAccess
         {
             this.context = context;
         } 
-
-        public string FirstMethod()
-        {
-            return "String returned";
-        }
-
+               
 
         public bool StoreToSharedPrefs(string input)
         {
@@ -35,7 +30,7 @@ namespace CurrencyAlertApp.DataAccess
                 ISharedPreferences prefs = context.GetSharedPreferences("MyPreferences", FileCreationMode.Private);
                 ISharedPreferencesEditor editor = prefs.Edit();
 
-                editor.PutString("MyKey", input);
+                editor.PutString("DateUpdated", input);
                 editor.Commit();
                 storedSuccessful = true;
             }
@@ -52,14 +47,11 @@ namespace CurrencyAlertApp.DataAccess
             string stringToReturn = "no data found";
 
             ISharedPreferences prefs = context.GetSharedPreferences("MyPreferences", FileCreationMode.Private);
-            if (prefs.Contains("MyKey"))
+            if (prefs.Contains("DateUpdated"))
             {
-                stringToReturn = prefs.GetString("MyKey", "No data here !!");                
+                stringToReturn = prefs.GetString("DateUpdated", "No data here !!");                
             }            
             return stringToReturn;
         }
-
-
-
     }
 }

@@ -89,13 +89,13 @@ namespace CurrencyAlertApp.DataAccess
             try
             {
                 //XDocument xmlFile = XDocument.Load("https://cdn-nfs.forexfactory.net/ff_calendar_thisweek.xml");
-                XDocument xmlFile = XDocument.Load(GetURLForXMLDownloadFromDatabase());
-                dataUpdateSuccessful = true;
+                XDocument xmlFile = XDocument.Load(GetURLForXMLDownloadFromDatabase());                
                 Log.Debug("DEBUG", "XML data downloaded - SUCCESS");
 
                 // convert XML and store in database
                 ConvertXmlAndStoreInDatabase(xmlFile);
                 Log.Debug("DEBUG", "XML data stored in database - SUCCESS");
+                dataUpdateSuccessful = true;
             }
             catch
             {
