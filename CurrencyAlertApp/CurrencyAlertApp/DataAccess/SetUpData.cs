@@ -191,7 +191,7 @@ namespace CurrencyAlertApp.DataAccess
              
                 
        
-       
+      
         public static List<string> LINQ_SortAllByUserSelection(List<string> marketImpact_selectedList, List<string> currencies_selectedList)
         {
             // LINQ queries (direct from database data)
@@ -201,7 +201,7 @@ namespace CurrencyAlertApp.DataAccess
             GetAllRawDataFromDatabase();
 
             List<string> linqQueryResultsList = new List<string>();
-
+            List<NewsObject> tempNewsObjectsList = new List<NewsObject>();
 
             // loop through MarketImpact List (ie. act on each - all HIGH, all Medium, all Low events)
             foreach (var marketImpactSelectedItem in marketImpact_selectedList)
@@ -214,24 +214,40 @@ namespace CurrencyAlertApp.DataAccess
                                             myVar.CountryChar == currencySelectedItem.ToString()
                                             select myVar;
 
-                    // Store result of LINQ query in List
+                    // add each newsobject from linq query to object list
                     foreach (var linqResultItem in tempLinqQueryList)
                     {
-                        linqQueryResultsList.Add(
-                               linqResultItem.CountryChar + ":    " +
-                               linqResultItem.MarketImpact + "\n" +
-                               linqResultItem.DateOnly + ":    " +
-                               linqResultItem.TimeOnly + "\n" +
-                               linqResultItem.Name);
-                    }// end inner foreach
-                }// end outer foreach         
-            }
+                        tempNewsObjectsList.Add(linqResultItem);
+                    }
+                }// end inner foreach
+            } // end outer foreach 
+
+
+            // sort list by date & currency   OR   by currency & date
+            var sortedNewsObjectList = from myvar in tempNewsObjectsList
+                                       orderby myvar.DateOnly, myvar.TimeOnly                                            
+                                       select myvar;                 // change this to dateTime object when possible
+                                                                    // as this doesn't take am/pm into account!
+            
+
+            // take sorted list - convert to string list & return - Store result of LINQ query in object list into a string List
+            foreach (var linqResultItem in sortedNewsObjectList)
+            {
+                linqQueryResultsList.Add(
+                       linqResultItem.CountryChar + ":    " +
+                       linqResultItem.MarketImpact + "\n" +
+                       linqResultItem.DateOnly + ":    " +
+                       linqResultItem.TimeOnly + "\n" +
+                       linqResultItem.Name);
+            } // end - Store result
+
             //return list
             return linqQueryResultsList;   // returning a List<String> ..... eventually will be List<newsObject> !!!!
         }
-        
 
-        public static List<string> NoDataToDisplay()
+
+
+    public static List<string> NoDataToDisplay()
         {   
             // display 'no data available' in Main Activity
             List<string> listToReturn = new List<string>();

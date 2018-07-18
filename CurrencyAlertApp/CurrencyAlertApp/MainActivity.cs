@@ -41,36 +41,52 @@ namespace CurrencyAlertApp
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            // Set our view from the "main" layout resource
+                       
             SetContentView(Resource.Layout.Main);
+
+            // ToolBar - Top of Screen
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+            SupportActionBar.Title = GetString(Resource.String.ToolbarTopTitle);
+
+            // Toolbar - Bottom of Screen
+            var editToolbar = FindViewById<Toolbar>(Resource.Id.edit_toolbar);
+            editToolbar.Title = GetString(Resource.String.ToolbarBottomTitle);
+            editToolbar.InflateMenu(Resource.Menu.edit_menus);
+
+            // variables - bottom toolbar - alert dialog - market impact
+            string[] marketImpact_titlesArray = Resources.GetStringArray(Resource.Array.MarketImpactArray);
+            bool[] marketImpact_selectedBoolArray = new bool[marketImpact_titlesArray.Length];  // for selected checkboxes in MultiItemSelect 
+
+            // variables - bottom toolbar - alert dialog - currencies 
+            string[] currencies_titlesArray = Resources.GetStringArray(Resource.Array.CurrenciesArray);
+            bool[] currencies_selectedBoolArray = new bool[currencies_titlesArray.Length];  // for selected checkboxes in MultiItemSelect 
 
             // set up blank database table - should if check for null elsewhere ??
             // SQL only creates a new table if one doesn't already exist - it won't overwrite an existing table (?)
             SetUpData.CreateEmptyTable();
 
             // set up table to store url for xml data download
-            SetUpData.CreateTableForURLDownload();
-            //SetUpData.GetURLForXMLDownloadFromDatabase();      // delete !!!
-            
+            SetUpData.CreateTableForURLDownload();                     
 
             // Display for last time data was updated - retrieved from Shared Preferences
             txtDataLastUpdated = FindViewById<TextView>(Resource.Id.txtDataLastUpdated);            
             MySharedPreferencesMethods mySharedPreferencesMethods = new MySharedPreferencesMethods(this);
             string dateXmlUpdated =  mySharedPreferencesMethods.GetDataFromSharedPrefs();
-            txtDataLastUpdated.Text = "Data Updated: "  + dateXmlUpdated;           
+            txtDataLastUpdated.Text = "Data Updated: "  + dateXmlUpdated;
 
-          
+            // populate list with default data (numbers) - list<string>
+            DisplayListForMainActivity = SetUpData.NoDataToDisplay();
 
-            //// store data
-            //bool testData2 = mySharedPreferencesMethods.StoreToSharedPrefs("Todays date is 17th July 2018!!!!!!!!!");
-            //Log.Debug("DEBUG", "Return bool: " + testData2);
+            // wireup listView
+            listView1 = FindViewById<ListView>(Resource.Id.listView1);
 
-            //// retun data
-            //string myDateString = mySharedPreferencesMethods.GetDataFromSharedPrefs();
-            //Log.Debug("DEBUG", "Returned Data " + myDateString);
+            // set up adapter for listView
+            adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, DisplayListForMainActivity);
+            listView1.Adapter = adapter;
 
-            //Log.Debug("DEBUG", "Pause for Break Point");
+            // Display all currency data (if any) from database
+            DefaultDisplayAllData();
 
 
 
@@ -83,18 +99,8 @@ namespace CurrencyAlertApp
                 Intent intent = new Intent(this, typeof(GordTestActivity));
                 StartActivity(intent);
             };
+ 
 
-
-
-            // populate list with default data (numbers) - list<string>
-            DisplayListForMainActivity = SetUpData.NoDataToDisplay();
-
-            // wireup listView
-            listView1 = FindViewById<ListView>(Resource.Id.listView1);
-
-            // set up adapter for listView
-            adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, DisplayListForMainActivity);
-            listView1.Adapter = adapter;
 
             // ItemClick for listView
             listView1.ItemClick += (sender, e) =>
@@ -119,8 +125,7 @@ namespace CurrencyAlertApp
                         case 1:
                             // call method in next activity to pass data across via a string - this will be an object at a later date
                             GordTestActivity.MethodToGetString(DisplayListForMainActivity[e.Position]);
-                            //GordTestActivity.MethodToGetString("latest test");
-
+                            
                             // call intent to start next activity
                             Intent intent = new Intent(this, typeof(GordTestActivity));
                             StartActivity(intent);
@@ -143,25 +148,7 @@ namespace CurrencyAlertApp
             };
 
 
-            // ToolBar - Top of Screen
-            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-            SetSupportActionBar(toolbar);
-            SupportActionBar.Title = GetString(Resource.String.ToolbarTopTitle);
 
-            // Toolbar - Bottom of Screen
-            var editToolbar = FindViewById<Toolbar>(Resource.Id.edit_toolbar);
-            editToolbar.Title = GetString(Resource.String.ToolbarBottomTitle);
-            editToolbar.InflateMenu(Resource.Menu.edit_menus);
-
-
-
-            // variables - bottom toolbar - alert dialog - market impact
-            string[] marketImpact_titlesArray = Resources.GetStringArray(Resource.Array.MarketImpactArray);
-            bool[] marketImpact_selectedBoolArray = new bool[marketImpact_titlesArray.Length];  // for selected checkboxes in MultiItemSelect 
-
-            // variables - bottom toolbar - alert dialog - currencies 
-            string[] currencies_titlesArray = Resources.GetStringArray(Resource.Array.CurrenciesArray);
-            bool[] currencies_selectedBoolArray = new bool[currencies_titlesArray.Length];  // for selected checkboxes in MultiItemSelect 
 
 
             // bottom ToolBar Menu Selection
@@ -275,11 +262,7 @@ namespace CurrencyAlertApp
 
 
                     case Resource.Id.menu_data_all_data:
-                        // clear adapter & list &  populate list with ALL data (formatted)
-                        ClearListAndAdapter();
-                        DisplayListForMainActivity = SetUpData.GetAllDataFormattedIntoSingleString();
-                        RepopulateAdapter();  // runs a 'forEach' through the list
-                        //adapter.NotifyDataSetChanged();
+                        DefaultDisplayAllData();
                         break;
 
                     case Resource.Id.menu_data_sample_LINQ_query:
@@ -369,13 +352,10 @@ namespace CurrencyAlertApp
                     else
                         txtDataLastUpdated.Text = "Data Not Updated";
                     
-
                     ///////// REFACTOR THIS ????
                     // clear adapter & clear list
                     ClearListAndAdapter();
-                    // populate list with ALL data - formatted 
-                    DisplayListForMainActivity = SetUpData.GetAllDataFormattedIntoSingleString();
-                    // re-populate adapter by running a 'forEach' through the list
+                    DisplayListForMainActivity = SetUpData.GetAllDataFormattedIntoSingleString();                    
                     RepopulateAdapter();
                     //adapter.NotifyDataSetChanged();
 
@@ -417,6 +397,14 @@ namespace CurrencyAlertApp
             {
                 adapter.Add(item);
             }
+            //adapter.NotifyDataSetChanged();
+        }
+
+        void DefaultDisplayAllData()
+        {
+            ClearListAndAdapter();
+            DisplayListForMainActivity = SetUpData.GetAllDataFormattedIntoSingleString();
+            RepopulateAdapter();  // runs a 'forEach' through the list
             //adapter.NotifyDataSetChanged();
         }
     }//
