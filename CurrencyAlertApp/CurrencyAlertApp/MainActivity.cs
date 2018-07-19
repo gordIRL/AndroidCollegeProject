@@ -22,26 +22,26 @@ using Android.Util;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Theme = "@style/MyTheme.Base", MainLauncher = true,   Label = "CurrencyAlertApp")]
+    [Activity(Theme = "@style/MyTheme.Base", MainLauncher = true, Label = "CurrencyAlertApp")]
     //  MainLauncher = true,  
     // must have an appCompat theme         
 
-    public class MainActivity : AppCompatActivity  
+    public class MainActivity : AppCompatActivity
     {
         Button MyButton;
         ListView listView1;
         TextView txtDataLastUpdated;
-        List<string> DisplayListForMainActivity = new List<string>();
-        List<NewsObject> newsObjectsList = new List<NewsObject>();
+        List<string> DisplayListSTRING = new List<string>();
+        List<NewsObject> DisplayListOBJECT = new List<NewsObject>();
         ArrayAdapter adapter;
-        List<string> marketImpact_selectedList = new List<string>();       
+        List<string> marketImpact_selectedList = new List<string>();
         List<string> currencies_selectedList = new List<string>();
 
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-                       
+
             SetContentView(Resource.Layout.Main);
 
             // ToolBar - Top of Screen
@@ -67,26 +67,23 @@ namespace CurrencyAlertApp
             SetUpData.CreateEmptyTable();
 
             // set up table to store url for xml data download
-            SetUpData.CreateTableForURLDownload();                     
+            SetUpData.CreateTableForURLDownload();
 
             // Display for last time data was updated - retrieved from Shared Preferences
-            txtDataLastUpdated = FindViewById<TextView>(Resource.Id.txtDataLastUpdated);            
-            MySharedPreferencesMethods mySharedPreferencesMethods = new MySharedPreferencesMethods(this);
-            string dateXmlUpdated =  mySharedPreferencesMethods.GetDataFromSharedPrefs();
-            txtDataLastUpdated.Text = "Data Updated: "  + dateXmlUpdated;
+            txtDataLastUpdated = FindViewById<TextView>(Resource.Id.txtDataLastUpdated);
 
-            // populate list with default data (numbers) - list<string>
-            DisplayListForMainActivity = SetUpData.NoDataToDisplay();
+            RefreshTxtDataLastUpdated();            
+            txtDataLastUpdated.Text += "\n - Please select data to display";
 
             // wireup listView
             listView1 = FindViewById<ListView>(Resource.Id.listView1);
 
             // set up adapter for listView
-            adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, DisplayListForMainActivity);
+            adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, DisplayListSTRING);
             listView1.Adapter = adapter;
 
-            // Display all currency data (if any) from database
-            DefaultDisplayAllData();
+            //// Display all currency data (if any) from database - NOT using until custom view is implemented (???)
+            //DefaultDisplayAllData();
 
 
 
@@ -99,19 +96,19 @@ namespace CurrencyAlertApp
                 Intent intent = new Intent(this, typeof(GordTestActivity));
                 StartActivity(intent);
             };
- 
+
 
 
             // ItemClick for listView
             listView1.ItemClick += (sender, e) =>
             {
-                Toast.MakeText(this, $"You selected item no: {e.Position}:\n{DisplayListForMainActivity[e.Position]}", ToastLength.Short).Show();
+                Toast.MakeText(this, $"You selected item no: {e.Position}:\n{DisplayListSTRING[e.Position]}", ToastLength.Short).Show();
 
                 // alert dialog for ItenClick event
                 Android.Support.V7.App.AlertDialog.Builder builder = new Android.Support.V7.App.AlertDialog.Builder(this);
-               // builder.SetMessage("Hi there!");  // usisng this disable array of menu options - good for Ok/Cancel version
+                // builder.SetMessage("Hi there!");  // usisng this disable array of menu options - good for Ok/Cancel version
                 builder.SetTitle("Choose one:");
-                
+
                 builder.SetItems(Resource.Array.itemSelect_AddToWatchList, (sender2, e2) =>
                 {
                     var index = e2.Which;
@@ -124,8 +121,8 @@ namespace CurrencyAlertApp
                             break;
                         case 1:
                             // call method in next activity to pass data across via a string - this will be an object at a later date
-                            GordTestActivity.MethodToGetString(DisplayListForMainActivity[e.Position]);
-                            
+                            GordTestActivity.MethodToGetString(DisplayListSTRING[e.Position]);
+
                             // call intent to start next activity
                             Intent intent = new Intent(this, typeof(GordTestActivity));
                             StartActivity(intent);
@@ -135,7 +132,7 @@ namespace CurrencyAlertApp
                         default:
                             break;
                     };
-                });               
+                });
 
                 builder.SetNegativeButton("Cancel", (sender2, e2) =>
                 {
@@ -154,28 +151,57 @@ namespace CurrencyAlertApp
             // bottom ToolBar Menu Selection
             editToolbar.MenuItemClick += (sender, e) =>
             {
-                switch (e.Item.ItemId)         
+                switch (e.Item.ItemId)
                 {
                     case Resource.Id.menu_data_clear:
-                        // clear checkboxes for MarketImpacts & Currencies via their bool arrays & clear respective lists
+
+                        // clear MarketImpacts & Currencies checkboxes -  List<bool>'s, List<string>'s  & adapter
                         Array.Clear(marketImpact_selectedBoolArray, 0, marketImpact_selectedBoolArray.Length);
                         Array.Clear(currencies_selectedBoolArray, 0, currencies_selectedBoolArray.Length);
                         marketImpact_selectedList.Clear();
                         currencies_selectedList.Clear();
 
-                        ClearListAndAdapter();
-                        DisplayListForMainActivity = SetUpData.NoDataToDisplay();
-                        RepopulateAdapter();                        
+                        ClearDisplayListAndAdapter();
+                        RefreshTxtDataLastUpdated();
+                        txtDataLastUpdated.Text += "\n - Clear Option Selected";
+                        PopulateAdapter();
                         //adapter.NotifyDataSetChanged();
                         break;
 
-                    case Resource.Id.menu_data_selectMarketImpact:                       
+
+                    case Resource.Id.menu_data_getAllData:
+
+                        // clear List & get raw newsObject data from database
+                        ClearDisplayListAndAdapter();
+                        RefreshTxtDataLastUpdated();
+                        DisplayListOBJECT.Clear();
+                        DisplayListOBJECT = SetUpData.GetAllRawDataFromDatabase();
+
+                        // convert this newsObject data to a List<string>
+                        DisplayListSTRING = ConvertObjectsListToStringList(DisplayListOBJECT);
+
+                        // call populate adapter
+                        PopulateAdapter();
+                        break;
+
+
+                    case Resource.Id.menu_data_selectMarketImpacts:
+
+                        RefreshTxtDataLastUpdated();
                         using (var dialog = new Android.Support.V7.App.AlertDialog.Builder(this))
                         {
                             dialog.SetTitle("Select Market Impact(s)");
-                            dialog.SetPositiveButton("Close", delegate {                                
-                                // clear adapter & list & populate list with LINQ query result
-                                ClearListsAndRepopulateAdapter();
+                            dialog.SetPositiveButton("Close", delegate {
+
+                                // clear list - get LINQ query result - populate list                              
+                                ClearDisplayListAndAdapter();
+                                DisplayListOBJECT = SetUpData.LINQ_SortAllByUserSelection(marketImpact_selectedList, currencies_selectedList);
+
+                                // convert this newsObject data to a List<string>
+                                DisplayListSTRING = ConvertObjectsListToStringList(DisplayListOBJECT);
+
+                                // call populate adapter
+                                PopulateAdapter();
                                 DebugDisplayMarketImpacts();
                             });
 
@@ -184,31 +210,42 @@ namespace CurrencyAlertApp
                                (sender2, event2) => {
                                    int index = event2.Which;
                                    bool isChecked = event2.IsChecked;
-                                   marketImpact_selectedBoolArray[index] = isChecked;                                  
+                                   marketImpact_selectedBoolArray[index] = isChecked;
 
-                                    // add item to list if now selected - ie isChecked is now TRUE  
-                                    if (isChecked)
+                                   // add item to list if now selected - ie isChecked is now TRUE  
+                                   if (isChecked)
                                        marketImpact_selectedList.Add(marketImpact_titlesArray[index]);
                                    else
                                        marketImpact_selectedList.Remove(marketImpact_titlesArray[index]);
-                               });                           
+                               });
                             dialog.Show();
-                        }                                             
+                        }
                         break;
 
-                    case Resource.Id.menu_selectCurrencies:                       
+
+                    case Resource.Id.menu_data_selectCurrencies:
+
+                        RefreshTxtDataLastUpdated();
                         using (var dialog = new Android.Support.V7.App.AlertDialog.Builder(this))
                         {
                             dialog.SetTitle("Select Currencies");
-                            dialog.SetPositiveButton("Close", delegate{
-                                // clear adapter & list & populate list with LINQ query result
-                                ClearListsAndRepopulateAdapter();
-                                DebugDisplayCurrencies();
+                            dialog.SetPositiveButton("Close", delegate {
+
+                                // clear list - get LINQ query result - populate list                              
+                                ClearDisplayListAndAdapter();
+                                DisplayListOBJECT = SetUpData.LINQ_SortAllByUserSelection(marketImpact_selectedList, currencies_selectedList);
+
+                                // convert this newsObject data to a List<string>
+                                DisplayListSTRING = ConvertObjectsListToStringList(DisplayListOBJECT);
+
+                                // call populate adapter
+                                PopulateAdapter();
+                                DebugDisplayMarketImpacts();
                             });
 
                             // Set Multichoice Items
                             dialog.SetMultiChoiceItems(currencies_titlesArray, currencies_selectedBoolArray,
-                               (s, eEXtra) =>  {
+                               (s, eEXtra) => {
                                    int index = eEXtra.Which;
                                    bool isChecked = eEXtra.IsChecked;
                                    currencies_selectedBoolArray[index] = isChecked;
@@ -223,7 +260,7 @@ namespace CurrencyAlertApp
                                    {
                                        currencies_selectedList.Remove(currencies_titlesArray[index]);
                                        currencies_selectedBoolArray[index] = false;
-                                   }                                       
+                                   }
                                });
 
                             // check all boxes and add all items to list(s)
@@ -236,9 +273,7 @@ namespace CurrencyAlertApp
                                 {
                                     currencies_selectedBoolArray[i] = true;
                                     currencies_selectedList.Add(currencies_titlesArray[i]);
-                                }                               
-                                // clear adapter & list & populate list with LINQ query result
-                                ClearListsAndRepopulateAdapter();
+                                }
                                 DebugDisplayCurrencies();
                             });
 
@@ -252,8 +287,6 @@ namespace CurrencyAlertApp
                                     currencies_selectedBoolArray[i] = false;
                                     currencies_selectedList.Remove(currencies_titlesArray[i]);
                                 }
-                                // clear adapter & list & populate list with LINQ query result
-                                ClearListsAndRepopulateAdapter();
                                 DebugDisplayCurrencies();
                             });
                             dialog.Show();
@@ -261,30 +294,46 @@ namespace CurrencyAlertApp
                         break;
 
 
-                    case Resource.Id.menu_data_all_data:
-                        DefaultDisplayAllData();
+                    case Resource.Id.menu_data_sampleData:
+
+                        // clear List & get sample data (from xml file in assets folder)
+                        ClearDisplayListAndAdapter();
+                        DisplayListOBJECT.Clear();
+                        txtDataLastUpdated.Text = "Warning - Test Data Only (all)";
+
+                        // get xml file & pass to method
+                        XDocument xmlTestFile2 = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
+                        DisplayListOBJECT = SetUpData.TestXMLDataFromAssetsFile(xmlTestFile2);
+
+                        // convert this newsObjectList to a List<string>
+                        DisplayListSTRING = ConvertObjectsListToStringList(DisplayListOBJECT);
+
+                        // call populate adapter
+                        PopulateAdapter();
                         break;
 
-                    case Resource.Id.menu_data_sample_LINQ_query:
-                        // clear adapter & list & populate list with LINQ query result 
-                        ClearListAndAdapter();
+
+                    case Resource.Id.menu_data_sampleLINQQuery:
+
+                        // clear List & get sample data (from xml file in assets folder)
+                        ClearDisplayListAndAdapter();
+                        DisplayListOBJECT.Clear();
+                        txtDataLastUpdated.Text = "Warning - Test Data Only (query)";
+
+                        // get xml file & pass to method
                         XDocument xmlTestFile1 = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
-                        DisplayListForMainActivity = SetUpData.TestLINQQueryUsingXML(xmlTestFile1); 
-                        RepopulateAdapter();
-                        //adapter.NotifyDataSetChanged();
+                        DisplayListOBJECT = SetUpData.TestLINQQueryUsingXML(xmlTestFile1);
+
+                        // convert this newsObjectList to a List<string>
+                        DisplayListSTRING = ConvertObjectsListToStringList(DisplayListOBJECT);
+
+                        // call populate adapter
+                        PopulateAdapter();
                         break;
 
-                    case Resource.Id.menu_sample_data:
-                        // clear adapter & list & populate list with a 'for' loop of sample text
-                        ClearListAndAdapter();
 
-                        XDocument xmlTestFile2= XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
-                        DisplayListForMainActivity = SetUpData.TestXMLDataFromAssetsFile(xmlTestFile2);
-                        RepopulateAdapter();
-                        //adapter.NotifyDataSetChanged();
-                        break;
 
-                    case Resource.Id.menu_debugDisplay:
+                    case Resource.Id.menu_data_debugDisplay:
                         // displays contents of currency & marketImpact list in the Debug Output window
                         Log.Debug("DEBUG", ": Currency & Market Impact Selected Display - Starts Here");
                         foreach (var item in currencies_selectedList)
@@ -301,20 +350,20 @@ namespace CurrencyAlertApp
                         break;
                 }
             };
-            
-           
+
+
             void DebugDisplayCurrencies()
             {
-                // displays contentents to debug output
+                // displays currency (selected) to debug output
                 Log.Debug("DEBUG", ": Currencies Selected Display - Starts Here");
                 foreach (var item in currencies_selectedList)
                 {
                     Log.Debug("DEBUG", item);
-                }               
+                }
             }
             void DebugDisplayMarketImpacts()
             {
-                // displays contentents to debug output
+                // displays marketImpacts (selected) to debug output
                 Log.Debug("DEBUG", ": Market Impacts Selected Display - Starts Here");
                 foreach (var item in marketImpact_selectedList)
                 {
@@ -324,15 +373,18 @@ namespace CurrencyAlertApp
         }// end onCreate
 
 
-        public override bool OnCreateOptionsMenu(IMenu menu)  // for top toolbar
+
+        // TOP Toolbar
+        public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.top_menus, menu);
             return base.OnCreateOptionsMenu(menu);
         }
 
 
-        public override bool OnOptionsItemSelected(IMenuItem item) // for top toolbar
-        {  
+        // TOP Toolbar ('menu options')
+        public override bool OnOptionsItemSelected(IMenuItem item) // 
+        {
             switch (item.ItemId)
             {
                 case Resource.Id.menu_top_marketData:
@@ -343,6 +395,8 @@ namespace CurrencyAlertApp
                     if (dataUpdateSuccessful)
                     {
                         Toast.MakeText(this, "data update: " + dataUpdateSuccessful, ToastLength.Short).Show();
+
+                        // store date & time of xml download in Shared Preferences
                         DateTime dateTime = DateTime.Now;
                         MySharedPreferencesMethods mySharedPreferencesMethods = new MySharedPreferencesMethods(this);
                         string dateInPreferedFormat = dateTime.ToShortDateString();
@@ -351,62 +405,122 @@ namespace CurrencyAlertApp
                     }
                     else
                         txtDataLastUpdated.Text = "Data Not Updated";
-                    
-                    ///////// REFACTOR THIS ????
-                    // clear adapter & clear list
-                    ClearListAndAdapter();
-                    DisplayListForMainActivity = SetUpData.GetAllDataFormattedIntoSingleString();                    
-                    RepopulateAdapter();
-                    //adapter.NotifyDataSetChanged();
 
+                    // Copied from display all raw data (bottom menu - selection 2)  !!!!!!!!!!!!!!!!!
+                    // clear List & get raw newsObject data from database
+                    ClearDisplayListAndAdapter();
+                    DisplayListOBJECT.Clear();
+                    DisplayListOBJECT = SetUpData.GetAllRawDataFromDatabase();
+
+                    // convert this newsObject data to a List<string>
+                    DisplayListSTRING = ConvertObjectsListToStringList(DisplayListOBJECT);
+
+                    // call populate adapter
+                    PopulateAdapter();
                     break;
+
                 case Resource.Id.menu_top_alerts:
                     Toast.MakeText(this, "Action selected: \nSet Alert", ToastLength.Short).Show();
                     Intent intent = new Intent(this, typeof(PersonalAlarmsActivity));
                     StartActivity(intent);
                     break;
-                case Resource.Id.menu_top_preferences:                    
+
+                case Resource.Id.menu_top_preferences:
                     Toast.MakeText(this, "Action selected: \nPreferences - test Activity", ToastLength.Short).Show();
                     intent = new Intent(this, typeof(GordTestActivity));
                     StartActivity(intent);
                     break;
+
                 default:
                     break;
             };
             return base.OnOptionsItemSelected(item);
         }
 
-       
-        void ClearListsAndRepopulateAdapter()
-        {
-            ClearListAndAdapter();
-            DisplayListForMainActivity = SetUpData.LINQ_SortAllByUserSelection(marketImpact_selectedList, currencies_selectedList);
-            RepopulateAdapter();
-        }
+        //-----------------------------------------------------------------------------------
 
-        void ClearListAndAdapter()
+
+
+
+        void ClearDisplayListAndAdapter()
         {
             adapter.Clear();
-            DisplayListForMainActivity.Clear();
+            DisplayListSTRING.Clear();
         }
 
-        void RepopulateAdapter()
+
+        void PopulateAdapter()  // original
         {
             // re-populate adapter by running a 'forEach' through the list
-            foreach (var item in DisplayListForMainActivity)
+            foreach (var item in DisplayListSTRING)
             {
                 adapter.Add(item);
             }
             //adapter.NotifyDataSetChanged();
         }
 
-        void DefaultDisplayAllData()
+
+        public List<string> ConvertObjectsListToStringList(List<NewsObject> newsObjects)
         {
-            ClearListAndAdapter();
-            DisplayListForMainActivity = SetUpData.GetAllDataFormattedIntoSingleString();
-            RepopulateAdapter();  // runs a 'forEach' through the list
-            //adapter.NotifyDataSetChanged();
+            List<string> stringList = new List<string>();
+
+            foreach (var tempNewsObject in newsObjects)
+            {
+                // convert individual newsObject to a single string
+                string tempStringItem = (string.Format(
+                        "Date: {0} {1} \n{2} {3}\n{4}",
+                        tempNewsObject.DateOnly.TrimEnd(),
+                        tempNewsObject.TimeOnly.TrimEnd(),
+                        tempNewsObject.CountryChar.TrimEnd(),
+                        tempNewsObject.MarketImpact.TrimEnd(),
+                        tempNewsObject.Name.TrimEnd()));
+
+                // add string to string list
+                stringList.Add(tempStringItem);
+            }
+            return stringList;
         }
+
+
+
+        void RefreshTxtDataLastUpdated()
+        {
+            MySharedPreferencesMethods mySharedPreferencesMethods = new MySharedPreferencesMethods(this);
+            string dateXmlUpdated = mySharedPreferencesMethods.GetDataFromSharedPrefs();
+            txtDataLastUpdated.Text = "Data Updated: " + dateXmlUpdated;
+        }
+
+
+
+
+
+
+
+
+        // string version
+        //void ClearListsAndRepopulateAdapter()
+        //{
+        //    ClearListAndAdapter();
+        //    DisplayListSTRING = SetUpData.LINQ_SortAllByUserSelection(marketImpact_selectedList, currencies_selectedList);
+        //    PopulateAdapter();
+        //}
+
+
+
+
+
+
+
+        //void DefaultDisplayAllData()
+        //{
+        //    ClearListAndAdapter();
+        //    DisplayListSTRING = SetUpData.GetAllDataFormattedIntoSingleString();
+        //    RepopulateAdapter();  // runs a 'forEach' through the list
+        //    //adapter.NotifyDataSetChanged();
+        //}
+
+
+
     }//
 }//
 

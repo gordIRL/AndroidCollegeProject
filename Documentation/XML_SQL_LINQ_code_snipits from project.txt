@@ -108,4 +108,8 @@ Toast.MakeText(this, "Bottom toolbar / Default!!!!!!:\nID: " + e.Item.ItemId + "
 Toast.MakeText(this, "You clicked: " + currencyTitlesArray[index]  + "\nChecked: " + eEXtra.IsChecked, ToastLength.Short).Show();
 ------------------
 
+
+use 
+const int High = 3   OR   ENUM   (?)
+
                         

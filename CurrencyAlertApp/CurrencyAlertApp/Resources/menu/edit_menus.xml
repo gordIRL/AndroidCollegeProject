@@ -8,33 +8,33 @@
     android:title="@string/TB_Bottom_ClearCurrencyData" />   
 
   <item
-    android:id="@+id/menu_data_all_data"  
+    android:id="@+id/menu_data_getAllData"  
     local:showAsAction="never"
     android:title="@string/TB_Bottom_AllCurrencyData" />
 
   <item
-    android:id="@+id/menu_data_selectMarketImpact"
+    android:id="@+id/menu_data_selectMarketImpacts"
     local:showAsAction="never"
     android:title="@string/TB_Bottom_SelectMarketImpacts" />
 
   <item
-    android:id="@+id/menu_selectCurrencies"
+    android:id="@+id/menu_data_selectCurrencies"
     local:showAsAction="never"
     android:title="@string/TB_Bottom_SelectCurrencies" />    
   
   <item
-    android:id="@+id/menu_sample_data"
+    android:id="@+id/menu_data_sampleData"
     local:showAsAction="never"
     android:title="@string/TB_Bottom_SampleData" />
   
   <item
-    android:id="@+id/menu_data_sample_LINQ_query"  
+    android:id="@+id/menu_data_sampleLINQQuery"  
     android:icon="@mipmap/ic_menu_paste_holo_dark"
     local:showAsAction="never"
     android:title="@string/TB_Bottom_SampleLinqQuery" />
 
   <item
-     android:id="@+id/menu_debugDisplay"
+     android:id="@+id/menu_data_debugDisplay"
      android:icon="@mipmap/ic_menu_paste_holo_dark"
      local:showAsAction="never"
      android:title="@string/TB_Bottom_DebugDisplay" />  

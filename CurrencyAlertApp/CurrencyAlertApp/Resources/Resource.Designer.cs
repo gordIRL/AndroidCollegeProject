@@ -2087,26 +2087,26 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f0b0074
 			public const int media_actions = 2131427444;
 			
-			// aapt resource value: 0x7f0b0090
-			public const int menu_data_all_data = 2131427472;
-			
 			// aapt resource value: 0x7f0b008f
 			public const int menu_data_clear = 2131427471;
 			
-			// aapt resource value: 0x7f0b0094
-			public const int menu_data_sample_LINQ_query = 2131427476;
-			
-			// aapt resource value: 0x7f0b0091
-			public const int menu_data_selectMarketImpact = 2131427473;
-			
 			// aapt resource value: 0x7f0b0095
-			public const int menu_debugDisplay = 2131427477;
+			public const int menu_data_debugDisplay = 2131427477;
+			
+			// aapt resource value: 0x7f0b0090
+			public const int menu_data_getAllData = 2131427472;
 			
 			// aapt resource value: 0x7f0b0093
-			public const int menu_sample_data = 2131427475;
+			public const int menu_data_sampleData = 2131427475;
+			
+			// aapt resource value: 0x7f0b0094
+			public const int menu_data_sampleLINQQuery = 2131427476;
 			
 			// aapt resource value: 0x7f0b0092
-			public const int menu_selectCurrencies = 2131427474;
+			public const int menu_data_selectCurrencies = 2131427474;
+			
+			// aapt resource value: 0x7f0b0091
+			public const int menu_data_selectMarketImpacts = 2131427473;
 			
 			// aapt resource value: 0x7f0b0097
 			public const int menu_top_alerts = 2131427479;
