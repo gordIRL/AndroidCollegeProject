@@ -65,7 +65,7 @@ namespace CurrencyAlertApp
 
                 //  Assign content - continued
                 txtLine_1_view.Text = NewsObjectList[position].CountryChar + ": " + NewsObjectList[position].MarketImpact;
-                txtLine_2_view.Text = NewsObjectList[position].DateOnly + ":  " + NewsObjectList[position].TimeOnly + "\n" +
+                txtLine_2_view.Text = NewsObjectList[position].DateInTicks + ":  " + NewsObjectList[position].DateInTicks + "\n" +
                     NewsObjectList[position].Name; 
 
                 // holder in Tag
@@ -84,7 +84,7 @@ namespace CurrencyAlertApp
 
                 //  Assign content - continued
                 cachedNewsObjectAdapterHolder.VH_txtLine1.Text = NewsObjectList[position].CountryChar + ": " + NewsObjectList[position].MarketImpact;
-                cachedNewsObjectAdapterHolder.VH_txtLine2.Text = NewsObjectList[position].DateOnly + ":  " + NewsObjectList[position].TimeOnly + "\n" +
+                cachedNewsObjectAdapterHolder.VH_txtLine2.Text = NewsObjectList[position].DateInTicks + ":  " + NewsObjectList[position].DateInTicks + "\n" +
                     NewsObjectList[position].Name;
             }
             return newsObjectInfoRowView;

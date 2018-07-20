@@ -35,6 +35,15 @@ namespace CurrencyAlertApp
 
 
 
+        //// MSDN code
+        ////DateTime centuryBegin = new DateTime(2001, 1, 1);
+        ////DateTime currentDate = DateTime.Now;
+
+        ////long elapsedTicks = currentDate.Ticks - centuryBegin.Ticks;
+        ////TimeSpan elapsedSpan = new TimeSpan(elapsedTicks);
+
+
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);

@@ -130,6 +130,16 @@ namespace CurrencyAlertApp.DataAccess
 
                 foreach (var item in xmlFile.Descendants("event"))
                 {
+                    // get date & time values from XML (string)
+                    string dateOnly = item.Element("date").Value.TrimEnd();
+                    string timeOnly = item.Element("time").Value.TrimEnd();
+
+                    // convert date & time strings to DateTime object
+                    DateTime tempDateTime = ConvertString_s_ToDateTimeObject(dateOnly, timeOnly);
+
+                    // convert DateTime object to a Long of ticks
+                    long dateTimeInTicks = tempDateTime.Ticks;
+                    
                     // create a newsObject for every 'event' in xml file
                     NewsObject newsObject = new NewsObject
                     {
@@ -137,8 +147,9 @@ namespace CurrencyAlertApp.DataAccess
                         // .Value - removes surrounding tags
                         CountryChar = item.Element("country").Value.TrimEnd(),
                         MarketImpact = item.Element("impact").Value.TrimEnd(),
-                        DateOnly = item.Element("date").Value.TrimEnd(),
-                        TimeOnly = item.Element("time").Value.TrimEnd()
+                        ////////////////////DateOnly = dateOnly,
+                        ////////////////////TimeOnly = timeOnly,
+                        DateInTicks = dateTimeInTicks  
                     };
                     // insert newsObject into database
                     conn.Insert(newsObject);
@@ -201,11 +212,11 @@ namespace CurrencyAlertApp.DataAccess
                 }// end inner foreach
             } // end outer foreach 
 
-            // sort list by date & currency   OR   by currency & date
+            // sort list by long DateInTicks
             var sortedNewsObjectList = from myvar in tempNewsObjectsList
-                                       orderby myvar.DateOnly, myvar.TimeOnly
-                                       select myvar;                 // change this to dateTime object when possible
-                                                                     // as this doesn't take am/pm into account!           
+                                       orderby  myvar.DateInTicks       
+                                       select myvar;                 
+                                                                                
 
             // convert 'var' List into 'real' List
             List<NewsObject> finalNewsObjectList = new List<NewsObject>();
@@ -226,33 +237,34 @@ namespace CurrencyAlertApp.DataAccess
             // next line won't unless - to pass an XDocument add reference:  System.Xml.Linq   !!!!
             //  declare Xdocument in Main Activity!!!!  XDocument xmlTestFile = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
 
-
             //// 'Root.Elements' version - (both versions work) - all raw unformatted data in xml file            
             //foreach (var item in xmlTestFile.Root.Elements())
-            //{
-            //    NewsObject tempNewsObject = new NewsObject();
-            //    // assign xml values to newsObject - uses xml <tag> names from xml file
-            //    tempNewsObject.Name = item.Element("title").Value;
-            //    tempNewsObject.CountryChar = item.Element("country").Value;
-            //    tempNewsObject.MarketImpact = item.Element("impact").Value;
-            //    tempNewsObject.DateOnly = item.Element("date").Value;   // .Value - removes surrounding tags - giving only the value
-            //    tempNewsObject.TimeOnly = item.Element("time").Value;
-
-            //    // add the tempNewsObject to list to return
-            //    listToReturn.Add(tempNewsObject);
-            //}
+            //{    OR.................  (other version)
+            
 
             // 'Descendants' version (both versions work) - data retrieved indivudually from xml file            
             foreach (var item in xmlTestFile.Descendants("event"))
             // 'event' is the surrounding xml <tag>
             {
+                // get date & time values from XML (string)
+                string dateOnly = item.Element("date").Value.TrimEnd();
+                string timeOnly = item.Element("time").Value.TrimEnd();
+
+                // convert date & time strings to DateTime object
+                DateTime tempDateTime = ConvertString_s_ToDateTimeObject(dateOnly, timeOnly);
+
+                // convert DateTime object to a Long of ticks
+                long dateTimeInTicks = tempDateTime.Ticks;
+
                 NewsObject tempNewsObject = new NewsObject();
                 // assign xml values to newsObject - uses xml <tag> names from xml file
                 tempNewsObject.Name = item.Element("title").Value;
                 tempNewsObject.CountryChar = item.Element("country").Value;
-                tempNewsObject.MarketImpact = item.Element("impact").Value;
-                tempNewsObject.DateOnly = item.Element("date").Value;   // .Value - removes surrounding tags - giving only the value
-                tempNewsObject.TimeOnly = item.Element("time").Value;
+                tempNewsObject.MarketImpact = item.Element("impact").Value;  // .Value - removes surrounding tags - giving only the value
+             
+                //////////////////tempNewsObject.DateOnly = dateOnly;
+                //////////////////tempNewsObject.TimeOnly = timeOnly;
+                tempNewsObject.DateInTicks = dateTimeInTicks;
 
                 // add the tempNewsObject to list to return
                 listToReturn.Add(tempNewsObject);
@@ -261,39 +273,7 @@ namespace CurrencyAlertApp.DataAccess
         }
 
 
-        //// string version
-        //public static List<string> TestLINQQueryUsingXML(XDocument xmlTestFile)
-        //{
-        //    // LINQ queries (using xml file in Assets)           
-        //    List<string> linqQueryResultsList = new List<string>();
-
-        //    // sample selection using LINQ - GBP & USD currencies with 'High' impact status
-        //    var highestImpact = from myVar in xmlTestFile.Descendants("event")
-        //                        where myVar.Element("impact").Value == "High" &&
-        //                        (myVar.Element("country").Value == "GBP" || myVar.Element("country").Value == "USD")
-        //                        select myVar;
-
-        //    // Store result of query in List and Return it
-        //    linqQueryResultsList.Add("USD & GBP Result - HIGH");
-        //    foreach (var item in highestImpact)
-        //    {
-        //        linqQueryResultsList.Add(
-        //            // uses xml <tag> names from xml file
-        //            item.Element("country").Value + "\n" +
-        //            item.Element("impact").Value + "\n" +
-        //            item.Element("date").Value + "\n" +
-        //            item.Element("time").Value + "\n" +
-        //            item.Element("title").Value + "\n"
-        //            );
-
-        //        // ?? Not sure this is working properly - get dateTime object by calling method combing date(string) and time(string)
-        //        //DateTime dateAndTimeObject = ConvertString_s_ToDateTimeObject(item.DateOnly.ToString(), item.TimeOnly.ToString());
-        //    }
-        //    return linqQueryResultsList;   
-        //}
-
-        //---------------------------------------------------------------------------------------------------------
-
+       
         // object version
         public static List<NewsObject> TestLINQQueryUsingXML(XDocument xmlTestFile)
         {
@@ -308,48 +288,30 @@ namespace CurrencyAlertApp.DataAccess
 
             foreach (var item in highestImpact)
             {
+                // get date & time values from XML (string)
+                string dateOnly = item.Element("date").Value.TrimEnd();
+                string timeOnly = item.Element("time").Value.TrimEnd();
+
+                // convert date & time strings to DateTime object
+                DateTime tempDateTime = ConvertString_s_ToDateTimeObject(dateOnly, timeOnly);
+
+                // convert DateTime object to a Long of ticks
+                long dateTimeInTicks = tempDateTime.Ticks;
+
                 NewsObject tempNewsObject = new NewsObject();
                 // assign xml values to newsObject - uses xml <tag> names from xml file
                 tempNewsObject.Name = item.Element("title").Value;
                 tempNewsObject.CountryChar = item.Element("country").Value;
-                tempNewsObject.MarketImpact = item.Element("impact").Value;
-                tempNewsObject.DateOnly = item.Element("date").Value;   // .Value - removes surrounding tags - giving only the value
-                tempNewsObject.TimeOnly = item.Element("time").Value;
+                tempNewsObject.MarketImpact = item.Element("impact").Value;  // .Value - removes surrounding tags - giving only the value
+
+                //////////////////tempNewsObject.DateOnly = dateOnly;
+                //////////////////tempNewsObject.TimeOnly = timeOnly;
+                tempNewsObject.DateInTicks = dateTimeInTicks;
 
                 // add the tempNewsObject to list to return
                 linqQueryResultsList.Add(tempNewsObject);
-            }
-            // ?? Not sure this is working properly - get dateTime object by calling method combing date(string) and time(string)
-            //DateTime dateAndTimeObject = ConvertString_s_ToDateTimeObject(item.DateOnly.ToString(), item.TimeOnly.ToString());           
+            }           
             return linqQueryResultsList;
         }
-
-
-
-
-
-        //public static List<string> GetAllDataFormattedIntoSingleString()
-        //{
-        //    newsObjectsList.Clear();
-
-        //    // call to database & populate newsObjectList with the result
-        //    GetAllRawDataFromDatabase();
-
-        //    List<string> allDataFormattedIntoString = new List<string>();
-
-        //    foreach (var item in newsObjectsList)
-        //    {
-        //        allDataFormattedIntoString.Add(string.Format(
-        //                "Date: {0} {1} \n{2} {3}\n{4}",
-        //                item.DateOnly.TrimEnd(),
-        //                item.TimeOnly.TrimEnd(),
-        //                item.CountryChar.TrimEnd(),
-        //                item.MarketImpact.TrimEnd(),
-        //                item.Name.TrimEnd()
-        //                ));
-        //    }
-        //    return allDataFormattedIntoString;
-        //}
-
     }//
 }//

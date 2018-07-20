@@ -22,7 +22,7 @@ using Android.Util;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Theme = "@style/MyTheme.Base", MainLauncher = true, Label = "CurrencyAlertApp")]
+    [Activity(Theme = "@style/MyTheme.Base", MainLauncher = true,  Label = "CurrencyAlertApp")]
     //  MainLauncher = true,  
     // must have an appCompat theme         
 
@@ -478,13 +478,18 @@ namespace CurrencyAlertApp
 
             foreach (var tempNewsObject in newsObjects)
             {
+                // convert long dateInTicks in database to a DateTime object to display
+                DateTime tempDateTime = new DateTime(tempNewsObject.DateInTicks);
+
                 // convert individual newsObject to a single string
                 string tempStringItem = (string.Format(
-                        "Date: {0} {1} \n{2} {3}\n{4}",
-                        tempNewsObject.DateOnly.TrimEnd(),
-                        tempNewsObject.TimeOnly.TrimEnd(),
+                        "{0}:  {1}\nDate: {2}   {3} \n{4}",
                         tempNewsObject.CountryChar.TrimEnd(),
                         tempNewsObject.MarketImpact.TrimEnd(),
+
+                        tempDateTime.ToString("dd/MM/yyyy"),
+                        tempDateTime.ToString("HH:mm tt"),                        
+                                                
                         tempNewsObject.Name.TrimEnd()));
 
                 // add string to string list
@@ -501,36 +506,6 @@ namespace CurrencyAlertApp
             string dateXmlUpdated = mySharedPreferencesMethods.GetDataFromSharedPrefs();
             txtDataLastUpdated.Text = "Data Updated: " + dateXmlUpdated;
         }
-
-
-
-
-
-
-
-
-        // string version
-        //void ClearListsAndRepopulateAdapter()
-        //{
-        //    ClearListAndAdapter();
-        //    DisplayListSTRING = SetUpData.LINQ_SortAllByUserSelection(marketImpact_selectedList, currencies_selectedList);
-        //    PopulateAdapter();
-        //}
-
-
-
-
-
-
-
-        //void DefaultDisplayAllData()
-        //{
-        //    ClearListAndAdapter();
-        //    DisplayListSTRING = SetUpData.GetAllDataFormattedIntoSingleString();
-        //    RepopulateAdapter();  // runs a 'forEach' through the list
-        //    //adapter.NotifyDataSetChanged();
-        //}
-
 
 
     }//
