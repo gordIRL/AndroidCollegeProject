@@ -16,6 +16,12 @@ namespace CurrencyAlertApp
 {
     class NewsObjectAdapter : BaseAdapter<NewsObject>
     {
+        // original 'animal'labels - PLEASE DELETE
+        //
+        // imageViewAnimal		->	imageView_NewsObjectInfoRow_Icon
+        //lblAnimalName   	->	txt_NewsObjectInfoRow_line1
+        //lblAnimalComment 	->	txt_NewsObjectInfoRow_line2
+
         Context context;
         public List<NewsObject> NewsObjectList { get; }
 
@@ -43,42 +49,42 @@ namespace CurrencyAlertApp
 
             if (newsObjectInfoRowView == null)
             {
-                // ? inflate
+                //  inflate
                 var inflater = context.GetSystemService(Context.LayoutInflaterService).JavaCast<LayoutInflater>();
                 newsObjectInfoRowView = inflater.Inflate(Resource.Layout.NewsObjectInfoRow, parent, false);
 
-                // ? findID's
-                var animalImageView = newsObjectInfoRowView.FindViewById<ImageView>(Resource.Id.imageViewAnimal);
-                var lblAnimalNameView = newsObjectInfoRowView.FindViewById<TextView>(Resource.Id.lblAnimalName);
-                var lblShortDescriptionView = newsObjectInfoRowView.FindViewById<TextView>(Resource.Id.lblAnimalComment);
+                //  findID's
+                var currencyIconView = newsObjectInfoRowView.FindViewById<ImageView>(Resource.Id.imageView_NewsObjectInfoRow_Icon);
+                var txtLine_1_view = newsObjectInfoRowView.FindViewById<TextView>(Resource.Id.txt_NewsObjectInfoRow_line1);
+                var txtLine_2_view = newsObjectInfoRowView.FindViewById<TextView>(Resource.Id.txt_NewsObjectInfoRow_line2);
 
-                //  Assign content               
-                //animalImageView.SetImageResource(NewsObjectList[position].ImageDrawableID);
-                string useThisString = NewsObjectList[position].CountryChar.ToString().ToUpper();
-                int imageID = GetImageForCurrency(useThisString);
-                animalImageView.SetImageResource(imageID);
+                //  Assign content (get currency icon 1st)
+                string countryChar = NewsObjectList[position].CountryChar.ToString().ToUpper();
+                int imageID = GetImageForCurrency(countryChar);
+                currencyIconView.SetImageResource(imageID);
 
-                lblAnimalNameView.Text = NewsObjectList[position].CountryChar + ": " + NewsObjectList[position].MarketImpact;
-                lblShortDescriptionView.Text = NewsObjectList[position].DateOnly + ":  " + NewsObjectList[position].TimeOnly + "\n" +
+                //  Assign content - continued
+                txtLine_1_view.Text = NewsObjectList[position].CountryChar + ": " + NewsObjectList[position].MarketImpact;
+                txtLine_2_view.Text = NewsObjectList[position].DateOnly + ":  " + NewsObjectList[position].TimeOnly + "\n" +
                     NewsObjectList[position].Name; 
 
                 // holder in Tag
-                holder = new NewsObjectAdapterViewHolder(animalImageView, lblAnimalNameView, lblShortDescriptionView);
+                holder = new NewsObjectAdapterViewHolder(currencyIconView, txtLine_1_view, txtLine_2_view);
                 newsObjectInfoRowView.Tag = holder;
             }
             else
             {
-                // ?  pull out cached view from object tag
+                //  pull out cached view from object tag
                 var cachedNewsObjectAdapterHolder = newsObjectInfoRowView.Tag as NewsObjectAdapterViewHolder;
 
-                // Assign values to child views                
-                //cachedAnimalAdapterHolder.AnimalSnap.SetImageResource(NewsObjectList[position].ImageDrawableID);
-                string useThisString = NewsObjectList[position].CountryChar.ToString().ToUpper();
-                int imageID = GetImageForCurrency(useThisString);
-                cachedNewsObjectAdapterHolder.AnimalSnap.SetImageResource(imageID);  
-               
-                cachedNewsObjectAdapterHolder.AnimalName.Text = NewsObjectList[position].CountryChar + ": " + NewsObjectList[position].MarketImpact;
-                cachedNewsObjectAdapterHolder.AnimalShortDecription.Text = NewsObjectList[position].DateOnly + ":  " + NewsObjectList[position].TimeOnly + "\n" +
+                // Assign values to child views (get currency icon 1st)     
+                string countryChar = NewsObjectList[position].CountryChar.ToString().ToUpper();
+                int imageID = GetImageForCurrency(countryChar);
+                cachedNewsObjectAdapterHolder.VH_CurrencyIcon.SetImageResource(imageID);
+
+                //  Assign content - continued
+                cachedNewsObjectAdapterHolder.VH_txtLine1.Text = NewsObjectList[position].CountryChar + ": " + NewsObjectList[position].MarketImpact;
+                cachedNewsObjectAdapterHolder.VH_txtLine2.Text = NewsObjectList[position].DateOnly + ":  " + NewsObjectList[position].TimeOnly + "\n" +
                     NewsObjectList[position].Name;
             }
             return newsObjectInfoRowView;
@@ -128,9 +134,6 @@ namespace CurrencyAlertApp
             return imageID;
         }
 
-
-
-
         public override int Count
         {
             get
@@ -150,17 +153,16 @@ namespace CurrencyAlertApp
 
     class NewsObjectAdapterViewHolder : Java.Lang.Object
     {
-        //Your adapter views to re-use
-        //public TextView Title { get; set; }
-        public ImageView AnimalSnap { get; }
-        public TextView AnimalName { get; }
-        public TextView AnimalShortDecription { get; }
+        // adapter views to re-use
+        public ImageView VH_CurrencyIcon { get; }
+        public TextView VH_txtLine1 { get; }
+        public TextView VH_txtLine2 { get; }
 
-        public NewsObjectAdapterViewHolder(ImageView animalSnap, TextView animalName, TextView animalShortDescription)
+        public NewsObjectAdapterViewHolder(ImageView currencyIcon, TextView txtLine1, TextView txtLine2)
         {
-            AnimalSnap = animalSnap;
-            AnimalName = animalName;
-            AnimalShortDecription = animalShortDescription;
+            VH_CurrencyIcon = currencyIcon;
+            VH_txtLine1 = txtLine1;
+            VH_txtLine2 = txtLine2;
         }
     }
 }

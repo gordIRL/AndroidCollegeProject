@@ -16,15 +16,12 @@ using CurrencyAlertApp.DataAccess;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Label = "GordTestActivity", MainLauncher = true,  Theme = "@style/MyTheme.Test")]
+    [Activity(Label = "GordTestActivity",  Theme = "@style/MyTheme.Test")]
     // MainLauncher = true,
     public class GordTestActivity : AppCompatActivity
     {
         public static string myResultMain = string.Empty;
         List<NewsObject> DisplayListOBJECT = new List<NewsObject>();
-
-        
-
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -40,20 +37,19 @@ namespace CurrencyAlertApp
 
             DisplayListOBJECT = SetUpData.GetAllRawDataFromDatabase();
 
-            var animalListView = FindViewById<ListView>(Resource.Id.listViewAnimals);                       
+            var newsObjectListView = FindViewById<ListView>(Resource.Id.listViewTestActivityCurrency);                       
 
-            animalListView.Adapter = new NewsObjectAdapter(this, DisplayListOBJECT);
-
-            //
-            animalListView.ItemClick += AnimalListView_ItemClick;
+            newsObjectListView.Adapter = new NewsObjectAdapter(this, DisplayListOBJECT);            
+            newsObjectListView.ItemClick += NewsObjectListView_ItemClick;
 
         }// end OnCreate
 
-        private void AnimalListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        private void NewsObjectListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            Toast.MakeText(this, "Selected : " + e.Position, ToastLength.Short).Show();
+            Toast.MakeText(this, "Selected : " + DisplayListOBJECT[e.Position].Name, ToastLength.Short).Show();
         }
 
+       
         public static void MethodToGetString(string myResultInput)
         {
             myResultMain = myResultInput;

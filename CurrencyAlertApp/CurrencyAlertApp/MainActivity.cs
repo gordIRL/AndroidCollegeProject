@@ -22,7 +22,7 @@ using Android.Util;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Theme = "@style/MyTheme.Base", Label = "CurrencyAlertApp")]
+    [Activity(Theme = "@style/MyTheme.Base", MainLauncher = true, Label = "CurrencyAlertApp")]
     //  MainLauncher = true,  
     // must have an appCompat theme         
 
@@ -274,6 +274,16 @@ namespace CurrencyAlertApp
                                     currencies_selectedBoolArray[i] = true;
                                     currencies_selectedList.Add(currencies_titlesArray[i]);
                                 }
+
+                                // clear list & adapter - get LINQ query result - populate list                              
+                                ClearDisplayListAndAdapter();
+                                DisplayListOBJECT = SetUpData.LINQ_SortAllByUserSelection(marketImpact_selectedList, currencies_selectedList);
+
+                                // convert this newsObject data to a List<string>
+                                DisplayListSTRING = ConvertObjectsListToStringList(DisplayListOBJECT);
+
+                                // call populate adapter
+                                PopulateAdapter();
                                 DebugDisplayCurrencies();
                             });
 
@@ -287,6 +297,8 @@ namespace CurrencyAlertApp
                                     currencies_selectedBoolArray[i] = false;
                                     currencies_selectedList.Remove(currencies_titlesArray[i]);
                                 }
+                                // clear list & adapter                             
+                                ClearDisplayListAndAdapter();
                                 DebugDisplayCurrencies();
                             });
                             dialog.Show();

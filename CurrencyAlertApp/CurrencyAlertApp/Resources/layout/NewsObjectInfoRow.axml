@@ -2,28 +2,28 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-  <ImageView
-      android:id="@+id/imageViewAnimal"
-      android:layout_width="60dp"
-      android:layout_height="60dp"
-      android:layout_alignParentLeft="true"
-      android:layout_centerVertical="true"
-      android:padding="5dp" />
-  <TextView
-      android:id="@+id/lblAnimalName"
-      android:layout_toRightOf="@+id/imageViewAnimal"
-      android:text="ANIMAL NAME GOES HERE"
-      android:textAppearance="?android:attr/textAppearanceLarge"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:padding="5dp" />
-  <TextView
-      android:id="@+id/lblAnimalComment"
-      android:layout_toRightOf="@+id/imageViewAnimal"
-      android:layout_below="@+id/lblAnimalName"
-      android:text="ANIMAL COMMENT GOES HERE"
-      android:textAppearance="?android:attr/textAppearanceSmall"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:padding="5dp" />
+    <ImageView
+        android:id="@+id/imageView_NewsObjectInfoRow_Icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:padding="5dp" />
+    <TextView
+        android:id="@+id/txt_NewsObjectInfoRow_line1"
+        android:layout_toRightOf="@+id/imageView_NewsObjectInfoRow_Icon"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp" />
+    <TextView
+        android:id="@+id/txt_NewsObjectInfoRow_line2"
+        android:layout_toRightOf="@+id/imageView_NewsObjectInfoRow_Icon"
+        android:layout_below="@+id/txt_NewsObjectInfoRow_line1"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp" />
 </RelativeLayout>

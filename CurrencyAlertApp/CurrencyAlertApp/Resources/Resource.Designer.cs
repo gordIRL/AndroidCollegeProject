@@ -2085,19 +2085,13 @@ namespace CurrencyAlertApp
 			public const int image = 2131427386;
 			
 			// aapt resource value: 0x7f0b006f
-			public const int imageViewAnimal = 2131427439;
+			public const int imageView_NewsObjectInfoRow_Icon = 2131427439;
 			
 			// aapt resource value: 0x7f0b007f
 			public const int info = 2131427455;
 			
 			// aapt resource value: 0x7f0b0034
 			public const int italic = 2131427380;
-			
-			// aapt resource value: 0x7f0b0071
-			public const int lblAnimalComment = 2131427441;
-			
-			// aapt resource value: 0x7f0b0070
-			public const int lblAnimalName = 2131427440;
 			
 			// aapt resource value: 0x7f0b0009
 			public const int line1 = 2131427337;
@@ -2118,7 +2112,7 @@ namespace CurrencyAlertApp
 			public const int listView1 = 2131427437;
 			
 			// aapt resource value: 0x7f0b0068
-			public const int listViewAnimals = 2131427432;
+			public const int listViewTestActivityCurrency = 2131427432;
 			
 			// aapt resource value: 0x7f0b003c
 			public const int list_item = 2131427388;
@@ -2350,6 +2344,12 @@ namespace CurrencyAlertApp
 			
 			// aapt resource value: 0x7f0b008c
 			public const int txtTime = 2131427468;
+			
+			// aapt resource value: 0x7f0b0070
+			public const int txt_NewsObjectInfoRow_line1 = 2131427440;
+			
+			// aapt resource value: 0x7f0b0071
+			public const int txt_NewsObjectInfoRow_line2 = 2131427441;
 			
 			// aapt resource value: 0x7f0b008e
 			public const int txtcombinedDateTime = 2131427470;
