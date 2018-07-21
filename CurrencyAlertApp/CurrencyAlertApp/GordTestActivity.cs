@@ -14,15 +14,19 @@ using Android.Support.V7.App;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using CurrencyAlertApp.DataAccess;
 using Android.Util;
+using System.Globalization;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Label = "GordTestActivity",  Theme = "@style/MyTheme.Test")]
-    // MainLauncher = true,
+    [Activity(Label = "GordTestActivity", Theme = "@style/MyTheme.Base")]
+    // MainLauncher = true,  //   Theme = "@style/MyTheme.Test"
     public class GordTestActivity : AppCompatActivity
     {
         public static string myResultMain = string.Empty;
         List<NewsObject> DisplayListOBJECT = new List<NewsObject>();
+
+        // Create a single CultureInfo object (once so it can be reused) for correct Parsing of strings to DateTime object
+        static CultureInfo cultureInfo = new CultureInfo("en-US");
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -36,6 +40,8 @@ namespace CurrencyAlertApp
 
             DisplayListOBJECT = SetUpData.GetAllRawDataFromDatabase();
 
+           
+
             var newsObjectListView = FindViewById<ListView>(Resource.Id.listViewTestActivityCurrency);                       
 
             newsObjectListView.Adapter = new NewsObjectAdapter(this, DisplayListOBJECT);            
@@ -45,7 +51,7 @@ namespace CurrencyAlertApp
 
             string dateString = "04-15-2018";
             string timeString = "10:45am";
-            DateTime dateTime =  SetUpData.ConvertString_s_ToDateTimeObject(dateString, timeString);
+            DateTime dateTime =  SetUpData.ConvertString_s_ToDateTimeObject(dateString, timeString, cultureInfo);
 
             Log.Debug("DEBUG", "DateTime from my method: " + dateTime.ToString("dd/MM/yyyy HH:mm:ss"));
             long ticksTime_1 = dateTime.Ticks;
@@ -54,7 +60,7 @@ namespace CurrencyAlertApp
 
             string dateString2 = "04-15-2018";
             string timeString2 = "10:45pm";
-            DateTime dateTime2 = SetUpData.ConvertString_s_ToDateTimeObject(dateString2, timeString2);
+            DateTime dateTime2 = SetUpData.ConvertString_s_ToDateTimeObject(dateString2, timeString2, cultureInfo);
 
             Log.Debug("DEBUG", "DateTime from my method: " + dateTime2.ToString("dd/MM/yyyy HH:mm:ss"));
             long ticksTime_2 = dateTime2.Ticks;
@@ -76,7 +82,7 @@ namespace CurrencyAlertApp
                     // CultureInfo.InvariantCulture
                     // tt - gives am/pm
                     // hh - 12 hour clock
-                    // HH = 24 hour clock
+                    // HH = 24 hour clock           
 
         }// end OnCreate
 

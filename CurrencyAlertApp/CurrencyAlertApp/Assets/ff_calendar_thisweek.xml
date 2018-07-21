@@ -18,6 +18,15 @@
 		<forecast />
 		<previous><![CDATA[1.5%]]></previous>
 	</event>
+  <event>
+    <title>Gordons Test</title>
+    <country>USD</country>
+    <date><![CDATA[07-21-2018]]></date>
+    <time><![CDATA[03:55pm]]></time>
+    <impact><![CDATA[High]]></impact>
+    <forecast />
+    <previous><![CDATA[-0.5%]]></previous>
+  </event>
 	<event>
 		<title>WPI m/m</title>
 		<country>EUR</country>

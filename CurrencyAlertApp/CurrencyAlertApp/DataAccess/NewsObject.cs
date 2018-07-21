@@ -26,28 +26,23 @@ namespace CurrencyAlertApp.DataAccess
         public string CountryChar { get; set; }
 
         [MaxLength(10)]
-        public string MarketImpact { get; set; }
-
-        ////////////////[MaxLength(12)]
-        ////////////////public string DateOnly { get; set; }
-
-        ////////////////[MaxLength(18)]
-        ////////////////public string TimeOnly { get; set; }
+        public string MarketImpact { get; set; }       
 
         [Ignore]
-        public DateTime DateAndTime { get; set; }
-        
+        public DateTime DateAndTime { get; set; }        
 
         public long DateInTicks { get; set; }
 
 
-
-
         public override string ToString()
         {
-            return string.Format("Working ID:{0} {1} {2} {3}\nDate: {4}  Time: {5}",
+            DateTime tempDateTime = new DateTime(DateInTicks);
+            string tempDate = tempDateTime.ToShortDateString();
+            string tempTime = tempDateTime.ToShortTimeString();
+
+            return string.Format("!!!!!!!!!!!!!!!!!Working ID:{0} {1} {2} {3}\nDate: {4}  Time: {5}",
                 NewsObjectID, Name, CountryChar, MarketImpact,
-                DateInTicks, DateInTicks);
+                tempDate, tempTime);   // DateInTicks, DateInTicks);
         }
     }//
 }//

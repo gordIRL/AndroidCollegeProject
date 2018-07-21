@@ -16,6 +16,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using SQLite;
+using System.Globalization;
 
 namespace CurrencyAlertApp.DataAccess
 {
@@ -23,6 +24,9 @@ namespace CurrencyAlertApp.DataAccess
     {
         // list to store newsObjects retrieved from database
         static List<NewsObject> newsObjectsList = new List<NewsObject>();
+
+        // Create a single CultureInfo object (once so it can be reused) for correct Parsing of strings to DateTime object
+        static CultureInfo cultureInfo = new CultureInfo("en-US");
 
 
         // location of database
@@ -60,7 +64,7 @@ namespace CurrencyAlertApp.DataAccess
         {
             using (SQLiteConnection conn = new SQLiteConnection(DBLocation))
             {
-                string url = conn.Get<URLObject>(1).URLAddress;  // 1st Database is at '1' - ie not zero-based like arrays !!                
+                string url = conn.Get<URLObject>(1).URLAddress;  // 1st Database item is at '1' - ie not zero-based like arrays !!                
                 Log.Debug("DEBUG", "URL in DB: " + url);
                 return url;
             }
@@ -69,12 +73,21 @@ namespace CurrencyAlertApp.DataAccess
 
 
 
-        public static DateTime ConvertString_s_ToDateTimeObject(string dateString, string timeString)
+        public static DateTime ConvertString_s_ToDateTimeObject(string dateString, string timeString, CultureInfo cultureInfo)
         {
-            // Returns a DateTime object from a date(string) and a time(string)
+            // Returns a DateTime object from combining a date(string) and a time(string)
 
-            string dateAndTimeString = dateString + " " + timeString;
-            DateTime dateAndTimeObject = DateTime.Parse(dateAndTimeString);
+            string dateAndTimeString = dateString +" " +  timeString;
+
+            //  original - not working
+            //DateTime dateAndTimeObject = DateTime.Parse(dateAndTimeString);
+
+            // updated - working - but would create a new CultureInfo object on each instance
+            //DateTime dateAndTimeObject = DateTime.Parse(dateAndTimeString, new CultureInfo("en-US"));
+
+            // final version - working - uses cultureInfo instantiated at class level (line 28/29 above)
+            DateTime dateAndTimeObject = DateTime.Parse(dateAndTimeString, cultureInfo);
+
             return dateAndTimeObject;
         }
 
@@ -87,8 +100,7 @@ namespace CurrencyAlertApp.DataAccess
             bool dataUpdateSuccessful = false;
 
             try
-            {
-                //XDocument xmlFile = XDocument.Load("https://cdn-nfs.forexfactory.net/ff_calendar_thisweek.xml");
+            {               
                 XDocument xmlFile = XDocument.Load(GetURLForXMLDownloadFromDatabase());
                 Log.Debug("DEBUG", "XML data downloaded - SUCCESS");
 
@@ -135,7 +147,7 @@ namespace CurrencyAlertApp.DataAccess
                     string timeOnly = item.Element("time").Value.TrimEnd();
 
                     // convert date & time strings to DateTime object
-                    DateTime tempDateTime = ConvertString_s_ToDateTimeObject(dateOnly, timeOnly);
+                    DateTime tempDateTime = ConvertString_s_ToDateTimeObject(dateOnly, timeOnly, cultureInfo);
 
                     // convert DateTime object to a Long of ticks
                     long dateTimeInTicks = tempDateTime.Ticks;
@@ -147,8 +159,6 @@ namespace CurrencyAlertApp.DataAccess
                         // .Value - removes surrounding tags
                         CountryChar = item.Element("country").Value.TrimEnd(),
                         MarketImpact = item.Element("impact").Value.TrimEnd(),
-                        ////////////////////DateOnly = dateOnly,
-                        ////////////////////TimeOnly = timeOnly,
                         DateInTicks = dateTimeInTicks  
                     };
                     // insert newsObject into database
@@ -169,9 +179,14 @@ namespace CurrencyAlertApp.DataAccess
                 // retrieve all data from database & store in list
                 var retrievedDataList = conn.Table<NewsObject>();
 
+                //DateTime dateTime = DateTime.Now;
+
                 // store each item in list into a returnable list
                 foreach (var item in retrievedDataList)
                 {
+                    // convert DateInTicks to DateTimeObject 
+                    item.DateAndTime = new DateTime(item.DateInTicks);
+
                     newsObjectsList.Add(item);
                 }
             }// end USING          
@@ -251,7 +266,7 @@ namespace CurrencyAlertApp.DataAccess
                 string timeOnly = item.Element("time").Value.TrimEnd();
 
                 // convert date & time strings to DateTime object
-                DateTime tempDateTime = ConvertString_s_ToDateTimeObject(dateOnly, timeOnly);
+                DateTime tempDateTime = ConvertString_s_ToDateTimeObject(dateOnly, timeOnly, cultureInfo);
 
                 // convert DateTime object to a Long of ticks
                 long dateTimeInTicks = tempDateTime.Ticks;
@@ -260,10 +275,7 @@ namespace CurrencyAlertApp.DataAccess
                 // assign xml values to newsObject - uses xml <tag> names from xml file
                 tempNewsObject.Name = item.Element("title").Value;
                 tempNewsObject.CountryChar = item.Element("country").Value;
-                tempNewsObject.MarketImpact = item.Element("impact").Value;  // .Value - removes surrounding tags - giving only the value
-             
-                //////////////////tempNewsObject.DateOnly = dateOnly;
-                //////////////////tempNewsObject.TimeOnly = timeOnly;
+                tempNewsObject.MarketImpact = item.Element("impact").Value;  // .Value - removes surrounding tags - giving only the value             
                 tempNewsObject.DateInTicks = dateTimeInTicks;
 
                 // add the tempNewsObject to list to return
@@ -293,7 +305,7 @@ namespace CurrencyAlertApp.DataAccess
                 string timeOnly = item.Element("time").Value.TrimEnd();
 
                 // convert date & time strings to DateTime object
-                DateTime tempDateTime = ConvertString_s_ToDateTimeObject(dateOnly, timeOnly);
+                DateTime tempDateTime = ConvertString_s_ToDateTimeObject(dateOnly, timeOnly, cultureInfo);
 
                 // convert DateTime object to a Long of ticks
                 long dateTimeInTicks = tempDateTime.Ticks;
@@ -303,9 +315,6 @@ namespace CurrencyAlertApp.DataAccess
                 tempNewsObject.Name = item.Element("title").Value;
                 tempNewsObject.CountryChar = item.Element("country").Value;
                 tempNewsObject.MarketImpact = item.Element("impact").Value;  // .Value - removes surrounding tags - giving only the value
-
-                //////////////////tempNewsObject.DateOnly = dateOnly;
-                //////////////////tempNewsObject.TimeOnly = timeOnly;
                 tempNewsObject.DateInTicks = dateTimeInTicks;
 
                 // add the tempNewsObject to list to return

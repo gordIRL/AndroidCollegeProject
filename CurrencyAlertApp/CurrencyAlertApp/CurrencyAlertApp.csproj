@@ -231,11 +231,6 @@
     <AndroidResource Include="Resources\drawable\rect.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="DataAccess\ff_calendar_thisweek.xml">
-      <SubType>Designer</SubType>
-    </AndroidAsset>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\menu\top_menus.xml" />
   </ItemGroup>
   <ItemGroup>

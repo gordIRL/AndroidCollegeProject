@@ -115,6 +115,9 @@ namespace CurrencyAlertApp
                     Log.Debug("DEBUG", index.ToString());
                     Log.Debug("DEBUG", e2.Which.ToString());
 
+                    Toast.MakeText(this, $"You selected item no: {e.Position}:\n" + DisplayListOBJECT[e.Position].ToString(), ToastLength.Long).Show();
+
+
                     switch (e2.Which)
                     {
                         case 0:
@@ -240,7 +243,7 @@ namespace CurrencyAlertApp
 
                                 // call populate adapter
                                 PopulateAdapter();
-                                DebugDisplayMarketImpacts();
+                                DebugDisplayCurrencies();
                             });
 
                             // Set Multichoice Items
@@ -478,18 +481,13 @@ namespace CurrencyAlertApp
 
             foreach (var tempNewsObject in newsObjects)
             {
-                // convert long dateInTicks in database to a DateTime object to display
-                DateTime tempDateTime = new DateTime(tempNewsObject.DateInTicks);
-
                 // convert individual newsObject to a single string
                 string tempStringItem = (string.Format(
                         "{0}:  {1}\nDate: {2}   {3} \n{4}",
                         tempNewsObject.CountryChar.TrimEnd(),
-                        tempNewsObject.MarketImpact.TrimEnd(),
-
-                        tempDateTime.ToString("dd/MM/yyyy"),
-                        tempDateTime.ToString("HH:mm tt"),                        
-                                                
+                        tempNewsObject.MarketImpact.TrimEnd(),         
+                        tempNewsObject.DateAndTime.ToString("dd/MM/yyyy"),
+                        tempNewsObject.DateAndTime.ToString("HH:mm tt"),
                         tempNewsObject.Name.TrimEnd()));
 
                 // add string to string list

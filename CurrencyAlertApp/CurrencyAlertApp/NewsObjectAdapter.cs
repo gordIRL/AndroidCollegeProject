@@ -16,12 +16,6 @@ namespace CurrencyAlertApp
 {
     class NewsObjectAdapter : BaseAdapter<NewsObject>
     {
-        // original 'animal'labels - PLEASE DELETE
-        //
-        // imageViewAnimal		->	imageView_NewsObjectInfoRow_Icon
-        //lblAnimalName   	->	txt_NewsObjectInfoRow_line1
-        //lblAnimalComment 	->	txt_NewsObjectInfoRow_line2
-
         Context context;
         public List<NewsObject> NewsObjectList { get; }
 
@@ -65,7 +59,7 @@ namespace CurrencyAlertApp
 
                 //  Assign content - continued
                 txtLine_1_view.Text = NewsObjectList[position].CountryChar + ": " + NewsObjectList[position].MarketImpact;
-                txtLine_2_view.Text = NewsObjectList[position].DateInTicks + ":  " + NewsObjectList[position].DateInTicks + "\n" +
+                txtLine_2_view.Text = NewsObjectList[position].DateAndTime.ToString("dd/MM/yyyy") + ":  " + NewsObjectList[position].DateAndTime.ToString("HH:mmtt") + "\n" +
                     NewsObjectList[position].Name; 
 
                 // holder in Tag
@@ -84,7 +78,7 @@ namespace CurrencyAlertApp
 
                 //  Assign content - continued
                 cachedNewsObjectAdapterHolder.VH_txtLine1.Text = NewsObjectList[position].CountryChar + ": " + NewsObjectList[position].MarketImpact;
-                cachedNewsObjectAdapterHolder.VH_txtLine2.Text = NewsObjectList[position].DateInTicks + ":  " + NewsObjectList[position].DateInTicks + "\n" +
+                cachedNewsObjectAdapterHolder.VH_txtLine2.Text = NewsObjectList[position].DateAndTime.ToString("dd/MM/yyyy") + ":  " + NewsObjectList[position].DateAndTime.ToString("HH:mmtt") + "\n" +
                     NewsObjectList[position].Name;
             }
             return newsObjectInfoRowView;
