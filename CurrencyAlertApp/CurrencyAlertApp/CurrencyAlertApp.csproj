@@ -130,6 +130,7 @@
     <Compile Include="DataAccess\URLObject.cs" />
     <Compile Include="GordTestActivity.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="NewsObject_RecycleAdapter_NEW.cs" />
     <Compile Include="PersonalAlarmsActivity.cs" />
     <Compile Include="PhotoAlbum.cs" />
     <Compile Include="Receiver1.cs" />
