@@ -22,7 +22,8 @@ namespace CurrencyAlertApp
     // MainLauncher = true,  //   Theme = "@style/MyTheme.Test"
     public class GordTestActivity : AppCompatActivity
     {
-        public static string myResultMain = string.Empty;
+        public static string myResultStringMain = string.Empty;
+        public static NewsObject myResultNewsObject;
         List<NewsObject> DisplayListOBJECT = new List<NewsObject>();
 
         // Create a single CultureInfo object (once so it can be reused) for correct Parsing of strings to DateTime object
@@ -36,7 +37,12 @@ namespace CurrencyAlertApp
             // Create your application here
             SetContentView(Resource.Layout.gordTestLayout);
             
-            Toast.MakeText(this, "Hello and welcome to TestActivity!\n" + myResultMain, ToastLength.Long).Show();
+            //Toast.MakeText(this, "Hello and welcome to TestActivity!\n" + myResultStringMain, ToastLength.Long).Show();
+            if(myResultNewsObject != null)
+            {
+                Toast.MakeText(this, "Hello and welcome to Gord TestActivity!\n" + myResultNewsObject.ToString(), ToastLength.Long).Show();
+            }
+            
 
             DisplayListOBJECT = SetUpData.GetAllRawDataFromDatabase();
 
@@ -92,24 +98,22 @@ namespace CurrencyAlertApp
 
 
 
-
-
-
-
-
-
-
         private void NewsObjectListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             Toast.MakeText(this, "Selected : " + DisplayListOBJECT[e.Position].Name, ToastLength.Short).Show();
         }
 
        
-        public static void MethodToGetString(string myResultInput)
+        public static void MethodToPassString(string myResultStringInput)
         {
-            myResultMain = myResultInput;
+            myResultStringMain = myResultStringInput;
         }
 
-       
+        public static void MethodToPassObject(NewsObject myNewsObjectInput)
+        {
+            myResultNewsObject = myNewsObjectInput;
+        }
+
+
     }
 }

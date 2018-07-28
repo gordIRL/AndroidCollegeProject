@@ -124,7 +124,7 @@ namespace CurrencyAlertApp
                             break;
                         case 1:
                             // call method in next activity to pass data across via a string - this will be an object at a later date
-                            GordTestActivity.MethodToGetString(DisplayListSTRING[e.Position]);
+                            GordTestActivity.MethodToPassString(DisplayListSTRING[e.Position]);
 
                             // call intent to start next activity
                             Intent intent = new Intent(this, typeof(GordTestActivity));
