@@ -23,7 +23,7 @@ using Android.Support.V7.Widget;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Theme = "@style/MyTheme.Base", Label = "CurrencyAlertApp", MainLauncher = true,   Icon = "@drawable/icon")]
+    [Activity(Theme = "@style/MyTheme.Base", Label = "CurrencyAlertApp",    Icon = "@drawable/icon")]
     //  MainLauncher = true,      // must have an appCompat theme  
 
     public class TestRecycleActivity : AppCompatActivity
@@ -55,7 +55,7 @@ namespace CurrencyAlertApp
             base.OnCreate(bundle);           
             
             // Set our view from the "main" layout resource:
-            SetContentView(Resource.Layout.TestRecycleLayout);
+            SetContentView(Resource.Layout.Main);
 
             // Get our RecyclerView layout:
             mRecyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
