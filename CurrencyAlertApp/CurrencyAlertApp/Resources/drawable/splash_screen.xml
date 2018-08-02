@@ -5,8 +5,9 @@
   </item>
   <item>     
     <bitmap         
-      android:src="@drawable/musicalnotesheadphoneColor"         
+      android:src="@drawable/globe"         
       android:tileMode="disabled"         
       android:gravity="center"/>   
-  </item> 
+  </item>
+ 
 </layer-list>

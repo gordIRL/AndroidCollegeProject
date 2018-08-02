@@ -92,37 +92,34 @@ namespace CurrencyAlertApp
             switch (currentCurrency)
             {
                 case "USD":
-                    imageID = Resource.Drawable.bears;
+                    imageID = Resource.Mipmap.united_states;
                     break;
                 case "GBP":
-                    imageID = Resource.Drawable.dogbasket;
+                    imageID = Resource.Mipmap.united_kingdom;
                     break;
                 case "CAD":
-                    imageID = Resource.Drawable.elephant;
+                    imageID = Resource.Mipmap.canada;
                     break;
                 case "JPY":
-                    imageID = Resource.Drawable.gerbil;
+                    imageID = Resource.Mipmap.japan;
                     break;
                 case "CNY":
-                    imageID = Resource.Drawable.Kangaroo;
+                    imageID = Resource.Mipmap.china;
                     break;
                 case "NZD":
-                    imageID = Resource.Drawable.kitten;
+                    imageID = Resource.Mipmap.new_zealand;
                     break;
                 case "AUD":
-                    imageID = Resource.Drawable.penguin;
+                    imageID = Resource.Mipmap.australia;
                     break;
                 case "CHF":
-                    imageID = Resource.Drawable.snonleopard;
+                    imageID = Resource.Mipmap.switzerland;
                     break;
                 case "EUR":
-                    imageID = Resource.Drawable.whaleshark;
-                    break;
-                case "Events that effect All":
-                    imageID = Resource.Drawable.musicalnotesheadphoneColor;
+                    imageID = Resource.Mipmap.european_union;
                     break;
                 default:
-                    imageID = Resource.Drawable.musicalnotesheadphoneColor;
+                    imageID = Resource.Mipmap.globe;
                     break;
             }
             return imageID;

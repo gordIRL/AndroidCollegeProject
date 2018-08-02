@@ -1895,208 +1895,70 @@ namespace CurrencyAlertApp
 			public const int abc_vector_test = 2130837586;
 			
 			// aapt resource value: 0x7f020053
-			public const int arc_de_triomphe = 2130837587;
+			public const int before_mobile_phones = 2130837587;
 			
 			// aapt resource value: 0x7f020054
-			public const int bears = 2130837588;
+			public const int button_state = 2130837588;
 			
 			// aapt resource value: 0x7f020055
-			public const int before_mobile_phones = 2130837589;
+			public const int globe = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int big_ben_1 = 2130837590;
+			public const int Icon = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int big_ben_2 = 2130837591;
+			public const int musicalnotesheadphoneColor = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int buckingham_guards = 2130837592;
+			public const int notification_action_background = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int button_state = 2130837593;
+			public const int notification_bg = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int champ_elysees = 2130837594;
+			public const int notification_bg_low = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int dogbasket = 2130837595;
+			public const int notification_bg_low_normal = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int downtown_edinburgh = 2130837596;
+			public const int notification_bg_low_pressed = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int edinburgh_castle_1 = 2130837597;
+			public const int notification_bg_normal = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int edinburgh_castle_2 = 2130837598;
+			public const int notification_bg_normal_pressed = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int edinburgh_from_on_high = 2130837599;
-			
-			// aapt resource value: 0x7f020060
-			public const int edinburgh_station = 2130837600;
-			
-			// aapt resource value: 0x7f020061
-			public const int elephant = 2130837601;
-			
-			// aapt resource value: 0x7f020062
-			public const int eurostar = 2130837602;
-			
-			// aapt resource value: 0x7f020063
-			public const int gerbil = 2130837603;
-			
-			// aapt resource value: 0x7f020064
-			public const int heres_lookin_at_ya = 2130837604;
-			
-			// aapt resource value: 0x7f020065
-			public const int Icon = 2130837605;
-			
-			// aapt resource value: 0x7f020066
-			public const int inside_notre_dame = 2130837606;
+			public const int notification_icon_background = 2130837599;
 			
 			// aapt resource value: 0x7f020067
-			public const int Kangaroo = 2130837607;
+			public const int notification_template_icon_bg = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int kestrel = 2130837608;
+			public const int notification_template_icon_low_bg = 2130837608;
 			
-			// aapt resource value: 0x7f020069
-			public const int kitten = 2130837609;
+			// aapt resource value: 0x7f020060
+			public const int notification_tile_bg = 2130837600;
 			
-			// aapt resource value: 0x7f02006a
-			public const int la_tour_eiffel = 2130837610;
+			// aapt resource value: 0x7f020061
+			public const int notify_panel_notification_icon_bg = 2130837601;
 			
-			// aapt resource value: 0x7f02006b
-			public const int london_eye = 2130837611;
+			// aapt resource value: 0x7f020062
+			public const int rect = 2130837602;
 			
-			// aapt resource value: 0x7f02006c
-			public const int louvre_1 = 2130837612;
+			// aapt resource value: 0x7f020063
+			public const int red_gradient = 2130837603;
 			
-			// aapt resource value: 0x7f02006d
-			public const int louvre_2 = 2130837613;
+			// aapt resource value: 0x7f020064
+			public const int splash_screen = 2130837604;
 			
-			// aapt resource value: 0x7f02006e
-			public const int medieval_siege_gun = 2130837614;
+			// aapt resource value: 0x7f020065
+			public const int tooltip_frame_dark = 2130837605;
 			
-			// aapt resource value: 0x7f02006f
-			public const int modest_accomodations = 2130837615;
-			
-			// aapt resource value: 0x7f020070
-			public const int museum_and_castle = 2130837616;
-			
-			// aapt resource value: 0x7f020071
-			public const int musicalnotesheadphoneColor = 2130837617;
-			
-			// aapt resource value: 0x7f020072
-			public const int notification_action_background = 2130837618;
-			
-			// aapt resource value: 0x7f020073
-			public const int notification_bg = 2130837619;
-			
-			// aapt resource value: 0x7f020074
-			public const int notification_bg_low = 2130837620;
-			
-			// aapt resource value: 0x7f020075
-			public const int notification_bg_low_normal = 2130837621;
-			
-			// aapt resource value: 0x7f020076
-			public const int notification_bg_low_pressed = 2130837622;
-			
-			// aapt resource value: 0x7f020077
-			public const int notification_bg_normal = 2130837623;
-			
-			// aapt resource value: 0x7f020078
-			public const int notification_bg_normal_pressed = 2130837624;
-			
-			// aapt resource value: 0x7f020079
-			public const int notification_icon_background = 2130837625;
-			
-			// aapt resource value: 0x7f020095
-			public const int notification_template_icon_bg = 2130837653;
-			
-			// aapt resource value: 0x7f020096
-			public const int notification_template_icon_low_bg = 2130837654;
-			
-			// aapt resource value: 0x7f02007a
-			public const int notification_tile_bg = 2130837626;
-			
-			// aapt resource value: 0x7f02007b
-			public const int notify_panel_notification_icon_bg = 2130837627;
-			
-			// aapt resource value: 0x7f02007c
-			public const int notre_dame = 2130837628;
-			
-			// aapt resource value: 0x7f02007d
-			public const int old_meets_new = 2130837629;
-			
-			// aapt resource value: 0x7f02007e
-			public const int one_o_clock_gun = 2130837630;
-			
-			// aapt resource value: 0x7f02007f
-			public const int penguin = 2130837631;
-			
-			// aapt resource value: 0x7f020080
-			public const int pompidou_centre = 2130837632;
-			
-			// aapt resource value: 0x7f020081
-			public const int portcullis_gate = 2130837633;
-			
-			// aapt resource value: 0x7f020082
-			public const int rect = 2130837634;
-			
-			// aapt resource value: 0x7f020083
-			public const int red_gradient = 2130837635;
-			
-			// aapt resource value: 0x7f020084
-			public const int royal_mile = 2130837636;
-			
-			// aapt resource value: 0x7f020085
-			public const int rue_cler = 2130837637;
-			
-			// aapt resource value: 0x7f020086
-			public const int scott_monument = 2130837638;
-			
-			// aapt resource value: 0x7f020087
-			public const int seine_barge = 2130837639;
-			
-			// aapt resource value: 0x7f020088
-			public const int seine_river = 2130837640;
-			
-			// aapt resource value: 0x7f020089
-			public const int snonleopard = 2130837641;
-			
-			// aapt resource value: 0x7f02008a
-			public const int splash_screen = 2130837642;
-			
-			// aapt resource value: 0x7f02008b
-			public const int to_notre_dame = 2130837643;
-			
-			// aapt resource value: 0x7f02008c
-			public const int tooltip_frame_dark = 2130837644;
-			
-			// aapt resource value: 0x7f02008d
-			public const int tooltip_frame_light = 2130837645;
-			
-			// aapt resource value: 0x7f02008e
-			public const int tower_of_london = 2130837646;
-			
-			// aapt resource value: 0x7f02008f
-			public const int tower_visitors = 2130837647;
-			
-			// aapt resource value: 0x7f020090
-			public const int versailles_fountains = 2130837648;
-			
-			// aapt resource value: 0x7f020091
-			public const int versailles_gates = 2130837649;
-			
-			// aapt resource value: 0x7f020092
-			public const int victoria_albert = 2130837650;
-			
-			// aapt resource value: 0x7f020093
-			public const int view_from_holyrood_park = 2130837651;
-			
-			// aapt resource value: 0x7f020094
-			public const int whaleshark = 2130837652;
+			// aapt resource value: 0x7f020066
+			public const int tooltip_frame_light = 2130837606;
 			
 			static Drawable()
 			{
@@ -2830,31 +2692,64 @@ namespace CurrencyAlertApp
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int ic_action_content_create = 2130903040;
+			public const int australia = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int ic_action_content_save = 2130903041;
+			public const int canada = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int ic_album_black_24dp = 2130903042;
+			public const int china = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int ic_exit_to_app_black_24dp = 2130903043;
+			public const int european_union = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int ic_home_black_24dp = 2130903044;
+			public const int globe = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int ic_menu_copy_holo_dark = 2130903045;
+			public const int ic_action_content_create = 2130903045;
 			
 			// aapt resource value: 0x7f030006
-			public const int ic_menu_cut_holo_dark = 2130903046;
+			public const int ic_action_content_save = 2130903046;
 			
 			// aapt resource value: 0x7f030007
-			public const int ic_menu_paste_holo_dark = 2130903047;
+			public const int ic_album_black_24dp = 2130903047;
 			
 			// aapt resource value: 0x7f030008
-			public const int ic_menu_search_holo_dark = 2130903048;
+			public const int ic_exit_to_app_black_24dp = 2130903048;
+			
+			// aapt resource value: 0x7f030009
+			public const int ic_home_black_24dp = 2130903049;
+			
+			// aapt resource value: 0x7f03000a
+			public const int ic_menu_copy_holo_dark = 2130903050;
+			
+			// aapt resource value: 0x7f03000b
+			public const int ic_menu_cut_holo_dark = 2130903051;
+			
+			// aapt resource value: 0x7f03000c
+			public const int ic_menu_paste_holo_dark = 2130903052;
+			
+			// aapt resource value: 0x7f03000d
+			public const int ic_menu_search_holo_dark = 2130903053;
+			
+			// aapt resource value: 0x7f03000e
+			public const int japan = 2130903054;
+			
+			// aapt resource value: 0x7f03000f
+			public const int new_zealand = 2130903055;
+			
+			// aapt resource value: 0x7f030010
+			public const int switzerland = 2130903056;
+			
+			// aapt resource value: 0x7f030011
+			public const int uganda = 2130903057;
+			
+			// aapt resource value: 0x7f030012
+			public const int united_kingdom = 2130903058;
+			
+			// aapt resource value: 0x7f030013
+			public const int united_states = 2130903059;
 			
 			static Mipmap()
 			{
