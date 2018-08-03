@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:textSize="25dp"
         android:textStyle="bold"
+        android:textColor="@android:color/black"
         android:ems="10"
         android:hint="@string/PA_Txt_NumberOfSeconds"
         android:inputType="numberDecimal" />

@@ -9,6 +9,10 @@
     <item name="windowActionBar">false</item>
     <item name="colorPrimary">@color/my_blue</item>
     <item name="colorAccent">#A88F2D</item>
+   
+    
+    
+    
   </style>  
 
   <style name="MyTheme.Test" parent="Theme.AppCompat.Light.DarkActionBar">

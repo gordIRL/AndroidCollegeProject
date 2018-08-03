@@ -10,14 +10,16 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/main_content"
-        android:layout_below="@id/toolbar">       
+        android:layout_below="@id/toolbar"
+        android:background="#ffffff">       
         <TextView
             android:text="@string/MA_Txt_DataLastUpdated"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_marginBottom="7dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtDataLastUpdated" />
+            android:id="@+id/txtDataLastUpdated" 
+            android:textColor="@android:color/black"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:scrollbars="vertical"
