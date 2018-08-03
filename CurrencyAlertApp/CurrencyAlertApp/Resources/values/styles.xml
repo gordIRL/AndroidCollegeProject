@@ -7,7 +7,7 @@
   <style name="MyTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
     <item name="windowNoTitle">true</item>
     <item name="windowActionBar">false</item>
-    <item name="colorPrimary">#5A8622</item>
+    <item name="colorPrimary">@color/my_blue</item>
     <item name="colorAccent">#A88F2D</item>
   </style>  
 
@@ -17,9 +17,19 @@
     <item name="colorPrimary">@color/my_purple</item>
     <item name="colorAccent">@color/my_green</item>
     <item name="android:windowBackground">@color/my_green</item>    
-  </style> 
-  
-  
+  </style>
+
+
+
+  <style name="MyTheme.Final" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="windowNoTitle">true</item>
+    <item name="windowActionBar">false</item>
+    <item name="colorPrimary">@color/my_purple</item>
+    <item name="colorAccent">@color/my_green</item>
+    <item name="android:windowBackground">@color/my_green</item>
+  </style>
+
+
   <style name="MyTheme.Splash" parent ="Theme.AppCompat.Light.NoActionBar">
     <item name="android:windowBackground">@drawable/splash_screen</item>
     <item name="android:windowNoTitle">true</item>

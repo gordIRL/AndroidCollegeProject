@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="#009688"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+  <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
     <EditText
         android:id="@+id/timeTxt"
         android:layout_width="wrap_content"
@@ -18,7 +20,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="60dp"
-        android:text="@string/PA_Btn_NoOfSeconds" />
+        android:text="@string/PA_Btn_NoOfSeconds"
+        android:background="@drawable/button_state"/>
     <LinearLayout
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
@@ -31,7 +34,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="60dp"
             android:layout_marginTop="5dp"
-            android:text="@string/PA_Btn_SetDate" />
+            android:text="@string/PA_Btn_SetDate" 
+             android:background="@drawable/button_state"/>
         <TextView
             android:text="@string/PA_Txt_Date"
             android:textAppearance="?android:attr/textAppearanceSmall"
@@ -51,7 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="60dp"
             android:layout_marginTop="5dp"
-            android:text="@string/PA_Btn_SetTime" />
+            android:text="@string/PA_Btn_SetTime" 
+             android:background="@drawable/button_state"/>
         <TextView
             android:text="@string/PA_Txt_Time"
             android:textAppearance="?android:attr/textAppearanceSmall"
@@ -76,5 +81,6 @@
         android:text="@string/PA_Btn_SetPersonalAlert"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnSetPersonalAlert" />
+        android:id="@+id/btnSetPersonalAlert" 
+        android:background="@drawable/button_state"/>
 </LinearLayout>

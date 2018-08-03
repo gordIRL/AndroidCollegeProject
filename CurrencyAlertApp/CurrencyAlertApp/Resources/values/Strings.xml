@@ -36,6 +36,7 @@
 
   <string name="TB_Top_UpdateXML">Update XML (Market Data)</string>
   <string name="TB_Top_Alerts">Alerts</string>
+  <string name="TB_Top_Custom_Adapter">Custom Adapter</string>
   <string name="TB_Top_Preferences">Preferences</string>
   <string name="TB_Top_Reports">Reports</string>
   

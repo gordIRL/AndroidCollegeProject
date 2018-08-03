@@ -11,6 +11,10 @@
     android:icon="@mipmap/ic_action_content_save"        
     local:showAsAction="never"       
     android:title="@string/TB_Top_Alerts" />
+  <item
+   android:id="@+id/menu_top_custom_adapter"
+   local:showAsAction="never"
+   android:title="@string/TB_Top_Custom_Adapter" />
   <item        
     android:id="@+id/menu_top_preferences"        
     local:showAsAction="never"        

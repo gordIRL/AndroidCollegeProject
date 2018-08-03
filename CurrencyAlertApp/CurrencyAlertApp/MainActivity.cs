@@ -23,7 +23,7 @@ using Android.Support.V7.Widget;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Theme = "@style/MyTheme.Base", Label = "CurrencyAlertApp", Icon = "@drawable/icon")]
+    [Activity(Theme = "@style/MyTheme.Base", Label = "CurrencyAlertApp",  Icon = "@drawable/icon")]
     //  MainLauncher = true,      // must have an appCompat theme  
 
     public class MainActivity : AppCompatActivity
@@ -32,7 +32,6 @@ namespace CurrencyAlertApp
         List<NewsObject> DisplayListOBJECT = new List<NewsObject>();
         List<NewsObject> tempDisplayListOBJECT = new List<NewsObject>();
 
-        Button MyButton;
         TextView txtDataLastUpdated;
         List<string> marketImpact_selectedList = new List<string>();
         List<string> currencies_selectedList = new List<string>();
@@ -89,15 +88,15 @@ namespace CurrencyAlertApp
             //-----------------------------------------------------------------------------------
             //------------------------------------------------------------------------------------
 
-            // ToolBar - Top of Screen
+            // ToolBar - Top of Screen  (method 1)
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
             SupportActionBar.Title = GetString(Resource.String.ToolbarTopTitle);
 
-            // Toolbar - Bottom of Screen
-            var editToolbar = FindViewById<Toolbar>(Resource.Id.edit_toolbar);
-            editToolbar.Title = GetString(Resource.String.ToolbarBottomTitle);
-            editToolbar.InflateMenu(Resource.Menu.edit_menus);
+            // Toolbar - Bottom of Screen  (method 2)
+            var toolbar_bottom = FindViewById<Toolbar>(Resource.Id.toolbar_bottom);
+            toolbar_bottom.Title = GetString(Resource.String.ToolbarBottomTitle);
+            toolbar_bottom.InflateMenu(Resource.Menu.menus_Main_bottom);
 
             // variables - bottom toolbar - alert dialog - market impact
             string[] marketImpact_titlesArray = Resources.GetStringArray(Resource.Array.MarketImpactArray);
@@ -124,19 +123,8 @@ namespace CurrencyAlertApp
             //DefaultDisplayAllData();
 
 
-            // Button to call next activity
-            MyButton = FindViewById<Button>(Resource.Id.MyButton);
-            //MyButton.Text =  GetString(Resource.String.Button_Activity2Test);  // not in use
-            MyButton.Click += delegate
-            {
-                Intent intent = new Intent(this, typeof(GordTestActivity));
-                StartActivity(intent);
-            };
-
-
-
             // bottom ToolBar Menu Selection
-            editToolbar.MenuItemClick += (sender, e) =>
+            toolbar_bottom.MenuItemClick += (sender, e) =>
             {
                 switch (e.Item.ItemId)
                 {
@@ -375,9 +363,9 @@ namespace CurrencyAlertApp
                         break;
                     case 1:
                         // call method in next activity to pass data across (newsObject)
-                        GordTestActivity.MethodToPassObject(DisplayListOBJECT[e]);
+                        CustomAdapter_Test_Activity.MethodToPassObject(DisplayListOBJECT[e]);
                         // call intent to start next activity
-                        Intent intent = new Intent(this, typeof(GordTestActivity));
+                        Intent intent = new Intent(this, typeof(CustomAdapter_Test_Activity));
                         StartActivity(intent);
                         break;
                     case 2:
@@ -449,9 +437,15 @@ namespace CurrencyAlertApp
                     StartActivity(intent);
                     break;
 
+                case Resource.Id.menu_top_custom_adapter:
+                    Toast.MakeText(this, "Action selected: \nPreferences - test Activity", ToastLength.Short).Show();
+                    intent = new Intent(this, typeof(CustomAdapter_Test_Activity));
+                    StartActivity(intent);
+                    break;
+
                 case Resource.Id.menu_top_preferences:
                     Toast.MakeText(this, "Action selected: \nPreferences - test Activity", ToastLength.Short).Show();
-                    intent = new Intent(this, typeof(GordTestActivity));
+                    intent = new Intent(this, typeof(CustomAdapter_Test_Activity));
                     StartActivity(intent);
                     break;
 

@@ -43,7 +43,7 @@ namespace CurrencyAlertApp
             //Setup your layout here
             // Inflate the CardView for the photo:
             View itemView = LayoutInflater.From(parent.Context).
-                        Inflate(Resource.Layout.PhotoCardView, parent, false);
+                        Inflate(Resource.Layout.NewsObject_CardView, parent, false);
 
             // Create a ViewHolder to find and hold these view references, and 
             // register OnClick with the view holder:

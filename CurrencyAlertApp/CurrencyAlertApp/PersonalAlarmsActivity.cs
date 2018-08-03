@@ -15,7 +15,8 @@ using Android.Text.Format;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Label = "PersonalAlarmsActivity")]
+    [Activity(Label = "PersonalAlarmsActivity" , Theme = "@style/MyTheme.Base")]
+    // MainLauncher = true
     public class PersonalAlarmsActivity : Activity
     {
         // declare controls for Set Alarm via seconds

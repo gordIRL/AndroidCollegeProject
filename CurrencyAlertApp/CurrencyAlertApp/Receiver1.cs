@@ -21,7 +21,7 @@ namespace CurrencyAlertApp
 
             Toast.MakeText(context, "Alarm Ringing!", ToastLength.Short).Show();
 
-            Intent myNewIntent = new Intent(context, typeof(TestNotificationsActivity));   // use 'context' not 'this' here!!
+            Intent myNewIntent = new Intent(context, typeof(Notifications_Test_Activity));   // use 'context' not 'this' here!!
             context.StartActivity(myNewIntent);
         }
     }
