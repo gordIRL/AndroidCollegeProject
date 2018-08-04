@@ -148,9 +148,9 @@ namespace CurrencyAlertApp
             : base(itemView)
         {
             // Locate and cache view references:
-            Icon = itemView.FindViewById<ImageView>(Resource.Id.imageView);
-            Caption1 = itemView.FindViewById<TextView>(Resource.Id.textView);
-            Caption2 = itemView.FindViewById<TextView>(Resource.Id.textView222);
+            Icon = itemView.FindViewById<ImageView>(Resource.Id.img_1_News_CardView);
+            Caption1 = itemView.FindViewById<TextView>(Resource.Id.txt_1_News_CardView);
+            Caption2 = itemView.FindViewById<TextView>(Resource.Id.txt_2_News_CardView);
 
             // Detect user clicks on the item view and report which item was clicked 
             itemView.Click += (sender, e) => listener(base.LayoutPosition);

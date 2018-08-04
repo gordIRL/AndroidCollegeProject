@@ -2153,11 +2153,11 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f07003b
 			public const int image = 2131165243;
 			
-			// aapt resource value: 0x7f07006d
-			public const int imageView = 2131165293;
-			
 			// aapt resource value: 0x7f070070
 			public const int imageView_NewsObjectInfoRow_Icon = 2131165296;
+			
+			// aapt resource value: 0x7f07006d
+			public const int img_1_News_CardView = 2131165293;
 			
 			// aapt resource value: 0x7f070080
 			public const int info = 2131165312;
@@ -2381,14 +2381,8 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f070045
 			public const int textSpacerNoTitle = 2131165253;
 			
-			// aapt resource value: 0x7f07006e
-			public const int textView = 2131165294;
-			
 			// aapt resource value: 0x7f070086
 			public const int textView1 = 2131165318;
-			
-			// aapt resource value: 0x7f07006f
-			public const int textView222 = 2131165295;
 			
 			// aapt resource value: 0x7f07007e
 			public const int time = 2131165310;
@@ -2431,6 +2425,12 @@ namespace CurrencyAlertApp
 			
 			// aapt resource value: 0x7f07008f
 			public const int txtTime = 2131165327;
+			
+			// aapt resource value: 0x7f07006e
+			public const int txt_1_News_CardView = 2131165294;
+			
+			// aapt resource value: 0x7f07006f
+			public const int txt_2_News_CardView = 2131165295;
 			
 			// aapt resource value: 0x7f070071
 			public const int txt_NewsObjectInfoRow_line1 = 2131165297;
