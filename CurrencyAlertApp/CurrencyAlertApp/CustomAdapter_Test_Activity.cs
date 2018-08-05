@@ -18,7 +18,7 @@ using System.Globalization;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Label = "GordTestActivity", Theme = "@style/MyTheme.Base")]
+    [Activity(Label = "GordTestActivity",  Theme = "@style/MyTheme.Base")]
     // MainLauncher = true,  //   Theme = "@style/MyTheme.Test"
     public class CustomAdapter_Test_Activity : AppCompatActivity
     {

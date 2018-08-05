@@ -275,8 +275,9 @@ namespace CurrencyAlertApp.DataAccess
                 // assign xml values to newsObject - uses xml <tag> names from xml file
                 tempNewsObject.Name = item.Element("title").Value;
                 tempNewsObject.CountryChar = item.Element("country").Value;
-                tempNewsObject.MarketImpact = item.Element("impact").Value;  // .Value - removes surrounding tags - giving only the value             
-                tempNewsObject.DateInTicks = dateTimeInTicks;
+                tempNewsObject.MarketImpact = item.Element("impact").Value;  // .Value - removes surrounding tags - giving only the value 
+                tempNewsObject.DateAndTime = tempDateTime;  
+                tempNewsObject.DateInTicks = dateTimeInTicks;  // ticks aren't really needed here as these objects won't be stored in the database
 
                 // add the tempNewsObject to list to return
                 listToReturn.Add(tempNewsObject);
@@ -284,9 +285,8 @@ namespace CurrencyAlertApp.DataAccess
             return listToReturn;
         }
 
-
+               
        
-        // object version
         public static List<NewsObject> TestLINQQueryUsingXML(XDocument xmlTestFile)
         {
             // LINQ queries (using xml file in Assets)           
@@ -315,7 +315,8 @@ namespace CurrencyAlertApp.DataAccess
                 tempNewsObject.Name = item.Element("title").Value;
                 tempNewsObject.CountryChar = item.Element("country").Value;
                 tempNewsObject.MarketImpact = item.Element("impact").Value;  // .Value - removes surrounding tags - giving only the value
-                tempNewsObject.DateInTicks = dateTimeInTicks;
+                tempNewsObject.DateAndTime = tempDateTime;
+                tempNewsObject.DateInTicks = dateTimeInTicks;  // ticks aren't really needed here as these objects won't be stored in the database
 
                 // add the tempNewsObject to list to return
                 linqQueryResultsList.Add(tempNewsObject);

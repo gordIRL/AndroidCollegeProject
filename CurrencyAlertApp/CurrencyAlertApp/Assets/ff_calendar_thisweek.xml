@@ -3,7 +3,7 @@
 	<event>
 		<title>FPI m/m</title>
 		<country>NZD</country>
-		<date><![CDATA[04-15-2018]]></date>
+		<date><![CDATA[04-15-2019]]></date>
 		<time><![CDATA[10:45pm]]></time>
 		<impact><![CDATA[Low]]></impact>
 		<forecast />
@@ -19,10 +19,19 @@
 		<previous><![CDATA[1.5%]]></previous>
 	</event>
   <event>
-    <title>Gordons Test</title>
+    <title>Gordons Test 111111</title>
     <country>USD</country>
-    <date><![CDATA[07-21-2018]]></date>
-    <time><![CDATA[03:55pm]]></time>
+    <date><![CDATA[08-5-2018]]></date>
+    <time><![CDATA[10:58pm]]></time>
+    <impact><![CDATA[High]]></impact>
+    <forecast />
+    <previous><![CDATA[-0.5%]]></previous>
+  </event>
+   <event>
+    <title>Gordons Test 222222</title>
+    <country>USD</country>
+    <date><![CDATA[08-5-2018]]></date>
+    <time><![CDATA[10:59pm]]></time>
     <impact><![CDATA[High]]></impact>
     <forecast />
     <previous><![CDATA[-0.5%]]></previous>

@@ -362,12 +362,20 @@ namespace CurrencyAlertApp
                     case 0:
                         break;
                     case 1:
+                        //// old version
+                        //// call method in next activity to pass data across (newsObject)
+                        // CustomAdapter_Test_Activity.MethodToPassObject(DisplayListOBJECT[e]);
+                        //// call intent to start next activity
+                        //Intent intent = new Intent(this, typeof(CustomAdapter_Test_Activity));
+
+                        // new version
                         // call method in next activity to pass data across (newsObject)
-                        CustomAdapter_Test_Activity.MethodToPassObject(DisplayListOBJECT[e]);
+                        PersonalAlarmsActivity.MethodToPassObject(DisplayListOBJECT[e]);
                         // call intent to start next activity
-                        Intent intent = new Intent(this, typeof(CustomAdapter_Test_Activity));
+                        Intent intent = new Intent(this, typeof(PersonalAlarmsActivity));
                         StartActivity(intent);
                         break;
+
                     case 2:
                         break;
                     default:
