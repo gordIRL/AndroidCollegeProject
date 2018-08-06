@@ -23,7 +23,7 @@ using Android.Support.V7.Widget;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Theme = "@style/MyTheme.Base", Label = "CurrencyAlertApp", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Theme = "@style/MyTheme.Base", Label = "CurrencyAlertApp", Icon = "@drawable/icon")]
     //  MainLauncher = true,      // must have an appCompat theme  
 
     public class MainActivity : AppCompatActivity
@@ -44,7 +44,7 @@ namespace CurrencyAlertApp
         public RecyclerView.LayoutManager mLayoutManager;
 
         // Adapter that accesses the data set (List<newsObject>):
-        public NewsObject_RecycleAdapter_NEW mAdapter;
+        public NewsObject_RecycleAdapter mAdapter;
 
 
 
@@ -57,7 +57,7 @@ namespace CurrencyAlertApp
             SetContentView(Resource.Layout.Main);
 
             // Get our RecyclerView layout:
-            mRecyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
+            mRecyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView_MainActivity);
 
             //............................................................
             // Layout Manager Setup:
@@ -77,7 +77,7 @@ namespace CurrencyAlertApp
 
             // Create an adapter for the RecyclerView, and pass it the
             // data set (List<newsobject) to manage:
-            mAdapter = new NewsObject_RecycleAdapter_NEW(DisplayListOBJECT);
+            mAdapter = new NewsObject_RecycleAdapter(DisplayListOBJECT);
 
             //Register the item click handler(below) with the adapter:           
             mAdapter.ItemClick += MAdapter_ItemClick1;
@@ -447,13 +447,13 @@ namespace CurrencyAlertApp
 
                 case Resource.Id.menu_top_custom_adapter:
                     Toast.MakeText(this, "Action selected: \nPreferences - test Activity", ToastLength.Short).Show();
-                    intent = new Intent(this, typeof(CustomAdapter_Test_Activity));
+                    intent = new Intent(this, typeof(NewsObject_CustomAdapter_Test_Activity));
                     StartActivity(intent);
                     break;
 
                 case Resource.Id.menu_top_preferences:
                     Toast.MakeText(this, "Action selected: \nPreferences - test Activity", ToastLength.Short).Show();
-                    intent = new Intent(this, typeof(CustomAdapter_Test_Activity));
+                    intent = new Intent(this, typeof(NewsObject_CustomAdapter_Test_Activity));
                     StartActivity(intent);
                     break;
 

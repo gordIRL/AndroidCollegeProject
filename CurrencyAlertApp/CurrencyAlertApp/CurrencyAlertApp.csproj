@@ -128,9 +128,9 @@
     <Compile Include="DataAccess\MySharedPreferencesMethods.cs" />
     <Compile Include="DataAccess\Trade.cs" />
     <Compile Include="DataAccess\URLObject.cs" />
-    <Compile Include="CustomAdapter_Test_Activity.cs" />
+    <Compile Include="NewsObject_CustomAdapter_Test_Activity.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="NewsObject_RecycleAdapter_NEW.cs" />
+    <Compile Include="NewsObject_RecycleAdapter.cs" />
     <Compile Include="PersonalAlarmsActivity.cs" />
     <Compile Include="Receiver1.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -138,6 +138,7 @@
     <Compile Include="SplashActivity.cs" />
     <Compile Include="Notifications_Test_Activity.cs" />
     <Compile Include="UserAlertActivity.cs" />
+    <Compile Include="UserAlert_RecycleAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
@@ -145,7 +146,7 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\layout\CustomAdapter_Test_Layout.axml">
+    <AndroidResource Include="Resources\layout\NewsObject_CustomeAdapter_Test_Layout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\PersonalAlarms.axml">
@@ -162,6 +163,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\UserAlert.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\UserAlert_CardView.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

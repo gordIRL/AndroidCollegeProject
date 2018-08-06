@@ -13,14 +13,29 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using CurrencyAlertApp.DataAccess;
+using Android.Support.V7.Widget;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Theme = "@style/MyTheme.Base",   Label = "UserAlertActivity")]
-    //  MainLauncher = true
+    [Activity(Theme = "@style/MyTheme.Base", MainLauncher = true,    Label = "UserAlertActivity")]
+    //  MainLauncher = true,
 
     public class UserAlertActivity : AppCompatActivity
     {
+        List<UserAlert> DisplayListOBJECT = new List<UserAlert>();
+
+
+        // RecyclerView instance that displays the newsObject List:
+        public RecyclerView mRecyclerView;
+
+        // Layout manager that lays out each card in the RecyclerView:
+        public RecyclerView.LayoutManager mLayoutManager;
+
+        // Adapter that accesses the data set (List<newsObject>):       
+        public UserAlert_RecycleAdapter mAdapter;
+        //public NewsObject_RecycleAdapter mAdapter;
+
+
         //List<UserAlert> userAlertsList = new List<UserAlert>();
 
 
@@ -28,6 +43,44 @@ namespace CurrencyAlertApp
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.UserAlert);
+
+
+            //SetUpData.CreateEmptyUserAlertTable();
+            DisplayListOBJECT =  SetUpData.DummyDataForUserAlert();
+
+
+
+
+            // Get our RecyclerView layout:
+            mRecyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView_UserAlert);
+
+            //............................................................
+            // Layout Manager Setup:
+
+            // Use the built-in linear layout manager:
+            mLayoutManager = new LinearLayoutManager(this);
+
+            // Or use the built-in grid layout manager (two horizontal rows):
+            //mLayoutManager = new GridLayoutManager
+            //       (this, 2, GridLayoutManager.Horizontal, false);
+
+            // Plug the layout manager into the RecyclerView:
+            mRecyclerView.SetLayoutManager(mLayoutManager);
+
+            //............................................................
+            // Adapter Setup:
+
+            // Create an adapter for the RecyclerView, and pass it the
+            // data set (List<newsobject) to manage:
+            mAdapter = new UserAlert_RecycleAdapter(DisplayListOBJECT);
+
+            ////////////////////////////Register the item click handler(below) with the adapter:           
+            //////////////////////////mAdapter.ItemClick += MAdapter_ItemClick1;
+
+            // Plug the adapter into the RecyclerView:
+            mRecyclerView.SetAdapter(mAdapter);
+
+            //-----------------------------------------------------------------------------------
 
             // ToolBar - Top of Screen  (method 1)
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar_Top_UserAlert);
@@ -54,8 +107,7 @@ namespace CurrencyAlertApp
                 }
             };
 
-            //SetUpData.CreateEmptyUserAlertTable();
-            SetUpData.PopulateUserAlertTableWithDummyData();
+     
 
 
         }// end OnCreate -----------------------------------------------------------
@@ -90,7 +142,7 @@ namespace CurrencyAlertApp
 
                 case Resource.Id.topMenu_UserAlertActivity_Preferences:
                     Toast.MakeText(this, "Action selected: \nPreferences - test Activity", ToastLength.Short).Show();
-                    intent = new Intent(this, typeof(CustomAdapter_Test_Activity));
+                    intent = new Intent(this, typeof(NewsObject_CustomAdapter_Test_Activity));
                     StartActivity(intent);
                     break;
 

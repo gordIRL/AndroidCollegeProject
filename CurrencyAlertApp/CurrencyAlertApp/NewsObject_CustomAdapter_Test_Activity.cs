@@ -20,7 +20,7 @@ namespace CurrencyAlertApp
 {
     [Activity(Label = "GordTestActivity",  Theme = "@style/MyTheme.Base")]
     // MainLauncher = true,  //   Theme = "@style/MyTheme.Test"
-    public class CustomAdapter_Test_Activity : AppCompatActivity
+    public class NewsObject_CustomAdapter_Test_Activity : AppCompatActivity
     {
         public static string myResultStringMain = string.Empty;
         public static NewsObject myResultNewsObject;
@@ -35,7 +35,7 @@ namespace CurrencyAlertApp
             base.OnCreate(savedInstanceState);
 
             // Create your application here
-            SetContentView(Resource.Layout.CustomAdapter_Test_Layout);
+            SetContentView(Resource.Layout.NewsObject_CustomeAdapter_Test_Layout);
             
             //Toast.MakeText(this, "Hello and welcome to TestActivity!\n" + myResultStringMain, ToastLength.Long).Show();
             if(myResultNewsObject != null)

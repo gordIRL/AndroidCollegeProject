@@ -1,37 +1,29 @@
 ﻿using System;
-
-using Android.Views;
-using Android.Widget;
-using Android.Support.V7.Widget;
-using CurrencyAlertApp.DataAccess;
-
-using Android.Support.V7.App;
-using Toolbar = Android.Support.V7.Widget.Toolbar;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-// to pass a XDocument add reference:    System.Xml.Linq.
-using System.Xml;
-using System.Xml.Linq;
-using System.Xml.XPath;
-using System.IO;
-using System.Reflection;
-using Android.Content.Res;
-using Android.Util;
-using System.Collections.Generic;
+
+using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Runtime;
+using Android.Support.V7.Widget;
+using Android.Views;
+using Android.Widget;
+using CurrencyAlertApp.DataAccess;
 
 namespace CurrencyAlertApp
 {
     // Adapter to connect the data set (photo album) to the RecyclerView: 
-    public class NewsObject_RecycleAdapter_NEW : RecyclerView.Adapter
-    {       
+    public class UserAlert_RecycleAdapter : RecyclerView.Adapter
+    {
         public event EventHandler<int> ItemClick;
 
         // Underlying data set (a List<newsObject>):
-        public List<NewsObject> mNewsObjectList;
+        public List<UserAlert> mNewsObjectList;
 
         // Load the adapter with the data set (List<newsObject>) at construction time:
-        public NewsObject_RecycleAdapter_NEW(List<NewsObject> newsObjectList)
+        public UserAlert_RecycleAdapter(List<UserAlert> newsObjectList)
         {
             mNewsObjectList = newsObjectList;
         }
@@ -43,12 +35,12 @@ namespace CurrencyAlertApp
             //Setup your layout here
             // Inflate the CardView for the photo:
             View itemView = LayoutInflater.From(parent.Context).
-                        Inflate(Resource.Layout.NewsObject_CardView, parent, false);
+                        Inflate(Resource.Layout.UserAlert_CardView, parent, false);
 
             // Create a ViewHolder to find and hold these view references, and 
             // register OnClick with the view holder:
             //NewsObject_ViewHolder vh = new NewsObject_ViewHolder(itemView, OnClick); (original)
-            var vh = new NewsObject_RecycleAdapter_NEW_ViewHolder(itemView, OnClick);       // , OnLongClick
+            var vh = new UserAlert_RecycleAdapter_NEW_ViewHolder(itemView, OnClick);       // , OnLongClick
             return vh;
         }
 
@@ -57,20 +49,20 @@ namespace CurrencyAlertApp
         public override void OnBindViewHolder(RecyclerView.ViewHolder viewHolder, int position)
         {
             // Replace the contents of the view with that element          
-            NewsObject_RecycleAdapter_NEW_ViewHolder vh = viewHolder as NewsObject_RecycleAdapter_NEW_ViewHolder;
-            
+            UserAlert_RecycleAdapter_NEW_ViewHolder vh = viewHolder as UserAlert_RecycleAdapter_NEW_ViewHolder;
+
             // Set the ImageView and TextView in this ViewHolder's CardView 
             // from this position in the List<newsObject> (photo album)
 
             //  Assign content (get currency icon 1st)
             string countryChar = mNewsObjectList[position].CountryChar.ToString().ToUpper();
             int imageID = GetImageForCurrency(countryChar);
-            vh.Icon.SetImageResource(imageID);            
+            vh.Icon.SetImageResource(imageID);
 
             //  Assign content - continued
-            vh.Caption1.Text = mNewsObjectList[position].CountryChar + ": " + mNewsObjectList[position].MarketImpact; 
-            vh.Caption2.Text = mNewsObjectList[position].DateAndTime.ToString("dd/MM/yyyy") + ":  " 
-                    + mNewsObjectList[position].DateAndTime.ToString("HH:mmtt") + "\n" 
+            vh.Caption1.Text = mNewsObjectList[position].CountryChar + ": " + mNewsObjectList[position].MarketImpact;
+            vh.Caption2.Text = mNewsObjectList[position].DateAndTime.ToString("dd/MM/yyyy") + ":  "
+                    + mNewsObjectList[position].DateAndTime.ToString("HH:mmtt") + "\n"
                     + mNewsObjectList[position].Name;
         }
 
@@ -80,10 +72,10 @@ namespace CurrencyAlertApp
         //public override int ItemCount =>  mNewsObjectList.Count;
         public override int ItemCount
         {
-            get {return mNewsObjectList.Count; }
+            get { return mNewsObjectList.Count; }
         }
-            
-           
+
+
 
 
         void OnClick(int position)
@@ -91,7 +83,7 @@ namespace CurrencyAlertApp
             if (ItemClick != null)
                 ItemClick(this, position);    // ItemClick?.Invoke(this, position);  (simplified delegate)
         }
-       
+
 
 
         public int GetImageForCurrency(string currentCurrency)
@@ -126,7 +118,7 @@ namespace CurrencyAlertApp
                     break;
                 case "EUR":
                     imageID = Resource.Mipmap.european_union;
-                    break;               
+                    break;
                 default:
                     imageID = Resource.Mipmap.globe;
                     break;
@@ -134,9 +126,9 @@ namespace CurrencyAlertApp
             return imageID;
         }
     }
-    
 
-    public class NewsObject_RecycleAdapter_NEW_ViewHolder : RecyclerView.ViewHolder
+
+    public class UserAlert_RecycleAdapter_NEW_ViewHolder : RecyclerView.ViewHolder
     {
         //public TextView TextView { get; set; }
         public ImageView Icon { get; private set; }
@@ -144,16 +136,22 @@ namespace CurrencyAlertApp
         public TextView Caption2 { get; private set; }
 
         // Get references to the views defined in the CardView layout.        
-        public NewsObject_RecycleAdapter_NEW_ViewHolder(View itemView, Action<int> listener) 
+        public UserAlert_RecycleAdapter_NEW_ViewHolder(View itemView, Action<int> listener)
             : base(itemView)
         {
             // Locate and cache view references:
-            Icon = itemView.FindViewById<ImageView>(Resource.Id.img_1_News_CardView);
-            Caption1 = itemView.FindViewById<TextView>(Resource.Id.txt_1_News_CardView);
-            Caption2 = itemView.FindViewById<TextView>(Resource.Id.txt_2_News_CardView);
+
+            Icon = itemView.FindViewById<ImageView>(Resource.Id.img_1_UserAlert_CardView);
+            //Icon = itemView.FindViewById<ImageView>(Resource.Id.img_1_News_CardView);
+
+            Caption1 = itemView.FindViewById<TextView>(Resource.Id.txt_1_UserAlert_CardView);
+            //Caption1 = itemView.FindViewById<TextView>(Resource.Id.txt_1_News_CardView);
+
+            Caption2 = itemView.FindViewById<TextView>(Resource.Id.txt_2_UserAlert_CardView);
+            //Caption2 = itemView.FindViewById<TextView>(Resource.Id.txt_2_News_CardView);
 
             // Detect user clicks on the item view and report which item was clicked 
             itemView.Click += (sender, e) => listener(base.LayoutPosition);
         }
-    }   
+    }
 }

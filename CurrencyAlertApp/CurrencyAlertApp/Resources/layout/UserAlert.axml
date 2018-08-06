@@ -3,12 +3,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-  <include
-       android:id="@+id/toolbar_Top_UserAlert"
-       layout="@layout/toolbar" />
-  
-  
+    <include
+        android:id="@+id/toolbar_Top_UserAlert"
+        layout="@layout/toolbar" />
     <TextView
         android:text="Title for USER ALERT ACTIVITY"
         android:id="@+id/txt_UserAlert_Title"
@@ -16,20 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black" />
-
-  <android.support.v7.widget.RecyclerView
-          android:id="@+id/recyclerView_UserAlert"
-          android:scrollbars="vertical"
-          android:layout_height="0dp"
-          android:layout_weight="1"
-          android:layout_width="fill_parent" />
-
-
-  <android.support.v7.widget.Toolbar
-           android:id="@+id/toolbar_Bottom_UserAlert"
-           android:minHeight="?attr/actionBarSize"
-           android:background="?attr/colorPrimary"
-           android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView_UserAlert"
+        android:scrollbars="vertical"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_width="fill_parent" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_Bottom_UserAlert"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

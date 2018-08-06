@@ -2075,11 +2075,11 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f070030
 			public const int bottom = 2131165232;
 			
-			// aapt resource value: 0x7f07009f
-			public const int bottomMenu_UserAlertActivity_Option_1 = 2131165343;
+			// aapt resource value: 0x7f0700a2
+			public const int bottomMenu_UserAlertActivity_Option_1 = 2131165346;
 			
-			// aapt resource value: 0x7f0700a0
-			public const int bottomMenu_UserAlertActivity_Option_2 = 2131165344;
+			// aapt resource value: 0x7f0700a3
+			public const int bottomMenu_UserAlertActivity_Option_2 = 2131165347;
 			
 			// aapt resource value: 0x7f07008b
 			public const int btnSetDate = 2131165323;
@@ -2159,11 +2159,14 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f07003b
 			public const int image = 2131165243;
 			
-			// aapt resource value: 0x7f070070
-			public const int imageView_NewsObjectInfoRow_Icon = 2131165296;
+			// aapt resource value: 0x7f07006f
+			public const int imageView_NewsObjectInfoRow_Icon = 2131165295;
 			
-			// aapt resource value: 0x7f07006d
-			public const int img_1_News_CardView = 2131165293;
+			// aapt resource value: 0x7f07006c
+			public const int img_1_News_CardView = 2131165292;
+			
+			// aapt resource value: 0x7f070098
+			public const int img_1_UserAlert_CardView = 2131165336;
 			
 			// aapt resource value: 0x7f070080
 			public const int info = 2131165312;
@@ -2189,53 +2192,53 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f070010
 			public const int listMode = 2131165200;
 			
-			// aapt resource value: 0x7f070068
-			public const int listViewTestActivityCurrency = 2131165288;
+			// aapt resource value: 0x7f070072
+			public const int listViewTestActivityCurrency = 2131165298;
 			
 			// aapt resource value: 0x7f07003d
 			public const int list_item = 2131165245;
 			
-			// aapt resource value: 0x7f070069
-			public const int main_content = 2131165289;
+			// aapt resource value: 0x7f070068
+			public const int main_content = 2131165288;
 			
 			// aapt resource value: 0x7f070079
 			public const int media_actions = 2131165305;
 			
-			// aapt resource value: 0x7f070098
-			public const int menu_data_clear = 2131165336;
-			
-			// aapt resource value: 0x7f07009e
-			public const int menu_data_debugDisplay = 2131165342;
-			
-			// aapt resource value: 0x7f070099
-			public const int menu_data_getAllData = 2131165337;
-			
-			// aapt resource value: 0x7f07009c
-			public const int menu_data_sampleData = 2131165340;
-			
-			// aapt resource value: 0x7f07009d
-			public const int menu_data_sampleLINQQuery = 2131165341;
-			
 			// aapt resource value: 0x7f07009b
-			public const int menu_data_selectCurrencies = 2131165339;
-			
-			// aapt resource value: 0x7f07009a
-			public const int menu_data_selectMarketImpacts = 2131165338;
-			
-			// aapt resource value: 0x7f0700a2
-			public const int menu_top_alerts = 2131165346;
-			
-			// aapt resource value: 0x7f0700a3
-			public const int menu_top_custom_adapter = 2131165347;
+			public const int menu_data_clear = 2131165339;
 			
 			// aapt resource value: 0x7f0700a1
-			public const int menu_top_marketData = 2131165345;
+			public const int menu_data_debugDisplay = 2131165345;
 			
-			// aapt resource value: 0x7f0700a4
-			public const int menu_top_preferences = 2131165348;
+			// aapt resource value: 0x7f07009c
+			public const int menu_data_getAllData = 2131165340;
+			
+			// aapt resource value: 0x7f07009f
+			public const int menu_data_sampleData = 2131165343;
+			
+			// aapt resource value: 0x7f0700a0
+			public const int menu_data_sampleLINQQuery = 2131165344;
+			
+			// aapt resource value: 0x7f07009e
+			public const int menu_data_selectCurrencies = 2131165342;
+			
+			// aapt resource value: 0x7f07009d
+			public const int menu_data_selectMarketImpacts = 2131165341;
 			
 			// aapt resource value: 0x7f0700a5
-			public const int menu_top_reports = 2131165349;
+			public const int menu_top_alerts = 2131165349;
+			
+			// aapt resource value: 0x7f0700a6
+			public const int menu_top_custom_adapter = 2131165350;
+			
+			// aapt resource value: 0x7f0700a4
+			public const int menu_top_marketData = 2131165348;
+			
+			// aapt resource value: 0x7f0700a7
+			public const int menu_top_preferences = 2131165351;
+			
+			// aapt resource value: 0x7f0700a8
+			public const int menu_top_reports = 2131165352;
 			
 			// aapt resource value: 0x7f070093
 			public const int message = 2131165331;
@@ -2276,8 +2279,8 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f070051
 			public const int radio = 2131165265;
 			
-			// aapt resource value: 0x7f07006b
-			public const int recyclerView = 2131165291;
+			// aapt resource value: 0x7f07006a
+			public const int recyclerView_MainActivity = 2131165290;
 			
 			// aapt resource value: 0x7f070096
 			public const int recyclerView_UserAlert = 2131165334;
@@ -2417,29 +2420,29 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f070094
 			public const int toolbar_Top_UserAlert = 2131165332;
 			
-			// aapt resource value: 0x7f07006c
-			public const int toolbar_bottom = 2131165292;
+			// aapt resource value: 0x7f07006b
+			public const int toolbar_bottom = 2131165291;
 			
 			// aapt resource value: 0x7f070031
 			public const int top = 2131165233;
 			
-			// aapt resource value: 0x7f0700a7
-			public const int topMenu_UserAlertActivity_Alerts = 2131165351;
-			
-			// aapt resource value: 0x7f0700a6
-			public const int topMenu_UserAlertActivity_MarketData = 2131165350;
-			
-			// aapt resource value: 0x7f0700a8
-			public const int topMenu_UserAlertActivity_Preferences = 2131165352;
+			// aapt resource value: 0x7f0700aa
+			public const int topMenu_UserAlertActivity_Alerts = 2131165354;
 			
 			// aapt resource value: 0x7f0700a9
-			public const int topMenu_UserAlertActivity_Reports = 2131165353;
+			public const int topMenu_UserAlertActivity_MarketData = 2131165353;
+			
+			// aapt resource value: 0x7f0700ab
+			public const int topMenu_UserAlertActivity_Preferences = 2131165355;
+			
+			// aapt resource value: 0x7f0700ac
+			public const int topMenu_UserAlertActivity_Reports = 2131165356;
 			
 			// aapt resource value: 0x7f07004a
 			public const int topPanel = 2131165258;
 			
-			// aapt resource value: 0x7f07006a
-			public const int txtDataLastUpdated = 2131165290;
+			// aapt resource value: 0x7f070069
+			public const int txtDataLastUpdated = 2131165289;
 			
 			// aapt resource value: 0x7f07008c
 			public const int txtDate = 2131165324;
@@ -2453,17 +2456,23 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f07008f
 			public const int txtTime = 2131165327;
 			
-			// aapt resource value: 0x7f07006e
-			public const int txt_1_News_CardView = 2131165294;
+			// aapt resource value: 0x7f07006d
+			public const int txt_1_News_CardView = 2131165293;
 			
-			// aapt resource value: 0x7f07006f
-			public const int txt_2_News_CardView = 2131165295;
+			// aapt resource value: 0x7f070099
+			public const int txt_1_UserAlert_CardView = 2131165337;
+			
+			// aapt resource value: 0x7f07006e
+			public const int txt_2_News_CardView = 2131165294;
+			
+			// aapt resource value: 0x7f07009a
+			public const int txt_2_UserAlert_CardView = 2131165338;
+			
+			// aapt resource value: 0x7f070070
+			public const int txt_NewsObjectInfoRow_line1 = 2131165296;
 			
 			// aapt resource value: 0x7f070071
-			public const int txt_NewsObjectInfoRow_line1 = 2131165297;
-			
-			// aapt resource value: 0x7f070072
-			public const int txt_NewsObjectInfoRow_line2 = 2131165298;
+			public const int txt_NewsObjectInfoRow_line2 = 2131165297;
 			
 			// aapt resource value: 0x7f070095
 			public const int txt_UserAlert_Title = 2131165333;
@@ -2606,16 +2615,16 @@ namespace CurrencyAlertApp
 			public const int abc_select_dialog_material = 2130968601;
 			
 			// aapt resource value: 0x7f04001a
-			public const int CustomAdapter_Test_Layout = 2130968602;
+			public const int Main = 2130968602;
 			
 			// aapt resource value: 0x7f04001b
-			public const int Main = 2130968603;
+			public const int NewsObject_CardView = 2130968603;
 			
 			// aapt resource value: 0x7f04001c
-			public const int NewsObject_CardView = 2130968604;
+			public const int NewsObject_CustomAdapter_InfoRow = 2130968604;
 			
 			// aapt resource value: 0x7f04001d
-			public const int NewsObject_CustomAdapter_InfoRow = 2130968605;
+			public const int NewsObject_CustomeAdapter_Test_Layout = 2130968605;
 			
 			// aapt resource value: 0x7f04001e
 			public const int notification_action = 2130968606;
@@ -2688,6 +2697,9 @@ namespace CurrencyAlertApp
 			
 			// aapt resource value: 0x7f040035
 			public const int UserAlert = 2130968629;
+			
+			// aapt resource value: 0x7f040036
+			public const int UserAlert_CardView = 2130968630;
 			
 			static Layout()
 			{
