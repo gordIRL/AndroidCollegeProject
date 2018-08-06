@@ -23,7 +23,7 @@ using Android.Support.V7.Widget;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Theme = "@style/MyTheme.Base", Label = "CurrencyAlertApp", Icon = "@drawable/icon")]
+    [Activity(Theme = "@style/MyTheme.Base", Label = "CurrencyAlertApp", MainLauncher = true, Icon = "@drawable/icon")]
     //  MainLauncher = true,      // must have an appCompat theme  
 
     public class MainActivity : AppCompatActivity
@@ -96,7 +96,7 @@ namespace CurrencyAlertApp
             // Toolbar - Bottom of Screen  (method 2)
             var toolbar_bottom = FindViewById<Toolbar>(Resource.Id.toolbar_bottom);
             toolbar_bottom.Title = GetString(Resource.String.ToolbarBottomTitle);
-            toolbar_bottom.InflateMenu(Resource.Menu.menus_Main_bottom);
+            toolbar_bottom.InflateMenu(Resource.Menu.bottomMenu_MainActivity);
 
             // variables - bottom toolbar - alert dialog - market impact
             string[] marketImpact_titlesArray = Resources.GetStringArray(Resource.Array.MarketImpactArray);
@@ -400,7 +400,7 @@ namespace CurrencyAlertApp
         // TOP Toolbar
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.top_menus, menu);
+            MenuInflater.Inflate(Resource.Menu.topMenu_MainActivity, menu);
             return base.OnCreateOptionsMenu(menu);
         }
 

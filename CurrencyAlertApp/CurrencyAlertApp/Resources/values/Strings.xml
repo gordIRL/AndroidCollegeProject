@@ -31,6 +31,7 @@
   <string name="Button_ChangeColour">Change Colour !</string>
   <string name="ToolbarTopTitle">Main Menu</string>
   <string name="ToolbarBottomTitle">Currencies Menu</string>
+  <string name="ToolbarBottom_UserAlert_Title">Menu 2</string>
   <string name="SampleHelloWorldText">Hello World!!!</string>
   <string name="MA_Txt_DataLastUpdated">Data Last Updated: </string>
 
@@ -38,15 +39,20 @@
   <string name="TB_Top_Alerts">Alerts</string>
   <string name="TB_Top_Custom_Adapter">Custom Adapter</string>
   <string name="TB_Top_Preferences">Preferences</string>
-  <string name="TB_Top_Reports">Reports</string>
-  
+  <string name="TB_Top_Reports">Reports</string>  
+
   <string name="TB_Bottom_ClearCurrencyData">Clear</string>
   <string name="TB_Bottom_AllCurrencyData">All Currency Data</string>  
   <string name="TB_Bottom_SelectMarketImpacts">Select Market Impact(s)</string>
   <string name="TB_Bottom_SelectCurrencies">Select Currencies</string>  
   <string name="TB_Bottom_SampleData">Sample Data</string>  
   <string name="TB_Bottom_SampleLinqQuery">Sample Linq Query</string>
-  <string name="TB_Bottom_DebugDisplay">Debug Display</string> 
+  <string name="TB_Bottom_DebugDisplay">Debug Display</string>
+
+  <!-- For UserAlert Activity-->
+  <string name="TB_Top_MainActivity">Home</string>
+  
+  
 
   <string name="PA_Btn_NoOfSeconds">Start</string>
   <string name="PA_Btn_SetDate">Set Date</string>

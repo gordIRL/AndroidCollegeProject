@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:local="http://schemas.android.com/apk/res-auto">
+  <item
+    android:id="@+id/topMenu_UserAlertActivity_MarketData"
+    android:icon="@mipmap/ic_action_content_create"
+    local:showAsAction="never"
+    android:title="@string/TB_Top_MainActivity" />
+  <item
+    android:id="@+id/topMenu_UserAlertActivity_Alerts"
+    android:icon="@mipmap/ic_action_content_save"
+    local:showAsAction="never"
+    android:title="@string/TB_Top_Alerts" />
+ 
+  <item
+    android:id="@+id/topMenu_UserAlertActivity_Preferences"
+    local:showAsAction="never"
+    android:title="@string/TB_Top_Preferences" />
+  
+  <item
+  android:id="@+id/topMenu_UserAlertActivity_Reports"
+  local:showAsAction="never"
+  android:title="@string/TB_Top_Reports" />
+</menu>

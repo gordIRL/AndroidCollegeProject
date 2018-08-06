@@ -45,7 +45,7 @@ namespace CurrencyAlertApp.DataAccess
             // this ToString is different from NewsObject.ToString - as it will receive proper C# DateTime object
 
 
-            // convert DateInTicks to DateTimeObject 
+            // convert DateInTicks to DateTimeObject - for display purposes only (ToString())
             DateAndTime = new DateTime(DateInTicks);
 
             return string.Format("ID:{0} {1} {2} {3}\nConvert from Ticks!!!!  Date: {4}  Time: {5}" +

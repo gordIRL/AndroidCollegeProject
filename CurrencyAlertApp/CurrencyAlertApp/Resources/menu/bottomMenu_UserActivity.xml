@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:local="http://schemas.android.com/apk/res-auto"
+      android:textColor="#FFFFFF"
+      android:background="#000000"  >
+
+  <item
+    android:id="@+id/bottomMenu_UserAlertActivity_Option_1"
+    local:showAsAction="never"
+    android:title="Default - Option 1" />
+
+  <item
+  android:id="@+id/bottomMenu_UserAlertActivity_Option_2"
+  local:showAsAction="never"
+  android:title="Default - Option 2" />
+ 
+</menu>
