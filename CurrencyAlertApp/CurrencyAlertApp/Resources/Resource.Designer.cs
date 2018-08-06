@@ -2821,32 +2821,32 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f0a0026
 			public const int MA_Txt_DataLastUpdated = 2131361830;
 			
-			// aapt resource value: 0x7f0a0034
-			public const int PA_Btn_NoOfSeconds = 2131361844;
-			
-			// aapt resource value: 0x7f0a0035
-			public const int PA_Btn_SetDate = 2131361845;
+			// aapt resource value: 0x7f0a0036
+			public const int PA_Btn_NoOfSeconds = 2131361846;
 			
 			// aapt resource value: 0x7f0a0037
-			public const int PA_Btn_SetPersonalAlert = 2131361847;
-			
-			// aapt resource value: 0x7f0a0036
-			public const int PA_Btn_SetTime = 2131361846;
+			public const int PA_Btn_SetDate = 2131361847;
 			
 			// aapt resource value: 0x7f0a0039
-			public const int PA_Txt_Date = 2131361849;
-			
-			// aapt resource value: 0x7f0a003c
-			public const int PA_Txt_NumberOfSeconds = 2131361852;
-			
-			// aapt resource value: 0x7f0a003b
-			public const int PA_Txt_OffSetTime = 2131361851;
-			
-			// aapt resource value: 0x7f0a003a
-			public const int PA_Txt_Time = 2131361850;
+			public const int PA_Btn_SetPersonalAlert = 2131361849;
 			
 			// aapt resource value: 0x7f0a0038
-			public const int PA_Txt_combinedDateTime = 2131361848;
+			public const int PA_Btn_SetTime = 2131361848;
+			
+			// aapt resource value: 0x7f0a003b
+			public const int PA_Txt_Date = 2131361851;
+			
+			// aapt resource value: 0x7f0a003e
+			public const int PA_Txt_NumberOfSeconds = 2131361854;
+			
+			// aapt resource value: 0x7f0a003d
+			public const int PA_Txt_OffSetTime = 2131361853;
+			
+			// aapt resource value: 0x7f0a003c
+			public const int PA_Txt_Time = 2131361852;
+			
+			// aapt resource value: 0x7f0a003a
+			public const int PA_Txt_combinedDateTime = 2131361850;
 			
 			// aapt resource value: 0x7f0a0025
 			public const int SampleHelloWorldText = 2131361829;
@@ -2872,14 +2872,20 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f0a002e
 			public const int TB_Bottom_SelectMarketImpacts = 2131361838;
 			
+			// aapt resource value: 0x7f0a0035
+			public const int TB_Bottom_UserActivity_PersonalAlerts = 2131361845;
+			
+			// aapt resource value: 0x7f0a0033
+			public const int TB_Title_Top_UserAlerts = 2131361843;
+			
 			// aapt resource value: 0x7f0a0028
 			public const int TB_Top_Alerts = 2131361832;
 			
 			// aapt resource value: 0x7f0a0029
 			public const int TB_Top_Custom_Adapter = 2131361833;
 			
-			// aapt resource value: 0x7f0a0033
-			public const int TB_Top_MainActivity = 2131361843;
+			// aapt resource value: 0x7f0a0034
+			public const int TB_Top_MainActivity = 2131361844;
 			
 			// aapt resource value: 0x7f0a002a
 			public const int TB_Top_Preferences = 2131361834;

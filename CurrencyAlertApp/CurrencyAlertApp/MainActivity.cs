@@ -23,7 +23,7 @@ using Android.Support.V7.Widget;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Theme = "@style/MyTheme.Base", Label = "CurrencyAlertApp", Icon = "@drawable/icon")]
+    [Activity(Theme = "@style/MyTheme.Base", Label = "CurrencyAlertApp", MainLauncher = true,   Icon = "@drawable/icon")]
     //  MainLauncher = true,      // must have an appCompat theme  
 
     public class MainActivity : AppCompatActivity
@@ -347,40 +347,15 @@ namespace CurrencyAlertApp
         {
             // alert dialog for ItenClick event
             Android.Support.V7.App.AlertDialog.Builder builder = new Android.Support.V7.App.AlertDialog.Builder(this);
-            // builder.SetMessage("Hi there!");  // usisng this disable array of menu options - good for Ok/Cancel version
-            builder.SetTitle("Choose one:");
-
-            builder.SetItems(Resource.Array.itemSelect_AddToWatchList, (sender2, e2) =>
+            builder.SetMessage("Set Alert on this Market Event ?  (OK)");  // usisng this disable array of menu options - good for Ok/Cancel version
+                     
+            builder.SetPositiveButton("OK", (sender2, e2) =>
             {
-                var index = e2.Which;
-                Log.Debug("DEBUG", index.ToString());
-                Log.Debug("DEBUG", e2.Which.ToString());
-                //Toast.MakeText(this, $"You selected item no: {e}:\n" + DisplayListOBJECT[e].ToString(), ToastLength.Long).Show();
-
-                switch (e2.Which)
-                {
-                    case 0:
-                        break;
-                    case 1:
-                        //// old version
-                        //// call method in next activity to pass data across (newsObject)
-                        // CustomAdapter_Test_Activity.MethodToPassObject(DisplayListOBJECT[e]);
-                        //// call intent to start next activity
-                        //Intent intent = new Intent(this, typeof(CustomAdapter_Test_Activity));
-
-                        // new version
-                        // call method in next activity to pass data across (newsObject)
-                        PersonalAlarmsActivity.MethodToPassObject(DisplayListOBJECT[e]);
-                        // call intent to start next activity
-                        Intent intent = new Intent(this, typeof(PersonalAlarmsActivity));
-                        StartActivity(intent);
-                        break;
-
-                    case 2:
-                        break;
-                    default:
-                        break;
-                };
+                // call method in UserAlertActivity to pass data across (newsObject)
+                UserAlertActivity.MethodToPassObject(DisplayListOBJECT[e]);
+                // call intent to start next activity
+                Intent intent = new Intent(this, typeof(UserAlertActivity));
+                StartActivity(intent);
             });
 
             builder.SetNegativeButton("Cancel", (sender2, e2) =>

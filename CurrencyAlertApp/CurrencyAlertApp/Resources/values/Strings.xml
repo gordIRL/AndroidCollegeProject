@@ -50,7 +50,10 @@
   <string name="TB_Bottom_DebugDisplay">Debug Display</string>
 
   <!-- For UserAlert Activity-->
+  <string name="TB_Title_Top_UserAlerts">User Alerts</string>
   <string name="TB_Top_MainActivity">Home</string>
+
+  <string name="TB_Bottom_UserActivity_PersonalAlerts">Personal Alerts</string>
   
   
 

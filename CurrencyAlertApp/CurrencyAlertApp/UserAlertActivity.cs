@@ -17,14 +17,17 @@ using Android.Support.V7.Widget;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Theme = "@style/MyTheme.Base", MainLauncher = true,    Label = "UserAlertActivity")]
+    [Activity(Theme = "@style/MyTheme.Base",     Label = "UserAlertActivity")]
     //  MainLauncher = true,
 
     public class UserAlertActivity : AppCompatActivity
     {
-        List<UserAlert> DisplayListOBJECT = new List<UserAlert>();
+        // list used to populate adapter
+        List<UserAlert> userAlertDisplayList = new List<UserAlert>();
 
-
+        // object passed from Main Activity
+        public static NewsObject selectedNewsObjectFromMainActivity;
+        
         // RecyclerView instance that displays the newsObject List:
         public RecyclerView mRecyclerView;
 
@@ -36,19 +39,15 @@ namespace CurrencyAlertApp
         //public NewsObject_RecycleAdapter mAdapter;
 
 
-        //List<UserAlert> userAlertsList = new List<UserAlert>();
-
+     
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.UserAlert);
 
-
-            //SetUpData.CreateEmptyUserAlertTable();
-            DisplayListOBJECT =  SetUpData.DummyDataForUserAlert();
-
-
+            // Dummy Data
+            userAlertDisplayList = SetUpData.DummyDataForUserAlert();
 
 
             // Get our RecyclerView layout:
@@ -72,10 +71,10 @@ namespace CurrencyAlertApp
 
             // Create an adapter for the RecyclerView, and pass it the
             // data set (List<newsobject) to manage:
-            mAdapter = new UserAlert_RecycleAdapter(DisplayListOBJECT);
+            mAdapter = new UserAlert_RecycleAdapter(userAlertDisplayList);
 
-            ////////////////////////////Register the item click handler(below) with the adapter:           
-            //////////////////////////mAdapter.ItemClick += MAdapter_ItemClick1;
+            //Register the item click handler(below) with the adapter:           
+            mAdapter.ItemClick += MAdapter_ItemClick;
 
             // Plug the adapter into the RecyclerView:
             mRecyclerView.SetAdapter(mAdapter);
@@ -85,7 +84,7 @@ namespace CurrencyAlertApp
             // ToolBar - Top of Screen  (method 1)
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar_Top_UserAlert);
             SetSupportActionBar(toolbar);
-            SupportActionBar.Title = GetString(Resource.String.ToolbarTopTitle);
+            SupportActionBar.Title = GetString(Resource.String.TB_Title_Top_UserAlerts);  
 
 
             // Toolbar - Bottom of Screen  (method 2)
@@ -98,7 +97,10 @@ namespace CurrencyAlertApp
                 switch (e.Item.ItemId)
                 {
                     case Resource.Id.bottomMenu_UserAlertActivity_Option_1:
-                        Toast.MakeText(this, "Option 1 - default selected", ToastLength.Short).Show();
+                        Toast.MakeText(this, "Personal Alerts Selected", ToastLength.Short).Show();
+                        // call intent to start next activity
+                        Intent intent = new Intent(this, typeof(PersonalAlarmsActivity));
+                        StartActivity(intent);
                         break;
                         
                     case Resource.Id.bottomMenu_UserAlertActivity_Option_2:
@@ -107,10 +109,60 @@ namespace CurrencyAlertApp
                 }
             };
 
-     
+            // display passed object from Main Activity
+            if (selectedNewsObjectFromMainActivity != null)
+            {
+                Toast.MakeText(this, selectedNewsObjectFromMainActivity.ToString(), ToastLength.Long).Show();
+            }
+
+            //////////////////SetUpData.ConvertNewsObjectToUserAlert(selectedNewsObjectFromMainActivity);
+            //////////////////SetUpData.AddNewUserAlertToDatabase();
 
 
         }// end OnCreate -----------------------------------------------------------
+
+
+
+        private void MAdapter_ItemClick(object sender, int e)
+        {
+            // alert dialog for ItenClick event
+            Android.Support.V7.App.AlertDialog.Builder builder = new Android.Support.V7.App.AlertDialog.Builder(this);
+            // builder.SetMessage("Hi there!");  // usisng this disable array of menu options - good for Ok/Cancel version
+            builder.SetTitle("Choose one:");
+
+            builder.SetItems(Resource.Array.itemSelect_AddToWatchList, (sender2, e2) =>
+            {
+                var index = e2.Which;
+                Log.Debug("DEBUG", index.ToString());
+                Log.Debug("DEBUG", e2.Which.ToString());
+                Toast.MakeText(this, $"You selected item no: {e}:\n", ToastLength.Long).Show();
+                //Toast.MakeText(this, $"You selected item no: {e}:\n" + DisplayListOBJECT[e].ToString(), ToastLength.Long).Show();
+
+                switch (e2.Which)
+                {
+                    case 0:
+                        break;
+                    case 1:                          
+                        // call intent to start next activity
+                        Intent intent = new Intent(this, typeof(PersonalAlarmsActivity));
+                        StartActivity(intent);
+                        break;
+                    case 2:
+                        break;
+                    default:
+                        break;
+                };
+            });
+
+            builder.SetNegativeButton("Cancel", (sender2, e2) =>
+            {
+                Log.Debug("dbg", "Cancel clicked");
+            });
+            // builder.SetNeutralButton.........
+
+            var alert = builder.Create();
+            alert.Show();
+        }
 
 
 
@@ -152,5 +204,10 @@ namespace CurrencyAlertApp
             return base.OnOptionsItemSelected(item);
         }
         //-----------------------------------------------------------------------------------
+
+        public static void MethodToPassObject(NewsObject selectedNewsObjectInput)
+        {
+            selectedNewsObjectFromMainActivity = selectedNewsObjectInput;
+        }
     }//
 }//

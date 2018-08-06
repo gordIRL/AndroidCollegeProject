@@ -62,6 +62,68 @@ namespace CurrencyAlertApp.DataAccess
 
 
 
+
+
+
+        // method to convert newsObject to userAlert object
+        public static UserAlert ConvertNewsObjectToUserAlert(NewsObject newsObject)
+        {
+            UserAlert userAlert = new UserAlert
+            {
+                Name = newsObject.Name,
+                Description = "",
+                IsPersonalAlert = false
+            };
+            return userAlert;
+        }
+
+
+
+        // method to add new UserAlert to UserAlert to database  -- use to add data passed from Main Activity
+        public static bool AddNewUserAlertToDatabase(UserAlert userAlert)  //-- ?? don't use to repopulate adapter from database ??  TICKS ??
+        {
+            bool dataAddedToDatabase = false;
+            List<UserAlert> userAlertsList = new List<UserAlert>();
+            userAlertsList = SetUpData.DummyDataForUserAlert();
+
+            using (SQLiteConnection conn = new SQLiteConnection(DBLocation))
+            {
+                //conn.DropTable<UserAlert>();
+                conn.CreateTable<UserAlert>();
+
+                foreach (var tempUserAlert in userAlertsList)
+                {
+                    // insert current UserAlert into database
+                    conn.Insert(tempUserAlert);  // this won't insert the 'ignored' C# DateTime into the database !! (only TICKS stored)
+
+                    Log.Debug("DEBUG", "INSERTED:\n" + tempUserAlert.ToString());
+                }// end foreach
+
+                // list of items currently in the database 
+                var retrievedDataList = conn.Table<UserAlert>();
+
+                // set breakpoint here when required
+                Log.Debug("DEBUG", "FINISHED\n\n\n");
+
+
+                // Display what's currently in the table
+                foreach (var item in retrievedDataList)
+                {
+                    Log.Debug("DEBUG", item.ToString());
+                }
+            }// end using   
+            return dataAddedToDatabase;
+
+        }// end  AddNewUserAlertToDatabase()
+
+
+
+
+
+
+
+
+
         // method to populate Table<UserAlert> with dummy data  -- use to add data passed from Main Activity
         public static void PopulateUserAlertTableWithDummyData()  //-- ?? don't use to repopulate adapter from database ??  TICKS ??
         {

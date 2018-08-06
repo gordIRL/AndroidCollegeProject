@@ -7,7 +7,7 @@
   <item
     android:id="@+id/bottomMenu_UserAlertActivity_Option_1"
     local:showAsAction="never"
-    android:title="Default - Option 1" />
+    android:title="@string/TB_Bottom_UserActivity_PersonalAlerts" />
 
   <item
   android:id="@+id/bottomMenu_UserAlertActivity_Option_2"
