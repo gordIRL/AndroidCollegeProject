@@ -120,6 +120,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\UserAlert.cs" />
     <Compile Include="NewsObject_CustomAdapter.cs" />
     <Compile Include="DataAccess\Alert.cs" />
     <Compile Include="DataAccess\NewsObject.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SplashActivity.cs" />
     <Compile Include="Notifications_Test_Activity.cs" />
+    <Compile Include="UserAlertActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
@@ -157,6 +159,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Main.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\UserAlert.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

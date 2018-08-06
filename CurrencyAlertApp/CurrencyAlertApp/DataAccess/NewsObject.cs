@@ -29,6 +29,7 @@ namespace CurrencyAlertApp.DataAccess
         public string MarketImpact { get; set; }       
 
         [Ignore]
+        // DateTime object not supported by SQLite
         public DateTime DateAndTime { get; set; }        
 
         public long DateInTicks { get; set; }
@@ -44,5 +45,5 @@ namespace CurrencyAlertApp.DataAccess
                 NewsObjectID, Name, CountryChar, MarketImpact,
                 tempDate, tempTime);   // DateInTicks, DateInTicks);
         }
-    }//
-}//
+    }
+}

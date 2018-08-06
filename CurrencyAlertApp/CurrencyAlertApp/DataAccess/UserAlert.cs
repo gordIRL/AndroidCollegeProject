@@ -1,0 +1,59 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Runtime;
+using Android.Views;
+using Android.Widget;
+using SQLite;
+
+namespace CurrencyAlertApp.DataAccess
+{
+    [Table("UserAlert")]
+    public class UserAlert
+    {
+        [PrimaryKey, AutoIncrement]
+        public int UserAlertID { get; set; }
+
+        [MaxLength(50)]
+        public string Name { get; set; }
+
+        [MaxLength(10)]
+        public string CountryChar { get; set; }
+
+        [MaxLength(10)]
+        public string MarketImpact { get; set; }
+
+        [Ignore] 
+        // DateTime object not supported by SQLite
+        public DateTime DateAndTime { get; set; }
+
+        public long DateInTicks { get; set; }
+
+        [MaxLength(200)]
+        public string Description { get; set; }
+
+        public bool IsPersonalAlert { get; set; }
+
+
+        public override string ToString()
+        {
+            // this ToString is different from NewsObject.ToString - as it will receive proper C# DateTime object
+
+
+            // convert DateInTicks to DateTimeObject 
+            DateAndTime = new DateTime(DateInTicks);
+
+            return string.Format("ID:{0} {1} {2} {3}\nConvert from Ticks!!!!  Date: {4}  Time: {5}" +
+                "\nIsPersonalAlert: {6}\nDescription: \n{7}\nTicks: {8}",
+                UserAlertID, Name, CountryChar, MarketImpact,
+                DateAndTime.ToString("dd/MM/yyyy"), DateAndTime.ToString("HH:mmtt"),
+                IsPersonalAlert.ToString(), Description,
+               DateInTicks);  
+        }
+    }
+}

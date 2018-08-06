@@ -22,15 +22,167 @@ namespace CurrencyAlertApp.DataAccess
 {
     public class SetUpData
     {
+        // NewsObject Initialisation
         // list to store newsObjects retrieved from database
         static List<NewsObject> newsObjectsList = new List<NewsObject>();
 
         // Create a single CultureInfo object (once so it can be reused) for correct Parsing of strings to DateTime object
         static CultureInfo cultureInfo = new CultureInfo("en-US");
 
-
         // location of database
         static string DBLocation = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "CurrencyAlertApp.db3");
+        //-------------------------------------------------------------------
+
+
+
+
+        // UserAlert Initialisation
+
+
+
+
+        // UserAlert Methods
+
+        // create empty table - for program load
+        public static void CreateEmptyUserAlertTable()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(DBLocation))
+            {
+                if (conn.Table<UserAlert>() == null)
+                {                    
+                    Log.Debug("DEBUG", "Created USER ALERT table - null instance detected");
+                }
+                else
+                {
+                    Log.Debug("DEBUG", "USER ALERT table already created");
+                }
+                conn.CreateTable<UserAlert>();
+            }
+        }
+
+
+
+        // method to populate Table<UserAlert> with dummy data  -- use to add data passed from Main Activity
+        public static void PopulateUserAlertTableWithDummyData()  //-- ?? don't use to repopulate adapter from database ??  TICKS ??
+        {
+
+            List<UserAlert> userAlertsList = new List<UserAlert>();
+            userAlertsList = SetUpData.DummyDataForUserAlert();
+
+            using (SQLiteConnection conn = new SQLiteConnection(DBLocation))
+            {
+                conn.DropTable<UserAlert>();
+                conn.CreateTable<UserAlert>();
+
+                foreach (var tempUserAlert in userAlertsList)
+                {
+                    // insert current UserAlert into database
+                    conn.Insert(tempUserAlert);  // this won't insert the 'ignored' C# DateTime into the database !! (only TICKS stored)
+                   
+                    Log.Debug("DEBUG", "INSERTED:\n" +tempUserAlert.ToString());
+                }// end foreach
+
+                // list of items currently in the database 
+                var retrievedDataList = conn.Table<UserAlert>();
+
+                // set breakpoint here when required
+                Log.Debug("DEBUG", "FINISHED\n\n\n");
+
+
+                // Display what's currently in the table
+                foreach (var item in retrievedDataList)
+                {
+                    Log.Debug("DEBUG", item.ToString());
+                }
+            }// end using          
+           
+        }// end  PopulateUserAlertTableWithDummyData()
+
+
+
+
+
+        public static List<UserAlert> DummyDataForUserAlert()
+        {
+            UserAlert userAlert1 = new UserAlert()
+            {
+                UserAlertID = 1,
+                IsPersonalAlert = false,
+                DateAndTime = new DateTime(2018, 1, 15, 10, 15, 0),
+                DateInTicks = 636516081000000000,
+                CountryChar = "USD",
+                MarketImpact = "High",
+                Name = "Non Farm Payroll"
+            };
+
+            UserAlert userAlert2 = new UserAlert()
+            {
+                UserAlertID = 2,
+                IsPersonalAlert = false,
+                DateAndTime = new DateTime(2018, 2, 20, 13, 20, 0),
+                DateInTicks = 636547296000000000,
+                CountryChar = "GBP",
+                MarketImpact = "Low",
+                Name = "Meeting 1"
+            };
+
+            UserAlert userAlert3 = new UserAlert()
+            {
+                UserAlertID = 3,
+                IsPersonalAlert = false,
+                DateAndTime = new DateTime(2018, 3, 3, 14, 30, 0),
+                DateInTicks = 636556842000000000,
+                CountryChar = "EUR",
+                MarketImpact = "Medium",
+                Name = "Interest Rate"
+            };
+
+            UserAlert userAlert4 = new UserAlert()
+            {
+                UserAlertID = 4,
+                IsPersonalAlert = false,
+                DateAndTime = new DateTime(2018, 8, 6, 11, 00, 0),
+                DateInTicks = 636691500000000000,
+                CountryChar = "AUD",
+                MarketImpact = "Low",
+                Name = "Car Sales monthly"
+            };
+
+            // Create UserAlert List
+            List<UserAlert> userAlertsList = new List<UserAlert>();
+
+            // Add dummy data to User Alert List
+            userAlertsList.Add(userAlert1);
+            userAlertsList.Add(userAlert2);
+            userAlertsList.Add(userAlert3);
+            userAlertsList.Add(userAlert4);
+
+            // Return List
+            return userAlertsList;
+
+        }// end DummyDataForUserAlert
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //-------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Everything below is the original SetUp Data before work started on UserAlert Section  !!!!
+        /// </summary>
+        /// 
 
         // create empty table - for program load
         public static void CreateEmptyTable()
@@ -76,6 +228,7 @@ namespace CurrencyAlertApp.DataAccess
         public static DateTime ConvertString_s_ToDateTimeObject(string dateString, string timeString, CultureInfo cultureInfo)
         {
             // Returns a DateTime object from combining a date(string) and a time(string)
+            // - used to convert the xml format date (string) and time (string) into a C# DateTime object
 
             string dateAndTimeString = dateString +" " +  timeString;
 
@@ -178,8 +331,6 @@ namespace CurrencyAlertApp.DataAccess
             {
                 // retrieve all data from database & store in list
                 var retrievedDataList = conn.Table<NewsObject>();
-
-                //DateTime dateTime = DateTime.Now;
 
                 // store each item in list into a returnable list
                 foreach (var item in retrievedDataList)
