@@ -110,26 +110,29 @@ namespace CurrencyAlertApp
                 }
             };
 
-            // display passed object from Main Activity
+
+
+
+            // Run this code ONLY if:
+            // user selects to add an alert to a newsObject in Main Activity
             if (selectedNewsObjectFromMainActivity != null)
             {
                 Toast.MakeText(this, selectedNewsObjectFromMainActivity.ToString(), ToastLength.Long).Show();
+
+                SetUpData.CreateEmptyUserAlertTable();
+
+                UserAlert convertedUserAlert = SetUpData.ConvertNewsObjectToUserAlert(selectedNewsObjectFromMainActivity);
+                Log.Debug("DEBUG", convertedUserAlert.ToString());
+
+                bool datebaseUpdateSuccesssful = SetUpData.AddNewUserAlertToDatabase(convertedUserAlert);
+                Log.Debug("DEBUG", "UserAlertActivity - inserted into DB: " + datebaseUpdateSuccesssful);
             }
 
 
-            SetUpData.CreateEmptyUserAlertTable();
-
-            UserAlert convertedUserAlert = SetUpData.ConvertNewsObjectToUserAlert(selectedNewsObjectFromMainActivity);
-            Log.Debug("DEBUG", convertedUserAlert.ToString());
-
-            bool datebaseUpdateSuccesssful = SetUpData.AddNewUserAlertToDatabase(convertedUserAlert);
-            Log.Debug("DEBUG", "UserAlertActivity - inserted into DB: " + datebaseUpdateSuccesssful);
+           
 
 
 
-            //// clear List & get all userAlert(s) data from database  
-            //tempUserAlertDisplayList.Clear();
-            //tempUserAlertDisplayList = SetUpData.GetAllUserAlertDataFromDatabase();
 
             // call populate adapter
             PopulateUserAlertAdapter();
@@ -140,7 +143,17 @@ namespace CurrencyAlertApp
 
 
 
+        protected override void OnResume()
+        {
+            base.OnResume();
+            PopulateUserAlertAdapter();
+        }
 
+        public override void OnBackPressed()
+        {
+            base.OnBackPressed();
+            PopulateUserAlertAdapter();
+        }
 
 
 

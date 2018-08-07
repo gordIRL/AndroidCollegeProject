@@ -5,7 +5,12 @@
     android:id="@+id/menu_top_marketData"        
     android:icon="@mipmap/ic_action_content_create"        
     local:showAsAction="never"        
-    android:title="@string/TB_Top_UpdateXML" />        
+    android:title="@string/TB_Top_UpdateXML" />
+  <item
+    android:id="@+id/menu_top_userAlertsActivity"
+    android:icon="@mipmap/ic_action_content_save"
+    local:showAsAction="never"
+    android:title="@string/TB_Top_UserAlertsActivity" /> 
   <item        
     android:id="@+id/menu_top_alerts"        
     android:icon="@mipmap/ic_action_content_save"        

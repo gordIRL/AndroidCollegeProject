@@ -33,10 +33,12 @@
   <string name="ToolbarBottomTitle">Currencies Menu</string>
   <string name="ToolbarBottom_UserAlert_Title">Menu 2</string>
   <string name="SampleHelloWorldText">Hello World!!!</string>
-  <string name="MA_Txt_DataLastUpdated">Data Last Updated: </string>
+  <string name="MA_Txt_DataLastUpdated">ALL Data - Updated:</string>
 
   <string name="TB_Top_UpdateXML">Update XML (Market Data)</string>
-  <string name="TB_Top_Alerts">Alerts</string>
+  <string name="TB_Top_UserAlertsActivity">User Alerts</string>
+ 
+  <string name="TB_Top_Alerts">Alerts - (Old Version)</string>
   <string name="TB_Top_Custom_Adapter">Custom Adapter</string>
   <string name="TB_Top_Preferences">Preferences</string>
   <string name="TB_Top_Reports">Reports</string>  

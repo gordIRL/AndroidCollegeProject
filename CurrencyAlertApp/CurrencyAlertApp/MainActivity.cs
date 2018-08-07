@@ -40,6 +40,14 @@ namespace CurrencyAlertApp
         List<string> currencies_selectedList = new List<string>();
 
 
+
+
+        XDocument xmlTestDataFile;
+
+
+
+
+
         // RecyclerView instance that displays the newsObject List:
         public RecyclerView mRecyclerView;
 
@@ -122,8 +130,24 @@ namespace CurrencyAlertApp
             RefreshTxtDataLastUpdated();
             txtDataLastUpdated.Text += "\n - Please select data to display";
 
-            //// Display all currency data (if any) from database - NOT using until custom view is implemented (???)
-            //DefaultDisplayAllData();
+            // Display all currency data (if any) from database.
+
+            // This is needed here because onCreate() is called when MainActivity 
+            // is selected from a menu option (intent) in UserAlertsActivity. 
+            // - Not needed or called if the user selects onBackPress() 
+            GetAndDisplayDefaultData();
+
+
+
+
+            // Get testdata from xml file in Assets folder & pass over to Data section
+            // done here because SetUpData is a static class
+            xmlTestDataFile = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
+            SetUpData.GetTestXmlFileFromMainActivity(xmlTestDataFile);
+
+
+
+
 
 
             // bottom ToolBar Menu Selection
@@ -149,13 +173,9 @@ namespace CurrencyAlertApp
 
                     case Resource.Id.menu_data_getAllData:
 
-                        // clear List & get raw newsObject data from database  
-                        tempNewsObjectDisplayList.Clear();
-                        tempNewsObjectDisplayList = SetUpData.GetAllNewsObjectDataFromDatabase();
+                        //XDocument xmlFile2 = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
 
-                        // call populate adapter
-                        PopulateNewsObjectAdapter();
-                        RefreshTxtDataLastUpdated();
+                        GetAndDisplayDefaultData();
                         break;
 
 
@@ -415,11 +435,21 @@ namespace CurrencyAlertApp
                     // call populate adapter
                     PopulateNewsObjectAdapter();
                     RefreshTxtDataLastUpdated();
+                    break;                             
+
+                case Resource.Id.menu_top_userAlertsActivity:
+                    Toast.MakeText(this, "Action selected: \nUser Alerts", ToastLength.Short).Show();
+
+                    // pass in null - to stop unwanted  Database entries (because of 'selectedNewsObject' in UserAlertsActivity)
+                    UserAlertActivity.MethodToPassObject(null);
+
+                    Intent intent = new Intent(this, typeof(UserAlertActivity));
+                    StartActivity(intent);
                     break;
 
                 case Resource.Id.menu_top_alerts:
                     Toast.MakeText(this, "Action selected: \nSet Alert", ToastLength.Short).Show();
-                    Intent intent = new Intent(this, typeof(PersonalAlarmsActivity));
+                    intent = new Intent(this, typeof(PersonalAlarmsActivity));
                     StartActivity(intent);
                     break;
 
@@ -460,7 +490,23 @@ namespace CurrencyAlertApp
         {
             MySharedPreferencesMethods mySharedPreferencesMethods = new MySharedPreferencesMethods(this);
             string dateXmlUpdated = mySharedPreferencesMethods.GetDataFromSharedPrefs();
-            txtDataLastUpdated.Text = "Data Updated: " + dateXmlUpdated;
+            //txtDataLastUpdated.Text = "Data Updated: " + dateXmlUpdated;
+            txtDataLastUpdated.Text = GetString(Resource.String.MA_Txt_DataLastUpdated) + " " +  dateXmlUpdated;
         }
+
+
+        void GetAndDisplayDefaultData()
+        {
+            // clear List & get raw newsObject data from database  
+            tempNewsObjectDisplayList.Clear();
+            tempNewsObjectDisplayList = SetUpData.GetAllNewsObjectDataFromDatabase();
+
+            // call populate adapter
+            PopulateNewsObjectAdapter();
+            RefreshTxtDataLastUpdated();
+        }
+
+       
+
     }// end MainActivity
 }// end Namespace
