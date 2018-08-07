@@ -20,7 +20,7 @@ namespace CurrencyAlertApp.DataAccess
         public int NewsObjectID{ get; set; }
 
         [MaxLength(50)]
-        public string Name { get; set; }
+        public string Title { get; set; }
 
         [MaxLength(10)]
         public string CountryChar { get; set; }
@@ -42,7 +42,7 @@ namespace CurrencyAlertApp.DataAccess
             string tempTime = tempDateTime.ToShortTimeString();
 
             return string.Format("ID:{0} {1} {2} {3}\nDate: {4}  Time: {5}",
-                NewsObjectID, Name, CountryChar, MarketImpact,
+                NewsObjectID, Title, CountryChar, MarketImpact,
                 tempDate, tempTime);   // DateInTicks, DateInTicks);
         }
     }

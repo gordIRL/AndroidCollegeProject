@@ -20,7 +20,7 @@ namespace CurrencyAlertApp.DataAccess
         public int UserAlertID { get; set; }
 
         [MaxLength(50)]
-        public string Name { get; set; }
+        public string Title { get; set; }
 
         [MaxLength(10)]
         public string CountryChar { get; set; }
@@ -35,7 +35,7 @@ namespace CurrencyAlertApp.DataAccess
         public long DateInTicks { get; set; }
 
         [MaxLength(200)]
-        public string Description { get; set; }
+        public string DescriptionOfPersonalEvent { get; set; }
 
         public bool IsPersonalAlert { get; set; }
 
@@ -50,9 +50,9 @@ namespace CurrencyAlertApp.DataAccess
 
             return string.Format("ID:{0} {1} {2} {3}\nConvert from Ticks!!!!  Date: {4}  Time: {5}" +
                 "\nIsPersonalAlert: {6}\nDescription: \n{7}\nTicks: {8}",
-                UserAlertID, Name, CountryChar, MarketImpact,
+                UserAlertID, Title, CountryChar, MarketImpact,
                 DateAndTime.ToString("dd/MM/yyyy"), DateAndTime.ToString("HH:mmtt"),
-                IsPersonalAlert.ToString(), Description,
+                IsPersonalAlert.ToString(), DescriptionOfPersonalEvent,
                DateInTicks);  
         }
     }

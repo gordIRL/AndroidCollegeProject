@@ -44,7 +44,7 @@ namespace CurrencyAlertApp
             }
             
 
-            DisplayListOBJECT = SetUpData.GetAllRawDataFromDatabase();
+            DisplayListOBJECT = SetUpData.GetAllNewsObjectDataFromDatabase();
 
            
 
@@ -100,7 +100,7 @@ namespace CurrencyAlertApp
 
         private void NewsObjectListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            Toast.MakeText(this, "Selected : " + DisplayListOBJECT[e.Position].Name, ToastLength.Short).Show();
+            Toast.MakeText(this, "Selected : " + DisplayListOBJECT[e.Position].Title, ToastLength.Short).Show();
         }
 
        

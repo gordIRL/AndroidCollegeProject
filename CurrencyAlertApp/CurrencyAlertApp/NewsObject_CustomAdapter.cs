@@ -60,7 +60,7 @@ namespace CurrencyAlertApp
                 //  Assign content - continued
                 txtLine_1_view.Text = NewsObjectList[position].CountryChar + ": " + NewsObjectList[position].MarketImpact;
                 txtLine_2_view.Text = NewsObjectList[position].DateAndTime.ToString("dd/MM/yyyy") + ":  " + NewsObjectList[position].DateAndTime.ToString("HH:mmtt") + "\n" +
-                    NewsObjectList[position].Name; 
+                    NewsObjectList[position].Title; 
 
                 // holder in Tag
                 holder = new NewsObjectAdapterViewHolder(currencyIconView, txtLine_1_view, txtLine_2_view);
@@ -79,7 +79,7 @@ namespace CurrencyAlertApp
                 //  Assign content - continued
                 cachedNewsObjectAdapterHolder.VH_txtLine1.Text = NewsObjectList[position].CountryChar + ": " + NewsObjectList[position].MarketImpact;
                 cachedNewsObjectAdapterHolder.VH_txtLine2.Text = NewsObjectList[position].DateAndTime.ToString("dd/MM/yyyy") + ":  " + NewsObjectList[position].DateAndTime.ToString("HH:mmtt") + "\n" +
-                    NewsObjectList[position].Name;
+                    NewsObjectList[position].Title;
             }
             return newsObjectInfoRowView;
         }

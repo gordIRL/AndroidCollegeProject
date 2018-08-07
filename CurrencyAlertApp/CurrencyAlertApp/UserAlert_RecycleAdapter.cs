@@ -63,7 +63,7 @@ namespace CurrencyAlertApp
             vh.Caption1.Text = mNewsObjectList[position].CountryChar + ": " + mNewsObjectList[position].MarketImpact;
             vh.Caption2.Text = mNewsObjectList[position].DateAndTime.ToString("dd/MM/yyyy") + ":  "
                     + mNewsObjectList[position].DateAndTime.ToString("HH:mmtt") + "\n"
-                    + mNewsObjectList[position].Name;
+                    + mNewsObjectList[position].Title;
         }
 
 

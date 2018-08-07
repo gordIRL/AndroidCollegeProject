@@ -22,8 +22,9 @@ namespace CurrencyAlertApp
 
     public class UserAlertActivity : AppCompatActivity
     {
-        // list used to populate adapter
+        // list(s) used to populate adapter
         List<UserAlert> userAlertDisplayList = new List<UserAlert>();
+        List<UserAlert> tempUserAlertDisplayList = new List<UserAlert>();
 
         // object passed from Main Activity
         public static NewsObject selectedNewsObjectFromMainActivity;
@@ -46,8 +47,8 @@ namespace CurrencyAlertApp
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.UserAlert);
 
-            // Dummy Data
-            userAlertDisplayList = SetUpData.DummyDataForUserAlert();
+            //// Dummy Data
+            //userAlertDisplayList = SetUpData.DummyDataForUserAlert();
 
 
             // Get our RecyclerView layout:
@@ -70,7 +71,7 @@ namespace CurrencyAlertApp
             // Adapter Setup:
 
             // Create an adapter for the RecyclerView, and pass it the
-            // data set (List<newsobject) to manage:
+            // data set (List<userAlert>) to manage:
             mAdapter = new UserAlert_RecycleAdapter(userAlertDisplayList);
 
             //Register the item click handler(below) with the adapter:           
@@ -102,10 +103,10 @@ namespace CurrencyAlertApp
                         Intent intent = new Intent(this, typeof(PersonalAlarmsActivity));
                         StartActivity(intent);
                         break;
-                        
+
                     case Resource.Id.bottomMenu_UserAlertActivity_Option_2:
                         Toast.MakeText(this, "Option 2 - default selected", ToastLength.Short).Show();
-                    break;
+                        break;
                 }
             };
 
@@ -115,44 +116,60 @@ namespace CurrencyAlertApp
                 Toast.MakeText(this, selectedNewsObjectFromMainActivity.ToString(), ToastLength.Long).Show();
             }
 
-            //////////////////SetUpData.ConvertNewsObjectToUserAlert(selectedNewsObjectFromMainActivity);
-            //////////////////SetUpData.AddNewUserAlertToDatabase();
 
+            SetUpData.CreateEmptyUserAlertTable();
+
+            UserAlert convertedUserAlert = SetUpData.ConvertNewsObjectToUserAlert(selectedNewsObjectFromMainActivity);
+            Log.Debug("DEBUG", convertedUserAlert.ToString());
+
+            bool datebaseUpdateSuccesssful = SetUpData.AddNewUserAlertToDatabase(convertedUserAlert);
+            Log.Debug("DEBUG", "UserAlertActivity - inserted into DB: " + datebaseUpdateSuccesssful);
+
+
+
+            //// clear List & get all userAlert(s) data from database  
+            //tempUserAlertDisplayList.Clear();
+            //tempUserAlertDisplayList = SetUpData.GetAllUserAlertDataFromDatabase();
+
+            // call populate adapter
+            PopulateUserAlertAdapter();
+            //RefreshTxtDataLastUpdated();
 
         }// end OnCreate -----------------------------------------------------------
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
         private void MAdapter_ItemClick(object sender, int e)
         {
-            // alert dialog for ItenClick event
+            // alert dialog for ItemClick event
             Android.Support.V7.App.AlertDialog.Builder builder = new Android.Support.V7.App.AlertDialog.Builder(this);
-            // builder.SetMessage("Hi there!");  // usisng this disable array of menu options - good for Ok/Cancel version
-            builder.SetTitle("Choose one:");
+            builder.SetMessage("Delete this User Alert ?");  // usisng this disable array of menu options - good for Ok/Cancel version
 
-            builder.SetItems(Resource.Array.itemSelect_AddToWatchList, (sender2, e2) =>
+            builder.SetPositiveButton("OK", (sender2, e2) =>
             {
-                var index = e2.Which;
-                Log.Debug("DEBUG", index.ToString());
-                Log.Debug("DEBUG", e2.Which.ToString());
-                Toast.MakeText(this, $"You selected item no: {e}:\n", ToastLength.Long).Show();
-                //Toast.MakeText(this, $"You selected item no: {e}:\n" + DisplayListOBJECT[e].ToString(), ToastLength.Long).Show();
+                // displal ID of deleted userAlert
+                Toast.MakeText(this, userAlertDisplayList[e].UserAlertID.ToString(), ToastLength.Long).Show();
 
-                switch (e2.Which)
-                {
-                    case 0:
-                        break;
-                    case 1:                          
-                        // call intent to start next activity
-                        Intent intent = new Intent(this, typeof(PersonalAlarmsActivity));
-                        StartActivity(intent);
-                        break;
-                    case 2:
-                        break;
-                    default:
-                        break;
-                };
+                // call method to delete UserAlert from database (doesn't include AlarmManager !!!!!!)
+                int rowCount = SetUpData.DeleteSelectedUserAlert(userAlertDisplayList[e].UserAlertID);
+
+                Toast.MakeText(this, "No of rows deleted: " + rowCount, ToastLength.Long).Show();
+                PopulateUserAlertAdapter();
             });
+
 
             builder.SetNegativeButton("Cancel", (sender2, e2) =>
             {
@@ -163,6 +180,33 @@ namespace CurrencyAlertApp
             var alert = builder.Create();
             alert.Show();
         }
+
+            //// Multiple options version
+            //builder.SetTitle("Choose one:");
+            //builder.SetItems(Resource.Array.itemSelect_AddToWatchList, (sender2, e2) =>
+            //{
+            //    var index = e2.Which;
+            //    Log.Debug("DEBUG", index.ToString());
+            //    Log.Debug("DEBUG", e2.Which.ToString());
+            //    Toast.MakeText(this, $"You selected item no: {e}:\n", ToastLength.Long).Show();
+            //    //Toast.MakeText(this, $"You selected item no: {e}:\n" + DisplayListOBJECT[e].ToString(), ToastLength.Long).Show();
+
+            //    switch (e2.Which)
+            //    {
+            //        case 0:
+            //            break;
+            //        case 1:                          
+            //            // call intent to start next activity
+            //            Intent intent = new Intent(this, typeof(PersonalAlarmsActivity));
+            //            StartActivity(intent);
+            //            break;
+            //        case 2:
+            //            break;
+            //        default:
+            //            break;
+            //    };
+            //});           
+        
 
 
 
@@ -209,5 +253,24 @@ namespace CurrencyAlertApp
         {
             selectedNewsObjectFromMainActivity = selectedNewsObjectInput;
         }
+
+
+        void PopulateUserAlertAdapter()
+        {
+            // clear List & get all userAlert(s) data from database  
+            tempUserAlertDisplayList.Clear();
+            tempUserAlertDisplayList = SetUpData.GetAllUserAlertDataFromDatabase();
+
+            // Refresh adapter by running a 'forEach' through tempList to 
+            // repopulate the same DisplayListObect that adapter has memory reference to  
+            userAlertDisplayList.Clear();
+            foreach (var item in tempUserAlertDisplayList)
+            {
+                userAlertDisplayList.Add(item);
+            }
+            mAdapter.NotifyDataSetChanged();
+        }
+
+
     }//
 }//
