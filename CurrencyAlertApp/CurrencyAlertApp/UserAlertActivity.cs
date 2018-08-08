@@ -15,6 +15,8 @@ using Android.Widget;
 using CurrencyAlertApp.DataAccess;
 using Android.Support.V7.Widget;
 
+using System.Threading.Tasks;
+
 namespace CurrencyAlertApp
 {
     [Activity(Theme = "@style/MyTheme.Base",     Label = "UserAlertActivity")]
@@ -125,23 +127,96 @@ namespace CurrencyAlertApp
                 UserAlert convertedUserAlert = SetUpData.ConvertNewsObjectToUserAlert(SelectedNewsObject_PassedFRom_MainActivity);
                 Log.Debug("DEBUG", convertedUserAlert.ToString());
 
-
+                // store UserAlert in database & get its ID number - 
                 // need ID of UserAlert from DB at this mmoment for creating alarm code
                 int userID_fromDB = SetUpData.AddNewUserAlertToDatabase(convertedUserAlert);
 
                 Log.Debug("DEBUG", "UserAlertActivity says - new UserID from DB: " +userID_fromDB +"\n\n");
                 Log.Debug("DEBUG", "FINISHED\n\n\n");
 
-                // CALL METHOD HERE.....    SET_ALARM()
+                // CALL METHOD HERE.....    SET_ALARM() ************************************************************************************
+                SetAlarm(convertedUserAlert);
+
             }
-
-
-
             // call populate adapter
             PopulateUserAlertAdapter();
             //RefreshTxtDataLastUpdated();
 
-        }// end OnCreate -----------------------------------------------------------
+        }// end OnCreate ---------------------------------
+
+
+
+        void DeleteAlarm(UserAlert userAlert)
+        {
+            // start a new thread - so as not to run on the UI thread - keep the UI thread responsive
+            Task.Factory.StartNew(() =>
+            {
+                try
+                {
+                    int alarmNo_takenFrom_UserAlertID = userAlert.UserAlertID;
+
+                    Intent intent = new Intent(this, typeof(Receiver1));
+                    //  CONTEXT,PRIVATE REQUEST CODE, INTENT, FLAG
+                    PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, alarmNo_takenFrom_UserAlertID, intent, 0);
+                    AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
+
+                    alarmManager.Cancel(pendingIntent);
+                    //alarmManager.Set(AlarmType.RtcWakeup, ringTime, pendingIntent);
+
+                    Log.Debug("DEBUG", "\n\n\nAlarm deleted from Alarm Manager - ID: " + alarmNo_takenFrom_UserAlertID);
+                }
+                catch
+                {
+                    Log.Debug("DEBUG", "Alarm NOT deleted from Alarm Manager\n\n\n");
+                }
+               
+                Log.Debug("DEBUG", "FINISHED\n\n\n");
+            }); // end of thread
+        }
+
+
+
+
+
+        void SetAlarm(UserAlert userAlert)
+        {
+            // start a new thread - so as not to run on the UI thread - keep the UI thread responsive
+            Task.Factory.StartNew(() =>
+            {
+                //// display output for testing - still works
+                //Log.Debug("DEBUG", "\n\nSetAlarm()  - UserAlert ID:  " + userAlert.UserAlertID.ToString());
+                //Log.Debug("DEBUG", "\n\nSetAlarm()  - UserAlert ToString:\n" + userAlert.ToString());
+                //Log.Debug("DEBUG", "\n\nSetAlarm()  - UserAlert DateTimeObject:\n" + userAlert.DateAndTime.ToString("dd/MM/yyyy"));
+                //Log.Debug("DEBUG", "SetAlarm()  - UserAlert DateTimeObject:\n" + userAlert.DateAndTime.ToString("HH:mmtt"));
+                //Log.Debug("DEBUG", "FINISHED\n\n\n");
+
+                try
+                {
+                    // use UserAlert ID (assigned by SQLite) as unique the alarm number for this alarm
+                    int alarmNumber = userAlert.UserAlertID;
+
+                    // get no of milliseconds from datetime object
+                    long MillisesondsOfUserAlertDateTime = new DateTimeOffset(userAlert.DateAndTime).ToUnixTimeMilliseconds();
+
+                    // set alarm
+                    var ringTime = MillisesondsOfUserAlertDateTime;
+                    Intent intent = new Intent(this, typeof(Receiver1));
+
+                    //  CONTEXT,PRIVATE REQUEST CODE, INTENT, FLAG
+                    PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, alarmNumber, intent, 0);
+
+                    AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
+                    alarmManager.Set(AlarmType.RtcWakeup, ringTime, pendingIntent);
+
+                    Log.Debug("DEBUG", "\n\n\n\nAlarm set by Alarm Manager - ID: " + alarmNumber.ToString());
+                }
+                catch
+                {
+                    Log.Debug("DEBUG", "Alarm NOT set by Alarm Manager\n\n\n\n");
+                }              
+                Log.Debug("DEBUG", "End Of SetAlarm()\n\n\n\n");
+            }); // end of thread
+        }
 
 
 
@@ -172,17 +247,23 @@ namespace CurrencyAlertApp
         {
             // alert dialog for ItemClick event
             Android.Support.V7.App.AlertDialog.Builder builder = new Android.Support.V7.App.AlertDialog.Builder(this);
-            builder.SetMessage("Delete this User Alert ?");  // usisng this disable array of menu options - good for Ok/Cancel version
+            // using  builder.SetMessage()   disables array of menu options - good for Ok/Cancel version
+            builder.SetMessage("Delete this User Alert ?");  
 
             builder.SetPositiveButton("OK", (sender2, e2) =>
             {
-                // displal ID of deleted userAlert
+                // display ID of deleted userAlert
                 Toast.MakeText(this, userAlertDisplayList[e].UserAlertID.ToString(), ToastLength.Long).Show();
 
                 // call method to delete UserAlert from database (doesn't include AlarmManager !!!!!!)
                 int rowCount = SetUpData.DeleteSelectedUserAlert(userAlertDisplayList[e].UserAlertID);
 
                 Toast.MakeText(this, "No of rows deleted: " + rowCount, ToastLength.Long).Show();
+
+                // delete alarm via deleting the associated pending intent  -----------------------------------------------------------------
+                DeleteAlarm(userAlertDisplayList[e]);    // pass in currently selected userAlert
+
+
                 PopulateUserAlertAdapter();
             });
 
@@ -205,7 +286,8 @@ namespace CurrencyAlertApp
             //    Log.Debug("DEBUG", index.ToString());
             //    Log.Debug("DEBUG", e2.Which.ToString());
             //    Toast.MakeText(this, $"You selected item no: {e}:\n", ToastLength.Long).Show();
-            //    //Toast.MakeText(this, $"You selected item no: {e}:\n" + DisplayListOBJECT[e].ToString(), ToastLength.Long).Show();
+            //    //Toast.MakeText(this, $"You selected item no: {e}:\n" 
+            //         + DisplayListOBJECT[e].ToString(), ToastLength.Long).Show();
 
             //    switch (e2.Which)
             //    {

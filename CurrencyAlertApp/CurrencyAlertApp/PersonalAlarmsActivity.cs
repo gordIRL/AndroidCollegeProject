@@ -86,7 +86,7 @@ namespace CurrencyAlertApp
         void StartBtn_Click(object sender, EventArgs e)
         {
 
-            //// Original
+            //// Original - still works
             ////GET TIME IN SECONDS AND INITIALIZE INTENT
             //int time = Convert.ToInt32(timeTxt.Text);
             //Intent intent = new Intent(this, typeof(Receiver1));
@@ -109,36 +109,36 @@ namespace CurrencyAlertApp
 
             // Single alarm set from object passed from main activity  - WORKING
 
-            // start a new thread - so as not to run on the UI thread - keep the UI thread responsive
-            Task.Factory.StartNew(() =>
-            {
-                //// experiment to demonstrate threading
-                //for (int i = 0; i < 500000; i++)
-                //{
-                //    Log.Debug("DEBUG", "TEST: " + i);
-                //    //Thread.Sleep(1000);  // issues with System.Threading                   
-                //}    
-                // create new DateTime object from object passed from Main Activity
-                DateTime dateTimeFromPassedObject = myResultNewsObject.DateAndTime;
+            //// start a new thread - so as not to run on the UI thread - keep the UI thread responsive
+            //Task.Factory.StartNew(() =>
+            //{
+            //    //// experiment to demonstrate threading
+            //    //for (int i = 0; i < 500000; i++)
+            //    //{
+            //    //    Log.Debug("DEBUG", "TEST: " + i);
+            //    //    //Thread.Sleep(1000);  // issues with System.Threading                   
+            //    //}    
+            //    // create new DateTime object from object passed from Main Activity
+            //    DateTime dateTimeFromPassedObject = myResultNewsObject.DateAndTime;
 
-                // store the new DateTime object in list
-                dateTimesList.Add(dateTimeFromPassedObject);
+            //    // store the new DateTime object in list
+            //    dateTimesList.Add(dateTimeFromPassedObject);
 
-                // use current no of items in list as the alarm number for this alarm
-                int alarmNumber = dateTimesList.Count;
+            //    // use current no of items in list as the alarm number for this alarm
+            //    int alarmNumber = dateTimesList.Count;
 
-                // get no of milliseconds from datetime object
-                long yourDateTimeMilliseconds4 = new DateTimeOffset(dateTimeFromPassedObject).ToUnixTimeMilliseconds();
+            //    // get no of milliseconds from datetime object
+            //    long yourDateTimeMilliseconds4 = new DateTimeOffset(dateTimeFromPassedObject).ToUnixTimeMilliseconds();
 
-                // set alarm
-                var ringTime = yourDateTimeMilliseconds4;
-                Intent intent = new Intent(this, typeof(Receiver1));
-                PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, alarmNumber, intent, 0);  //  CONTEXT,PRIVATE REQUEST CODE, INTENT, FLAG
-                AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
-                alarmManager.Set(AlarmType.RtcWakeup, ringTime, pendingIntent);
-                //Log.Debug("DEBUG", "TEST");
+            //    // set alarm
+            //    var ringTime = yourDateTimeMilliseconds4;
+            //    Intent intent = new Intent(this, typeof(Receiver1));
+            //    PendingIntent pendingIntent = PendingIntent.GetBroadcast(this, alarmNumber, intent, 0);  //  CONTEXT,PRIVATE REQUEST CODE, INTENT, FLAG
+            //    AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
+            //    alarmManager.Set(AlarmType.RtcWakeup, ringTime, pendingIntent);
+            //    //Log.Debug("DEBUG", "TEST");
 
-            }); // end of thread
+            //}); // end of thread
 
 
 
@@ -146,35 +146,35 @@ namespace CurrencyAlertApp
 
             //--------------------------------------------------------------------------------------------------------------
 
-            //// Experiment with multiple alarms
-            //DateTime dateTime_1 = DateTime.Now.AddSeconds(0);
-            //DateTime dateTime_2 = dateTime_1.AddSeconds(10);
-            //DateTime dateTime_3 = dateTime_1.AddSeconds(20);
+            // Experiment with multiple alarms
+            DateTime dateTime_1 = DateTime.Now.AddSeconds(0);
+            DateTime dateTime_2 = dateTime_1.AddSeconds(10);
+            DateTime dateTime_3 = dateTime_1.AddSeconds(20);
 
-            //long yourDateTimeMilliseconds1 = new DateTimeOffset(dateTime_1).ToUnixTimeMilliseconds();
-            //long yourDateTimeMilliseconds2 = new DateTimeOffset(dateTime_2).ToUnixTimeMilliseconds();
-            //long yourDateTimeMilliseconds3 = new DateTimeOffset(dateTime_3).ToUnixTimeMilliseconds();
+            long yourDateTimeMilliseconds1 = new DateTimeOffset(dateTime_1).ToUnixTimeMilliseconds();
+            long yourDateTimeMilliseconds2 = new DateTimeOffset(dateTime_2).ToUnixTimeMilliseconds();
+            long yourDateTimeMilliseconds3 = new DateTimeOffset(dateTime_3).ToUnixTimeMilliseconds();
 
-            //Log.Debug("DEBUG", "Time is: " + dateTime_1.ToLongTimeString());
-            //Log.Debug("DEBUG", "Time is: " + dateTime_2.ToLongTimeString());
-            //Log.Debug("DEBUG", "Time is: " + dateTime_3.ToLongTimeString());
+            Log.Debug("DEBUG", "Time is: " + dateTime_1.ToLongTimeString());
+            Log.Debug("DEBUG", "Time is: " + dateTime_2.ToLongTimeString());
+            Log.Debug("DEBUG", "Time is: " + dateTime_3.ToLongTimeString());
 
-            //Log.Debug("DEBUG", "Time is: " + yourDateTimeMilliseconds1);
-            //Log.Debug("DEBUG", "Time is: " + yourDateTimeMilliseconds2);
-            //Log.Debug("DEBUG", "Time is: " + yourDateTimeMilliseconds3);
+            Log.Debug("DEBUG", "Time is: " + yourDateTimeMilliseconds1);
+            Log.Debug("DEBUG", "Time is: " + yourDateTimeMilliseconds2);
+            Log.Debug("DEBUG", "Time is: " + yourDateTimeMilliseconds3);
 
 
-            //var ringTime = yourDateTimeMilliseconds1;
-            //Intent intent = new Intent(this, typeof(Receiver1));
-            //PendingIntent pendingIntent1 = PendingIntent.GetBroadcast(this, 1, intent, 0); //  CONTEXT,PRIVATE REQUEST CODE, INTENT, FLAG 
-            //AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
-            //alarmManager.Set(AlarmType.RtcWakeup, ringTime, pendingIntent1);  
+            var ringTime = yourDateTimeMilliseconds1;
+            Intent intent = new Intent(this, typeof(Receiver1));
+            PendingIntent pendingIntent1 = PendingIntent.GetBroadcast(this, 1, intent, 0); //  CONTEXT,PRIVATE REQUEST CODE, INTENT, FLAG 
+            AlarmManager alarmManager = (AlarmManager)GetSystemService(AlarmService);
+            alarmManager.Set(AlarmType.RtcWakeup, ringTime, pendingIntent1);
 
-            //ringTime = yourDateTimeMilliseconds2;
-            //intent = new Intent(this, typeof(Receiver1));
-            //PendingIntent pendingIntent2 = PendingIntent.GetBroadcast(this, 2, intent, 0); //  CONTEXT,PRIVATE REQUEST CODE, INTENT, FLAG 
-            //alarmManager = (AlarmManager)GetSystemService(AlarmService);
-            //alarmManager.Set(AlarmType.RtcWakeup, ringTime, pendingIntent2);
+            ringTime = yourDateTimeMilliseconds2;
+            intent = new Intent(this, typeof(Receiver1));
+            PendingIntent pendingIntent2 = PendingIntent.GetBroadcast(this, 2, intent, 0); //  CONTEXT,PRIVATE REQUEST CODE, INTENT, FLAG 
+            alarmManager = (AlarmManager)GetSystemService(AlarmService);
+            alarmManager.Set(AlarmType.RtcWakeup, ringTime, pendingIntent2);
 
             //ringTime = yourDateTimeMilliseconds3;
             //intent = new Intent(this, typeof(Receiver1));

@@ -120,6 +120,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\AlarmsStore.cs" />
     <Compile Include="DataAccess\UserAlert.cs" />
     <Compile Include="NewsObject_CustomAdapter.cs" />
     <Compile Include="DataAccess\Alert.cs" />
