@@ -103,7 +103,7 @@ namespace CurrencyAlertApp
                     case Resource.Id.bottomMenu_UserAlertActivity_Option_1:
                         Toast.MakeText(this, "Personal Alerts Selected", ToastLength.Short).Show();
                         // call intent to start next activity
-                        Intent intent = new Intent(this, typeof(PersonalAlarmsActivity));
+                        Intent intent = new Intent(this, typeof(PersonalAlertsActivity));
                         StartActivity(intent);
                         break;
 
@@ -330,7 +330,7 @@ namespace CurrencyAlertApp
 
                 case Resource.Id.topMenu_UserAlertActivity_Alerts:
                     Toast.MakeText(this, "Action selected: \nSet Alert", ToastLength.Short).Show();
-                    intent = new Intent(this, typeof(PersonalAlarmsActivity));
+                    intent = new Intent(this, typeof(PersonalAlertsActivity));
                     StartActivity(intent);
                     break;              
 

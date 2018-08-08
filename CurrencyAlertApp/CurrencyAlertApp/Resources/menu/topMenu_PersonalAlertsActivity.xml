@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:local="http://schemas.android.com/apk/res-auto">
+  <item
+    android:id="@+id/topMenu_PersonalAlertsActivity_MarketData"
+    android:icon="@mipmap/ic_action_content_create"
+    local:showAsAction="never"
+    android:title="@string/PersonalAlerts_Top_Toolbar_MarketData" />
+  
+  
+  
+</menu>

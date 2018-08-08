@@ -132,7 +132,8 @@
     <Compile Include="NewsObject_CustomAdapter_Test_Activity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="NewsObject_RecycleAdapter.cs" />
-    <Compile Include="PersonalAlarmsActivity.cs" />
+    <Compile Include="PersonalAlertsActivity.cs" />
+    <Compile Include="PersonalAlarmsActivity_OldVersion.cs" />
     <Compile Include="Receiver1.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -150,7 +151,7 @@
     <AndroidResource Include="Resources\layout\NewsObject_CustomeAdapter_Test_Layout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\PersonalAlarms.axml">
+    <AndroidResource Include="Resources\layout\PersonalAlerts.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Notifications_Test_Layout.axml" />
@@ -167,6 +168,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\UserAlert_CardView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\PersonalAlarms_OldVersion.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -516,6 +520,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\menu\bottomMenu_UserActivity.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\topMenu_PersonalAlertsActivity.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Annotations.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Annotations.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Annotations.27.0.2.1\build\MonoAndroid81\Xamarin.Android.Support.Annotations.targets')" />

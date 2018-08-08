@@ -56,6 +56,15 @@
   <string name="TB_Top_MainActivity">Home</string>
 
   <string name="TB_Bottom_UserActivity_PersonalAlerts">Personal Alerts</string>
+
+
+  <!-- For Personal Alerts Activity-->
+  <string name="PersonalAlerts_Top_Toolbar_Title">Personal Alerts</string>
+  <string name="PersonalAlerts_Top_Toolbar_MarketData">Home!!!</string>
+
+  
+  
+  
   
   
 

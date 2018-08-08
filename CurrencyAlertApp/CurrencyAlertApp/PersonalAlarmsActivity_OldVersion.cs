@@ -17,12 +17,12 @@ using System.Threading.Tasks;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Label = "PersonalAlarmsActivity",    Theme = "@style/MyTheme.Base")]
+    [Activity(Label = "PersonalAlarmsActivity", Theme = "@style/MyTheme.Base")]
     // MainLauncher = true, 
-    public class PersonalAlarmsActivity : Activity
+    public class PersonalAlarmsActivity_OldVersion : Activity
     {
         // declare controls for Set Alarm via seconds
-        private Button startBtn;       
+        private Button startBtn;
         private EditText timeTxt;
         TextView txtOffSetTime;
         Int32 myOffset;
@@ -54,7 +54,7 @@ namespace CurrencyAlertApp
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.PersonalAlarms);
+            SetContentView(Resource.Layout.PersonalAlarms_OldVersion);
 
             // wire up controls for Set Alarm via seconds
             timeTxt = FindViewById<EditText>(Resource.Id.timeTxt);
@@ -79,7 +79,7 @@ namespace CurrencyAlertApp
             }
         }
 
-       
+
 
 
         // click event for for Set Alarm via seconds
@@ -240,13 +240,13 @@ namespace CurrencyAlertApp
             }
         }
 
-       
 
 
-//----TIME-----------------------------------------------------------------------------------------------
-       
+
+        //----TIME-----------------------------------------------------------------------------------------------
+
         private void BtnSetTime_Click(object sender, EventArgs e)
-        {            
+        {
             TimePickerFragment frag = TimePickerFragment.NewInstance(
                 delegate (DateTime time)
                 {
@@ -292,7 +292,7 @@ namespace CurrencyAlertApp
         }
 
 
-        
+
 
 
 
