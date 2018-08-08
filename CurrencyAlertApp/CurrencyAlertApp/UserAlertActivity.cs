@@ -25,10 +25,11 @@ namespace CurrencyAlertApp
         // list(s) used to populate adapter
         List<UserAlert> userAlertDisplayList = new List<UserAlert>();
         List<UserAlert> tempUserAlertDisplayList = new List<UserAlert>();
+            
+        // Property for object passed from Main Activity
+        public static NewsObject SelectedNewsObject_PassedFRom_MainActivity { get; set; }  
 
-        // object passed from Main Activity
-        public static NewsObject selectedNewsObjectFromMainActivity;
-        
+
         // RecyclerView instance that displays the newsObject List:
         public RecyclerView mRecyclerView;
 
@@ -113,24 +114,26 @@ namespace CurrencyAlertApp
 
 
 
-            // Run this code ONLY if:
+            // Run this code ONLY if:  
             // user selects to add an alert to a newsObject in Main Activity
-            if (selectedNewsObjectFromMainActivity != null)
+            if (SelectedNewsObject_PassedFRom_MainActivity != null)
             {
-                Toast.MakeText(this, selectedNewsObjectFromMainActivity.ToString(), ToastLength.Long).Show();
+                Toast.MakeText(this, SelectedNewsObject_PassedFRom_MainActivity.ToString(), ToastLength.Long).Show();
 
                 SetUpData.CreateEmptyUserAlertTable();
 
-                UserAlert convertedUserAlert = SetUpData.ConvertNewsObjectToUserAlert(selectedNewsObjectFromMainActivity);
+                UserAlert convertedUserAlert = SetUpData.ConvertNewsObjectToUserAlert(SelectedNewsObject_PassedFRom_MainActivity);
                 Log.Debug("DEBUG", convertedUserAlert.ToString());
 
-                bool datebaseUpdateSuccesssful = SetUpData.AddNewUserAlertToDatabase(convertedUserAlert);
-                Log.Debug("DEBUG", "UserAlertActivity - inserted into DB: " + datebaseUpdateSuccesssful);
+
+                // need ID of UserAlert from DB at this mmoment for creating alarm code
+                int userID_fromDB = SetUpData.AddNewUserAlertToDatabase(convertedUserAlert);
+
+                Log.Debug("DEBUG", "UserAlertActivity says - new UserID from DB: " +userID_fromDB +"\n\n");
+                Log.Debug("DEBUG", "FINISHED\n\n\n");
+
+                // CALL METHOD HERE.....    SET_ALARM()
             }
-
-
-           
-
 
 
 
@@ -262,11 +265,7 @@ namespace CurrencyAlertApp
         }
         //-----------------------------------------------------------------------------------
 
-        public static void MethodToPassObject(NewsObject selectedNewsObjectInput)
-        {
-            selectedNewsObjectFromMainActivity = selectedNewsObjectInput;
-        }
-
+      
 
         void PopulateUserAlertAdapter()
         {

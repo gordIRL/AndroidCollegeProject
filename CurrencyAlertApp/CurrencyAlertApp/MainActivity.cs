@@ -28,8 +28,8 @@ namespace CurrencyAlertApp
 
     public class MainActivity : AppCompatActivity
     {
-        // is this needed ??????????????????????????????????????????????????
-        List<string> DisplayListSTRING = new List<string>();
+        ////// is this needed ??????????????????????????????????????????????????
+        ////List<string> DisplayListSTRING = new List<string>();
 
         // list(s) used to populate adapter
         List<NewsObject> newsObjectDisplayList = new List<NewsObject>();
@@ -40,14 +40,9 @@ namespace CurrencyAlertApp
         List<string> currencies_selectedList = new List<string>();
 
 
+        //XDocument xmlTestDataFile;  not needed ?
 
-
-        XDocument xmlTestDataFile;
-
-
-
-
-
+            
         // RecyclerView instance that displays the newsObject List:
         public RecyclerView mRecyclerView;
 
@@ -128,7 +123,7 @@ namespace CurrencyAlertApp
             txtDataLastUpdated = FindViewById<TextView>(Resource.Id.txtDataLastUpdated);
 
             RefreshTxtDataLastUpdated();
-            txtDataLastUpdated.Text += "\n - Please select data to display";
+            txtDataLastUpdated.Text += "\n - Please select data to display";  //?????????????????????????????????? do an  @string
 
             // Display all currency data (if any) from database.
 
@@ -138,16 +133,12 @@ namespace CurrencyAlertApp
             GetAndDisplayDefaultData();
 
 
+            // Get testdata from xml file in Assets folder             
+            XDocument xmlTestDataFile = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));           
 
-
-            // Get testdata from xml file in Assets folder & pass over to Data section
-            // done here because SetUpData is a static class
-            xmlTestDataFile = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
-            SetUpData.GetTestXmlFileFromMainActivity(xmlTestDataFile);
-
-
-
-
+            // assign xml data file from Asset directory TO SetupData Property  (no more call methods needed????)
+            SetUpData.XmlTestDataFile = xmlTestDataFile;
+                      
 
 
             // bottom ToolBar Menu Selection
@@ -170,14 +161,10 @@ namespace CurrencyAlertApp
                         PopulateNewsObjectAdapter();
                         break;
 
-
                     case Resource.Id.menu_data_getAllData:
-
-                        //XDocument xmlFile2 = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
 
                         GetAndDisplayDefaultData();
                         break;
-
 
                     case Resource.Id.menu_data_selectMarketImpacts:
 
@@ -374,8 +361,9 @@ namespace CurrencyAlertApp
                      
             builder.SetPositiveButton("OK", (sender2, e2) =>
             {
-                // call method in UserAlertActivity to pass data across (newsObject)
-                UserAlertActivity.MethodToPassObject(newsObjectDisplayList[e]);
+                // call Propperty in UserAlertActivity to pass data across (newsObject)
+                UserAlertActivity.SelectedNewsObject_PassedFRom_MainActivity = (newsObjectDisplayList[e]);
+
                 // call intent to start next activity
                 Intent intent = new Intent(this, typeof(UserAlertActivity));
                 StartActivity(intent);
@@ -441,7 +429,7 @@ namespace CurrencyAlertApp
                     Toast.MakeText(this, "Action selected: \nUser Alerts", ToastLength.Short).Show();
 
                     // pass in null - to stop unwanted  Database entries (because of 'selectedNewsObject' in UserAlertsActivity)
-                    UserAlertActivity.MethodToPassObject(null);
+                    UserAlertActivity.SelectedNewsObject_PassedFRom_MainActivity = null;
 
                     Intent intent = new Intent(this, typeof(UserAlertActivity));
                     StartActivity(intent);

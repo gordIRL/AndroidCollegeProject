@@ -43,6 +43,7 @@ namespace CurrencyAlertApp.DataAccess
         public override string ToString()
         {
             // this ToString is different from NewsObject.ToString - as it will receive proper C# DateTime object
+            // because its data is coming from an existing newsObject - NOT from A DB call which only has Ticks(long)
 
 
             // convert DateInTicks to DateTimeObject - for display purposes only (ToString())

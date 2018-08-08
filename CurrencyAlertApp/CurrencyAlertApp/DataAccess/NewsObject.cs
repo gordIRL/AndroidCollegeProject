@@ -41,7 +41,7 @@ namespace CurrencyAlertApp.DataAccess
             string tempDate = tempDateTime.ToShortDateString();
             string tempTime = tempDateTime.ToShortTimeString();
 
-            return string.Format("ID:{0} {1} {2} {3}\nDate: {4}  Time: {5}",
+            return string.Format("NewsObject ID:{0}\n{1} {2} {3}\nDate: {4}  Time: {5}",
                 NewsObjectID, Title, CountryChar, MarketImpact,
                 tempDate, tempTime);   // DateInTicks, DateInTicks);
         }

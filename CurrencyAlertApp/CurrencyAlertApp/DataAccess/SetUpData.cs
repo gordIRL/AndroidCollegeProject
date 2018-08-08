@@ -33,8 +33,11 @@ namespace CurrencyAlertApp.DataAccess
         static string DBLocation = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "CurrencyAlertApp.db3");
 
         // To use test data from xml file in asset - set 'testMode = true'
+        // Please manually select 'Update XML (Market Data)' Menu Option when app is running
         static bool testMode = false;
-        static XDocument xmlTestDataFile;
+        
+        //(no more call methods needed????)
+        public static XDocument XmlTestDataFile { get; set; }
 
         //------------------------------------------
 
@@ -104,40 +107,50 @@ namespace CurrencyAlertApp.DataAccess
          * database - passed from Main Activity
          * -- ?? don't use to repopulate adapter from database ??  TICKS ??
         */
-        public static bool AddNewUserAlertToDatabase(UserAlert userAlert)  
-            {
-            bool dataAddedToDatabase = false;
+       
+        public static int AddNewUserAlertToDatabase(UserAlert userAlert)
+        {
+            //bool dataAddedToDatabase = false;
+            int userAlertID = 0;
+
             using (SQLiteConnection conn = new SQLiteConnection(DBLocation))
-            {  
+            {
                 try
                 {
-                    // insert new UserAlert into database
+                    // insert new UserAlert into database                    
+
                     conn.Insert(userAlert);  // this won't insert the 'ignored' C# DateTime into the database !! (only TICKS stored)
-                    dataAddedToDatabase = true;
-                    Log.Debug("DEBUG", "INSERTED Single User Alert:\n" + userAlert.ToString());
+                    userAlertID = userAlert.UserAlertID;
+
+                    // display output for testing
+                    Log.Debug("DEBUG", "\n\nINSERTED Single User Alert - ID:  " + userAlert.UserAlertID.ToString());
+                    Log.Debug("DEBUG", "\n\nINSERTED Single User Alert - ToString:\n" + userAlert.ToString());
+                    Log.Debug("DEBUG", "FINISHED\n\n\n");
                 }
                 catch
                 {
-                    dataAddedToDatabase = false;
-                }
-                // set breakpoint here when required
-                Log.Debug("DEBUG", "No of items in database: " + conn.Table<UserAlert>().Count().ToString());
+                    userAlertID = 0;
+                } 
                 Log.Debug("DEBUG", "FINISHED\n\n\n");
             }// end using   
-            return dataAddedToDatabase;
+            return userAlertID;
         }// end  AddNewUserAlertToDatabase()
 
-        
+
+
 
         public static List<UserAlert> GetAllUserAlertDataFromDatabase()
         {
-            // this populates the userAlertList &&&& returns it
+            // method to populate the userAlertList & return it
             List<UserAlert> tempUserAlertsList = new List<UserAlert>();
-
             userAlertList.Clear();
 
             using (SQLiteConnection conn = new SQLiteConnection(DBLocation))
             {
+                //needed to avoid a null reference crash if table doesn't exist
+                // but it won't overwrite an existing table without 'conn.DropTable' 
+                conn.CreateTable<UserAlert>();
+
                 // retrieve all data from database & store in list
                 var retrievedDataList = conn.Table<UserAlert>();
 
@@ -151,17 +164,12 @@ namespace CurrencyAlertApp.DataAccess
                     tempUserAlertsList.Add(item);
                 }
             }// end USING 
-
-            // sort list by DateTime object
-
-
-
+            
             // sort list by long DateInTicks
             var sortedUserAlertList = from myvar in tempUserAlertsList
-                                       orderby myvar.DateInTicks
-                                       select myvar;
-
-
+                                       orderby myvar.DateInTicks// descending
+                                      select myvar;
+            
             // convert 'var' List into 'real' List
             //List<NewsObject> finalNewsObjectList = new List<NewsObject>();
             foreach (var item in sortedUserAlertList)
@@ -353,13 +361,7 @@ namespace CurrencyAlertApp.DataAccess
             DateTime dateAndTimeObject = DateTime.Parse(dateAndTimeString, cultureInfo);
 
             return dateAndTimeObject;
-        }
-
-
-        public static void GetTestXmlFileFromMainActivity(XDocument xmlTestDataFileInput)
-        {
-            xmlTestDataFile = xmlTestDataFileInput;            
-        }
+        }     
 
 
         public static bool DownloadNewXMLAndStoreInDatabase()
@@ -369,7 +371,7 @@ namespace CurrencyAlertApp.DataAccess
 
             try
             {
-                // bool testMode = true;       
+                // bool testMode = true;   // now declared at top of this class (line 36 )        
            
                 if(testMode == false)
                 {
@@ -383,10 +385,9 @@ namespace CurrencyAlertApp.DataAccess
                 }
                 if (testMode == true)
                 {
-                    // get sample data (from xml file in assets folder) & pass to method
-                    //XDocument  xmlTestDataFile_notWorkingVersion = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml")); 
-
-                    ConvertXmlAndStoreInDatabase(xmlTestDataFile);
+                    // use static PROPERTY - set in MainActivity - to get sample data (from xml file in assets folder)  
+                    //(no more call methods needed????)
+                    ConvertXmlAndStoreInDatabase(XmlTestDataFile);
                     Log.Debug("DEBUG", "!!!!! XML  TEST-Data     stored in database - SUCCESS");
                     dataUpdateSuccessful = true;
                 }

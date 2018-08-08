@@ -109,7 +109,7 @@ namespace CurrencyAlertApp
 
             // Single alarm set from object passed from main activity  - WORKING
 
-            // start a new thread - so as not to run on the UUI thread - keep the UI thread responsive
+            // start a new thread - so as not to run on the UI thread - keep the UI thread responsive
             Task.Factory.StartNew(() =>
             {
                 //// experiment to demonstrate threading
