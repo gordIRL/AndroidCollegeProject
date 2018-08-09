@@ -4,25 +4,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include
-        android:id="@+id/PersonalAlarms_Toolbar"
+        android:id="@+id/personalAlerts_toolbar"
         layout="@layout/toolbar" />
     <EditText
-        android:id="@+id/timeTxt"
-        android:layout_width="wrap_content"
+        android:id="@+id/personalAlerts_editTxt_title"
+        android:hint="@string/personalAlerts_editTxt_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
+        android:textSize="10dp"
         android:textStyle="bold"
         android:textColor="@android:color/black"
-        android:ems="10"
-        android:hint="@string/PA_Txt_NumberOfSeconds"
-        android:inputType="numberDecimal" />
-    <Button
-        android:id="@+id/startBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="60dp"
-        android:text="@string/PA_Btn_NoOfSeconds"
-        android:background="@drawable/button_state" />
+        android:ems="10"         />
+
+  <EditText
+    android:id="@+id/personalAlerts_editTxt_description"
+    android:hint="@string/personalAlerts_editTxt_description"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="10dp"
+    android:textStyle="bold"
+    android:textColor="@android:color/black"
+    android:ems="10"   />
+  
+  
+  
     <LinearLayout
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
@@ -30,20 +35,20 @@
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout1">
         <Button
-            android:id="@+id/btnSetDate"
+            android:id="@+id/personalAlerts_btn_setDate"
+            android:text="@string/personalAlerts_btn_setDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="60dp"
-            android:layout_marginTop="5dp"
-            android:text="@string/PA_Btn_SetDate"
+            android:layout_marginTop="5dp"            
             android:background="@drawable/button_state" />
         <TextView
-            android:text="@string/PA_Txt_Date"
+            android:id="@+id/personalAlerts_txt_date"
+            android:text="@string/personalAlerts_txt_date"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            android:id="@+id/txtDate" />
+            android:layout_marginTop="5dp" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -51,37 +56,44 @@
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout2">
         <Button
-            android:id="@+id/btnSetTime"
+            android:id="@+id/personalAlerts_btn_setTime"
+            android:text="@string/personalAlerts_btn_setTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="60dp"
-            android:layout_marginTop="5dp"
-            android:text="@string/PA_Btn_SetTime"
+            android:layout_marginTop="5dp"            
             android:background="@drawable/button_state" />
         <TextView
-            android:text="@string/PA_Txt_Time"
+            android:id="@+id/personalAlerts_txt_time"
+            android:text="@string/personalAlerts_txt_time"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            android:id="@+id/txtTime" />
+            android:layout_marginTop="5dp"  />
     </LinearLayout>
+  
     <TextView
-        android:text="@string/PA_Txt_OffSetTime"
+        android:id="@+id/personalAlerts_txt_combinedDateTime"
+        android:text="@string/personalAlerts_txt_combinedDateTime"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtOffSetTime" />
-    <TextView
-        android:text="@string/PA_Txt_combinedDateTime"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtcombinedDateTime" />
+        android:layout_height="wrap_content"  /> 
+    
+
     <Button
-        android:text="@string/PA_Btn_SetPersonalAlert"
+        android:id="@+id/personalAlerts_btn_setPersonalAlert"
+        android:text="@string/personalAlerts_btn_setPersonalAlert"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnSetPersonalAlert"
+        android:layout_height="wrap_content"        
         android:background="@drawable/button_state" />
+  
+    <Button
+        android:id="@+id/personalAlerts_btn_cancelPersonalAlert"
+        android:text="@string/personalAlerts_btn_cancelPersonalAlert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"        
+        android:background="@drawable/button_state" />
+
+
+
 </LinearLayout>

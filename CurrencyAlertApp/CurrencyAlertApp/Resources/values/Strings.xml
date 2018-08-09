@@ -59,21 +59,41 @@
 
 
   <!-- For Personal Alerts Activity-->
-  <string name="PersonalAlerts_Top_Toolbar_Title">Personal Alerts</string>
-  <string name="PersonalAlerts_Top_Toolbar_MarketData">Home!!!</string>
+  <string name="personalAlerts_top_toolbar_title">Personal Alerts</string>
+  <string name="personalAlerts_top_toolbar_menu_marketData">Home!!!</string>
 
-  
-  
-  
-  
-  
+  <string name="personalAlerts_editTxt_title">Enter title of personal alert</string>
+  <string name="personalAlerts_editTxt_description">Enter description (max 200 chars)</string>
 
+  <string name="personalAlerts_btn_setDate">Set Date</string>
+  <string name="personalAlerts_txt_date">Date:</string>
+
+  <string name="personalAlerts_btn_setTime">Set Time</string>
+  <string name="personalAlerts_txt_time">Time:</string>
+
+  <string name="personalAlerts_btn_setPersonalAlert">Set Personal Alert</string>
+  <string name="personalAlerts_btn_cancelPersonalAlert">Cancel</string>
+
+  <string name="personalAlerts_txt_combinedDateTime">Combined Date and Time</string>
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--Old Personal Alerts Section-->
   <string name="PA_Btn_NoOfSeconds">Start</string>
   <string name="PA_Btn_SetDate">Set Date</string>
   <string name="PA_Btn_SetTime">Set Time</string>
   <string name="PA_Btn_SetPersonalAlert">Set Personal Alert</string>
 
-  <string name="PA_Txt_combinedDateTime">Date and Time Combined</string>
+  <string name="PA_Txt_combinedDateTime">Combined Date and Time</string>
   <string name="PA_Txt_Date">Date:</string>
   <string name="PA_Txt_Time">Time:</string>
   <string name="PA_Txt_OffSetTime">OffSetTime:</string>

@@ -5,7 +5,7 @@
     android:id="@+id/topMenu_PersonalAlertsActivity_MarketData"
     android:icon="@mipmap/ic_action_content_create"
     local:showAsAction="never"
-    android:title="@string/PersonalAlerts_Top_Toolbar_MarketData" />
+    android:title="@string/personalAlerts_top_toolbar_menu_marketData" />
   
   
   
