@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
+using Android.Widget;
+using Android.Support.V7.Widget;
 using Android.Support.V7.App;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Util;
 using Android.Views;
-using Android.Widget;
-using CurrencyAlertApp.DataAccess;
-using Android.Support.V7.Widget;
-
 using System.Threading.Tasks;
+using CurrencyAlertApp.DataAccess;
+
+//using System.Linq;
+//using System.Text;
+//using Android.Runtime;
 
 namespace CurrencyAlertApp
 {
@@ -28,8 +27,11 @@ namespace CurrencyAlertApp
         List<UserAlert> userAlertDisplayList = new List<UserAlert>();
         List<UserAlert> tempUserAlertDisplayList = new List<UserAlert>();
             
-        // Property for object passed from Main Activity
-        public static NewsObject SelectedNewsObject_PassedFRom_MainActivity { get; set; }  
+        // Property for NewsObject passed from Main Activity
+        public static NewsObject SelectedNewsObject_PassedFrom_MainActivity { get; set; }
+
+        // Property for UserAlert object passed from PersonalAlerts Activity
+        public static UserAlert SelectedUserAlert_PassedFrom_PersonalAlertsActivity { get; set; }
 
 
         // RecyclerView instance that displays the newsObject List:
@@ -116,15 +118,15 @@ namespace CurrencyAlertApp
 
 
 
-            // Run this code ONLY if:  
-            // user selects to add an alert to a newsObject in Main Activity
-            if (SelectedNewsObject_PassedFRom_MainActivity != null)
+            // Run this code ONLY if - user selects to add an alert to a newsObject in Main Activity
+            if (SelectedNewsObject_PassedFrom_MainActivity != null)
             {
-                Toast.MakeText(this, SelectedNewsObject_PassedFRom_MainActivity.ToString(), ToastLength.Long).Show();
+                Toast.MakeText(this, SelectedNewsObject_PassedFrom_MainActivity.ToString(), ToastLength.Long).Show();
 
+                // avoid null error if UserAlertTable doesn't exist - won't overwrite if it does
                 SetUpData.CreateEmptyUserAlertTable();
 
-                UserAlert convertedUserAlert = SetUpData.ConvertNewsObjectToUserAlert(SelectedNewsObject_PassedFRom_MainActivity);
+                UserAlert convertedUserAlert = SetUpData.ConvertNewsObjectToUserAlert(SelectedNewsObject_PassedFrom_MainActivity);
                 Log.Debug("DEBUG", convertedUserAlert.ToString());
 
                 // store UserAlert in database & get its ID number - 
@@ -134,10 +136,43 @@ namespace CurrencyAlertApp
                 Log.Debug("DEBUG", "UserAlertActivity says - new UserID from DB: " +userID_fromDB +"\n\n");
                 Log.Debug("DEBUG", "FINISHED\n\n\n");
 
-                // CALL METHOD HERE.....    SET_ALARM() ************************************************************************************
+                // CALL METHOD HERE.....   
                 SetAlarm(convertedUserAlert);
-
             }
+
+
+
+
+            // Run this code ONLY if - user selects to add a Personal Alert in PersonalAlerts Activity
+            if (SelectedUserAlert_PassedFrom_PersonalAlertsActivity != null)
+            {
+                Toast.MakeText(this, SelectedUserAlert_PassedFrom_PersonalAlertsActivity.ToString(), ToastLength.Long).Show();
+
+                // avoid null error if UserAlertTable doesn't exist - won't overwrite if it does
+                SetUpData.CreateEmptyUserAlertTable();
+
+                //////UserAlert convertedUserAlert = SetUpData.ConvertNewsObjectToUserAlert(SelectedNewsObject_PassedFrom_MainActivity);
+                //////Log.Debug("DEBUG", convertedUserAlert.ToString());
+
+                // store UserAlert in database & get its ID number - 
+                // need ID of UserAlert from DB at this mmoment for creating alarm code
+                int userID_fromDB = SetUpData.AddNewUserAlertToDatabase(SelectedUserAlert_PassedFrom_PersonalAlertsActivity);
+
+                Log.Debug("DEBUG", "\n\n\nUserAlertActivity says - new UserID from DB: " + userID_fromDB + "\n\n\n");                
+
+                // CALL METHOD HERE.....   
+                SetAlarm(SelectedUserAlert_PassedFrom_PersonalAlertsActivity);
+            }
+
+
+
+
+
+
+
+
+
+
             // call populate adapter
             PopulateUserAlertAdapter();
             //RefreshTxtDataLastUpdated();
@@ -330,7 +365,7 @@ namespace CurrencyAlertApp
 
                 case Resource.Id.topMenu_UserAlertActivity_Alerts:
                     Toast.MakeText(this, "Action selected: \nSet Alert", ToastLength.Short).Show();
-                    intent = new Intent(this, typeof(PersonalAlertsActivity));
+                    intent = new Intent(this, typeof(PersonalAlarmsActivity_OldVersion));
                     StartActivity(intent);
                     break;              
 

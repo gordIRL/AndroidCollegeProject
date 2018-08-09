@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 // to pass a XDocument add reference:    System.Xml.Linq.
+using Android.Util;
+using SQLite;
+using System.Globalization;
+
+using System.Text;
 using System.Xml;
 using System.Xml.XPath;
 using Android.App;
@@ -12,12 +16,8 @@ using Android.Content;
 using Android.Content.Res;
 using Android.OS;
 using Android.Runtime;
-using Android.Util;
 using Android.Views;
 using Android.Widget;
-using SQLite;
-using System.Globalization;
-// to pass a XDocument add reference:    System.Xml.Linq.
 
 
 
@@ -277,14 +277,15 @@ namespace CurrencyAlertApp.DataAccess
                 Title = "Car Sales monthly"
             };
             // Create UserAlert List
-            List<UserAlert> userAlertsList = new List<UserAlert>();
+            List<UserAlert> userAlertsList = new List<UserAlert>
+            {
+                // Add dummy data to User Alert List
+                userAlert1,
+                userAlert2,
+                userAlert3,
+                userAlert4
+            };
 
-            // Add dummy data to User Alert List
-            userAlertsList.Add(userAlert1);
-            userAlertsList.Add(userAlert2);
-            userAlertsList.Add(userAlert3);
-            userAlertsList.Add(userAlert4);
-            
             // Return List
             return userAlertsList;
         }// end DummyDataForUserAlert
@@ -542,13 +543,15 @@ namespace CurrencyAlertApp.DataAccess
                 // convert DateTime object to a Long of ticks
                 long dateTimeInTicks = tempDateTime.Ticks;
 
-                NewsObject tempNewsObject = new NewsObject();
-                // assign xml values to newsObject - uses xml <tag> names from xml file
-                tempNewsObject.Title = item.Element("title").Value;
-                tempNewsObject.CountryChar = item.Element("country").Value;
-                tempNewsObject.MarketImpact = item.Element("impact").Value;  // .Value - removes surrounding tags - giving only the value 
-                tempNewsObject.DateAndTime = tempDateTime;  
-                tempNewsObject.DateInTicks = dateTimeInTicks;  // ticks aren't really needed here as these objects won't be stored in the database
+                NewsObject tempNewsObject = new NewsObject
+                {
+                    // assign xml values to newsObject - uses xml <tag> names from xml file
+                    Title = item.Element("title").Value,
+                    CountryChar = item.Element("country").Value,
+                    MarketImpact = item.Element("impact").Value,  // .Value - removes surrounding tags - giving only the value 
+                    DateAndTime = tempDateTime,
+                    DateInTicks = dateTimeInTicks  // ticks aren't really needed here as these objects won't be stored in the database
+                };
 
                 // add the tempNewsObject to list to return
                 listToReturn.Add(tempNewsObject);
@@ -581,13 +584,15 @@ namespace CurrencyAlertApp.DataAccess
                 // convert DateTime object to a Long of ticks
                 long dateTimeInTicks = tempDateTime.Ticks;
 
-                NewsObject tempNewsObject = new NewsObject();
-                // assign xml values to newsObject - uses xml <tag> names from xml file
-                tempNewsObject.Title = item.Element("title").Value;
-                tempNewsObject.CountryChar = item.Element("country").Value;
-                tempNewsObject.MarketImpact = item.Element("impact").Value;  // .Value - removes surrounding tags - giving only the value
-                tempNewsObject.DateAndTime = tempDateTime;
-                tempNewsObject.DateInTicks = dateTimeInTicks;  // ticks aren't really needed here as these objects won't be stored in the database
+                NewsObject tempNewsObject = new NewsObject
+                {
+                    // assign xml values to newsObject - uses xml <tag> names from xml file
+                    Title = item.Element("title").Value,
+                    CountryChar = item.Element("country").Value,
+                    MarketImpact = item.Element("impact").Value,  // .Value - removes surrounding tags - giving only the value
+                    DateAndTime = tempDateTime,
+                    DateInTicks = dateTimeInTicks  // ticks aren't really needed here as these objects won't be stored in the database
+                };
 
                 // add the tempNewsObject to list to return
                 linqQueryResultsList.Add(tempNewsObject);

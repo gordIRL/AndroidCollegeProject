@@ -2863,32 +2863,32 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f0a0026
 			public const int MA_Txt_DataLastUpdated = 2131361830;
 			
-			// aapt resource value: 0x7f0a0042
-			public const int PA_Btn_NoOfSeconds = 2131361858;
-			
 			// aapt resource value: 0x7f0a0043
-			public const int PA_Btn_SetDate = 2131361859;
-			
-			// aapt resource value: 0x7f0a0045
-			public const int PA_Btn_SetPersonalAlert = 2131361861;
+			public const int PA_Btn_NoOfSeconds = 2131361859;
 			
 			// aapt resource value: 0x7f0a0044
-			public const int PA_Btn_SetTime = 2131361860;
-			
-			// aapt resource value: 0x7f0a0047
-			public const int PA_Txt_Date = 2131361863;
-			
-			// aapt resource value: 0x7f0a004a
-			public const int PA_Txt_NumberOfSeconds = 2131361866;
-			
-			// aapt resource value: 0x7f0a0049
-			public const int PA_Txt_OffSetTime = 2131361865;
-			
-			// aapt resource value: 0x7f0a0048
-			public const int PA_Txt_Time = 2131361864;
+			public const int PA_Btn_SetDate = 2131361860;
 			
 			// aapt resource value: 0x7f0a0046
-			public const int PA_Txt_combinedDateTime = 2131361862;
+			public const int PA_Btn_SetPersonalAlert = 2131361862;
+			
+			// aapt resource value: 0x7f0a0045
+			public const int PA_Btn_SetTime = 2131361861;
+			
+			// aapt resource value: 0x7f0a0048
+			public const int PA_Txt_Date = 2131361864;
+			
+			// aapt resource value: 0x7f0a004b
+			public const int PA_Txt_NumberOfSeconds = 2131361867;
+			
+			// aapt resource value: 0x7f0a004a
+			public const int PA_Txt_OffSetTime = 2131361866;
+			
+			// aapt resource value: 0x7f0a0049
+			public const int PA_Txt_Time = 2131361865;
+			
+			// aapt resource value: 0x7f0a0047
+			public const int PA_Txt_combinedDateTime = 2131361863;
 			
 			// aapt resource value: 0x7f0a0025
 			public const int SampleHelloWorldText = 2131361829;
@@ -3057,6 +3057,9 @@ namespace CurrencyAlertApp
 			
 			// aapt resource value: 0x7f0a0039
 			public const int personalAlerts_editTxt_title = 2131361849;
+			
+			// aapt resource value: 0x7f0a0042
+			public const int personalAlerts_personalAlertName = 2131361858;
 			
 			// aapt resource value: 0x7f0a0038
 			public const int personalAlerts_top_toolbar_menu_marketData = 2131361848;

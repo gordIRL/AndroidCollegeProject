@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
-
 using Android.Support.V7.App;
-using Toolbar = Android.Support.V7.Widget.Toolbar;
-using CurrencyAlertApp.DataAccess;
 using Android.Util;
 using System.Globalization;
+using CurrencyAlertApp.DataAccess;
+
+//using System.Linq;
+//using System.Text;
+//using Android.Content;
+//using Android.Runtime;
+//using Android.Views;
+//using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace CurrencyAlertApp
 {

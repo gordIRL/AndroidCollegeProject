@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
+﻿using System.Collections.Generic;
 using Android.Content;
-using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using CurrencyAlertApp;
 using CurrencyAlertApp.DataAccess;
+
+//using System.Linq;
+//using System.Text;
+//using Android.App;
+//using CurrencyAlertApp;
+//using System;
+//using Android.OS;
 
 namespace CurrencyAlertApp
 {

@@ -13,7 +13,7 @@ using CurrencyAlertApp.DataAccess;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Label = "PersonalAlarmsActivity", MainLauncher = true, Theme = "@style/MyTheme.Base")]
+    [Activity(Label = "PersonalAlarmsActivity",  Theme = "@style/MyTheme.Base")]
     // MainLauncher = true, 
     public class PersonalAlertsActivity : AppCompatActivity
     {
@@ -30,19 +30,8 @@ namespace CurrencyAlertApp
         TextView txtTime;
         TextView combinedDateTimeTextView;
 
-
         // variables
         public static DateTime combinedDateTimeObject;
-
-       
-
-
-        
-        //public static NewsObject myResultNewsObject;
-        //public static int alarmNumber;
-        //public static List<DateTime> dateTimesList = new List<DateTime>();
-
-        
 
 
 
@@ -76,12 +65,9 @@ namespace CurrencyAlertApp
             btnSetPersonalAlert = FindViewById<Button>(Resource.Id.personalAlerts_btn_setPersonalAlert);
             btnSetPersonalAlert.Click += BtnSetPersonalAlert_Click;
             btnCancelPersonalAlert = FindViewById<Button>(Resource.Id.personalAlerts_btn_cancelPersonalAlert);
-            btnCancelPersonalAlert.Click += BtnCancelPersonalAlert_Click;
+            btnCancelPersonalAlert.Click += BtnCancelPersonalAlert_Click;        
 
-         
-
-        }  // end onCreate--------------------------------------------------------------------
-
+        }  // end OnCreate()
 
 
 
@@ -108,9 +94,6 @@ namespace CurrencyAlertApp
             };
             return base.OnOptionsItemSelected(item);
         }
-        //-----------------------------------------------------------------------------------
-
-
 
 
         // populate UserAlert object with data from screen controls & set Property with this UserAlert object
@@ -123,15 +106,23 @@ namespace CurrencyAlertApp
                 // don't add ID here - SQLite will do this automatically (auto-increment)
                 Title = editTxtTitle.Text,
                 DescriptionOfPersonalEvent = editTxtDescription.Text,
-                CountryChar = "LOCAL",   // would be nice to get the phone region for this
+                CountryChar = "Personal: ",                  // Resource.String.personalAlerts_personalAlertName,
                 MarketImpact = "High",
                 IsPersonalAlert = true,
                 DateAndTime = combinedDateTimeObject,
-                
+
                 // convert DateTime object to a ticks (long)
                 DateInTicks = combinedDateTimeObject.Ticks
-        };
+            };
+            Log.Debug("DEBUG", "\n\n\n" + userAlert.ToString() + "\n\n\n");
+
             // remember to set property !!!!
+            // call Property in UserAlertActivity to pass data across (newsObject)
+            UserAlertActivity.SelectedUserAlert_PassedFrom_PersonalAlertsActivity = userAlert;
+
+            // call intent to start next activity
+            Intent intent = new Intent(this, typeof(UserAlertActivity));
+            StartActivity(intent);
         }//
 
 
@@ -139,6 +130,9 @@ namespace CurrencyAlertApp
         private void BtnCancelPersonalAlert_Click(object sender, EventArgs e)
         {
             Toast.MakeText(this, "CANCEL Alert Selected", ToastLength.Short).Show();
+
+            Intent intent = new Intent(this, typeof(MainActivity));  // nice to go back to calling Activity (?? back statck ??)
+            StartActivity(intent);
         }
 
 
@@ -164,8 +158,11 @@ namespace CurrencyAlertApp
 
             public static TimePickerFragment NewInstance(Action<DateTime> onTimeSelected)
             {
-                TimePickerFragment frag = new TimePickerFragment();
-                frag.timeSelectedHandler = onTimeSelected; return frag;
+                TimePickerFragment frag = new TimePickerFragment
+                {
+                    timeSelectedHandler = onTimeSelected
+                };
+                return frag;
             }
 
             public override Dialog OnCreateDialog(Bundle savedInstanceState)
@@ -219,8 +216,10 @@ namespace CurrencyAlertApp
 
             public static DatePickerFragment NewInstance(Action<DateTime> onDateSelected)
             {
-                DatePickerFragment frag = new DatePickerFragment();
-                frag._dateSelectedHandler = onDateSelected;
+                DatePickerFragment frag = new DatePickerFragment
+                {
+                    _dateSelectedHandler = onDateSelected
+                };
                 return frag;
             }
 
@@ -250,10 +249,6 @@ namespace CurrencyAlertApp
             }
         }
         //----------------------------------------------------------------------------------------------------------------------
-
-
-      
-
 
     }//
 }//

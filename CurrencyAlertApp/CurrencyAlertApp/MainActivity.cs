@@ -1,25 +1,26 @@
 ﻿using Android.App;
-using Android.Widget;
 using Android.OS;
-using Android.Support.V7.App;
-using Toolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Content;
 using Android.Views;
 using System.Collections.Generic;
-using CurrencyAlertApp.DataAccess;
 using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-// to pass a XDocument add reference:    System.Xml.Linq.
-using System.Xml;
 using System.Xml.Linq;
-using System.Xml.XPath;
-using System.IO;
-using System.Reflection;
+// to pass a XDocument add reference:    System.Xml.Linq.
 using Android.Content.Res;
 using Android.Util;
+using Android.Widget;
 using Android.Support.V7.Widget;
+using Android.Support.V7.App;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
+using CurrencyAlertApp.DataAccess;
+
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+//using System.Xml;
+//using System.Xml.XPath;
+//using System.IO;
+//using System.Reflection;
 
 namespace CurrencyAlertApp
 {
@@ -362,7 +363,7 @@ namespace CurrencyAlertApp
             builder.SetPositiveButton("OK", (sender2, e2) =>
             {
                 // call Propperty in UserAlertActivity to pass data across (newsObject)
-                UserAlertActivity.SelectedNewsObject_PassedFRom_MainActivity = (newsObjectDisplayList[e]);
+                UserAlertActivity.SelectedNewsObject_PassedFrom_MainActivity = (newsObjectDisplayList[e]);
 
                 // call intent to start next activity
                 Intent intent = new Intent(this, typeof(UserAlertActivity));
@@ -429,7 +430,7 @@ namespace CurrencyAlertApp
                     Toast.MakeText(this, "Action selected: \nUser Alerts", ToastLength.Short).Show();
 
                     // pass in null - to stop unwanted  Database entries (because of 'selectedNewsObject' in UserAlertsActivity)
-                    UserAlertActivity.SelectedNewsObject_PassedFRom_MainActivity = null;
+                    UserAlertActivity.SelectedNewsObject_PassedFrom_MainActivity = null;
 
                     Intent intent = new Intent(this, typeof(UserAlertActivity));
                     StartActivity(intent);
