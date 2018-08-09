@@ -34,7 +34,7 @@ namespace CurrencyAlertApp.DataAccess
 
         // To use test data from xml file in asset - set 'testMode = true'
         // Please manually select 'Update XML (Market Data)' Menu Option when app is running
-        static bool testMode = true;
+        static bool testMode = false;
         
         //(no more call methods needed????)
         public static XDocument XmlTestDataFile { get; set; }

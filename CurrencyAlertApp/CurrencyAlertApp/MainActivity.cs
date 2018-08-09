@@ -14,17 +14,10 @@ using Android.Support.V7.App;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using CurrencyAlertApp.DataAccess;
 
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-//using System.Xml;
-//using System.Xml.XPath;
-//using System.IO;
-//using System.Reflection;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Theme = "@style/MyTheme.Base", Label = "CurrencyAlertApp",  Icon = "@drawable/icon")]
+    [Activity(Theme = "@style/MyTheme.Base", MainLauncher = true,   Label = "CurrencyAlertApp",  Icon = "@drawable/icon")]
     //  MainLauncher = true,      // must have an appCompat theme  
 
     public class MainActivity : AppCompatActivity
@@ -103,7 +96,7 @@ namespace CurrencyAlertApp
             // Toolbar - Bottom of Screen  (method 2)
             var toolbar_bottom = FindViewById<Toolbar>(Resource.Id.toolbar_bottom);
             toolbar_bottom.Title = GetString(Resource.String.ToolbarBottomTitle);
-            toolbar_bottom.InflateMenu(Resource.Menu.bottomMenu_MainActivity);
+            toolbar_bottom.InflateMenu(Resource.Menu.mainActivity_bottomMenu);
 
             // variables - bottom toolbar - alert dialog - market impact
             string[] marketImpact_titlesArray = Resources.GetStringArray(Resource.Array.MarketImpactArray);
@@ -363,10 +356,10 @@ namespace CurrencyAlertApp
             builder.SetPositiveButton("OK", (sender2, e2) =>
             {
                 // call Propperty in UserAlertActivity to pass data across (newsObject)
-                UserAlertActivity.SelectedNewsObject_PassedFrom_MainActivity = (newsObjectDisplayList[e]);
+                UserAlertsActivity.SelectedNewsObject_PassedFrom_MainActivity = (newsObjectDisplayList[e]);
 
                 // call intent to start next activity
-                Intent intent = new Intent(this, typeof(UserAlertActivity));
+                Intent intent = new Intent(this, typeof(UserAlertsActivity));
                 StartActivity(intent);
             });
 
@@ -387,7 +380,7 @@ namespace CurrencyAlertApp
         // TOP Toolbar
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.topMenu_MainActivity, menu);
+            MenuInflater.Inflate(Resource.Menu.mainActivity_topMenu, menu);
             return base.OnCreateOptionsMenu(menu);
         }
 
@@ -430,15 +423,15 @@ namespace CurrencyAlertApp
                     Toast.MakeText(this, "Action selected: \nUser Alerts", ToastLength.Short).Show();
 
                     // pass in null - to stop unwanted  Database entries (because of 'selectedNewsObject' in UserAlertsActivity)
-                    UserAlertActivity.SelectedNewsObject_PassedFrom_MainActivity = null;
+                    UserAlertsActivity.SelectedNewsObject_PassedFrom_MainActivity = null;
 
-                    Intent intent = new Intent(this, typeof(UserAlertActivity));
+                    Intent intent = new Intent(this, typeof(UserAlertsActivity));
                     StartActivity(intent);
                     break;
 
                 case Resource.Id.menu_top_alerts:
                     Toast.MakeText(this, "Action selected: \nSet Alert", ToastLength.Short).Show();
-                    intent = new Intent(this, typeof(PersonalAlertsActivity));
+                    intent = new Intent(this, typeof(PersonalAlarmsActivity_OldVersion));
                     StartActivity(intent);
                     break;
 

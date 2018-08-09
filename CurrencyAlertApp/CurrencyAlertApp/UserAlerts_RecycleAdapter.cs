@@ -5,17 +5,11 @@ using Android.Views;
 using Android.Widget;
 using CurrencyAlertApp.DataAccess;
 
-//using System.Linq;
-//using System.Text;
-//using Android.App;
-//using Android.Content;
-//using Android.OS;
-//using Android.Runtime;
 
 namespace CurrencyAlertApp
 {
     // Adapter to connect the data set (photo album) to the RecyclerView: 
-    public class UserAlert_RecycleAdapter : RecyclerView.Adapter
+    public class UserAlerts_RecycleAdapter : RecyclerView.Adapter
     {
         public event EventHandler<int> ItemClick;
 
@@ -23,7 +17,7 @@ namespace CurrencyAlertApp
         public List<UserAlert> mNewsObjectList;
 
         // Load the adapter with the data set (List<newsObject>) at construction time:
-        public UserAlert_RecycleAdapter(List<UserAlert> newsObjectList)
+        public UserAlerts_RecycleAdapter(List<UserAlert> newsObjectList)
         {
             mNewsObjectList = newsObjectList;
         }

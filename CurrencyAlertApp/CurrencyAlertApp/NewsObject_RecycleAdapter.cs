@@ -5,20 +5,6 @@ using Android.Support.V7.Widget;
 using System.Collections.Generic;
 using CurrencyAlertApp.DataAccess;
 
-//using Android.Support.V7.App;
-//using Toolbar = Android.Support.V7.Widget.Toolbar;
-//using System.Text;
-//using System.Threading.Tasks;
-//// to pass a XDocument add reference:    System.Xml.Linq.
-//using System.Xml;
-//using System.Xml.Linq;
-//using System.Xml.XPath;
-//using System.IO;
-//using System.Reflection;
-//using Android.Content.Res;
-//using Android.Util;
-//using System.Linq;
-
 
 namespace CurrencyAlertApp
 {

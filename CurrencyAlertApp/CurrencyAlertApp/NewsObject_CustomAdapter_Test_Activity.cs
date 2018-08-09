@@ -8,12 +8,6 @@ using Android.Util;
 using System.Globalization;
 using CurrencyAlertApp.DataAccess;
 
-//using System.Linq;
-//using System.Text;
-//using Android.Content;
-//using Android.Runtime;
-//using Android.Views;
-//using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace CurrencyAlertApp
 {

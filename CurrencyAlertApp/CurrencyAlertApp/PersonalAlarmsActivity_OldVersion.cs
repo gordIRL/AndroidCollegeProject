@@ -9,11 +9,6 @@ using Java.Lang;
 using Android.Text.Format;
 using CurrencyAlertApp.DataAccess;
 
-//using System.Threading.Tasks;
-//using System.Linq;
-//using System.Text;
-//using Android.Runtime;
-//using Android.Views;
 
 namespace CurrencyAlertApp
 {

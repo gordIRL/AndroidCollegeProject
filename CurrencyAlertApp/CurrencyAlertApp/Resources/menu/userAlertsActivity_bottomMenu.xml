@@ -2,16 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:local="http://schemas.android.com/apk/res-auto"
       android:textColor="#FFFFFF"
-      android:background="#000000"  >
-
+      android:background="#000000" >
   <item
     android:id="@+id/bottomMenu_UserAlertActivity_Option_1"
     local:showAsAction="never"
-    android:title="@string/TB_Bottom_UserActivity_PersonalAlerts" />
-
-  <item
-  android:id="@+id/bottomMenu_UserAlertActivity_Option_2"
-  local:showAsAction="never"
-  android:title="Default - Option 2" />
- 
+    android:title="@string/userAlert_bottom_toolbar_menu_personalAlerts" />  
 </menu>

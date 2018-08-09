@@ -21,7 +21,7 @@ namespace CurrencyAlertApp
     [Activity(Theme = "@style/MyTheme.Base",     Label = "UserAlertActivity")]
     //  MainLauncher = true,
 
-    public class UserAlertActivity : AppCompatActivity
+    public class UserAlertsActivity : AppCompatActivity
     {
         // list(s) used to populate adapter
         List<UserAlert> userAlertDisplayList = new List<UserAlert>();
@@ -41,7 +41,7 @@ namespace CurrencyAlertApp
         public RecyclerView.LayoutManager mLayoutManager;
 
         // Adapter that accesses the data set (List<newsObject>):       
-        public UserAlert_RecycleAdapter mAdapter;
+        public UserAlerts_RecycleAdapter mAdapter;
         //public NewsObject_RecycleAdapter mAdapter;
 
 
@@ -77,7 +77,7 @@ namespace CurrencyAlertApp
 
             // Create an adapter for the RecyclerView, and pass it the
             // data set (List<userAlert>) to manage:
-            mAdapter = new UserAlert_RecycleAdapter(userAlertDisplayList);
+            mAdapter = new UserAlerts_RecycleAdapter(userAlertDisplayList);
 
             //Register the item click handler(below) with the adapter:           
             mAdapter.ItemClick += MAdapter_ItemClick;
@@ -90,13 +90,13 @@ namespace CurrencyAlertApp
             // ToolBar - Top of Screen  (method 1)
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar_Top_UserAlert);
             SetSupportActionBar(toolbar);
-            SupportActionBar.Title = GetString(Resource.String.TB_Title_Top_UserAlerts);  
+            SupportActionBar.Title = GetString(Resource.String.userAlert_top_toolbar_title);  
 
 
             // Toolbar - Bottom of Screen  (method 2)
             var toolbar_bottom = FindViewById<Toolbar>(Resource.Id.toolbar_Bottom_UserAlert);
             toolbar_bottom.Title = GetString(Resource.String.ToolbarBottom_UserAlert_Title);
-            toolbar_bottom.InflateMenu(Resource.Menu.bottomMenu_UserActivity);
+            toolbar_bottom.InflateMenu(Resource.Menu.userAlertsActivity_bottomMenu);
 
             toolbar_bottom.MenuItemClick += (sender, e) =>
             {
@@ -107,10 +107,6 @@ namespace CurrencyAlertApp
                         // call intent to start next activity
                         Intent intent = new Intent(this, typeof(PersonalAlertsActivity));
                         StartActivity(intent);
-                        break;
-
-                    case Resource.Id.bottomMenu_UserAlertActivity_Option_2:
-                        Toast.MakeText(this, "Option 2 - default selected", ToastLength.Short).Show();
                         break;
                 }
             };
@@ -346,7 +342,7 @@ namespace CurrencyAlertApp
         // TOP Toolbar
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.topMenu_UserAlertActivity, menu);
+            MenuInflater.Inflate(Resource.Menu.userAlertsActivity_topMenu, menu);
             return base.OnCreateOptionsMenu(menu);
         }
 

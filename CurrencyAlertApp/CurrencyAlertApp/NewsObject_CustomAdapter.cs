@@ -5,12 +5,6 @@ using Android.Views;
 using Android.Widget;
 using CurrencyAlertApp.DataAccess;
 
-//using System.Linq;
-//using System.Text;
-//using Android.App;
-//using CurrencyAlertApp;
-//using System;
-//using Android.OS;
 
 namespace CurrencyAlertApp
 {

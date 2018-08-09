@@ -51,39 +51,33 @@
   <string name="TB_Bottom_SampleLinqQuery">Sample Linq Query</string>
   <string name="TB_Bottom_DebugDisplay">Debug Display</string>
 
-  <!-- For UserAlert Activity-->
+  <!-- For UserAlert Activity
   <string name="TB_Title_Top_UserAlerts">User Alerts</string>
-  <string name="TB_Top_MainActivity">Home</string>
+   <string name="TB_Bottom_UserActivity_PersonalAlerts">Personal Alerts</string>   
+  <string name="userAlert_top_toolbar_title">Personal Alerts</string>
+  -->
+  
+  <string name="userAlert_top_toolbar_title">User Alerts</string>
+  <string name="userAlert_top_toolbar_menu_MainActivity">Home</string>
+  <string name="userAlert_bottom_toolbar_menu_personalAlerts">Personal Alerts</string>
+ 
 
-  <string name="TB_Bottom_UserActivity_PersonalAlerts">Personal Alerts</string>
-
+  
+  
 
   <!-- For Personal Alerts Activity-->
   <string name="personalAlerts_top_toolbar_title">Personal Alerts</string>
   <string name="personalAlerts_top_toolbar_menu_marketData">Home!!!</string>
-
   <string name="personalAlerts_editTxt_title">Enter title of personal alert</string>
   <string name="personalAlerts_editTxt_description">Enter description (max 200 chars)</string>
-
   <string name="personalAlerts_btn_setDate">Set Date</string>
   <string name="personalAlerts_txt_date">Date:</string>
-
   <string name="personalAlerts_btn_setTime">Set Time</string>
   <string name="personalAlerts_txt_time">Time:</string>
-
   <string name="personalAlerts_btn_setPersonalAlert">Set Personal Alert</string>
   <string name="personalAlerts_btn_cancelPersonalAlert">Cancel</string>
-
   <string name="personalAlerts_txt_combinedDateTime">Combined Date and Time</string>
-
   <string name="personalAlerts_personalAlertName">Personal:!!!!</string>
-
-
-
-
-
-
-
 
 
 
@@ -93,7 +87,6 @@
   <string name="PA_Btn_SetDate">Set Date</string>
   <string name="PA_Btn_SetTime">Set Time</string>
   <string name="PA_Btn_SetPersonalAlert">Set Personal Alert</string>
-
   <string name="PA_Txt_combinedDateTime">Combined Date and Time</string>
   <string name="PA_Txt_Date">Date:</string>
   <string name="PA_Txt_Time">Time:</string>

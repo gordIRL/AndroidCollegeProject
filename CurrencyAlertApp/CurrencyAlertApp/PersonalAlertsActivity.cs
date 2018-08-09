@@ -74,7 +74,7 @@ namespace CurrencyAlertApp
         // TOP Toolbar
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.topMenu_PersonalAlertsActivity, menu);
+            MenuInflater.Inflate(Resource.Menu.personalAlertsActivity_topMenu, menu);
             return base.OnCreateOptionsMenu(menu);
         }
 
@@ -118,10 +118,10 @@ namespace CurrencyAlertApp
 
             // remember to set property !!!!
             // call Property in UserAlertActivity to pass data across (newsObject)
-            UserAlertActivity.SelectedUserAlert_PassedFrom_PersonalAlertsActivity = userAlert;
+            UserAlertsActivity.SelectedUserAlert_PassedFrom_PersonalAlertsActivity = userAlert;
 
             // call intent to start next activity
-            Intent intent = new Intent(this, typeof(UserAlertActivity));
+            Intent intent = new Intent(this, typeof(UserAlertsActivity));
             StartActivity(intent);
         }//
 

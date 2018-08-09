@@ -5,7 +5,7 @@
     android:id="@+id/topMenu_UserAlertActivity_MarketData"
     android:icon="@mipmap/ic_action_content_create"
     local:showAsAction="never"
-    android:title="@string/TB_Top_MainActivity" />
+    android:title="@string/userAlert_top_toolbar_menu_MainActivity" />
   <item
     android:id="@+id/topMenu_UserAlertActivity_Alerts"
     android:icon="@mipmap/ic_action_content_save"
