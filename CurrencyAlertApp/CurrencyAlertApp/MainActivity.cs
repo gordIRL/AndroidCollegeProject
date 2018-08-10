@@ -22,21 +22,16 @@ namespace CurrencyAlertApp
 
     public class MainActivity : AppCompatActivity
     {
-        ////// is this needed ??????????????????????????????????????????????????
-        ////List<string> DisplayListSTRING = new List<string>();
+        // declare controls
+        TextView txtDataLastUpdated;
 
         // list(s) used to populate adapter
         List<NewsObject> newsObjectDisplayList = new List<NewsObject>();
         List<NewsObject> tempNewsObjectDisplayList = new List<NewsObject>();
-
-        TextView txtDataLastUpdated;
+                
         List<string> marketImpact_selectedList = new List<string>();
         List<string> currencies_selectedList = new List<string>();
 
-
-        //XDocument xmlTestDataFile;  not needed ?
-
-            
         // RecyclerView instance that displays the newsObject List:
         public RecyclerView mRecyclerView;
 
@@ -45,8 +40,6 @@ namespace CurrencyAlertApp
 
         // Adapter that accesses the data set (List<newsObject>):
         public NewsObject_RecycleAdapter mAdapter;
-
-
 
 
         protected override void OnCreate(Bundle bundle)
@@ -89,13 +82,13 @@ namespace CurrencyAlertApp
             //------------------------------------------------------------------------------------
 
             // ToolBar - Top of Screen  (method 1)
-            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            var toolbar = FindViewById<Toolbar>(Resource.Id.mainActivity_top_toolbar);
             SetSupportActionBar(toolbar);
-            SupportActionBar.Title = GetString(Resource.String.ToolbarTopTitle);
+            SupportActionBar.Title = GetString(Resource.String.mainActivity_top_toolbar_title);
 
             // Toolbar - Bottom of Screen  (method 2)
-            var toolbar_bottom = FindViewById<Toolbar>(Resource.Id.toolbar_bottom);
-            toolbar_bottom.Title = GetString(Resource.String.ToolbarBottomTitle);
+            var toolbar_bottom = FindViewById<Toolbar>(Resource.Id.mainActivity_bottom_toolbar);
+            toolbar_bottom.Title = GetString(Resource.String.mainActivity_bottom_toolbar_title);
             toolbar_bottom.InflateMenu(Resource.Menu.mainActivity_bottomMenu);
 
             // variables - bottom toolbar - alert dialog - market impact
@@ -105,8 +98,7 @@ namespace CurrencyAlertApp
             // variables - bottom toolbar - alert dialog - currencies 
             string[] currencies_titlesArray = Resources.GetStringArray(Resource.Array.CurrenciesArray);
             bool[] currencies_selectedBoolArray = new bool[currencies_titlesArray.Length];  // for selected checkboxes in MultiItemSelect 
-
-            // set up blank database table - should if check for null elsewhere ??
+                       
             // SQL only creates a new table if one doesn't already exist - it won't overwrite an existing table (?)
             SetUpData.CreateEmptyTable();
 
@@ -114,18 +106,16 @@ namespace CurrencyAlertApp
             SetUpData.CreateTableForURLDownload();
 
             // Display for last time data was updated - retrieved from Shared Preferences
-            txtDataLastUpdated = FindViewById<TextView>(Resource.Id.txtDataLastUpdated);
+            txtDataLastUpdated = FindViewById<TextView>(Resource.Id.mainActivity_txt_dataLastUpdated);
 
             RefreshTxtDataLastUpdated();
-            txtDataLastUpdated.Text += "\n - Please select data to display";  //?????????????????????????????????? do an  @string
+            txtDataLastUpdated.Text += "\n " + GetString(Resource.String.mainActivity_txt_dataLastUpdated_pleaseSelectData);
 
             // Display all currency data (if any) from database.
-
             // This is needed here because onCreate() is called when MainActivity 
             // is selected from a menu option (intent) in UserAlertsActivity. 
             // - Not needed or called if the user selects onBackPress() 
             GetAndDisplayDefaultData();
-
 
             // Get testdata from xml file in Assets folder             
             XDocument xmlTestDataFile = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));           
@@ -140,32 +130,30 @@ namespace CurrencyAlertApp
             {
                 switch (e.Item.ItemId)
                 {
-                    case Resource.Id.menu_data_clear:
+                    case Resource.Id.mainActivity_bottom_toolbar_option_ClearCurrencyData:
 
                         // clear MarketImpacts & Currencies checkboxes -  List<bool>'s, List<string>'s  & adapter
                         Array.Clear(marketImpact_selectedBoolArray, 0, marketImpact_selectedBoolArray.Length);
                         Array.Clear(currencies_selectedBoolArray, 0, currencies_selectedBoolArray.Length);
                         marketImpact_selectedList.Clear();
                         currencies_selectedList.Clear();
-
                         RefreshTxtDataLastUpdated();
-                        txtDataLastUpdated.Text += "\n - Clear Option Selected";
-
+                        txtDataLastUpdated.Text += "\n " + GetString(Resource.String.mainActivity_txt_dataLastUpdated_clearOptionSelected);
                         tempNewsObjectDisplayList.Clear();
                         PopulateNewsObjectAdapter();
                         break;
 
-                    case Resource.Id.menu_data_getAllData:
+                    case Resource.Id.mainActivity_bottom_toolbar_option_displayAllCurrencyData:
 
                         GetAndDisplayDefaultData();
                         break;
 
-                    case Resource.Id.menu_data_selectMarketImpacts:
+                    case Resource.Id.mainActivity_bottom_toolbar_option_selectMarketImpacts:
 
                         using (var dialog = new Android.Support.V7.App.AlertDialog.Builder(this))
                         {
-                            dialog.SetTitle("Select Market Impact(s)");
-                            dialog.SetPositiveButton("Close", delegate
+                            dialog.SetTitle(GetString(Resource.String.mainActivity_dialogOption_selectmarketimpacts));
+                            dialog.SetPositiveButton(GetString(Resource.String.mainActivity_dialogOption_selectmarketimpacts_positiveButton), delegate
                             {
                                 // clear list - get LINQ query result - populate list                                                              
                                 tempNewsObjectDisplayList.Clear();
@@ -196,12 +184,12 @@ namespace CurrencyAlertApp
                         break;
 
 
-                    case Resource.Id.menu_data_selectCurrencies:
+                    case Resource.Id.mainActivity_bottom_toolbar_option_selectCurrencies:
 
                         using (var dialog = new Android.Support.V7.App.AlertDialog.Builder(this))
                         {
-                            dialog.SetTitle("Select Currencies");
-                            dialog.SetPositiveButton("Close", delegate
+                            dialog.SetTitle(GetString(Resource.String.mainActivity_dialogOption_selectCurrencies));
+                            dialog.SetPositiveButton(GetString(Resource.String.mainActivity_dialogOption_selectCurrencies_positiveButton), delegate
                             {
                                 // clear list - get LINQ query result - populate list 
                                 tempNewsObjectDisplayList.Clear();
@@ -235,7 +223,8 @@ namespace CurrencyAlertApp
                                });
 
                             // check all boxes and add all items to list(s)
-                            dialog.SetNeutralButton("ALL", delegate
+                            //dialog.SetNeutralButton("ALL", delegate
+                            dialog.SetNeutralButton(GetString(Resource.String.mainActivity_dialogOption_selectCurrencies_neutralButton), delegate
                             {
                                 // clear list 1st to avoid getting duplicate entries
                                 currencies_selectedList.Clear();
@@ -257,7 +246,7 @@ namespace CurrencyAlertApp
                             });
 
                             // deselect all boxes & clear list
-                            dialog.SetNegativeButton("Clear", delegate
+                            dialog.SetNegativeButton(GetString(Resource.String.mainActivity_dialogOption_selectCurrencies_negativeButton), delegate
                             {
                                 currencies_selectedList.Clear();
                                 //  clear bool[] set all items to FALSE
@@ -276,7 +265,7 @@ namespace CurrencyAlertApp
                         break;
 
 
-                    case Resource.Id.menu_data_sampleData:
+                    case Resource.Id.mainActivity_bottom_toolbar_option_sampleData:
 
                         // get sample data (from xml file in assets folder) & pass to method
                         XDocument xmlTestFile2 = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
@@ -286,10 +275,10 @@ namespace CurrencyAlertApp
 
                         // call populate adapter
                         PopulateNewsObjectAdapter();
-                        txtDataLastUpdated.Text = "Warning - Test Data Only (all)";
+                        txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataLastUpdated_warningTestDataOnlyAll);
                         break;
 
-                    case Resource.Id.menu_data_sampleLINQQuery:
+                    case Resource.Id.mainActivity_bottom_toolbar_option_sampleLinqQuery:
 
                         // get sample data (from xml file in assets folder) & pass to method & pass to LINQ query method
                         XDocument xmlTestFile1 = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
@@ -298,10 +287,10 @@ namespace CurrencyAlertApp
 
                         // call populate adapter
                         PopulateNewsObjectAdapter();
-                        txtDataLastUpdated.Text = "Warning - Test Data Only (query)";
+                        txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataLastUpdated_WarningTestDataOnlyQuery);
                         break;
 
-                    case Resource.Id.menu_data_debugDisplay:
+                    case Resource.Id.mainActivity_bottom_toolbar_option_debugDisplay:
                         // displays contents of currency & marketImpact list in the Debug Output window
                         Log.Debug("DEBUG", ": Currency & Market Impact Selected Display - Starts Here");
                         foreach (var item in currencies_selectedList)
@@ -341,7 +330,7 @@ namespace CurrencyAlertApp
                 }
             }
 
-        }// end onCreate  ------------------------------------------------------------------------
+        }// end onCreate 
 
 
 
@@ -352,8 +341,8 @@ namespace CurrencyAlertApp
             // alert dialog for ItemClick event
             Android.Support.V7.App.AlertDialog.Builder builder = new Android.Support.V7.App.AlertDialog.Builder(this);
             builder.SetMessage("Set Alert on this Market Event ?  (OK)");  // usisng this disable array of menu options - good for Ok/Cancel version
-                     
-            builder.SetPositiveButton("OK", (sender2, e2) =>
+
+            builder.SetPositiveButton(GetString(Resource.String.mainActivity_mAdapterItemClick_positiveButton), (sender2, e2) =>
             {
                 // call Propperty in UserAlertActivity to pass data across (newsObject)
                 UserAlertsActivity.SelectedNewsObject_PassedFrom_MainActivity = (newsObjectDisplayList[e]);
@@ -363,7 +352,7 @@ namespace CurrencyAlertApp
                 StartActivity(intent);
             });
 
-            builder.SetNegativeButton("Cancel", (sender2, e2) =>
+            builder.SetNegativeButton(GetString(Resource.String.mainActivity_mAdapterItemClick_negativeButton), (sender2, e2) =>
             {
                 Log.Debug("dbg", "Cancel clicked");
             });
@@ -372,9 +361,6 @@ namespace CurrencyAlertApp
             var alert = builder.Create();
             alert.Show();
         }// end  MAdapter_ItemClick1
-         //-----------------------------------------------------------------------------------
-
-
 
 
         // TOP Toolbar
@@ -386,18 +372,19 @@ namespace CurrencyAlertApp
 
 
         // TOP Toolbar ('menu options')
-        public override bool OnOptionsItemSelected(IMenuItem item) // 
+        public override bool OnOptionsItemSelected(IMenuItem item) 
         {
             switch (item.ItemId)
             {
-                case Resource.Id.menu_top_marketData:
-                    Toast.MakeText(this, "Action selected: \nMarket Data", ToastLength.Short).Show();
+                case Resource.Id.mainActivity_top_toolbar_option_updateXML:
+                    //Toast.MakeText(this, "Action selected: \nMarket Data", ToastLength.Short).Show();
                     DataAccess.SetUpData.DropNewsObjectTable();
 
                     bool dataUpdateSuccessful = DataAccess.SetUpData.DownloadNewXMLAndStoreInDatabase();
                     if (dataUpdateSuccessful)
                     {
-                        Toast.MakeText(this, "data update: " + dataUpdateSuccessful, ToastLength.Short).Show();
+                        Toast.MakeText(this, GetString(Resource.String.mainActivity_top_toolbar_dataUpdate) 
+                            + dataUpdateSuccessful, ToastLength.Short).Show();
 
                         // store date & time of xml download in Shared Preferences
                         DateTime dateTime = DateTime.Now;
@@ -408,8 +395,7 @@ namespace CurrencyAlertApp
                     }
                     else
                         txtDataLastUpdated.Text = "Data Not Updated";
-
-                    // Copied from display all raw data (bottom menu - selection 2)  !!!!!!!!!!!!!!!!!
+                    
                     // clear List & get raw newsObject data from database  
                     tempNewsObjectDisplayList.Clear();
                     tempNewsObjectDisplayList = SetUpData.GetAllNewsObjectDataFromDatabase();
@@ -419,9 +405,8 @@ namespace CurrencyAlertApp
                     RefreshTxtDataLastUpdated();
                     break;                             
 
-                case Resource.Id.menu_top_userAlertsActivity:
-                    Toast.MakeText(this, "Action selected: \nUser Alerts", ToastLength.Short).Show();
-
+                case Resource.Id.mainActivity_top_toolbar_option_userAlertsActivity:
+                    
                     // pass in null - to stop unwanted  Database entries (because of 'selectedNewsObject' in UserAlertsActivity)
                     UserAlertsActivity.SelectedNewsObject_PassedFrom_MainActivity = null;
 
@@ -429,22 +414,22 @@ namespace CurrencyAlertApp
                     StartActivity(intent);
                     break;
 
-                case Resource.Id.menu_top_alerts:
-                    Toast.MakeText(this, "Action selected: \nSet Alert", ToastLength.Short).Show();
+                case Resource.Id.mainActivity_top_toolbar_option_alertsOldVersion:
                     intent = new Intent(this, typeof(PersonalAlarmsActivity_OldVersion));
                     StartActivity(intent);
                     break;
 
-                case Resource.Id.menu_top_custom_adapter:
-                    Toast.MakeText(this, "Action selected: \nPreferences - test Activity", ToastLength.Short).Show();
+                case Resource.Id.mainActivity_top_toolbar_option_customAdapter:                    
                     intent = new Intent(this, typeof(NewsObject_CustomAdapter_Test_Activity));
                     StartActivity(intent);
                     break;
 
-                case Resource.Id.menu_top_preferences:
-                    Toast.MakeText(this, "Action selected: \nPreferences - test Activity", ToastLength.Short).Show();
-                    intent = new Intent(this, typeof(NewsObject_CustomAdapter_Test_Activity));
-                    StartActivity(intent);
+                case Resource.Id.mainActivity_top_toolbar_option_preferences:
+                    Toast.MakeText(this, GetString(Resource.String.generalMessage_forFutureDevelopment), ToastLength.Long).Show();
+                    break;
+
+                case Resource.Id.mainActivity_top_toolbar_option_reports:
+                    Toast.MakeText(this, GetString(Resource.String.generalMessage_forFutureDevelopment), ToastLength.Long).Show();
                     break;
 
                 default:
@@ -472,8 +457,7 @@ namespace CurrencyAlertApp
         {
             MySharedPreferencesMethods mySharedPreferencesMethods = new MySharedPreferencesMethods(this);
             string dateXmlUpdated = mySharedPreferencesMethods.GetDataFromSharedPrefs();
-            //txtDataLastUpdated.Text = "Data Updated: " + dateXmlUpdated;
-            txtDataLastUpdated.Text = GetString(Resource.String.MA_Txt_DataLastUpdated) + " " +  dateXmlUpdated;
+            txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataLastUpdated) + " " +  dateXmlUpdated;
         }
 
 
@@ -487,8 +471,5 @@ namespace CurrencyAlertApp
             PopulateNewsObjectAdapter();
             RefreshTxtDataLastUpdated();
         }
-
-       
-
-    }// end MainActivity
-}// end Namespace
+    }// 
+}// 

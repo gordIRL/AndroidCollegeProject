@@ -114,7 +114,7 @@ namespace CurrencyAlertApp
 
 
 
-            // Run this code ONLY if - user selects to add an alert to a newsObject in Main Activity
+            // This code ONLY runs if - user selects to add an alert to a newsObject in Main Activity
             if (SelectedNewsObject_PassedFrom_MainActivity != null)
             {
                 Toast.MakeText(this, SelectedNewsObject_PassedFrom_MainActivity.ToString(), ToastLength.Long).Show();
@@ -139,7 +139,7 @@ namespace CurrencyAlertApp
 
 
 
-            // Run this code ONLY if - user selects to add a Personal Alert in PersonalAlerts Activity
+            // This code ONLY runs if - user selects to add a Personal Alert in PersonalAlerts Activity
             if (SelectedUserAlert_PassedFrom_PersonalAlertsActivity != null)
             {
                 Toast.MakeText(this, SelectedUserAlert_PassedFrom_PersonalAlertsActivity.ToString(), ToastLength.Long).Show();
@@ -161,19 +161,10 @@ namespace CurrencyAlertApp
             }
 
 
-
-
-
-
-
-
-
-
             // call populate adapter
             PopulateUserAlertAdapter();
-            //RefreshTxtDataLastUpdated();
 
-        }// end OnCreate ---------------------------------
+        }// end OnCreate 
 
 
 
@@ -263,13 +254,6 @@ namespace CurrencyAlertApp
             base.OnBackPressed();
             PopulateUserAlertAdapter();
         }
-
-
-
-
-
-
-
 
 
 

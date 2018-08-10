@@ -2,30 +2,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"       
       xmlns:local="http://schemas.android.com/apk/res-auto">
   <item        
-    android:id="@+id/menu_top_marketData"        
+    android:id="@+id/mainActivity_top_toolbar_option_updateXML"        
     android:icon="@mipmap/ic_action_content_create"        
     local:showAsAction="never"        
-    android:title="@string/TB_Top_UpdateXML" />
+    android:title="@string/mainActivity_top_toolbar_option_updateXML" />
   <item
-    android:id="@+id/menu_top_userAlertsActivity"
+    android:id="@+id/mainActivity_top_toolbar_option_userAlertsActivity"
     android:icon="@mipmap/ic_action_content_save"
     local:showAsAction="never"
-    android:title="@string/TB_Top_UserAlertsActivity" /> 
+    android:title="@string/mainActivity_top_toolbar_option_userAlertsActivity" /> 
   <item        
-    android:id="@+id/menu_top_alerts"        
+    android:id="@+id/mainActivity_top_toolbar_option_alertsOldVersion"        
     android:icon="@mipmap/ic_action_content_save"        
     local:showAsAction="never"       
-    android:title="@string/TB_Top_Alerts" />
+    android:title="@string/mainActivity_top_toolbar_option_alertsOldVersion" />
   <item
-   android:id="@+id/menu_top_custom_adapter"
+   android:id="@+id/mainActivity_top_toolbar_option_customAdapter"
    local:showAsAction="never"
-   android:title="@string/TB_Top_Custom_Adapter" />
+   android:title="@string/mainActivity_top_toolbar_option_customAdapter" />
   <item        
-    android:id="@+id/menu_top_preferences"        
+    android:id="@+id/mainActivity_top_toolbar_option_preferences"        
     local:showAsAction="never"        
-    android:title="@string/TB_Top_Preferences" />
+    android:title="@string/mainActivity_top_toolbar_option_preferences" />
   <item
-  android:id="@+id/menu_top_reports"
-  local:showAsAction="never"
-  android:title="@string/TB_Top_Reports" />
+    android:id="@+id/mainActivity_top_toolbar_option_reports"
+    local:showAsAction="never"
+    android:title="@string/mainActivity_top_toolbar_option_reports" />
 </menu>

@@ -5,39 +5,39 @@
       android:background="#000000"  >
   
   <item
-    android:id="@+id/menu_data_clear"
+    android:id="@+id/mainActivity_bottom_toolbar_option_ClearCurrencyData"
     local:showAsAction="never"
-    android:title="@string/TB_Bottom_ClearCurrencyData" />   
+    android:title="@string/mainActivity_bottom_toolbar_option_ClearCurrencyData" />   
 
   <item
-    android:id="@+id/menu_data_getAllData"  
+    android:id="@+id/mainActivity_bottom_toolbar_option_displayAllCurrencyData"  
     local:showAsAction="never"
-    android:title="@string/TB_Bottom_AllCurrencyData" />
+    android:title="@string/mainActivity_bottom_toolbar_option_displayAllCurrencyData" />
 
   <item
-    android:id="@+id/menu_data_selectMarketImpacts"
+    android:id="@+id/mainActivity_bottom_toolbar_option_selectMarketImpacts"
     local:showAsAction="never"
-    android:title="@string/TB_Bottom_SelectMarketImpacts" />
+    android:title="@string/mainActivity_bottom_toolbar_option_selectMarketImpacts" />
 
   <item
-    android:id="@+id/menu_data_selectCurrencies"
+    android:id="@+id/mainActivity_bottom_toolbar_option_selectCurrencies"
     local:showAsAction="never"
-    android:title="@string/TB_Bottom_SelectCurrencies" />    
+    android:title="@string/mainActivity_bottom_toolbar_option_selectCurrencies" />    
   
   <item
-    android:id="@+id/menu_data_sampleData"
+    android:id="@+id/mainActivity_bottom_toolbar_option_sampleData"
     local:showAsAction="never"
-    android:title="@string/TB_Bottom_SampleData" />
+    android:title="@string/mainActivity_bottom_toolbar_option_sampleData" />
   
   <item
-    android:id="@+id/menu_data_sampleLINQQuery"  
+    android:id="@+id/mainActivity_bottom_toolbar_option_sampleLinqQuery"  
     android:icon="@mipmap/ic_menu_paste_holo_dark"
     local:showAsAction="never"
-    android:title="@string/TB_Bottom_SampleLinqQuery" />
+    android:title="@string/mainActivity_bottom_toolbar_option_sampleLinqQuery" />
 
   <item
-     android:id="@+id/menu_data_debugDisplay"
+     android:id="@+id/mainActivity_bottom_toolbar_option_debugDisplay"
      android:icon="@mipmap/ic_menu_paste_holo_dark"
      local:showAsAction="never"
-     android:title="@string/TB_Bottom_DebugDisplay" />  
+     android:title="@string/mainActivity_bottom_toolbar_option_debugDisplay" />  
 </menu>

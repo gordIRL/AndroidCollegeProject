@@ -17,18 +17,10 @@ namespace CurrencyAlertApp
     // MainLauncher = true, 
     public class PersonalAlertsActivity : AppCompatActivity
     {
-        // new declarations
-        EditText editTxtTitle;
-        EditText editTxtDescription;
-
-        Button btnSetTime;
-        Button btnSetDate;
-        Button btnSetPersonalAlert;
-        Button btnCancelPersonalAlert;
-
-        TextView txtDate;
-        TextView txtTime;
-        TextView combinedDateTimeTextView;
+        // control declarations
+        EditText editTxtTitle,  editTxtDescription;
+        Button btnSetTime, btnSetDate, btnSetPersonalAlert, btnCancelPersonalAlert;
+        TextView txtDate, txtTime, combinedDateTimeTextView;
 
         // variables
         public static DateTime combinedDateTimeObject;
@@ -101,13 +93,13 @@ namespace CurrencyAlertApp
         {
             Toast.MakeText(this, "OK - Set Personal Alert Selected", ToastLength.Short).Show();
 
-            UserAlert userAlert = new UserAlert
-            {
+            UserAlert userAlert = new UserAlert 
+            {  
                 // don't add ID here - SQLite will do this automatically (auto-increment)
                 Title = editTxtTitle.Text,
                 DescriptionOfPersonalEvent = editTxtDescription.Text,
-                CountryChar = "Personal: ",                  // Resource.String.personalAlerts_personalAlertName,
-                MarketImpact = "High",
+                CountryChar = GetString(Resource.String.personalAlerts_personalAlertName),   
+                MarketImpact = GetString(Resource.String.personalAlerts_personalAlertName_impact),                                     
                 IsPersonalAlert = true,
                 DateAndTime = combinedDateTimeObject,
 

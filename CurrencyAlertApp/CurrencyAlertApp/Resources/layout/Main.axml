@@ -3,35 +3,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include
-        android:id="@+id/toolbar"
+        android:id="@+id/mainActivity_top_toolbar"
         layout="@layout/toolbar" />
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+  <LinearLayout
         android:id="@+id/main_content"
-        android:layout_below="@id/toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:layout_below="@id/mainActivity_top_toolbar"
+        android:orientation="vertical"               
         android:background="#ffffff">
-        <TextView
-            android:text="@string/MA_Txt_DataLastUpdated"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_marginBottom="7dp"
+    <TextView
+            android:id="@+id/mainActivity_txt_dataLastUpdated"
+            android:text="@string/mainActivity_txt_dataLastUpdated" 
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtDataLastUpdated"
+            android:layout_height="wrap_content"                        
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_marginBottom="7dp"                       
             android:textColor="@android:color/black" />
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView_MainActivity"
-            android:scrollbars="vertical"
+            android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_width="fill_parent" />
+            android:scrollbars="vertical"            
+            android:layout_weight="1"  />
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_bottom"
+            android:id="@+id/mainActivity_bottom_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"             />
     </LinearLayout>
 </RelativeLayout>
