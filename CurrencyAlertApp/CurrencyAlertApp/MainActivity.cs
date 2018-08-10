@@ -264,6 +264,19 @@ namespace CurrencyAlertApp
                         }
                         break;
 
+                    case Resource.Id.mainActivity_bottom_toolbar_option_debugDisplay:
+                        // displays contents of currency & marketImpact list in the Debug Output window
+                        Log.Debug("DEBUG", ": Currency & Market Impact Selected Display - Starts Here");
+                        foreach (var item in currencies_selectedList)
+                        {
+                            Log.Debug("DEBUG", item);
+                        }
+                        foreach (var item in marketImpact_selectedList)
+                        {
+                            Log.Debug("DEBUG", item);
+                        }
+                        break;
+
 
                     case Resource.Id.mainActivity_bottom_toolbar_option_sampleData:
 
@@ -288,20 +301,7 @@ namespace CurrencyAlertApp
                         // call populate adapter
                         PopulateNewsObjectAdapter();
                         txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataLastUpdated_WarningTestDataOnlyQuery);
-                        break;
-
-                    case Resource.Id.mainActivity_bottom_toolbar_option_debugDisplay:
-                        // displays contents of currency & marketImpact list in the Debug Output window
-                        Log.Debug("DEBUG", ": Currency & Market Impact Selected Display - Starts Here");
-                        foreach (var item in currencies_selectedList)
-                        {
-                            Log.Debug("DEBUG", item);
-                        }
-                        foreach (var item in marketImpact_selectedList)
-                        {
-                            Log.Debug("DEBUG", item);
-                        }
-                        break;
+                        break;                    
 
                     default:
                         break;
@@ -340,11 +340,12 @@ namespace CurrencyAlertApp
         {
             // alert dialog for ItemClick event
             Android.Support.V7.App.AlertDialog.Builder builder = new Android.Support.V7.App.AlertDialog.Builder(this);
-            builder.SetMessage("Set Alert on this Market Event ?  (OK)");  // usisng this disable array of menu options - good for Ok/Cancel version
+            // using this disable array of menu options - good for Ok/Cancel version
+            builder.SetMessage(GetString(Resource.String.mainActivity_mAdapterItemClick_message));
 
             builder.SetPositiveButton(GetString(Resource.String.mainActivity_mAdapterItemClick_positiveButton), (sender2, e2) =>
             {
-                // call Propperty in UserAlertActivity to pass data across (newsObject)
+                // call Property in UserAlertActivity to pass data across (newsObject)
                 UserAlertsActivity.SelectedNewsObject_PassedFrom_MainActivity = (newsObjectDisplayList[e]);
 
                 // call intent to start next activity
@@ -356,11 +357,10 @@ namespace CurrencyAlertApp
             {
                 Log.Debug("dbg", "Cancel clicked");
             });
-            // builder.SetNeutralButton.........
 
             var alert = builder.Create();
             alert.Show();
-        }// end  MAdapter_ItemClick1
+        }
 
 
         // TOP Toolbar
@@ -377,7 +377,6 @@ namespace CurrencyAlertApp
             switch (item.ItemId)
             {
                 case Resource.Id.mainActivity_top_toolbar_option_updateXML:
-                    //Toast.MakeText(this, "Action selected: \nMarket Data", ToastLength.Short).Show();
                     DataAccess.SetUpData.DropNewsObjectTable();
 
                     bool dataUpdateSuccessful = DataAccess.SetUpData.DownloadNewXMLAndStoreInDatabase();
@@ -414,6 +413,14 @@ namespace CurrencyAlertApp
                     StartActivity(intent);
                     break;
 
+                case Resource.Id.mainActivity_top_toolbar_option_reports:
+                    Toast.MakeText(this, GetString(Resource.String.generalMessage_forFutureDevelopment), ToastLength.Long).Show();
+                    break;
+
+                case Resource.Id.mainActivity_top_toolbar_option_preferences:
+                    Toast.MakeText(this, GetString(Resource.String.generalMessage_forFutureDevelopment), ToastLength.Long).Show();
+                    break;
+
                 case Resource.Id.mainActivity_top_toolbar_option_alertsOldVersion:
                     intent = new Intent(this, typeof(PersonalAlarmsActivity_OldVersion));
                     StartActivity(intent);
@@ -422,23 +429,13 @@ namespace CurrencyAlertApp
                 case Resource.Id.mainActivity_top_toolbar_option_customAdapter:                    
                     intent = new Intent(this, typeof(NewsObject_CustomAdapter_Test_Activity));
                     StartActivity(intent);
-                    break;
-
-                case Resource.Id.mainActivity_top_toolbar_option_preferences:
-                    Toast.MakeText(this, GetString(Resource.String.generalMessage_forFutureDevelopment), ToastLength.Long).Show();
-                    break;
-
-                case Resource.Id.mainActivity_top_toolbar_option_reports:
-                    Toast.MakeText(this, GetString(Resource.String.generalMessage_forFutureDevelopment), ToastLength.Long).Show();
-                    break;
+                    break;              
 
                 default:
                     break;
             };
             return base.OnOptionsItemSelected(item);
         }
-        //-----------------------------------------------------------------------------------
-
 
 
         void PopulateNewsObjectAdapter()

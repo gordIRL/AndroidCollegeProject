@@ -2,23 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:local="http://schemas.android.com/apk/res-auto">
   <item
-    android:id="@+id/topMenu_UserAlertActivity_MarketData"
+    android:id="@+id/userAlertsActivity_top_toolbar_menu_MainActivity"
     android:icon="@mipmap/ic_action_content_create"
     local:showAsAction="never"
-    android:title="@string/userAlert_top_toolbar_menu_MainActivity" />
-  <item
-    android:id="@+id/topMenu_UserAlertActivity_Alerts"
-    android:icon="@mipmap/ic_action_content_save"
-    local:showAsAction="never"
-    android:title="@string/mainActivity_top_toolbar_option_userAlertsActivity" />
+    android:title="@string/userAlertsActivity_top_toolbar_menu_MainActivity" />  
  
-  <item
-    android:id="@+id/topMenu_UserAlertActivity_Preferences"
-    local:showAsAction="never"
-    android:title="@string/mainActivity_top_toolbar_option_preferences" />
-  
-  <item
-  android:id="@+id/topMenu_UserAlertActivity_Reports"
-  local:showAsAction="never"
-  android:title="@string/mainActivity_top_toolbar_option_reports" />
 </menu>

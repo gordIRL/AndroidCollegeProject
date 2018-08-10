@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">CurrencyAlertApp</string>
- 
-   
-   
-   <string-array name="itemSelect_AddToWatchList">
-    <item>Option 1</item>
-    <item>Option 2 - Next Activity</item>
-    <item>Option 3</item>  
-  </string-array>
-
-  
+  <string name="app_name">CurrencyAlertApp</string>  
     
   <string-array name="CurrenciesArray">   
     <item>EUR</item>
@@ -35,78 +25,75 @@
   <!-- General Messages-->
   <string name="generalMessage_forFutureDevelopment">For Future Development***</string> 
   
-  <string name="mainActivity_txt_dataLastUpdated">ALL Data - Updated:***</string>    
-  <string name="mainActivity_top_toolbar_title">Main Menu***</string>
-  <string name="mainActivity_top_toolbar_dataUpdate">data update: ***</string> 
-  <string name="mainActivity_bottom_toolbar_title">Currencies Menu***</string>
-  <string name="mainActivity_txt_dataLastUpdated_pleaseSelectData">- Please select data to display***</string>  
-  <string name="mainActivity_txt_dataLastUpdated_clearOptionSelected">- Clear Option Selected***</string>
-  <string name="mainActivity_txt_dataLastUpdated_warningTestDataOnlyAll">Warning - Test Data Only (all)***</string>
-  <string name="mainActivity_txt_dataLastUpdated_WarningTestDataOnlyQuery">Warning - Test Data Only (query)***</string>  
   
-  <string name="mainActivity_dialogOption_selectmarketimpacts">Select Market Impact(s)***</string>      
-  <string name="mainActivity_dialogOption_selectmarketimpacts_positiveButton">OK***</string>
-   
-  <string name="mainActivity_dialogOption_selectCurrencies">Select Currencies***</string>   
-  <string name="mainActivity_dialogOption_selectCurrencies_positiveButton">OK***</string>
-  <string name="mainActivity_dialogOption_selectCurrencies_neutralButton">ALL***</string>
-  <string name="mainActivity_dialogOption_selectCurrencies_negativeButton">Clear***</string>  
+  <string name="mainActivity_txt_dataLastUpdated">ALL Data - Updated:</string>      
+  <string name="mainActivity_top_toolbar_dataUpdate">data update: </string> 
   
-  <string name="mainActivity_mAdapterItemClick_positiveButton">OK***</string>
-  <string name="mainActivity_mAdapterItemClick_negativeButton">Cancel***</string>    
+  <string name="mainActivity_txt_dataLastUpdated_pleaseSelectData">- Please select data to display</string>  
+  <string name="mainActivity_txt_dataLastUpdated_clearOptionSelected">- Clear Option Selected</string>
+  <string name="mainActivity_txt_dataLastUpdated_warningTestDataOnlyAll">Warning - Test Data Only (all)</string>
+  <string name="mainActivity_txt_dataLastUpdated_WarningTestDataOnlyQuery">Warning - Test Data Only (query)</string>  
   
-  <string name="mainActivity_top_toolbar_option_updateXML">Update XML (Market Data)***</string>
-  <string name="mainActivity_top_toolbar_option_userAlertsActivity">User Alerts***</string>
-  <string name="mainActivity_top_toolbar_option_alertsOldVersion">Alerts - (Old Version)***</string>  
-  <string name="mainActivity_top_toolbar_option_customAdapter">Custom Adapter***</string>   
-  <string name="mainActivity_top_toolbar_option_preferences">Preferences***</string>
-  <string name="mainActivity_top_toolbar_option_reports">Reports***</string>    
+  <string name="mainActivity_dialogOption_selectmarketimpacts">Select Market Impact(s)</string>      
+  <string name="mainActivity_dialogOption_selectmarketimpacts_positiveButton">OK</string>   
+  <string name="mainActivity_dialogOption_selectCurrencies">Select Currencies</string>     
+  <string name="mainActivity_dialogOption_selectCurrencies_positiveButton">OK</string>
+  <string name="mainActivity_dialogOption_selectCurrencies_neutralButton">ALL</string>
+  <string name="mainActivity_dialogOption_selectCurrencies_negativeButton">Clear</string>  
+  
+  <string name="mainActivity_mAdapterItemClick_message">Set Alert on this Market Event ?  (OK)</string> 
+  <string name="mainActivity_mAdapterItemClick_positiveButton">OK</string>
+  <string name="mainActivity_mAdapterItemClick_negativeButton">Cancel</string>    
+  
+  <string name="mainActivity_top_toolbar_title">Home</string>
+  <string name="mainActivity_top_toolbar_option_updateXML">Update XML (Market Data)</string>
+  <string name="mainActivity_top_toolbar_option_userAlertsActivity">User Alerts</string>  
+  <string name="mainActivity_top_toolbar_option_reports">Reports (tba)</string> 
+  <string name="mainActivity_top_toolbar_option_preferences">Preferences (tba)</string>
+  <string name="mainActivity_top_toolbar_option_alertsOldVersion">Alerts (old)</string>  
+  <string name="mainActivity_top_toolbar_option_customAdapter">Custom Adapter (old)</string>   
  
-  <string name="mainActivity_bottom_toolbar_option_ClearCurrencyData">Clear***</string>
-  <string name="mainActivity_bottom_toolbar_option_displayAllCurrencyData">All Currency Data***</string> 
-  <string name="mainActivity_bottom_toolbar_option_selectMarketImpacts">Select Market Impact(s)***</string>
-  <string name="mainActivity_bottom_toolbar_option_selectCurrencies">Select Currencies***</string>
-  <string name="mainActivity_bottom_toolbar_option_sampleData">Sample Data***</string> 
-  <string name="mainActivity_bottom_toolbar_option_sampleLinqQuery">Sample Linq Query</string>
-  <string name="mainActivity_bottom_toolbar_option_debugDisplay">Debug Display</string>   
+  <string name="mainActivity_bottom_toolbar_title">Filter Currencies</string>
+  <string name="mainActivity_bottom_toolbar_option_ClearCurrencyData">Clear</string>
+  <string name="mainActivity_bottom_toolbar_option_displayAllCurrencyData">All Currency Data</string> 
+  <string name="mainActivity_bottom_toolbar_option_selectMarketImpacts">Select Market Impact(s)</string>
+  <string name="mainActivity_bottom_toolbar_option_selectCurrencies">Select Currencies</string>
+  <string name="mainActivity_bottom_toolbar_option_debugDisplay">Debug Display</string> 
+  <string name="mainActivity_bottom_toolbar_option_sampleData">Sample Data (old)</string> 
+  <string name="mainActivity_bottom_toolbar_option_sampleLinqQuery">Sample Linq Query (old)</string>
+    
   
-  <!-- For UserAlert Activity -->  
-  <string name="userAlert_top_toolbar_title">User Alerts***</string>
-  <string name="userAlert_top_toolbar_menu_MainActivity">Home***</string>
-  <string name="userAlert_bottom_toolbar_menu_personalAlerts">Personal Alerts***</string>
+  <!-- For UserAlert Activity -->    
+  <string name="userAlertsActivity_txt_title">Current Alarms Set</string>   
+  <string name="userAlertsActivity_top_toolbar_title">User Alerts</string>
+  <string name="userAlertsActivity_top_toolbar_menu_MainActivity">Home</string>
+  <string name="userAlertsActivity_bottom_toolbar_title"></string> 
+  <string name="userAlertsActivity_bottom_toolbar_option_personalAlerts">Set Personal Alert</string>
+  
+  <string name="userAlertsActivity_dialogOption_deleteUserAlert_message">Delete this User Alert ?</string>      
+  <string name="userAlertsActivity_dialogOption_deleteUserAlert_positiveButton">OK</string> 
+  <string name="userAlertsActivity_dialogOption_deleteUserAlert_negativeButton">Cancel</string> 
+  
+  
  
   <!-- For Personal Alerts Activity-->
-  <string name="personalAlerts_top_toolbar_title">Personal Alerts***</string>
-  <string name="personalAlerts_top_toolbar_menu_marketData">Home***</string>
-  <string name="personalAlerts_editTxt_title">Enter title of personal alert***</string>
-  <string name="personalAlerts_editTxt_description">Enter description (max 200 chars)***</string>
-  <string name="personalAlerts_btn_setDate">Set Date***</string>
-  <string name="personalAlerts_txt_date">Date:***</string>
-  <string name="personalAlerts_btn_setTime">Set Time***</string>
-  <string name="personalAlerts_txt_time">Time:***</string>
-  <string name="personalAlerts_btn_setPersonalAlert">Set Personal Alert***</string>
-  <string name="personalAlerts_btn_cancelPersonalAlert">Cancel***</string>
-  <string name="personalAlerts_txt_combinedDateTime">Combined Date and Time***</string>
-  <string name="personalAlerts_personalAlertName">Personal***</string> 
-  <string name="personalAlerts_personalAlertName_impact">High***</string> 
+  <string name="personalAlertsActivity_top_toolbar_title">Personal Alerts</string>
+  <string name="personalAlertsActivity_top_toolbar_option_marketData">Home</string>
+  <string name="personalAlertsActivity_editTxt_title">Enter title of personal alert</string>
+  <string name="personalAlertsActivity_editTxt_description">Enter description (max 200 chars)</string>
+  <string name="personalAlertsActivity_btn_setDate">Set Date</string>
+  <string name="personalAlertsActivity_txt_date">Date:</string>
+  <string name="personalAlertsActivity_btn_setTime">Set Time</string>
+  <string name="personalAlertsActivity_txt_time">Time:</string>
+  <string name="personalAlertsActivity_btn_setPersonalAlert">Set Personal Alert</string>
+  <string name="personalAlertsActivity_btn_cancelPersonalAlert">Cancel</string>
+  <string name="personalAlertsActivity_txt_combinedDateTime">Combined Date and Time</string>
+  <string name="personalAlertsActivity_personalAlertName">Personal</string> 
+  <string name="personalAlertsActivity_personalAlertName_impact">High</string> 
+  
+  <string name="personalAlertsActivity_message_alertCancelled">Alert Cancelled</string> 
 
-  
-  
- <!--  
  
-    -->  
-  
-  
-  
-    
-  <string name="ToolbarBottom_UserAlert_Title">Menu 2</string> 
-
-
-
-
-
-
-
   <!--Old Personal Alerts Section-->
   <string name="PA_Btn_NoOfSeconds">Start</string>
   <string name="PA_Btn_SetDate">Set Date</string>

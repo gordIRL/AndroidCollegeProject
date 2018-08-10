@@ -33,30 +33,30 @@ namespace CurrencyAlertApp
             SetContentView(Resource.Layout.PersonalAlerts);
 
             // ToolBar - Top of Screen  (method 1)
-            var toolbar = FindViewById<Toolbar>(Resource.Id.personalAlerts_toolbar);
+            var toolbar = FindViewById<Toolbar>(Resource.Id.personalAlertsActivity_toolbar);
             SetSupportActionBar(toolbar);
-            SupportActionBar.Title = GetString(Resource.String.personalAlerts_top_toolbar_title);
+            SupportActionBar.Title = GetString(Resource.String.personalAlertsActivity_top_toolbar_title);
 
             // wire up EditText controls
-            editTxtTitle = FindViewById<EditText>(Resource.Id.personalAlerts_editTxt_title);
-            editTxtDescription = FindViewById<EditText>(Resource.Id.personalAlerts_editTxt_description);
+            editTxtTitle = FindViewById<EditText>(Resource.Id.personalAlertsActivity_editTxt_title);
+            editTxtDescription = FindViewById<EditText>(Resource.Id.personalAlertsActivity_editTxt_description);
 
             // wire up display controls
-            combinedDateTimeTextView = FindViewById<TextView>(Resource.Id.personalAlerts_txt_combinedDateTime);
+            combinedDateTimeTextView = FindViewById<TextView>(Resource.Id.personalAlertsActivity_txt_combinedDateTime);
 
             // wire up controls for date & time pickers
-            txtTime = FindViewById<TextView>(Resource.Id.personalAlerts_txt_time);
-            btnSetTime = FindViewById<Button>(Resource.Id.personalAlerts_btn_setTime);
+            txtTime = FindViewById<TextView>(Resource.Id.personalAlertsActivity_txt_time);
+            btnSetTime = FindViewById<Button>(Resource.Id.personalAlertsActivity_btn_setTime);
             btnSetTime.Click += BtnSetTime_Click;
 
-            txtDate = FindViewById<TextView>(Resource.Id.personalAlerts_txt_date);
-            btnSetDate = FindViewById<Button>(Resource.Id.personalAlerts_btn_setDate);                    
+            txtDate = FindViewById<TextView>(Resource.Id.personalAlertsActivity_txt_date);
+            btnSetDate = FindViewById<Button>(Resource.Id.personalAlertsActivity_btn_setDate);                    
             btnSetDate.Click += BtnSetDate_Click;
 
             // wire up OK & Cancel buttons
-            btnSetPersonalAlert = FindViewById<Button>(Resource.Id.personalAlerts_btn_setPersonalAlert);
+            btnSetPersonalAlert = FindViewById<Button>(Resource.Id.personalAlertsActivity_btn_setPersonalAlert);
             btnSetPersonalAlert.Click += BtnSetPersonalAlert_Click;
-            btnCancelPersonalAlert = FindViewById<Button>(Resource.Id.personalAlerts_btn_cancelPersonalAlert);
+            btnCancelPersonalAlert = FindViewById<Button>(Resource.Id.personalAlertsActivity_btn_cancelPersonalAlert);
             btnCancelPersonalAlert.Click += BtnCancelPersonalAlert_Click;        
 
         }  // end OnCreate()
@@ -76,8 +76,7 @@ namespace CurrencyAlertApp
         {
             switch (item.ItemId)
             {
-                case Resource.Id.topMenu_PersonalAlertsActivity_MarketData:
-                    Toast.MakeText(this, "Action selected: \nGo to MarketData", ToastLength.Short).Show();
+                case Resource.Id.personalAlertsActivity_top_toolbar_option_marketData:
                     Intent intent = new Intent(this, typeof(MainActivity));
                     StartActivity(intent);
                     break;
@@ -91,15 +90,13 @@ namespace CurrencyAlertApp
         // populate UserAlert object with data from screen controls & set Property with this UserAlert object
         private void BtnSetPersonalAlert_Click(object sender, EventArgs e)
         {
-            Toast.MakeText(this, "OK - Set Personal Alert Selected", ToastLength.Short).Show();
-
             UserAlert userAlert = new UserAlert 
             {  
                 // don't add ID here - SQLite will do this automatically (auto-increment)
                 Title = editTxtTitle.Text,
                 DescriptionOfPersonalEvent = editTxtDescription.Text,
-                CountryChar = GetString(Resource.String.personalAlerts_personalAlertName),   
-                MarketImpact = GetString(Resource.String.personalAlerts_personalAlertName_impact),                                     
+                CountryChar = GetString(Resource.String.personalAlertsActivity_personalAlertName),   
+                MarketImpact = GetString(Resource.String.personalAlertsActivity_personalAlertName_impact),                                     
                 IsPersonalAlert = true,
                 DateAndTime = combinedDateTimeObject,
 
@@ -115,15 +112,15 @@ namespace CurrencyAlertApp
             // call intent to start next activity
             Intent intent = new Intent(this, typeof(UserAlertsActivity));
             StartActivity(intent);
-        }//
+        }
 
 
 
         private void BtnCancelPersonalAlert_Click(object sender, EventArgs e)
         {
-            Toast.MakeText(this, "CANCEL Alert Selected", ToastLength.Short).Show();
+            Toast.MakeText(this, GetString(Resource.String.personalAlertsActivity_message_alertCancelled), ToastLength.Long).Show();
 
-            Intent intent = new Intent(this, typeof(MainActivity));  // nice to go back to calling Activity (?? back statck ??)
+            Intent intent = new Intent(this, typeof(UserAlertsActivity));  
             StartActivity(intent);
         }
 
@@ -177,7 +174,7 @@ namespace CurrencyAlertApp
                 //  my stuff
                 combinedDateTimeObject = new DateTime(combinedDateTimeObject.Year, combinedDateTimeObject.Month, combinedDateTimeObject.Day, hourOfDay, minute, 0);
                 // reference needed because outside of OnCreate()
-                TextView combinedDateTimeTextView = Activity.FindViewById<TextView>(Resource.Id.personalAlerts_txt_combinedDateTime);
+                TextView combinedDateTimeTextView = Activity.FindViewById<TextView>(Resource.Id.personalAlertsActivity_txt_combinedDateTime);
                 combinedDateTimeTextView.Text = combinedDateTimeObject.ToString();
             }
         }
@@ -236,7 +233,7 @@ namespace CurrencyAlertApp
                 //  my stuff
                 combinedDateTimeObject = new DateTime(year, monthOfYear + 1, dayOfMonth, combinedDateTimeObject.Hour, combinedDateTimeObject.Minute, combinedDateTimeObject.Second);
                 // reference needed because outside of OnCreate()
-                TextView combinedDateTimeTextView = Activity.FindViewById<TextView>(Resource.Id.personalAlerts_txt_combinedDateTime);
+                TextView combinedDateTimeTextView = Activity.FindViewById<TextView>(Resource.Id.personalAlertsActivity_txt_combinedDateTime);
                 combinedDateTimeTextView.Text = combinedDateTimeObject.ToString();
             }
         }

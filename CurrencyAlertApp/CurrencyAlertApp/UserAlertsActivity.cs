@@ -88,22 +88,22 @@ namespace CurrencyAlertApp
             //-----------------------------------------------------------------------------------
 
             // ToolBar - Top of Screen  (method 1)
-            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar_Top_UserAlert);
+            var toolbar = FindViewById<Toolbar>(Resource.Id.userAlertsActivity_top_toolbar);
             SetSupportActionBar(toolbar);
-            SupportActionBar.Title = GetString(Resource.String.userAlert_top_toolbar_title);  
+            SupportActionBar.Title = GetString(Resource.String.userAlertsActivity_top_toolbar_title);  
 
 
             // Toolbar - Bottom of Screen  (method 2)
-            var toolbar_bottom = FindViewById<Toolbar>(Resource.Id.toolbar_Bottom_UserAlert);
-            toolbar_bottom.Title = GetString(Resource.String.ToolbarBottom_UserAlert_Title);
+            var toolbar_bottom = FindViewById<Toolbar>(Resource.Id.userAlertsActivity_bottom_toolbar);
+            toolbar_bottom.Title = GetString(Resource.String.userAlertsActivity_bottom_toolbar_title);
             toolbar_bottom.InflateMenu(Resource.Menu.userAlertsActivity_bottomMenu);
 
             toolbar_bottom.MenuItemClick += (sender, e) =>
             {
                 switch (e.Item.ItemId)
                 {
-                    case Resource.Id.bottomMenu_UserAlertActivity_Option_1:
-                        Toast.MakeText(this, "Personal Alerts Selected", ToastLength.Short).Show();
+                    case Resource.Id.userAlertsActivity_bottom_toolbar_option_personalAlerts:
+                        //Toast.MakeText(this, "Personal Alerts Selected", ToastLength.Short).Show();
                         // call intent to start next activity
                         Intent intent = new Intent(this, typeof(PersonalAlertsActivity));
                         StartActivity(intent);
@@ -263,9 +263,10 @@ namespace CurrencyAlertApp
             // alert dialog for ItemClick event
             Android.Support.V7.App.AlertDialog.Builder builder = new Android.Support.V7.App.AlertDialog.Builder(this);
             // using  builder.SetMessage()   disables array of menu options - good for Ok/Cancel version
-            builder.SetMessage("Delete this User Alert ?");  
-
-            builder.SetPositiveButton("OK", (sender2, e2) =>
+            
+            builder.SetMessage(GetString(Resource.String.userAlertsActivity_dialogOption_deleteUserAlert_message));            
+            builder.SetPositiveButton(GetString(Resource.String.userAlertsActivity_dialogOption_deleteUserAlert_positiveButton),
+                (sender2, e2) =>
             {
                 // display ID of deleted userAlert
                 Toast.MakeText(this, userAlertDisplayList[e].UserAlertID.ToString(), ToastLength.Long).Show();
@@ -273,17 +274,18 @@ namespace CurrencyAlertApp
                 // call method to delete UserAlert from database (doesn't include AlarmManager !!!!!!)
                 int rowCount = SetUpData.DeleteSelectedUserAlert(userAlertDisplayList[e].UserAlertID);
 
-                Toast.MakeText(this, "No of rows deleted: " + rowCount, ToastLength.Long).Show();
-
-                // delete alarm via deleting the associated pending intent  -----------------------------------------------------------------
-                DeleteAlarm(userAlertDisplayList[e]);    // pass in currently selected userAlert
-
+                Log.Debug("dbg", "\n\n\nNo of rows deleted: " + rowCount + "\n\n\n");
+                
+                // delete alarm via deleting the associated pending intent 
+                // pass in currently selected userAlert
+                DeleteAlarm(userAlertDisplayList[e]);   
 
                 PopulateUserAlertAdapter();
             });
 
 
-            builder.SetNegativeButton("Cancel", (sender2, e2) =>
+            builder.SetNegativeButton(GetString(Resource.String.userAlertsActivity_dialogOption_deleteUserAlert_negativeButton),
+                (sender2, e2) =>
             {
                 Log.Debug("dbg", "Cancel clicked");
             });
@@ -336,22 +338,9 @@ namespace CurrencyAlertApp
         {
             switch (item.ItemId)
             {
-                case Resource.Id.topMenu_UserAlertActivity_MarketData:
+                case Resource.Id.userAlertsActivity_top_toolbar_menu_MainActivity:
                     Toast.MakeText(this, "Action selected: \nMarket Data", ToastLength.Short).Show();
                     Intent intent = new Intent(this, typeof(MainActivity));
-                    StartActivity(intent);
-
-                    break;
-
-                case Resource.Id.topMenu_UserAlertActivity_Alerts:
-                    Toast.MakeText(this, "Action selected: \nSet Alert", ToastLength.Short).Show();
-                    intent = new Intent(this, typeof(PersonalAlarmsActivity_OldVersion));
-                    StartActivity(intent);
-                    break;              
-
-                case Resource.Id.topMenu_UserAlertActivity_Preferences:
-                    Toast.MakeText(this, "Action selected: \nPreferences - test Activity", ToastLength.Short).Show();
-                    intent = new Intent(this, typeof(NewsObject_CustomAdapter_Test_Activity));
                     StartActivity(intent);
                     break;
 
@@ -360,8 +349,6 @@ namespace CurrencyAlertApp
             };
             return base.OnOptionsItemSelected(item);
         }
-        //-----------------------------------------------------------------------------------
-
       
 
         void PopulateUserAlertAdapter()
