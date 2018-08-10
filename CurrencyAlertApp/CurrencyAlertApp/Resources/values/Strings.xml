@@ -22,6 +22,7 @@
     <item>Holiday</item>
   </string-array> 
   
+  
   <!-- General Messages-->
   <string name="generalMessage_forFutureDevelopment">For Future Development***</string> 
   
@@ -64,7 +65,7 @@
     
   
   <!-- For UserAlert Activity -->    
-  <string name="userAlertsActivity_txt_title">Current Alarms Set</string>   
+  <string name="userAlertsActivity_txt_title">Current Alarms Set:</string>   
   <string name="userAlertsActivity_top_toolbar_title">User Alerts</string>
   <string name="userAlertsActivity_top_toolbar_menu_MainActivity">Home</string>
   <string name="userAlertsActivity_bottom_toolbar_title"></string> 
@@ -89,11 +90,15 @@
   <string name="personalAlertsActivity_btn_cancelPersonalAlert">Cancel</string>
   <string name="personalAlertsActivity_txt_combinedDateTime">Combined Date and Time</string>
   <string name="personalAlertsActivity_personalAlertName">Personal</string> 
-  <string name="personalAlertsActivity_personalAlertName_impact">High</string> 
-  
-  <string name="personalAlertsActivity_message_alertCancelled">Alert Cancelled</string> 
+  <string name="personalAlertsActivity_personalAlertName_impact">High</string>   
+  <string name="personalAlertsActivity_message_alertCancelled">Alert Cancelled</string>
 
- 
+  <string name="personalAlertsActivity_validation_message_enterTitle">Please enter title of alert</string>
+  <string name="personalAlertsActivity_validation_message_enterDescription">Enter description - max 200 characters</string>
+  <string name="personalAlertsActivity_validation_message_setDate">Please set date</string>
+  <string name="personalAlertsActivity_validation_message_setTime">Please set time</string>
+
+
   <!--Old Personal Alerts Section-->
   <string name="PA_Btn_NoOfSeconds">Start</string>
   <string name="PA_Btn_SetDate">Set Date</string>

@@ -2842,32 +2842,32 @@ namespace CurrencyAlertApp
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f0a0055
-			public const int PA_Btn_NoOfSeconds = 2131361877;
-			
-			// aapt resource value: 0x7f0a0056
-			public const int PA_Btn_SetDate = 2131361878;
-			
-			// aapt resource value: 0x7f0a0058
-			public const int PA_Btn_SetPersonalAlert = 2131361880;
-			
-			// aapt resource value: 0x7f0a0057
-			public const int PA_Btn_SetTime = 2131361879;
+			// aapt resource value: 0x7f0a0059
+			public const int PA_Btn_NoOfSeconds = 2131361881;
 			
 			// aapt resource value: 0x7f0a005a
-			public const int PA_Txt_Date = 2131361882;
-			
-			// aapt resource value: 0x7f0a005d
-			public const int PA_Txt_NumberOfSeconds = 2131361885;
+			public const int PA_Btn_SetDate = 2131361882;
 			
 			// aapt resource value: 0x7f0a005c
-			public const int PA_Txt_OffSetTime = 2131361884;
+			public const int PA_Btn_SetPersonalAlert = 2131361884;
 			
 			// aapt resource value: 0x7f0a005b
-			public const int PA_Txt_Time = 2131361883;
+			public const int PA_Btn_SetTime = 2131361883;
 			
-			// aapt resource value: 0x7f0a0059
-			public const int PA_Txt_combinedDateTime = 2131361881;
+			// aapt resource value: 0x7f0a005e
+			public const int PA_Txt_Date = 2131361886;
+			
+			// aapt resource value: 0x7f0a0061
+			public const int PA_Txt_NumberOfSeconds = 2131361889;
+			
+			// aapt resource value: 0x7f0a0060
+			public const int PA_Txt_OffSetTime = 2131361888;
+			
+			// aapt resource value: 0x7f0a005f
+			public const int PA_Txt_Time = 2131361887;
+			
+			// aapt resource value: 0x7f0a005d
+			public const int PA_Txt_combinedDateTime = 2131361885;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int abc_action_bar_home_description = 2131361792;
@@ -3093,6 +3093,18 @@ namespace CurrencyAlertApp
 			
 			// aapt resource value: 0x7f0a004e
 			public const int personalAlertsActivity_txt_time = 2131361870;
+			
+			// aapt resource value: 0x7f0a0056
+			public const int personalAlertsActivity_validation_message_enterDescription = 2131361878;
+			
+			// aapt resource value: 0x7f0a0055
+			public const int personalAlertsActivity_validation_message_enterTitle = 2131361877;
+			
+			// aapt resource value: 0x7f0a0057
+			public const int personalAlertsActivity_validation_message_setDate = 2131361879;
+			
+			// aapt resource value: 0x7f0a0058
+			public const int personalAlertsActivity_validation_message_setTime = 2131361880;
 			
 			// aapt resource value: 0x7f0a0011
 			public const int search_menu_title = 2131361809;

@@ -24,8 +24,8 @@ namespace CurrencyAlertApp
 
         // variables
         public static DateTime combinedDateTimeObject;
-
-
+        public static bool dateIsSet = false;
+        public static bool timeIsSet = false;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -57,7 +57,9 @@ namespace CurrencyAlertApp
             btnSetPersonalAlert = FindViewById<Button>(Resource.Id.personalAlertsActivity_btn_setPersonalAlert);
             btnSetPersonalAlert.Click += BtnSetPersonalAlert_Click;
             btnCancelPersonalAlert = FindViewById<Button>(Resource.Id.personalAlertsActivity_btn_cancelPersonalAlert);
-            btnCancelPersonalAlert.Click += BtnCancelPersonalAlert_Click;        
+            btnCancelPersonalAlert.Click += BtnCancelPersonalAlert_Click;
+
+            ResetPersonalAlertData();
 
         }  // end OnCreate()
 
@@ -90,28 +92,61 @@ namespace CurrencyAlertApp
         // populate UserAlert object with data from screen controls & set Property with this UserAlert object
         private void BtnSetPersonalAlert_Click(object sender, EventArgs e)
         {
-            UserAlert userAlert = new UserAlert 
-            {  
-                // don't add ID here - SQLite will do this automatically (auto-increment)
-                Title = editTxtTitle.Text,
-                DescriptionOfPersonalEvent = editTxtDescription.Text,
-                CountryChar = GetString(Resource.String.personalAlertsActivity_personalAlertName),   
-                MarketImpact = GetString(Resource.String.personalAlertsActivity_personalAlertName_impact),                                     
-                IsPersonalAlert = true,
-                DateAndTime = combinedDateTimeObject,
+            // Perform Validation
+            if (editTxtTitle.Text == string.Empty)
+            {
+                editTxtTitle.RequestFocus();
+                editTxtTitle.Hint = GetString(Resource.String.personalAlertsActivity_validation_message_enterTitle);
+            }
+            else if (editTxtDescription.Text == string.Empty || editTxtDescription.Text.Length >200)
+            {
+                editTxtDescription.RequestFocus();
+                editTxtDescription.Text = "";
+                editTxtDescription.Hint = GetString(Resource.String.personalAlertsActivity_validation_message_enterDescription);
+            }
+            else if (dateIsSet == false)
+            {
+                txtDate.Text = GetString(Resource.String.personalAlertsActivity_validation_message_setDate);
+                btnSetDate.RequestFocus();
+            }
+            else if (timeIsSet == false)
+            {
+                txtTime.Text = GetString(Resource.String.personalAlertsActivity_validation_message_setTime);
+                btnSetTime.RequestFocus();
+            }
+            else
+            {
+                // validation is successful
+                UserAlert userAlert = new UserAlert
+                {
+                    // don't add ID here - SQLite will do this automatically (auto-increment)
+                    Title = editTxtTitle.Text,
+                    DescriptionOfPersonalEvent = editTxtDescription.Text,
+                    CountryChar = GetString(Resource.String.personalAlertsActivity_personalAlertName),
+                    MarketImpact = GetString(Resource.String.personalAlertsActivity_personalAlertName_impact),
+                    IsPersonalAlert = true,
+                    DateAndTime = combinedDateTimeObject,
 
-                // convert DateTime object to a ticks (long)
-                DateInTicks = combinedDateTimeObject.Ticks
-            };
-            Log.Debug("DEBUG", "\n\n\n" + userAlert.ToString() + "\n\n\n");
+                    // convert DateTime object to a ticks (long)
+                    DateInTicks = combinedDateTimeObject.Ticks
+                };
+                Log.Debug("DEBUG", "\n\n\n" + userAlert.ToString() + "\n\n\n");
 
-            // remember to set property !!!!
-            // call Property in UserAlertActivity to pass data across (newsObject)
-            UserAlertsActivity.SelectedUserAlert_PassedFrom_PersonalAlertsActivity = userAlert;
+                // reset appropriate validation
+                dateIsSet = false;
+                timeIsSet = false;
 
-            // call intent to start next activity
-            Intent intent = new Intent(this, typeof(UserAlertsActivity));
-            StartActivity(intent);
+                // call Property in UserAlertActivity to pass data across (newsObject)
+                UserAlertsActivity.SelectedUserAlert_PassedFrom_PersonalAlertsActivity = userAlert;
+
+
+                ////////////?????????  reset userAlert so it is empty the next time this Activity is returned to  ??
+                //////////userAlert = null;
+
+                // call intent to start next activity
+                Intent intent = new Intent(this, typeof(UserAlertsActivity));
+                StartActivity(intent);
+            }           
         }
 
 
@@ -120,9 +155,31 @@ namespace CurrencyAlertApp
         {
             Toast.MakeText(this, GetString(Resource.String.personalAlertsActivity_message_alertCancelled), ToastLength.Long).Show();
 
+            // pass in null - to stop unwanted  Database entries (because of 'selectedUserAlertObject' in UserAlertsActivity)
+            UserAlertsActivity.SelectedUserAlert_PassedFrom_PersonalAlertsActivity = null;
+
             Intent intent = new Intent(this, typeof(UserAlertsActivity));  
             StartActivity(intent);
         }
+
+        public override void OnBackPressed()
+        {
+            base.OnBackPressed();
+            ResetPersonalAlertData();
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            ResetPersonalAlertData();
+        }
+
+        private void ResetPersonalAlertData()
+        {
+            combinedDateTimeObject = new DateTime();
+            dateIsSet = false;
+            timeIsSet = false;
+    }
 
 
 
@@ -176,6 +233,7 @@ namespace CurrencyAlertApp
                 // reference needed because outside of OnCreate()
                 TextView combinedDateTimeTextView = Activity.FindViewById<TextView>(Resource.Id.personalAlertsActivity_txt_combinedDateTime);
                 combinedDateTimeTextView.Text = combinedDateTimeObject.ToString();
+                timeIsSet = true;
             }
         }
 
@@ -235,6 +293,8 @@ namespace CurrencyAlertApp
                 // reference needed because outside of OnCreate()
                 TextView combinedDateTimeTextView = Activity.FindViewById<TextView>(Resource.Id.personalAlertsActivity_txt_combinedDateTime);
                 combinedDateTimeTextView.Text = combinedDateTimeObject.ToString();
+                dateIsSet = true;
+                
             }
         }
         //----------------------------------------------------------------------------------------------------------------------

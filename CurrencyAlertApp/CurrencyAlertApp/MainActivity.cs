@@ -41,6 +41,7 @@ namespace CurrencyAlertApp
         // Adapter that accesses the data set (List<newsObject>):
         public NewsObject_RecycleAdapter mAdapter;
 
+       ;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -48,7 +49,7 @@ namespace CurrencyAlertApp
 
             // Set our view from the "main" layout resource:
             SetContentView(Resource.Layout.Main);
-
+            
             // Get our RecyclerView layout:
             mRecyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView_MainActivity);
 
@@ -348,6 +349,9 @@ namespace CurrencyAlertApp
                 // call Property in UserAlertActivity to pass data across (newsObject)
                 UserAlertsActivity.SelectedNewsObject_PassedFrom_MainActivity = (newsObjectDisplayList[e]);
 
+                // stop double entry in database 
+                UserAlertsActivity.SelectedUserAlert_PassedFrom_PersonalAlertsActivity = null;
+
                 // call intent to start next activity
                 Intent intent = new Intent(this, typeof(UserAlertsActivity));
                 StartActivity(intent);
@@ -408,6 +412,7 @@ namespace CurrencyAlertApp
                     
                     // pass in null - to stop unwanted  Database entries (because of 'selectedNewsObject' in UserAlertsActivity)
                     UserAlertsActivity.SelectedNewsObject_PassedFrom_MainActivity = null;
+                    UserAlertsActivity.SelectedUserAlert_PassedFrom_PersonalAlertsActivity = null;
 
                     Intent intent = new Intent(this, typeof(UserAlertsActivity));
                     StartActivity(intent);

@@ -14,12 +14,12 @@ namespace CurrencyAlertApp
         public event EventHandler<int> ItemClick;
 
         // Underlying data set (a List<newsObject>):
-        public List<UserAlert> mNewsObjectList;
+        public List<UserAlert> mUserAlertList;
 
         // Load the adapter with the data set (List<newsObject>) at construction time:
-        public UserAlerts_RecycleAdapter(List<UserAlert> newsObjectList)
+        public UserAlerts_RecycleAdapter(List<UserAlert> userAlertList)
         {
-            mNewsObjectList = newsObjectList;
+            mUserAlertList = userAlertList;
         }
 
 
@@ -49,15 +49,16 @@ namespace CurrencyAlertApp
             // from this position in the List<newsObject> (photo album)
 
             //  Assign content (get currency icon 1st)
-            string countryChar = mNewsObjectList[position].CountryChar.ToString().ToUpper();
+            string countryChar = mUserAlertList[position].CountryChar.ToString().ToUpper();
             int imageID = GetImageForCurrency(countryChar);
             vh.Icon.SetImageResource(imageID);
 
             //  Assign content - continued
-            vh.Caption1.Text = mNewsObjectList[position].CountryChar + ": " + mNewsObjectList[position].MarketImpact;
-            vh.Caption2.Text = mNewsObjectList[position].DateAndTime.ToString("dd/MM/yyyy") + ":  "
-                    + mNewsObjectList[position].DateAndTime.ToString("HH:mmtt") + "\n"
-                    + mNewsObjectList[position].Title;
+            vh.Caption1.Text = mUserAlertList[position].CountryChar + ": " + mUserAlertList[position].MarketImpact;
+            vh.Caption2.Text = mUserAlertList[position].DateAndTime.ToString("dd/MM/yyyy") + ":  "
+                    + mUserAlertList[position].DateAndTime.ToString("HH:mmtt") + "\n"
+                    + mUserAlertList[position].Title + ":" + 
+                    "\n\n" + mUserAlertList[position].DescriptionOfPersonalEvent;
         }
 
 
@@ -66,7 +67,7 @@ namespace CurrencyAlertApp
         //public override int ItemCount =>  mNewsObjectList.Count;
         public override int ItemCount
         {
-            get { return mNewsObjectList.Count; }
+            get { return mUserAlertList.Count; }
         }
 
 
