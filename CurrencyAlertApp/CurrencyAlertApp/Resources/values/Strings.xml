@@ -27,7 +27,8 @@
   <string name="generalMessage_forFutureDevelopment">For Future Development***</string> 
   
   
-  <string name="mainActivity_txt_dataLastUpdated">ALL Data - Updated:</string>      
+  <string name="mainActivity_txt_dataLastUpdated">ALL Data - Updated:</string>  
+  <string name="mainActivity_txt_dataNotUpdated">Data Not Updated:</string>  
   <string name="mainActivity_top_toolbar_dataUpdate">data update: </string> 
   
   <string name="mainActivity_txt_dataLastUpdated_pleaseSelectData">- Please select data to display</string>  
@@ -86,7 +87,7 @@
   <string name="personalAlertsActivity_txt_date">Date:</string>
   <string name="personalAlertsActivity_btn_setTime">Set Time</string>
   <string name="personalAlertsActivity_txt_time">Time:</string>
-  <string name="personalAlertsActivity_btn_setPersonalAlert">Set Personal Alert</string>
+  <string name="personalAlertsActivity_btn_setPersonalAlert">Set Alert</string>
   <string name="personalAlertsActivity_btn_cancelPersonalAlert">Cancel</string>
   <string name="personalAlertsActivity_txt_combinedDateTime">Combined Date and Time</string>
   <string name="personalAlertsActivity_personalAlertName">Personal</string> 

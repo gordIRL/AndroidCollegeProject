@@ -155,9 +155,6 @@ namespace CurrencyAlertApp
         {
             Toast.MakeText(this, GetString(Resource.String.personalAlertsActivity_message_alertCancelled), ToastLength.Long).Show();
 
-            // pass in null - to stop unwanted  Database entries (because of 'selectedUserAlertObject' in UserAlertsActivity)
-            UserAlertsActivity.SelectedUserAlert_PassedFrom_PersonalAlertsActivity = null;
-
             Intent intent = new Intent(this, typeof(UserAlertsActivity));  
             StartActivity(intent);
         }

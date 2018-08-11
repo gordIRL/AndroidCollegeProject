@@ -13,7 +13,7 @@ using Android.Support.V7.Widget;
 using Android.Support.V7.App;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using CurrencyAlertApp.DataAccess;
-
+using System.Threading.Tasks;
 
 namespace CurrencyAlertApp
 {
@@ -40,8 +40,7 @@ namespace CurrencyAlertApp
 
         // Adapter that accesses the data set (List<newsObject>):
         public NewsObject_RecycleAdapter mAdapter;
-
-       ;
+               
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -349,9 +348,6 @@ namespace CurrencyAlertApp
                 // call Property in UserAlertActivity to pass data across (newsObject)
                 UserAlertsActivity.SelectedNewsObject_PassedFrom_MainActivity = (newsObjectDisplayList[e]);
 
-                // stop double entry in database 
-                UserAlertsActivity.SelectedUserAlert_PassedFrom_PersonalAlertsActivity = null;
-
                 // call intent to start next activity
                 Intent intent = new Intent(this, typeof(UserAlertsActivity));
                 StartActivity(intent);
@@ -381,12 +377,13 @@ namespace CurrencyAlertApp
             switch (item.ItemId)
             {
                 case Resource.Id.mainActivity_top_toolbar_option_updateXML:
+
                     DataAccess.SetUpData.DropNewsObjectTable();
 
                     bool dataUpdateSuccessful = DataAccess.SetUpData.DownloadNewXMLAndStoreInDatabase();
                     if (dataUpdateSuccessful)
                     {
-                        Toast.MakeText(this, GetString(Resource.String.mainActivity_top_toolbar_dataUpdate) 
+                        Toast.MakeText(this, GetString(Resource.String.mainActivity_top_toolbar_dataUpdate)
                             + dataUpdateSuccessful, ToastLength.Short).Show();
 
                         // store date & time of xml download in Shared Preferences
@@ -397,8 +394,8 @@ namespace CurrencyAlertApp
                         txtDataLastUpdated.Text = "Data Updated: " + dateInPreferedFormat;
                     }
                     else
-                        txtDataLastUpdated.Text = "Data Not Updated";
-                    
+                        txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataNotUpdated);
+
                     // clear List & get raw newsObject data from database  
                     tempNewsObjectDisplayList.Clear();
                     tempNewsObjectDisplayList = SetUpData.GetAllNewsObjectDataFromDatabase();
@@ -406,14 +403,9 @@ namespace CurrencyAlertApp
                     // call populate adapter
                     PopulateNewsObjectAdapter();
                     RefreshTxtDataLastUpdated();
-                    break;                             
+                    break;
 
                 case Resource.Id.mainActivity_top_toolbar_option_userAlertsActivity:
-                    
-                    // pass in null - to stop unwanted  Database entries (because of 'selectedNewsObject' in UserAlertsActivity)
-                    UserAlertsActivity.SelectedNewsObject_PassedFrom_MainActivity = null;
-                    UserAlertsActivity.SelectedUserAlert_PassedFrom_PersonalAlertsActivity = null;
-
                     Intent intent = new Intent(this, typeof(UserAlertsActivity));
                     StartActivity(intent);
                     break;

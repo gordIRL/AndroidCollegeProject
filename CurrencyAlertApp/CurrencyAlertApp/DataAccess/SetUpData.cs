@@ -132,7 +132,13 @@ namespace CurrencyAlertApp.DataAccess
                     userAlertID = 0;
                 } 
                 Log.Debug("DEBUG", "FINISHED\n\n\n");
-            }// end using   
+            }// end using 
+
+            // IMPORTANT - set object properties to null - to clear existing data out
+            //           - otherwise you get duplicate entries in the UserAlerts database
+            UserAlertsActivity.SelectedNewsObject_PassedFrom_MainActivity = null;
+            UserAlertsActivity.SelectedUserAlert_PassedFrom_PersonalAlertsActivity = null;
+
             return userAlertID;
         }// end  AddNewUserAlertToDatabase()
 

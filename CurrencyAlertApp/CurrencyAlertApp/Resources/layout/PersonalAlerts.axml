@@ -11,7 +11,7 @@
         android:hint="@string/personalAlertsActivity_editTxt_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="10dp"
+        android:textSize="15dp"
         android:textStyle="bold"
         android:textColor="@android:color/black"
         android:ems="10" />
@@ -20,7 +20,7 @@
         android:hint="@string/personalAlertsActivity_editTxt_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="10dp"
+        android:textSize="15dp"
         android:textStyle="bold"
         android:textColor="@android:color/black"
         android:ems="10" />
@@ -44,7 +44,8 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="5dp" />
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -65,24 +66,38 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="5dp" />
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical" />
     </LinearLayout>
     <TextView
         android:id="@+id/personalAlertsActivity_txt_combinedDateTime"
         android:text="@string/personalAlertsActivity_txt_combinedDateTime"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/personalAlertsActivity_btn_setPersonalAlert"
-        android:text="@string/personalAlertsActivity_btn_setPersonalAlert"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_state" />
-    <Button
-        android:id="@+id/personalAlertsActivity_btn_cancelPersonalAlert"
-        android:text="@string/personalAlertsActivity_btn_cancelPersonalAlert"
+        android:gravity="center_horizontal" />
+    <LinearLayout
+        android:id="@+id/relativeLayout1"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:minWidth="25px"
+        android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_state" />
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/personalAlertsActivity_btn_cancelPersonalAlert"
+            android:text="@string/personalAlertsActivity_btn_cancelPersonalAlert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_state"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/personalAlertsActivity_btn_setPersonalAlert"
+            android:text="@string/personalAlertsActivity_btn_setPersonalAlert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_state"
+            android:layout_weight="1" />
+    </LinearLayout>
 </LinearLayout>

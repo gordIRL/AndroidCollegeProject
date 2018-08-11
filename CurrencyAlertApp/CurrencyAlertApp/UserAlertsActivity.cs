@@ -102,8 +102,7 @@ namespace CurrencyAlertApp
             {
                 switch (e.Item.ItemId)
                 {
-                    case Resource.Id.userAlertsActivity_bottom_toolbar_option_personalAlerts:
-                        //Toast.MakeText(this, "Personal Alerts Selected", ToastLength.Short).Show();
+                    case Resource.Id.userAlertsActivity_bottom_toolbar_option_personalAlerts:                        
                         // call intent to start next activity
                         Intent intent = new Intent(this, typeof(PersonalAlertsActivity));
                         StartActivity(intent);
@@ -117,7 +116,7 @@ namespace CurrencyAlertApp
             // This code ONLY runs if - user selects to add an alert to a newsObject in Main Activity
             if (SelectedNewsObject_PassedFrom_MainActivity != null)
             {
-                Toast.MakeText(this, SelectedNewsObject_PassedFrom_MainActivity.ToString(), ToastLength.Long).Show();
+                Log.Debug("DEBUG", "\n\n\n" + SelectedNewsObject_PassedFrom_MainActivity.ToString() + "\n\n\n");
 
                 // avoid null error if UserAlertTable doesn't exist - won't overwrite if it does
                 SetUpData.CreateEmptyUserAlertTable();
@@ -132,8 +131,9 @@ namespace CurrencyAlertApp
                 Log.Debug("DEBUG", "UserAlertActivity says - new UserID from DB: " +userID_fromDB +"\n\n");
                 Log.Debug("DEBUG", "FINISHED\n\n\n");
 
-                // CALL METHOD HERE.....   
+                // call SetAlarm() here .....   
                 SetAlarm(convertedUserAlert);
+                Log.Debug("DEBUG", "\n\n\npause for breakpoint\n\n\n");
             }
 
 
@@ -142,28 +142,26 @@ namespace CurrencyAlertApp
             // This code ONLY runs if - user selects to add a Personal Alert in PersonalAlerts Activity
             if (SelectedUserAlert_PassedFrom_PersonalAlertsActivity != null)
             {
-                Toast.MakeText(this, SelectedUserAlert_PassedFrom_PersonalAlertsActivity.ToString(), ToastLength.Long).Show();
+                Log.Debug("DEBUG", "\n\n\n" + SelectedUserAlert_PassedFrom_PersonalAlertsActivity.ToString() + "\n\n\n");
 
                 // avoid null error if UserAlertTable doesn't exist - won't overwrite if it does
                 SetUpData.CreateEmptyUserAlertTable();
 
-                //////UserAlert convertedUserAlert = SetUpData.ConvertNewsObjectToUserAlert(SelectedNewsObject_PassedFrom_MainActivity);
-                //////Log.Debug("DEBUG", convertedUserAlert.ToString());
+                // before calling AddNewUserAlertToDatabase() make a copy of UserAlert as its corresponding 
+                // property will be set to null - use copy for SetAlarm()
+                UserAlert tempUserAlertToSetAlarmWith = SelectedUserAlert_PassedFrom_PersonalAlertsActivity;
 
                 // store UserAlert in database & get its ID number - 
                 // need ID of UserAlert from DB at this mmoment for creating alarm code
                 int userID_fromDB = SetUpData.AddNewUserAlertToDatabase(SelectedUserAlert_PassedFrom_PersonalAlertsActivity);
+                Log.Debug("DEBUG", "\n\n\nUserAlertActivity says - new UserID from DB: " + userID_fromDB + "\n\n\n");
 
-                Log.Debug("DEBUG", "\n\n\nUserAlertActivity says - new UserID from DB: " + userID_fromDB + "\n\n\n");                
-
-                // CALL METHOD HERE.....   
-                SetAlarm(SelectedUserAlert_PassedFrom_PersonalAlertsActivity);
+                // // call SetAlarm() here .....   
+                SetAlarm(tempUserAlertToSetAlarmWith);
+                Log.Debug("DEBUG", "\n\n\npause for breakpoint\n\n\n");
             }
 
-
-            // call populate adapter
             PopulateUserAlertAdapter();
-
         }// end OnCreate 
 
 
@@ -190,8 +188,7 @@ namespace CurrencyAlertApp
                 catch
                 {
                     Log.Debug("DEBUG", "Alarm NOT deleted from Alarm Manager\n\n\n");
-                }
-               
+                }               
                 Log.Debug("DEBUG", "FINISHED\n\n\n");
             }); // end of thread
         }
@@ -205,13 +202,6 @@ namespace CurrencyAlertApp
             // start a new thread - so as not to run on the UI thread - keep the UI thread responsive
             Task.Factory.StartNew(() =>
             {
-                //// display output for testing - still works
-                //Log.Debug("DEBUG", "\n\nSetAlarm()  - UserAlert ID:  " + userAlert.UserAlertID.ToString());
-                //Log.Debug("DEBUG", "\n\nSetAlarm()  - UserAlert ToString:\n" + userAlert.ToString());
-                //Log.Debug("DEBUG", "\n\nSetAlarm()  - UserAlert DateTimeObject:\n" + userAlert.DateAndTime.ToString("dd/MM/yyyy"));
-                //Log.Debug("DEBUG", "SetAlarm()  - UserAlert DateTimeObject:\n" + userAlert.DateAndTime.ToString("HH:mmtt"));
-                //Log.Debug("DEBUG", "FINISHED\n\n\n");
-
                 try
                 {
                     // use UserAlert ID (assigned by SQLite) as unique the alarm number for this alarm
@@ -238,6 +228,13 @@ namespace CurrencyAlertApp
                 }              
                 Log.Debug("DEBUG", "End Of SetAlarm()\n\n\n\n");
             }); // end of thread
+
+            //// display output for testing - still works
+            //Log.Debug("DEBUG", "\n\nSetAlarm()  - UserAlert ID:  " + userAlert.UserAlertID.ToString());
+            //Log.Debug("DEBUG", "\n\nSetAlarm()  - UserAlert ToString:\n" + userAlert.ToString());
+            //Log.Debug("DEBUG", "\n\nSetAlarm()  - UserAlert DateTimeObject:\n" + userAlert.DateAndTime.ToString("dd/MM/yyyy"));
+            //Log.Debug("DEBUG", "SetAlarm()  - UserAlert DateTimeObject:\n" + userAlert.DateAndTime.ToString("HH:mmtt"));
+            //Log.Debug("DEBUG", "FINISHED\n\n\n");
         }
 
 
@@ -269,7 +266,8 @@ namespace CurrencyAlertApp
                 (sender2, e2) =>
             {
                 // display ID of deleted userAlert
-                Toast.MakeText(this, userAlertDisplayList[e].UserAlertID.ToString(), ToastLength.Long).Show();
+                Log.Debug("DEBUG", "\n\n\nUserAlert ID: " + userAlertDisplayList[e].UserAlertID.ToString() + "\n\n\n");
+                //Toast.MakeText(this, userAlertDisplayList[e].UserAlertID.ToString(), ToastLength.Long).Show();
 
                 // call method to delete UserAlert from database (doesn't include AlarmManager !!!!!!)
                 int rowCount = SetUpData.DeleteSelectedUserAlert(userAlertDisplayList[e].UserAlertID);
@@ -338,8 +336,7 @@ namespace CurrencyAlertApp
         {
             switch (item.ItemId)
             {
-                case Resource.Id.userAlertsActivity_top_toolbar_menu_MainActivity:
-                    Toast.MakeText(this, "Action selected: \nMarket Data", ToastLength.Short).Show();
+                case Resource.Id.userAlertsActivity_top_toolbar_menu_MainActivity:                    
                     Intent intent = new Intent(this, typeof(MainActivity));
                     StartActivity(intent);
                     break;
