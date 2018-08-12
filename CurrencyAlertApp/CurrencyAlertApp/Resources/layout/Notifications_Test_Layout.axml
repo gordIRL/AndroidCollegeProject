@@ -5,16 +5,14 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
+  <include
+    android:id="@+id/notificationsActivity_top_toolbar"
+    layout="@layout/toolbar" />
+   
     <TextView
-        android:text="My Notifications"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1" />
-    <TextView
-        android:text="My Notifications"
+        android:id="@+id/notificatonsActivity_txt_Info1"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtInfo1" />
+        android:layout_height="fill_parent"
+        android:gravity="center" />
 </LinearLayout>

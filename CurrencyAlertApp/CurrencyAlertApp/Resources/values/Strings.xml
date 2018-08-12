@@ -99,6 +99,28 @@
   <string name="personalAlertsActivity_validation_message_setDate">Please set date</string>
   <string name="personalAlertsActivity_validation_message_setTime">Please set time</string>
 
+<!-- Notifications Activity-->
+  <string name="notificationsActivity_top_toolbar_title">Trader Alert</string>
+  
+  <!--Preferences Activity-->
+  <string name="preferencesActivity_lbl_enterTime">Please set minutes required before alert</string>
+  <string name="preferencesActivity_edt_enterTimeBeforeAlert">No of minutes</string>
+  <string name="preferencesActivity_lbl_timesIsSetTo">Minutes set to: </string>
+  <string name="preferencesActivity_btn_clear">Clear</string>
+  <string name="preferencesActivity_btn_cancelOffset">Cancel</string>
+  <string name="preferencesActivity_btn_setOffset">Set</string>
+  <string name="preferencesActivity_top_toolbar_title">Preferences</string>
+  <string name="personalAlertsActivity_top_toolbar_option_marketData">Home</string>
+
+
+ 
+
+
+
+
+
+
+
 
   <!--Old Personal Alerts Section-->
   <string name="PA_Btn_NoOfSeconds">Start</string>

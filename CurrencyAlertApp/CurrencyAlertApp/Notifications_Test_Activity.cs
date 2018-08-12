@@ -5,11 +5,13 @@ using Android.OS;
 using Android.Support.V4.App;
 using Android.Support.V7.App;
 using Android.Widget;
+using Android.Support.V7.Widget;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 
 namespace CurrencyAlertApp
 {
-    [Activity(Theme = "@style/MyTheme.Base",    Label = "TestNotificationsActivity")]
+    [Activity(Theme = "@style/MyTheme.Base",    Label = "Notifications!!!")]
     public class Notifications_Test_Activity : AppCompatActivity
     {
         TextView txtInfo1;
@@ -20,11 +22,17 @@ namespace CurrencyAlertApp
 
             // Create your application here
             SetContentView(Resource.Layout.Notifications_Test_Layout);
-            //  ??Toolbar.SetTitle = "My Test Notification Layout";
-            txtInfo1 = FindViewById<TextView>(Resource.Id.txtInfo1);
-            txtInfo1.Text = "Info text wired up";
 
-            Toast.MakeText(this, "Test Notification Activity Reached", ToastLength.Long).Show();
+
+            // ToolBar - Top of Screen  (method 1)
+            var toolbar = FindViewById<Toolbar>(Resource.Id.notificationsActivity_top_toolbar);
+            SetSupportActionBar(toolbar);
+            SupportActionBar.Title = GetString(Resource.String.notificationsActivity_top_toolbar_title);
+
+
+
+            txtInfo1 = FindViewById<TextView>(Resource.Id.notificatonsActivity_txt_Info1);
+            txtInfo1.Text = "Warning\nAlert Activated\nTake Appropriate Action";
 
             // instantiate builder(using compat) and set notification elements
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this)

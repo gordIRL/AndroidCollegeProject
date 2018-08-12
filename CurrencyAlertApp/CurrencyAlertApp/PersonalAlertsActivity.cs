@@ -125,10 +125,14 @@ namespace CurrencyAlertApp
                     CountryChar = GetString(Resource.String.personalAlertsActivity_personalAlertName),
                     MarketImpact = GetString(Resource.String.personalAlertsActivity_personalAlertName_impact),
                     IsPersonalAlert = true,
-                    DateAndTime = combinedDateTimeObject,
+
+                    // set time offset Property 
+                    ///////////////////////////
+                    DateAndTime = combinedDateTimeObject.AddMinutes(SetUpData.TimeToGoOffBeforeMarketAnnouncement),
 
                     // convert DateTime object to a ticks (long)
-                    DateInTicks = combinedDateTimeObject.Ticks
+                    //DateInTicks = combinedDateTimeObject.Ticks  // original
+                    DateInTicks = combinedDateTimeObject.AddMinutes(SetUpData.TimeToGoOffBeforeMarketAnnouncement).Ticks
                 };
                 Log.Debug("DEBUG", "\n\n\n" + userAlert.ToString() + "\n\n\n");
 
@@ -138,10 +142,6 @@ namespace CurrencyAlertApp
 
                 // call Property in UserAlertActivity to pass data across (newsObject)
                 UserAlertsActivity.SelectedUserAlert_PassedFrom_PersonalAlertsActivity = userAlert;
-
-
-                ////////////?????????  reset userAlert so it is empty the next time this Activity is returned to  ??
-                //////////userAlert = null;
 
                 // call intent to start next activity
                 Intent intent = new Intent(this, typeof(UserAlertsActivity));

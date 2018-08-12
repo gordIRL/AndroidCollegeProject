@@ -125,11 +125,12 @@ namespace CurrencyAlertApp
                 Log.Debug("DEBUG", convertedUserAlert.ToString());
 
                 // store UserAlert in database & get its ID number - 
-                // need ID of UserAlert from DB at this mmoment for creating alarm code
+                // need ID of UserAlert from DB at this mmoment for creating alarm code              
                 int userID_fromDB = SetUpData.AddNewUserAlertToDatabase(convertedUserAlert);
 
                 Log.Debug("DEBUG", "UserAlertActivity says - new UserID from DB: " +userID_fromDB +"\n\n");
                 Log.Debug("DEBUG", "FINISHED\n\n\n");
+                                
 
                 // call SetAlarm() here .....   
                 SetAlarm(convertedUserAlert);
@@ -206,6 +207,15 @@ namespace CurrencyAlertApp
                 {
                     // use UserAlert ID (assigned by SQLite) as unique the alarm number for this alarm
                     int alarmNumber = userAlert.UserAlertID;
+
+                    //////////////////// set alarm to go off a set amount before news alart time
+                    //////////////////double timeToGoOffBeforeMarketAnnouncement = -5;
+
+                    //////////////////if (userAlert.IsPersonalAlert == false)
+                    //////////////////{
+                    //////////////////    userAlert.DateAndTime = userAlert.DateAndTime.AddMinutes(timeToGoOffBeforeMarketAnnouncement);
+                    //////////////////}
+
 
                     // get no of milliseconds from datetime object
                     long MillisesondsOfUserAlertDateTime = new DateTimeOffset(userAlert.DateAndTime).ToUnixTimeMilliseconds();

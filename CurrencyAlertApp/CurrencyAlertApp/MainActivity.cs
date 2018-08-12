@@ -9,15 +9,15 @@ using System.Xml.Linq;
 using Android.Content.Res;
 using Android.Util;
 using Android.Widget;
-using Android.Support.V7.Widget;
 using Android.Support.V7.App;
+using Android.Support.V7.Widget;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using CurrencyAlertApp.DataAccess;
 using System.Threading.Tasks;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Theme = "@style/MyTheme.Base", MainLauncher = true,   Label = "CurrencyAlertApp",  Icon = "@drawable/icon")]
+    [Activity(Theme = "@style/MyTheme.Base",    Label = "CurrencyAlertApp",  Icon = "@drawable/icon")]
     //  MainLauncher = true,      // must have an appCompat theme  
 
     public class MainActivity : AppCompatActivity
@@ -48,7 +48,9 @@ namespace CurrencyAlertApp
 
             // Set our view from the "main" layout resource:
             SetContentView(Resource.Layout.Main);
-            
+
+            //SetUpData.TimeToGoOffBeforeMarketAnnouncement = -10;
+
             // Get our RecyclerView layout:
             mRecyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView_MainActivity);
 
@@ -334,6 +336,20 @@ namespace CurrencyAlertApp
 
 
 
+        protected override void OnRestart()
+        {
+            GetAndDisplayDefaultData();
+            base.OnRestart();            
+        }
+
+        protected override void OnStart()
+        {
+            GetAndDisplayDefaultData();
+            base.OnStart();
+            GetAndDisplayDefaultData();
+        }
+
+
 
 
         private void MAdapter_ItemClick1(object sender, int e)
@@ -451,7 +467,8 @@ namespace CurrencyAlertApp
         {
             MySharedPreferencesMethods mySharedPreferencesMethods = new MySharedPreferencesMethods(this);
             string dateXmlUpdated = mySharedPreferencesMethods.GetDataFromSharedPrefs();
-            txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataLastUpdated) + " " +  dateXmlUpdated;
+            txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataLastUpdated) + " " + dateXmlUpdated
+                + "\nall times are offset by:  " + SetUpData.TimeToGoOffBeforeMarketAnnouncement + "  minutes";
         }
 
 

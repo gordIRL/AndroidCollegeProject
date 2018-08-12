@@ -36,8 +36,11 @@ namespace CurrencyAlertApp.DataAccess
         // Please manually select 'Update XML (Market Data)' Menu Option when app is running
         static bool testMode = false;
         
-        //(no more call methods needed????)
+        //(no more call methods needed)
         public static XDocument XmlTestDataFile { get; set; }
+
+        // 
+        public static double TimeToGoOffBeforeMarketAnnouncement { get; set; }
 
         //------------------------------------------
 
@@ -437,6 +440,30 @@ namespace CurrencyAlertApp.DataAccess
 
                     // convert date & time strings to DateTime object
                     DateTime tempDateTime = ConvertString_s_ToDateTimeObject(dateOnly, timeOnly, cultureInfo);
+
+
+                    // adjust time for GMT in xml file & add 1 hour if it is currently daylight saving
+
+                    bool isDaylightSavingsTime = tempDateTime.IsDaylightSavingTime();
+                    Log.Debug("DEBUG", "\n\n\n It is currently daylightsavings time: " + isDaylightSavingsTime.ToString()  +    "\n\n\n");
+
+
+                    if (isDaylightSavingsTime == true)
+                    {   
+                        // add 1 hour to every datetime to bring GMT time to correct time during daylight savings time
+                        tempDateTime = tempDateTime.AddHours(1);
+
+                        // NOTE:  tempDateTime.AddHours(1);  (doesn't work because)
+                        // This method does not change the value of this DateTime. 
+                        // Instead, it returns a new DateTime whose value is the result of this operation. (MSDN)
+                    }
+
+
+
+                    // set alarm to go off a set amount before news alart time
+                    //SetUpData.TimeToGoOffBeforeMarketAnnouncement = -10;
+                    tempDateTime = tempDateTime.AddMinutes(TimeToGoOffBeforeMarketAnnouncement);
+
 
                     // convert DateTime object to a Long of ticks
                     long dateTimeInTicks = tempDateTime.Ticks;

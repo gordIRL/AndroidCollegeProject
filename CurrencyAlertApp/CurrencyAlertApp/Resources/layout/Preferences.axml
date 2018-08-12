@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+  <include
+    android:id="@+id/preferencesActivity_top_toolbar"
+    layout="@layout/toolbar" />
+    <TextView
+        android:text="@string/preferencesActivity_lbl_enterTime"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/preferencesActivity_lbl_enterTime" />
+    <EditText
+        android:hint="@string/preferencesActivity_edt_enterTimeBeforeAlert"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/preferencesActivity_edt_enterTimeBeforeAlert"/>
+  <TextView
+       android:text="@string/preferencesActivity_lbl_timesIsSetTo"
+       android:textAppearance="?android:attr/textAppearanceMedium"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/preferencesActivity_lbl_timesIsSetTo" />
+
+  <LinearLayout
+        android:id="@+id/relativeLayout1"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <Button
+      android:id="@+id/preferencesActivity_btn_clear"
+      android:text="@string/preferencesActivity_btn_clear"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="@drawable/button_state"
+      android:layout_weight="1" />
+    <Button
+        android:id="@+id/preferencesActivity_btn_cancelOffset"
+        android:text="@string/preferencesActivity_btn_cancelOffset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_state"
+        android:layout_weight="1" />
+    <Button
+        android:id="@+id/preferencesActivity_btn_setOffset"
+        android:text="@string/preferencesActivity_btn_setOffset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_state"
+        android:layout_weight="1" />
+  </LinearLayout>
+  
+  
+  
+  
+</LinearLayout>
