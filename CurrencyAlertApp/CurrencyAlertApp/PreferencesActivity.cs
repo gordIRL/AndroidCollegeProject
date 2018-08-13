@@ -16,7 +16,7 @@ using CurrencyAlertApp.DataAccess;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Label = "PreferencesActivity" ,      MainLauncher = true, Theme = "@style/MyTheme.Base")]
+    [Activity(Label = "PreferencesActivity" ,   Theme = "@style/MyTheme.Base")]
     // MainLauncher = true,
     public class PreferencesActivity : AppCompatActivity
     {
@@ -80,8 +80,9 @@ namespace CurrencyAlertApp
                 //lbl_timesIsSetTo.Text = "  " + myDouble.ToString();
                 //edtTimeBeforeAlert.Text = "Success - number accepted";
 
-                // set off set property
+                // UPDATE PROPERTIES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 SetUpData.TimeToGoOffBeforeMarketAnnouncement = myDouble;
+                MainActivity.TimeOffsetUpdated = true;
 
                 Toast.MakeText(this, "Success - number accepted", ToastLength.Long).Show();
                 Intent intent = new Intent(this, typeof(MainActivity));

@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace CurrencyAlertApp
 {
-    [Activity(Theme = "@style/MyTheme.Base",    Label = "CurrencyAlertApp",  Icon = "@drawable/icon")]
+    [Activity(Theme = "@style/MyTheme.Base",   Label = "CurrencyAlertApp",  Icon = "@drawable/icon")]
     //  MainLauncher = true,      // must have an appCompat theme  
 
     public class MainActivity : AppCompatActivity
@@ -31,6 +31,13 @@ namespace CurrencyAlertApp
                 
         List<string> marketImpact_selectedList = new List<string>();
         List<string> currencies_selectedList = new List<string>();
+
+
+
+        public static bool TimeOffsetUpdated { get; set; }
+
+
+
 
         // RecyclerView instance that displays the newsObject List:
         public RecyclerView mRecyclerView;
@@ -332,7 +339,22 @@ namespace CurrencyAlertApp
                 }
             }
 
-        }// end onCreate 
+
+            if (TimeOffsetUpdated == false)
+            {
+                Toast.MakeText(this, "Time offset has NOT been updated", ToastLength.Long).Show();
+            }
+
+            if (TimeOffsetUpdated == true)
+            {
+                Toast.MakeText(this, "SUCCESS - Time offset HAS been updated", ToastLength.Long).Show();
+                Temp_UpdateXML_Option();
+
+                // reset property for reuse on next occasion
+                TimeOffsetUpdated = false;
+            }
+
+        }// end onCreate -----------------------------------------------------------------------------------------------------------
 
 
 
@@ -387,6 +409,36 @@ namespace CurrencyAlertApp
         }
 
 
+        public void Temp_UpdateXML_Option()
+        {
+            DataAccess.SetUpData.DropNewsObjectTable();
+
+            bool dataUpdateSuccessful = DataAccess.SetUpData.DownloadNewXMLAndStoreInDatabase();
+            if (dataUpdateSuccessful)
+            {
+                Toast.MakeText(this, GetString(Resource.String.mainActivity_top_toolbar_dataUpdate)
+                    + dataUpdateSuccessful, ToastLength.Short).Show();
+
+                // store date & time of xml download in Shared Preferences
+                DateTime dateTime = DateTime.Now;
+                MySharedPreferencesMethods mySharedPreferencesMethods = new MySharedPreferencesMethods(this);
+                string dateInPreferedFormat = dateTime.ToShortDateString();
+                mySharedPreferencesMethods.StoreToSharedPrefs(dateInPreferedFormat);
+                txtDataLastUpdated.Text = "Data Updated: " + dateInPreferedFormat;
+            }
+            else
+                txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataNotUpdated);
+
+            // clear List & get raw newsObject data from database  
+            tempNewsObjectDisplayList.Clear();
+            tempNewsObjectDisplayList = SetUpData.GetAllNewsObjectDataFromDatabase();
+
+            // call populate adapter
+            PopulateNewsObjectAdapter();
+            RefreshTxtDataLastUpdated();
+        }
+
+
         // TOP Toolbar ('menu options')
         public override bool OnOptionsItemSelected(IMenuItem item) 
         {
@@ -394,31 +446,33 @@ namespace CurrencyAlertApp
             {
                 case Resource.Id.mainActivity_top_toolbar_option_updateXML:
 
-                    DataAccess.SetUpData.DropNewsObjectTable();
+                    Temp_UpdateXML_Option();
 
-                    bool dataUpdateSuccessful = DataAccess.SetUpData.DownloadNewXMLAndStoreInDatabase();
-                    if (dataUpdateSuccessful)
-                    {
-                        Toast.MakeText(this, GetString(Resource.String.mainActivity_top_toolbar_dataUpdate)
-                            + dataUpdateSuccessful, ToastLength.Short).Show();
+                    ////////DataAccess.SetUpData.DropNewsObjectTable();
 
-                        // store date & time of xml download in Shared Preferences
-                        DateTime dateTime = DateTime.Now;
-                        MySharedPreferencesMethods mySharedPreferencesMethods = new MySharedPreferencesMethods(this);
-                        string dateInPreferedFormat = dateTime.ToShortDateString();
-                        mySharedPreferencesMethods.StoreToSharedPrefs(dateInPreferedFormat);
-                        txtDataLastUpdated.Text = "Data Updated: " + dateInPreferedFormat;
-                    }
-                    else
-                        txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataNotUpdated);
+                    ////////bool dataUpdateSuccessful = DataAccess.SetUpData.DownloadNewXMLAndStoreInDatabase();
+                    ////////if (dataUpdateSuccessful)
+                    ////////{
+                    ////////    Toast.MakeText(this, GetString(Resource.String.mainActivity_top_toolbar_dataUpdate)
+                    ////////        + dataUpdateSuccessful, ToastLength.Short).Show();
 
-                    // clear List & get raw newsObject data from database  
-                    tempNewsObjectDisplayList.Clear();
-                    tempNewsObjectDisplayList = SetUpData.GetAllNewsObjectDataFromDatabase();
+                    ////////    // store date & time of xml download in Shared Preferences
+                    ////////    DateTime dateTime = DateTime.Now;
+                    ////////    MySharedPreferencesMethods mySharedPreferencesMethods = new MySharedPreferencesMethods(this);
+                    ////////    string dateInPreferedFormat = dateTime.ToShortDateString();
+                    ////////    mySharedPreferencesMethods.StoreToSharedPrefs(dateInPreferedFormat);
+                    ////////    txtDataLastUpdated.Text = "Data Updated: " + dateInPreferedFormat;
+                    ////////}
+                    ////////else
+                    ////////    txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataNotUpdated);
 
-                    // call populate adapter
-                    PopulateNewsObjectAdapter();
-                    RefreshTxtDataLastUpdated();
+                    ////////// clear List & get raw newsObject data from database  
+                    ////////tempNewsObjectDisplayList.Clear();
+                    ////////tempNewsObjectDisplayList = SetUpData.GetAllNewsObjectDataFromDatabase();
+
+                    ////////// call populate adapter
+                    ////////PopulateNewsObjectAdapter();
+                    ////////RefreshTxtDataLastUpdated();
                     break;
 
                 case Resource.Id.mainActivity_top_toolbar_option_userAlertsActivity:
@@ -426,14 +480,15 @@ namespace CurrencyAlertApp
                     StartActivity(intent);
                     break;
 
+                case Resource.Id.mainActivity_top_toolbar_option_preferences:
+                    intent = new Intent(this, typeof(PreferencesActivity));
+                    StartActivity(intent);                    
+                    break;
+
                 case Resource.Id.mainActivity_top_toolbar_option_reports:
                     Toast.MakeText(this, GetString(Resource.String.generalMessage_forFutureDevelopment), ToastLength.Long).Show();
                     break;
-
-                case Resource.Id.mainActivity_top_toolbar_option_preferences:
-                    Toast.MakeText(this, GetString(Resource.String.generalMessage_forFutureDevelopment), ToastLength.Long).Show();
-                    break;
-
+              
                 case Resource.Id.mainActivity_top_toolbar_option_alertsOldVersion:
                     intent = new Intent(this, typeof(PersonalAlarmsActivity_OldVersion));
                     StartActivity(intent);

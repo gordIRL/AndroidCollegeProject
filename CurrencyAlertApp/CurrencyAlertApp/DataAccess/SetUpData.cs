@@ -60,6 +60,14 @@ namespace CurrencyAlertApp.DataAccess
 
         // UserAlert Methods
 
+
+        // simple method to confirm unit tests are wired up correctly
+        public static int MulitplyNumbers(int num1, int num2)
+        {
+            return num1 * num2;
+        }
+
+
         // create empty table - for program load
         public static void CreateEmptyUserAlertTable()
         {

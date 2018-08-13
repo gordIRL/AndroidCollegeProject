@@ -24,7 +24,7 @@ MainActivity must have an appCompat theme associated with it
 
 namespace CurrencyAlertApp
 {
-    [Activity(Theme = "@style/MyTheme.Splash",  NoHistory = true)]
+    [Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true,   NoHistory = true)]
     // MainLauncher = true,
     public class SplashActivity : AppCompatActivity
     {
@@ -49,7 +49,7 @@ namespace CurrencyAlertApp
         async void SimulateStartup ()
         {
             Log.Debug(TAG, "Performing some startup work that takes a bit of time.");
-            await Task.Delay (8000);
+            await Task.Delay (5);
             // Simulate a bit of startup work.         
             Log.Debug(TAG, "Startup work is finished - starting MainActivity.");
             StartActivity(new Intent(Application.Context, typeof (MainActivity)));

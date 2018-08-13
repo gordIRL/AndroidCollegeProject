@@ -12,32 +12,36 @@ using Toolbar = Android.Support.V7.Widget.Toolbar;
 namespace CurrencyAlertApp
 {
     [Activity(Theme = "@style/MyTheme.Base",    Label = "Notifications!!!")]
-    public class Notifications_Test_Activity : AppCompatActivity
+    public class NotificationsActivity : AppCompatActivity
     {
         TextView txtInfo1;
+        Button btnBack;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             // Create your application here
-            SetContentView(Resource.Layout.Notifications_Test_Layout);
+            SetContentView(Resource.Layout.Notifications);
 
 
             // ToolBar - Top of Screen  (method 1)
             var toolbar = FindViewById<Toolbar>(Resource.Id.notificationsActivity_top_toolbar);
             SetSupportActionBar(toolbar);
             SupportActionBar.Title = GetString(Resource.String.notificationsActivity_top_toolbar_title);
-
-
+                       
 
             txtInfo1 = FindViewById<TextView>(Resource.Id.notificatonsActivity_txt_Info1);
-            txtInfo1.Text = "Warning\nAlert Activated\nTake Appropriate Action";
+            //txtInfo1.Text = "Warning\nAlert Activated\nTake Appropriate Action";
+            txtInfo1.Text = GetString(Resource.String.notificationsActivity_information);
+
+            btnBack = FindViewById<Button>(Resource.Id.notificationsActivity_btn_back);
+            btnBack.Click += BtnBack_Click;
 
             // instantiate builder(using compat) and set notification elements
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-                .SetContentTitle("My 1st Notification")
-                .SetContentText("Here is the content from my new notification.")
+                .SetContentTitle(GetString(Resource.String.notificationsActivity_notification_content_title))
+                .SetContentText(GetString(Resource.String.notificationsActivity_notification_content_text))
                 .SetSmallIcon(Resource.Mipmap.ic_album_black_24dp)
                 //Obsolete code !!!!
                 .SetDefaults(NotificationCompat.DefaultVibrate)    // NotificationDefaults.Vibrate)                
@@ -59,6 +63,12 @@ namespace CurrencyAlertApp
             // publish the notification
             const int notificationId = 0;
             notificationManager.Notify(notificationId, notification);
+        }
+
+        private void BtnBack_Click(object sender, System.EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(UserAlertsActivity));
+            StartActivity(intent);
         }
     }
 }

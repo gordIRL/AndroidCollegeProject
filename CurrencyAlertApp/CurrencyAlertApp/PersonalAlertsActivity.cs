@@ -126,13 +126,8 @@ namespace CurrencyAlertApp
                     MarketImpact = GetString(Resource.String.personalAlertsActivity_personalAlertName_impact),
                     IsPersonalAlert = true,
 
-                    // set time offset Property 
-                    ///////////////////////////
-                    DateAndTime = combinedDateTimeObject.AddMinutes(SetUpData.TimeToGoOffBeforeMarketAnnouncement),
-
                     // convert DateTime object to a ticks (long)
-                    //DateInTicks = combinedDateTimeObject.Ticks  // original
-                    DateInTicks = combinedDateTimeObject.AddMinutes(SetUpData.TimeToGoOffBeforeMarketAnnouncement).Ticks
+                    DateInTicks = combinedDateTimeObject.Ticks  
                 };
                 Log.Debug("DEBUG", "\n\n\n" + userAlert.ToString() + "\n\n\n");
 
