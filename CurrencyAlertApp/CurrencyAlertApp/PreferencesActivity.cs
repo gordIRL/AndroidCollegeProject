@@ -56,35 +56,32 @@ namespace CurrencyAlertApp
 
         private void BtnSetOffset_Click(object sender, EventArgs e)
         {
-            bool validNumber = double.TryParse(edtTimeBeforeAlert.Text, out double myDouble);
+            bool validNumber = double.TryParse(edtTimeBeforeAlert.Text, out double userInputOffset);
 
             Log.Debug("DEBUG", "\n\n\nSET Selected\n\n\n");
 
             if (edtTimeBeforeAlert.Text == string.Empty)
             {
                 edtTimeBeforeAlert.Text = "";
-                edtTimeBeforeAlert.Hint = ("Can't be blank");
+                edtTimeBeforeAlert.Hint = GetString(Resource.String.personalAlertsActivity_validationMessage_empty);
             }
             else if( validNumber == false)
             {
                 edtTimeBeforeAlert.Text = "";
-                edtTimeBeforeAlert.Hint = ("valid number needed");
+                edtTimeBeforeAlert.Hint = GetString(Resource.String.personalAlertsActivity_validationMessage_number);
             }
-            else if ( myDouble < -59 || myDouble > 59)
+            else if ( userInputOffset <= -60 || userInputOffset >= 60)
             {
                 edtTimeBeforeAlert.Text = "";
-                edtTimeBeforeAlert.Hint = ("number between -59 & +59");
+                edtTimeBeforeAlert.Hint = GetString(Resource.String.personalAlertsActivity_validationMessage_numberBetween);
             }
             else
             {
-                //lbl_timesIsSetTo.Text = "  " + myDouble.ToString();
-                //edtTimeBeforeAlert.Text = "Success - number accepted";
-
-                // UPDATE PROPERTIES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                SetUpData.TimeToGoOffBeforeMarketAnnouncement = myDouble;
+                // UPDATE PROPERTIES 
+                DataStore.TimeToGoOffBeforeMarketAnnouncement = userInputOffset;
                 MainActivity.TimeOffsetUpdated = true;
 
-                Toast.MakeText(this, "Success - number accepted", ToastLength.Long).Show();
+                Log.Debug("DEBUG", "\n\n\nSuccess - user input number accepted\n\n\n");
                 Intent intent = new Intent(this, typeof(MainActivity));
                 StartActivity(intent);
             }           

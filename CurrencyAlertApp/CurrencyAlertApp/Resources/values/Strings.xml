@@ -30,7 +30,8 @@
   <string name="mainActivity_txt_dataLastUpdated">Data Updated: </string>  
   <string name="mainActivity_txt_dataNotUpdated">Data Not Updated:</string>   
   <string name="mainActivity_txt_timeOffsetMessage">Times offset by:  </string> 
-  <string name="mainActivity_top_toolbar_dataUpdate">data update: </string> 
+  <string name="mainActivity_txt_timeOffset_successMessage">Time offset HAS been updated</string>   
+  <string name="mainActivity_top_toolbar_dataUpdate">XML data update: </string> 
   
   <string name="mainActivity_txt_dataLastUpdated_pleaseSelectData">- Please select data to display</string>  
   <string name="mainActivity_txt_dataLastUpdated_clearOptionSelected">- Clear Option Selected</string>
@@ -118,16 +119,12 @@
   <string name="preferencesActivity_btn_setOffset">Set</string>
   <string name="preferencesActivity_top_toolbar_title">Preferences</string>
   <string name="personalAlertsActivity_top_toolbar_option_marketData">Home</string>
-
-
- 
-
-
-
-
-
-
-
+  
+  <string name="personalAlertsActivity_validationMessage_empty">Input must not be blank</string>
+  <string name="personalAlertsActivity_validationMessage_number">Must be a number</string>
+  <string name="personalAlertsActivity_validationMessage_numberBetween">Number must be between plus or minus 60 mins</string>
+  
+  
 
   <!--Old Personal Alerts Section-->
   <string name="PA_Btn_NoOfSeconds">Start</string>

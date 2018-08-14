@@ -109,10 +109,10 @@ namespace CurrencyAlertApp
             bool[] currencies_selectedBoolArray = new bool[currencies_titlesArray.Length];  // for selected checkboxes in MultiItemSelect 
                        
             // SQL only creates a new table if one doesn't already exist - it won't overwrite an existing table (?)
-            SetUpData.CreateEmptyTable();
+            DataStore.CreateEmptyTable();
 
             // set up table to store url for xml data download
-            SetUpData.CreateTableForURLDownload();
+            DataStore.CreateTableForURLDownload();
 
             // Display for last time data was updated - retrieved from Shared Preferences
             txtDataLastUpdated = FindViewById<TextView>(Resource.Id.mainActivity_txt_dataLastUpdated);
@@ -130,7 +130,7 @@ namespace CurrencyAlertApp
             XDocument xmlTestDataFile = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));           
 
             // assign xml data file from Asset directory TO SetupData Property  (no more call methods needed????)
-            SetUpData.XmlTestDataFile = xmlTestDataFile;
+            DataStore.XmlTestDataFile = xmlTestDataFile;
                       
 
 
@@ -166,7 +166,7 @@ namespace CurrencyAlertApp
                             {
                                 // clear list - get LINQ query result - populate list                                                              
                                 tempNewsObjectDisplayList.Clear();
-                                tempNewsObjectDisplayList = SetUpData.LINQ_SortAllByUserSelection(marketImpact_selectedList, currencies_selectedList);
+                                tempNewsObjectDisplayList = DataStore.LINQ_SortAllByUserSelection(marketImpact_selectedList, currencies_selectedList);
 
                                 // call populate adapter
                                 PopulateNewsObjectAdapter();
@@ -202,7 +202,7 @@ namespace CurrencyAlertApp
                             {
                                 // clear list - get LINQ query result - populate list 
                                 tempNewsObjectDisplayList.Clear();
-                                tempNewsObjectDisplayList = SetUpData.LINQ_SortAllByUserSelection(marketImpact_selectedList, currencies_selectedList);
+                                tempNewsObjectDisplayList = DataStore.LINQ_SortAllByUserSelection(marketImpact_selectedList, currencies_selectedList);
 
                                 // call populate adapter
                                 PopulateNewsObjectAdapter();
@@ -247,7 +247,7 @@ namespace CurrencyAlertApp
 
                                 // clear list & adapter - get LINQ query result - populate list 
                                 tempNewsObjectDisplayList.Clear();
-                                tempNewsObjectDisplayList = SetUpData.LINQ_SortAllByUserSelection(marketImpact_selectedList, currencies_selectedList);
+                                tempNewsObjectDisplayList = DataStore.LINQ_SortAllByUserSelection(marketImpact_selectedList, currencies_selectedList);
 
                                 // call populate adapter
                                 PopulateNewsObjectAdapter();
@@ -293,7 +293,7 @@ namespace CurrencyAlertApp
                         XDocument xmlTestFile2 = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
 
                         tempNewsObjectDisplayList.Clear();
-                        tempNewsObjectDisplayList = SetUpData.TestXMLDataFromAssetsFile(xmlTestFile2);
+                        tempNewsObjectDisplayList = DataStore.TestXMLDataFromAssetsFile(xmlTestFile2);
 
                         // call populate adapter
                         PopulateNewsObjectAdapter();
@@ -305,7 +305,7 @@ namespace CurrencyAlertApp
                         // get sample data (from xml file in assets folder) & pass to method & pass to LINQ query method
                         XDocument xmlTestFile1 = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
                         tempNewsObjectDisplayList.Clear();
-                        tempNewsObjectDisplayList = SetUpData.TestLINQQueryUsingXML(xmlTestFile1);
+                        tempNewsObjectDisplayList = DataStore.TestLINQQueryUsingXML(xmlTestFile1);
 
                         // call populate adapter
                         PopulateNewsObjectAdapter();
@@ -342,19 +342,19 @@ namespace CurrencyAlertApp
 
             if (TimeOffsetUpdated == false)
             {
-                Toast.MakeText(this, "Time offset has NOT been updated", ToastLength.Long).Show();
+                Log.Debug("DEBUG", "\n\n\nTime offset has NOT been updated\n\n\n");
             }
 
             if (TimeOffsetUpdated == true)
             {
-                Toast.MakeText(this, "SUCCESS - Time offset HAS been updated", ToastLength.Long).Show();
-                Temp_UpdateXML_Option();
+                Log.Debug("DEBUG", "\n\n\nSUCCESS - Time offset HAS been updated\n\n\n");
+                Toast.MakeText(this, GetString(Resource.String.mainActivity_txt_timeOffset_successMessage), ToastLength.Long).Show();                              
+                UpdateXML_Option();
 
                 // reset property for reuse on next occasion
                 TimeOffsetUpdated = false;
             }
-
-        }// end onCreate -----------------------------------------------------------------------------------------------------------
+        }// end onCreate 
 
 
 
@@ -401,6 +401,7 @@ namespace CurrencyAlertApp
         }
 
 
+
         // TOP Toolbar
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
@@ -409,15 +410,16 @@ namespace CurrencyAlertApp
         }
 
 
-        public void Temp_UpdateXML_Option()
+        public void UpdateXML_Option()
         {
-            DataAccess.SetUpData.DropNewsObjectTable();
+            DataAccess.DataStore.DropNewsObjectTable();
 
-            bool dataUpdateSuccessful = DataAccess.SetUpData.DownloadNewXMLAndStoreInDatabase();
+            bool dataUpdateSuccessful = DataAccess.DataStore.DownloadNewXMLAndStoreInDatabase();
             if (dataUpdateSuccessful)
             {
-                Toast.MakeText(this, GetString(Resource.String.mainActivity_top_toolbar_dataUpdate)
-                    + dataUpdateSuccessful, ToastLength.Short).Show();
+                Log.Debug("DEBUG", "\n\n\n" 
+                    + GetString(Resource.String.mainActivity_top_toolbar_dataUpdate)
+                    + dataUpdateSuccessful + "\n\n\n");
 
                 // store date & time of xml download in Shared Preferences
                 DateTime dateTime = DateTime.Now;
@@ -431,7 +433,7 @@ namespace CurrencyAlertApp
 
             // clear List & get raw newsObject data from database  
             tempNewsObjectDisplayList.Clear();
-            tempNewsObjectDisplayList = SetUpData.GetAllNewsObjectDataFromDatabase();
+            tempNewsObjectDisplayList = DataStore.GetAllNewsObjectDataFromDatabase();
 
             // call populate adapter
             PopulateNewsObjectAdapter();
@@ -446,33 +448,7 @@ namespace CurrencyAlertApp
             {
                 case Resource.Id.mainActivity_top_toolbar_option_updateXML:
 
-                    Temp_UpdateXML_Option();
-
-                    ////////DataAccess.SetUpData.DropNewsObjectTable();
-
-                    ////////bool dataUpdateSuccessful = DataAccess.SetUpData.DownloadNewXMLAndStoreInDatabase();
-                    ////////if (dataUpdateSuccessful)
-                    ////////{
-                    ////////    Toast.MakeText(this, GetString(Resource.String.mainActivity_top_toolbar_dataUpdate)
-                    ////////        + dataUpdateSuccessful, ToastLength.Short).Show();
-
-                    ////////    // store date & time of xml download in Shared Preferences
-                    ////////    DateTime dateTime = DateTime.Now;
-                    ////////    MySharedPreferencesMethods mySharedPreferencesMethods = new MySharedPreferencesMethods(this);
-                    ////////    string dateInPreferedFormat = dateTime.ToShortDateString();
-                    ////////    mySharedPreferencesMethods.StoreToSharedPrefs(dateInPreferedFormat);
-                    ////////    txtDataLastUpdated.Text = "Data Updated: " + dateInPreferedFormat;
-                    ////////}
-                    ////////else
-                    ////////    txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataNotUpdated);
-
-                    ////////// clear List & get raw newsObject data from database  
-                    ////////tempNewsObjectDisplayList.Clear();
-                    ////////tempNewsObjectDisplayList = SetUpData.GetAllNewsObjectDataFromDatabase();
-
-                    ////////// call populate adapter
-                    ////////PopulateNewsObjectAdapter();
-                    ////////RefreshTxtDataLastUpdated();
+                    UpdateXML_Option();
                     break;
 
                 case Resource.Id.mainActivity_top_toolbar_option_userAlertsActivity:
@@ -522,12 +498,10 @@ namespace CurrencyAlertApp
         {
             MySharedPreferencesMethods mySharedPreferencesMethods = new MySharedPreferencesMethods(this);
             string dateXmlUpdated = mySharedPreferencesMethods.GetDataFromSharedPrefs();
-            //txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataLastUpdated) + " " + dateXmlUpdated
-            //    + "\nall times are offset by:  " + SetUpData.TimeToGoOffBeforeMarketAnnouncement + "  minutes";
 
             txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataLastUpdated) + " " + dateXmlUpdated
                 + "\n" + GetString(Resource.String.mainActivity_txt_timeOffsetMessage)  + " "
-                +  SetUpData.TimeToGoOffBeforeMarketAnnouncement + "  minutes";
+                +  DataStore.TimeToGoOffBeforeMarketAnnouncement + "  minutes";
         }
 
 
@@ -535,7 +509,7 @@ namespace CurrencyAlertApp
         {
             // clear List & get raw newsObject data from database  
             tempNewsObjectDisplayList.Clear();
-            tempNewsObjectDisplayList = SetUpData.GetAllNewsObjectDataFromDatabase();
+            tempNewsObjectDisplayList = DataStore.GetAllNewsObjectDataFromDatabase();
 
             // call populate adapter
             PopulateNewsObjectAdapter();

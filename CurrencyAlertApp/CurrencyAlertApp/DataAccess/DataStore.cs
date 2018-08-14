@@ -23,7 +23,7 @@ using Android.Widget;
 
 namespace CurrencyAlertApp.DataAccess
 {
-    public class SetUpData
+    public class DataStore
     {
         // General Declarations:
         // Create a single CultureInfo object (once so it can be reused) for correct Parsing of strings to DateTime object
@@ -220,7 +220,7 @@ namespace CurrencyAlertApp.DataAccess
         public static void PopulateUserAlertTableWithDummyData()
         {
             List<UserAlert> userAlertsList = new List<UserAlert>();
-            userAlertsList = SetUpData.DummyDataForUserAlert();
+            userAlertsList = DataStore.DummyDataForUserAlert();
 
             using (SQLiteConnection conn = new SQLiteConnection(DBLocation))
             {
@@ -449,12 +449,10 @@ namespace CurrencyAlertApp.DataAccess
                     // convert date & time strings to DateTime object
                     DateTime tempDateTime = ConvertString_s_ToDateTimeObject(dateOnly, timeOnly, cultureInfo);
 
-
                     // adjust time for GMT in xml file & add 1 hour if it is currently daylight saving
-
                     bool isDaylightSavingsTime = tempDateTime.IsDaylightSavingTime();
-                    Log.Debug("DEBUG", "\n\n\n It is currently daylightsavings time: " + isDaylightSavingsTime.ToString()  +    "\n\n\n");
-
+                    //Log.Debug("DEBUG", "\n\n\n It is currently daylightsavings time: " 
+                    //    + isDaylightSavingsTime.ToString()  +    "\n\n\n");
 
                     if (isDaylightSavingsTime == true)
                     {   
@@ -466,13 +464,10 @@ namespace CurrencyAlertApp.DataAccess
                         // Instead, it returns a new DateTime whose value is the result of this operation. (MSDN)
                     }
 
-
-
                     // set alarm to go off a set amount before news alart time
                     //SetUpData.TimeToGoOffBeforeMarketAnnouncement = -10;
                     tempDateTime = tempDateTime.AddMinutes(TimeToGoOffBeforeMarketAnnouncement);
-
-
+                    
                     // convert DateTime object to a Long of ticks
                     long dateTimeInTicks = tempDateTime.Ticks;
 
