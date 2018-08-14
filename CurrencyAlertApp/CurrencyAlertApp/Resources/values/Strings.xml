@@ -27,14 +27,15 @@
   <string name="generalMessage_forFutureDevelopment">For Future Development***</string>
 
   <!-- For Main Activity -->
-  <string name="mainActivity_txt_dataLastUpdated">ALL Data - Updated:</string>  
-  <string name="mainActivity_txt_dataNotUpdated">Data Not Updated:</string>  
+  <string name="mainActivity_txt_dataLastUpdated">Data Updated: </string>  
+  <string name="mainActivity_txt_dataNotUpdated">Data Not Updated:</string>   
+  <string name="mainActivity_txt_timeOffsetMessage">Times offset by:  </string> 
   <string name="mainActivity_top_toolbar_dataUpdate">data update: </string> 
   
   <string name="mainActivity_txt_dataLastUpdated_pleaseSelectData">- Please select data to display</string>  
   <string name="mainActivity_txt_dataLastUpdated_clearOptionSelected">- Clear Option Selected</string>
   <string name="mainActivity_txt_dataLastUpdated_warningTestDataOnlyAll">Warning - Test Data Only (all)</string>
-  <string name="mainActivity_txt_dataLastUpdated_WarningTestDataOnlyQuery">Warning - Test Data Only (query)</string>  
+  <string name="mainActivity_txt_dataLastUpdated_WarningTestDataOnlyQuery">Warning - Test Data Only (query)</string> 
   
   <string name="mainActivity_dialogOption_selectmarketimpacts">Select Market Impact(s)</string>      
   <string name="mainActivity_dialogOption_selectmarketimpacts_positiveButton">OK</string>   

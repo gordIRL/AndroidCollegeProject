@@ -522,8 +522,12 @@ namespace CurrencyAlertApp
         {
             MySharedPreferencesMethods mySharedPreferencesMethods = new MySharedPreferencesMethods(this);
             string dateXmlUpdated = mySharedPreferencesMethods.GetDataFromSharedPrefs();
+            //txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataLastUpdated) + " " + dateXmlUpdated
+            //    + "\nall times are offset by:  " + SetUpData.TimeToGoOffBeforeMarketAnnouncement + "  minutes";
+
             txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataLastUpdated) + " " + dateXmlUpdated
-                + "\nall times are offset by:  " + SetUpData.TimeToGoOffBeforeMarketAnnouncement + "  minutes";
+                + "\n" + GetString(Resource.String.mainActivity_txt_timeOffsetMessage)  + " "
+                +  SetUpData.TimeToGoOffBeforeMarketAnnouncement + "  minutes";
         }
 
 
