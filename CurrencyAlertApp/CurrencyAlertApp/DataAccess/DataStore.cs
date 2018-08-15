@@ -105,18 +105,13 @@ namespace CurrencyAlertApp.DataAccess
             return userAlert;
         }
 
-        //// method to convert personalAlert to userAlert object
-        //public static UserAlert ConvertPersonalAlertToUserAlert(NewsObject newsObject)
-        //{     //}
-
-
-
+       
 
 
         /* 
          * method to add a single UserAlert to UserAlert to  
          * database - passed from Main Activity
-         * -- ?? don't use to repopulate adapter from database ??  TICKS ??
+         * -- don't use this to repopulate adapter from database (ticks)
         */
        
         public static int AddNewUserAlertToDatabase(UserAlert userAlert)
