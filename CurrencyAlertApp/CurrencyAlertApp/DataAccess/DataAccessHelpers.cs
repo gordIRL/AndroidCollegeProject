@@ -23,7 +23,7 @@ using Android.Widget;
 
 namespace CurrencyAlertApp.DataAccess
 {
-    public class DataStore
+    public class DataAccessHelpers
     {
         // General Declarations:
         // Create a single CultureInfo object (once so it can be reused) for correct Parsing of strings to DateTime object
@@ -215,7 +215,7 @@ namespace CurrencyAlertApp.DataAccess
         public static void PopulateUserAlertTableWithDummyData()
         {
             List<UserAlert> userAlertsList = new List<UserAlert>();
-            userAlertsList = DataStore.DummyDataForUserAlert();
+            userAlertsList = DataAccessHelpers.DummyDataForUserAlert();
 
             using (SQLiteConnection conn = new SQLiteConnection(DBLocation))
             {

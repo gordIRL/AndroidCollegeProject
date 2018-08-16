@@ -123,7 +123,7 @@
     <Compile Include="DataAccess\UserAlert.cs" />
     <Compile Include="NewsObject_CustomAdapter.cs" />
     <Compile Include="DataAccess\NewsObject.cs" />
-    <Compile Include="DataAccess\DataStore.cs" />
+    <Compile Include="DataAccess\DataAccessHelpers.cs" />
     <Compile Include="DataAccess\MySharedPreferencesMethods.cs" />
     <Compile Include="DataAccess\Trade.cs" />
     <Compile Include="DataAccess\URLObject.cs" />

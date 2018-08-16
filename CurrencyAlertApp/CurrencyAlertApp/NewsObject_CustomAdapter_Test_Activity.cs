@@ -37,7 +37,7 @@ namespace CurrencyAlertApp
             }
             
 
-            DisplayListOBJECT = DataStore.GetAllNewsObjectDataFromDatabase();
+            DisplayListOBJECT = DataAccessHelpers.GetAllNewsObjectDataFromDatabase();
 
            
 
@@ -50,7 +50,7 @@ namespace CurrencyAlertApp
 
             string dateString = "04-15-2018";
             string timeString = "10:45am";
-            DateTime dateTime =  DataStore.ConvertString_s_ToDateTimeObject(dateString, timeString, cultureInfo);
+            DateTime dateTime =  DataAccessHelpers.ConvertString_s_ToDateTimeObject(dateString, timeString, cultureInfo);
 
             Log.Debug("DEBUG", "DateTime from my method: " + dateTime.ToString("dd/MM/yyyy HH:mm:ss"));
             long ticksTime_1 = dateTime.Ticks;
@@ -59,7 +59,7 @@ namespace CurrencyAlertApp
 
             string dateString2 = "04-15-2018";
             string timeString2 = "10:45pm";
-            DateTime dateTime2 = DataStore.ConvertString_s_ToDateTimeObject(dateString2, timeString2, cultureInfo);
+            DateTime dateTime2 = DataAccessHelpers.ConvertString_s_ToDateTimeObject(dateString2, timeString2, cultureInfo);
 
             Log.Debug("DEBUG", "DateTime from my method: " + dateTime2.ToString("dd/MM/yyyy HH:mm:ss"));
             long ticksTime_2 = dateTime2.Ticks;

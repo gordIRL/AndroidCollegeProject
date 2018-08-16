@@ -119,14 +119,14 @@ namespace CurrencyAlertApp
                 Log.Debug("DEBUG", "\n\n\n" + SelectedNewsObject_PassedFrom_MainActivity.ToString() + "\n\n\n");
 
                 // avoid null error if UserAlertTable doesn't exist - won't overwrite if it does
-                DataStore.CreateEmptyUserAlertTable();
+                DataAccessHelpers.CreateEmptyUserAlertTable();
 
-                UserAlert convertedUserAlert = DataStore.ConvertNewsObjectToUserAlert(SelectedNewsObject_PassedFrom_MainActivity);
+                UserAlert convertedUserAlert = DataAccessHelpers.ConvertNewsObjectToUserAlert(SelectedNewsObject_PassedFrom_MainActivity);
                 Log.Debug("DEBUG", convertedUserAlert.ToString());
 
                 // store UserAlert in database & get its ID number - 
                 // need ID of UserAlert from DB at this mmoment for creating alarm code              
-                int userID_fromDB = DataStore.AddNewUserAlertToDatabase(convertedUserAlert);
+                int userID_fromDB = DataAccessHelpers.AddNewUserAlertToDatabase(convertedUserAlert);
 
                 Log.Debug("DEBUG", "UserAlertActivity says - new UserID from DB: " +userID_fromDB +"\n\n");
                 Log.Debug("DEBUG", "FINISHED\n\n\n");
@@ -146,7 +146,7 @@ namespace CurrencyAlertApp
                 Log.Debug("DEBUG", "\n\n\n" + SelectedUserAlert_PassedFrom_PersonalAlertsActivity.ToString() + "\n\n\n");
 
                 // avoid null error if UserAlertTable doesn't exist - won't overwrite if it does
-                DataStore.CreateEmptyUserAlertTable();
+                DataAccessHelpers.CreateEmptyUserAlertTable();
 
                 // before calling AddNewUserAlertToDatabase() make a copy of UserAlert as its corresponding 
                 // property will be set to null - use copy for SetAlarm()
@@ -154,7 +154,7 @@ namespace CurrencyAlertApp
 
                 // store UserAlert in database & get its ID number - 
                 // need ID of UserAlert from DB at this mmoment for creating alarm code
-                int userID_fromDB = DataStore.AddNewUserAlertToDatabase(SelectedUserAlert_PassedFrom_PersonalAlertsActivity);
+                int userID_fromDB = DataAccessHelpers.AddNewUserAlertToDatabase(SelectedUserAlert_PassedFrom_PersonalAlertsActivity);
                 Log.Debug("DEBUG", "\n\n\nUserAlertActivity says - new UserID from DB: " + userID_fromDB + "\n\n\n");
 
                 // // call SetAlarm() here .....   
@@ -280,7 +280,7 @@ namespace CurrencyAlertApp
                 //Toast.MakeText(this, userAlertDisplayList[e].UserAlertID.ToString(), ToastLength.Long).Show();
 
                 // call method to delete UserAlert from database (doesn't include AlarmManager !!!!!!)
-                int rowCount = DataStore.DeleteSelectedUserAlert(userAlertDisplayList[e].UserAlertID);
+                int rowCount = DataAccessHelpers.DeleteSelectedUserAlert(userAlertDisplayList[e].UserAlertID);
 
                 Log.Debug("dbg", "\n\n\nNo of rows deleted: " + rowCount + "\n\n\n");
                 
@@ -362,7 +362,7 @@ namespace CurrencyAlertApp
         {
             // clear List & get all userAlert(s) data from database  
             tempUserAlertDisplayList.Clear();
-            tempUserAlertDisplayList = DataStore.GetAllUserAlertDataFromDatabase();
+            tempUserAlertDisplayList = DataAccessHelpers.GetAllUserAlertDataFromDatabase();
 
             // Refresh adapter by running a 'forEach' through tempList to 
             // repopulate the same DisplayListObect that adapter has memory reference to  

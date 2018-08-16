@@ -78,7 +78,7 @@ namespace CurrencyAlertApp
             else
             {
                 // UPDATE PROPERTIES 
-                DataStore.TimeToGoOffBeforeMarketAnnouncement = userInputOffset;
+                DataAccessHelpers.TimeToGoOffBeforeMarketAnnouncement = userInputOffset;
                 MainActivity.TimeOffsetUpdated = true;
 
                 Log.Debug("DEBUG", "\n\n\nSuccess - user input number accepted\n\n\n");

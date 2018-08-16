@@ -5,7 +5,6 @@
     android:state_pressed="true"/>
 
   <item
-   android:drawable="@drawable/rect" />
-  
+   android:drawable="@drawable/rect" />  
   
 </selector> 

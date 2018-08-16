@@ -16,7 +16,7 @@ namespace UnitTests_ForCurrencyTraderApp
             //arrange 
 
             // act         
-            int result = DataStore.MulitplyNumbers(10, 2);
+            int result = DataAccessHelpers.MulitplyNumbers(10, 2);
 
             //assert
             int expected = 20;
@@ -30,7 +30,7 @@ namespace UnitTests_ForCurrencyTraderApp
             //arrange 
 
             // act         
-            int result = DataStore.MulitplyNumbers(10, 2);
+            int result = DataAccessHelpers.MulitplyNumbers(10, 2);
 
             //assert
             int expected = 200000;

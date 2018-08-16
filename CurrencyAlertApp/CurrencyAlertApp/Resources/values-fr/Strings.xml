@@ -16,126 +16,119 @@
   </string-array>
 
   <string-array name="MarketImpactArray">
-    <item>High</item>
-    <item>Medium</item>
-    <item>Low</item>
-    <item>Holiday</item>
+    <item>Haute</item>
+    <item>Moyen</item>
+    <item>Faible</item>
+    <item>Vacances</item>
   </string-array>
 
 
   <!-- General Messages-->
-  <string name="generalMessage_forFutureDevelopment">For Future Development***</string>
+  <string name="generalMessage_forFutureDevelopment">Pour le développement futur</string>
 
   <!-- For Main Activity -->
-  <string name="mainActivity_txt_dataLastUpdated">ALL Data - Updated:</string>
-  <string name="mainActivity_txt_dataNotUpdated">Data Not Updated:</string>
-  <string name="mainActivity_top_toolbar_dataUpdate">data update: </string>
+  <string name="mainActivity_txt_dataLastUpdated">TOUTES les données - Mise à jour:</string>
+  <string name="mainActivity_txt_dataNotUpdated">Données non mises à jour:</string>
+  <string name="mainActivity_top_toolbar_dataUpdate">mise à jour des données: </string>
 
-  <string name="mainActivity_txt_dataLastUpdated_pleaseSelectData">- Please select data to display</string>
-  <string name="mainActivity_txt_dataLastUpdated_clearOptionSelected">- Clear Option Selected</string>
-  <string name="mainActivity_txt_dataLastUpdated_warningTestDataOnlyAll">Warning - Test Data Only (all)</string>
-  <string name="mainActivity_txt_dataLastUpdated_WarningTestDataOnlyQuery">Warning - Test Data Only (query)</string>
+  <string name="mainActivity_txt_dataLastUpdated_pleaseSelectData">- Veuillez sélectionner les données à afficher</string>
+  <string name="mainActivity_txt_dataLastUpdated_clearOptionSelected">- Effacer l\'option sélectionnée</string>
+  <string name="mainActivity_txt_dataLastUpdated_warningTestDataOnlyAll">Avertissement - Données de test uniquement (toutes)</string>
+  <string name="mainActivity_txt_dataLastUpdated_WarningTestDataOnlyQuery">Avertissement - Données de test uniquement (requête)</string>
 
-  <string name="mainActivity_dialogOption_selectmarketimpacts">Select Market Impact(s)</string>
-  <string name="mainActivity_dialogOption_selectmarketimpacts_positiveButton">OK</string>
-  <string name="mainActivity_dialogOption_selectCurrencies">Select Currencies</string>
-  <string name="mainActivity_dialogOption_selectCurrencies_positiveButton">OK</string>
-  <string name="mainActivity_dialogOption_selectCurrencies_neutralButton">ALL</string>
-  <string name="mainActivity_dialogOption_selectCurrencies_negativeButton">Clear</string>
+  <string name="mainActivity_dialogOption_selectmarketimpacts">Sélectionnez l\'impact sur le marché</string>
+  <string name="mainActivity_dialogOption_selectmarketimpacts_positiveButton">D\'accord</string>
+  <string name="mainActivity_dialogOption_selectCurrencies">Sélectionnez les devises</string>
+  <string name="mainActivity_dialogOption_selectCurrencies_positiveButton">>D\'accord</string>
+  <string name="mainActivity_dialogOption_selectCurrencies_neutralButton">TOUT</string>
+  <string name="mainActivity_dialogOption_selectCurrencies_negativeButton">Clair</string>
 
-  <string name="mainActivity_mAdapterItemClick_message">Set Alert on this Market Event ?  (OK)</string>
-  <string name="mainActivity_mAdapterItemClick_positiveButton">OK</string>
-  <string name="mainActivity_mAdapterItemClick_negativeButton">Cancel</string>
+  <string name="mainActivity_mAdapterItemClick_message">Définir une alerte sur cet événement de marché? (D\'ACCORD)</string>
+  <string name="mainActivity_mAdapterItemClick_positiveButton">D\'accord</string>
+  <string name="mainActivity_mAdapterItemClick_negativeButton">Annuler</string>
 
-  <string name="mainActivity_top_toolbar_title">FRANCAISE  Home</string>
-  <string name="mainActivity_top_toolbar_option_updateXML">Update XML (Market Data)</string>
-  <string name="mainActivity_top_toolbar_option_userAlertsActivity">User Alerts</string>
-  <string name="mainActivity_top_toolbar_option_preferences">Preferences</string>
-  <string name="mainActivity_top_toolbar_option_reports">Reports (tba)</string>
-  <string name="mainActivity_top_toolbar_option_alertsOldVersion">Alerts (old)</string>
-  <string name="mainActivity_top_toolbar_option_customAdapter">Custom Adapter (old)</string>
+  <string name="mainActivity_top_toolbar_title">Accueil</string>
+  <string name="mainActivity_top_toolbar_option_updateXML">Mettre à jour le XML (données de marché)</string>
+  <string name="mainActivity_top_toolbar_option_userAlertsActivity">Alertes utilisateur</string>
+  <string name="mainActivity_top_toolbar_option_preferences">Préférences</string>
+  <string name="mainActivity_top_toolbar_option_reports">Rapports (tba)</string>
+  <string name="mainActivity_top_toolbar_option_alertsOldVersion">Alertes (anciennes)</string>
+  <string name="mainActivity_top_toolbar_option_customAdapter">Adaptateur personnalisé (ancien)</string>
 
-  <string name="mainActivity_bottom_toolbar_title">Filter Currencies</string>
-  <string name="mainActivity_bottom_toolbar_option_ClearCurrencyData">Clear</string>
-  <string name="mainActivity_bottom_toolbar_option_displayAllCurrencyData">All Currency Data</string>
-  <string name="mainActivity_bottom_toolbar_option_selectMarketImpacts">Select Market Impact(s)</string>
-  <string name="mainActivity_bottom_toolbar_option_selectCurrencies">Select Currencies</string>
-  <string name="mainActivity_bottom_toolbar_option_debugDisplay">Debug Display</string>
-  <string name="mainActivity_bottom_toolbar_option_sampleData">Sample Data (old)</string>
-  <string name="mainActivity_bottom_toolbar_option_sampleLinqQuery">Sample Linq Query (old)</string>
+  <string name="mainActivity_bottom_toolbar_title">Filtrer les devises</string>
+  <string name="mainActivity_bottom_toolbar_option_ClearCurrencyData">Clair</string>
+  <string name="mainActivity_bottom_toolbar_option_displayAllCurrencyData">Toutes les données de devise</string>
+  <string name="mainActivity_bottom_toolbar_option_selectMarketImpacts">Sélectionnez l\'impact sur le marché</string>
+  <string name="mainActivity_bottom_toolbar_option_selectCurrencies">Sélectionnez les devises</string>
+  <string name="mainActivity_bottom_toolbar_option_debugDisplay">Affichage du débogage</string>
+  <string name="mainActivity_bottom_toolbar_option_sampleData">Échantillon de données (ancien)</string>
+  <string name="mainActivity_bottom_toolbar_option_sampleLinqQuery">Exemple de requête Linq (ancienne)</string>
 
 
   <!-- For UserAlert Activity -->
-  <string name="userAlertsActivity_txt_title">Current Alarms Set:</string>
-  <string name="userAlertsActivity_top_toolbar_title">User Alerts</string>
-  <string name="userAlertsActivity_top_toolbar_menu_MainActivity">Home</string>
+  <string name="userAlertsActivity_txt_title">Jeu d\'alarmes actuel:</string>
+  <string name="userAlertsActivity_top_toolbar_title">Alertes utilisateur</string>
+  <string name="userAlertsActivity_top_toolbar_menu_MainActivity">Accueil</string>
   <string name="userAlertsActivity_bottom_toolbar_title"></string>
-  <string name="userAlertsActivity_bottom_toolbar_option_personalAlerts">Set Personal Alert</string>
+  <string name="userAlertsActivity_bottom_toolbar_option_personalAlerts">Définir une alerte personnelle</string>
 
-  <string name="userAlertsActivity_dialogOption_deleteUserAlert_message">Delete this User Alert ?</string>
-  <string name="userAlertsActivity_dialogOption_deleteUserAlert_positiveButton">OK</string>
-  <string name="userAlertsActivity_dialogOption_deleteUserAlert_negativeButton">Cancel</string>
+  <string name="userAlertsActivity_dialogOption_deleteUserAlert_message">Supprimer cette alerte utilisateur?</string>
+  <string name="userAlertsActivity_dialogOption_deleteUserAlert_positiveButton">D\'accord</string>
+  <string name="userAlertsActivity_dialogOption_deleteUserAlert_negativeButton">Annuler</string>
 
 
 
   <!-- For Personal Alerts Activity-->
-  <string name="personalAlertsActivity_top_toolbar_title">Personal Alerts</string>
-  <string name="personalAlertsActivity_top_toolbar_option_marketData">Home</string>
-  <string name="personalAlertsActivity_editTxt_title">Enter title of personal alert</string>
-  <string name="personalAlertsActivity_editTxt_description">Enter description (max 200 chars)</string>
-  <string name="personalAlertsActivity_btn_setDate">Set Date</string>
-  <string name="personalAlertsActivity_txt_date">Date:</string>
-  <string name="personalAlertsActivity_btn_setTime">Set Time</string>
-  <string name="personalAlertsActivity_txt_time">Time:</string>
-  <string name="personalAlertsActivity_btn_setPersonalAlert">Set Alert</string>
-  <string name="personalAlertsActivity_btn_cancelPersonalAlert">Cancel</string>
-  <string name="personalAlertsActivity_txt_combinedDateTime">Combined Date and Time</string>
-  <string name="personalAlertsActivity_personalAlertName">Personal</string>
-  <string name="personalAlertsActivity_personalAlertName_impact">High</string>
-  <string name="personalAlertsActivity_message_alertCancelled">Alert Cancelled</string>
+  <string name="personalAlertsActivity_top_toolbar_title">Alertes personnelles</string>
+  <string name="personalAlertsActivity_top_toolbar_option_marketData">Accueil</string>
+  <string name="personalAlertsActivity_editTxt_title">Entrez le titre de l\'alerte personnelle</string>
+  <string name="personalAlertsActivity_editTxt_description">Entrez la description (max 200 caractères)</string>
+  <string name="personalAlertsActivity_btn_setDate">Régler la date</string>
+  <string name="personalAlertsActivity_txt_date">la date:</string>
+  <string name="personalAlertsActivity_btn_setTime">Régler le temps</string>
+  <string name="personalAlertsActivity_txt_time">Temps:</string>
+  <string name="personalAlertsActivity_btn_setPersonalAlert">Définir une alerte</string>
+  <string name="personalAlertsActivity_btn_cancelPersonalAlert">Annuler</string>
+  <string name="personalAlertsActivity_txt_combinedDateTime">Date et heure combinées</string>
+  <string name="personalAlertsActivity_personalAlertName">Personnel</string>
+  <string name="personalAlertsActivity_personalAlertName_impact">Haute</string>
+  <string name="personalAlertsActivity_message_alertCancelled">Alerte annulée</string>
 
-  <string name="personalAlertsActivity_validation_message_enterTitle">Please enter title of alert</string>
-  <string name="personalAlertsActivity_validation_message_enterDescription">Enter description - max 200 characters</string>
-  <string name="personalAlertsActivity_validation_message_setDate">Please set date</string>
-  <string name="personalAlertsActivity_validation_message_setTime">Please set time</string>
+  <string name="personalAlertsActivity_validation_message_enterTitle">Veuillez saisir le titre de l\'alerte</string>
+  <string name="personalAlertsActivity_validation_message_enterDescription">Entrez la description - 200 caractères maximum</string>
+  <string name="personalAlertsActivity_validation_message_setDate">Veuillez définir la date</string>
+  <string name="personalAlertsActivity_validation_message_setTime">S\'il vous plaît régler l\'heure</string>
 
   <!-- Notifications Activity-->
-  <string name="notificationsActivity_top_toolbar_title">Trader Alert</string>
-  <string name="notificationsActivity_information">Warning\nAlert Activated\nTake Appropriate Action</string>
-  <string name="notificationsActivity_notification_content_title">Trader Alert Activated</string>
-  <string name="notificationsActivity_notification_content_text">Warning - Take Appropriate Action</string>
-  <string name="notificationsActivity_btn_back">Back</string>
+  <string name="notificationsActivity_top_toolbar_title">Alerte Trader</string>
+  <string name="notificationsActivity_information">Attention\nAlerte activée\nPrendre des mesures appropriées</string>
+  <string name="notificationsActivity_notification_content_title">Alerte Trader activée</string>
+  <string name="notificationsActivity_notification_content_text">Alerte Trader activée</string>
+  <string name="notificationsActivity_btn_back">Arriéré</string>
 
 
 
   <!--Preferences Activity-->
-  <string name="preferencesActivity_lbl_enterTime">Please set minutes required before alert</string>
-  <string name="preferencesActivity_edt_enterTimeBeforeAlert">No of minutes</string>
-  <string name="preferencesActivity_lbl_timesIsSetTo">Minutes set to: </string>
-  <string name="preferencesActivity_btn_clear">Clear</string>
-  <string name="preferencesActivity_btn_cancelOffset">Cancel</string>
-  <string name="preferencesActivity_btn_setOffset">Set</string>
-  <string name="preferencesActivity_top_toolbar_title">Preferences</string>
-  <string name="personalAlertsActivity_top_toolbar_option_marketData">Home</string>
-
-
-
-
-
-
-
+  <string name="preferencesActivity_lbl_enterTime">Veuillez définir les minutes requises avant l\'alerte</string>
+  <string name="preferencesActivity_edt_enterTimeBeforeAlert">Nombre de minutes</string>
+  <string name="preferencesActivity_lbl_timesIsSetTo">Minutes réglées sur: </string>
+  <string name="preferencesActivity_btn_clear">Clair</string>
+  <string name="preferencesActivity_btn_cancelOffset">Annuler</string>
+  <string name="preferencesActivity_btn_setOffset">Installer</string>
+  <string name="preferencesActivity_top_toolbar_title">Préférences</string>
+  <string name="personalAlertsActivity_top_toolbar_option_marketData">Accueil</string>
 
 
 
 
   <!--Old Personal Alerts Section-->
-  <string name="PA_Btn_NoOfSeconds">Start</string>
-  <string name="PA_Btn_SetDate">Set Date</string>
-  <string name="PA_Btn_SetTime">Set Time</string>
-  <string name="PA_Btn_SetPersonalAlert">Set Personal Alert</string>
-  <string name="PA_Txt_combinedDateTime">Combined Date and Time</string>
-  <string name="PA_Txt_Date">Date:</string>
-  <string name="PA_Txt_Time">Time:</string>
-  <string name="PA_Txt_OffSetTime">OffSetTime:</string>
-  <string name="PA_Txt_NumberOfSeconds">Number of seconds:</string>
+  <string name="PA_Btn_NoOfSeconds">Début</string>
+  <string name="PA_Btn_SetDate">Régler la date</string>
+  <string name="PA_Btn_SetTime">Régler le temps</string>
+  <string name="PA_Btn_SetPersonalAlert">Définir une alerte personnelle</string>
+  <string name="PA_Txt_combinedDateTime">Date et heure combinées</string>
+  <string name="PA_Txt_Date">la date:</string>
+  <string name="PA_Txt_Time">Temps:</string>
+  <string name="PA_Txt_OffSetTime">décalage de temps:</string>
+  <string name="PA_Txt_NumberOfSeconds">Nombre de secondes:</string>
 </resources>
