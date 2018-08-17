@@ -208,15 +208,6 @@ namespace CurrencyAlertApp
                     // use UserAlert ID (assigned by SQLite) as unique the alarm number for this alarm
                     int alarmNumber = userAlert.UserAlertID;
 
-                    //////////////////// set alarm to go off a set amount before news alart time
-                    //////////////////double timeToGoOffBeforeMarketAnnouncement = -5;
-
-                    //////////////////if (userAlert.IsPersonalAlert == false)
-                    //////////////////{
-                    //////////////////    userAlert.DateAndTime = userAlert.DateAndTime.AddMinutes(timeToGoOffBeforeMarketAnnouncement);
-                    //////////////////}
-
-
                     // get no of milliseconds from datetime object
                     long MillisesondsOfUserAlertDateTime = new DateTimeOffset(userAlert.DateAndTime).ToUnixTimeMilliseconds();
 
