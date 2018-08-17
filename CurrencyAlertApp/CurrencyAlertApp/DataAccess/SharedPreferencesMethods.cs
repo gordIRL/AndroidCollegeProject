@@ -12,11 +12,11 @@ using Android.Widget;
 
 namespace CurrencyAlertApp.DataAccess
 {
-    public class MySharedPreferencesMethods
+    public class SharedPreferencesMethods
     {
         Context context;
 
-        public MySharedPreferencesMethods(Context context)
+        public SharedPreferencesMethods(Context context)
         {
             this.context = context;
         } 

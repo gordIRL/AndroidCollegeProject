@@ -28,7 +28,7 @@ namespace CurrencyAlertApp
         // list(s) used to populate adapter
         List<NewsObject> newsObjectDisplayList = new List<NewsObject>();
         List<NewsObject> tempNewsObjectDisplayList = new List<NewsObject>();
-                
+
         List<string> marketImpact_selectedList = new List<string>();
         List<string> currencies_selectedList = new List<string>();
 
@@ -50,8 +50,6 @@ namespace CurrencyAlertApp
 
             // Set our view from the "main" layout resource:
             SetContentView(Resource.Layout.Main);
-
-            //SetUpData.TimeToGoOffBeforeMarketAnnouncement = -10;
 
             // Get our RecyclerView layout:
             mRecyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView_MainActivity);
@@ -121,11 +119,13 @@ namespace CurrencyAlertApp
             // - Not needed or called if the user selects onBackPress() 
             GetAndDisplayDefaultData();
 
+            //  for test data only------------------------------------------------------------
             // Get testdata from xml file in Assets folder             
             XDocument xmlTestDataFile = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));           
 
-            // assign xml data file from Asset directory TO SetupData Property  (no more call methods needed????)
+            // assign xml data file from Asset directory TO SetupData Property  
             DataAccessHelpers.XmlTestDataFile = xmlTestDataFile;
+            //--------------------------------------------------------------------------------
                       
 
 
@@ -151,43 +151,7 @@ namespace CurrencyAlertApp
 
                         GetAndDisplayDefaultData();
                         break;
-
-                    case Resource.Id.mainActivity_bottom_toolbar_option_selectMarketImpacts:
-
-                        using (var dialog = new Android.Support.V7.App.AlertDialog.Builder(this))
-                        {
-                            dialog.SetTitle(GetString(Resource.String.mainActivity_dialogOption_selectmarketimpacts));
-                            dialog.SetPositiveButton(GetString(Resource.String.mainActivity_dialogOption_selectmarketimpacts_positiveButton), delegate
-                            {
-                                // clear list - get LINQ query result - populate list                                                              
-                                tempNewsObjectDisplayList.Clear();
-                                tempNewsObjectDisplayList = DataAccessHelpers.LINQ_SortAllByUserSelection(marketImpact_selectedList, currencies_selectedList);
-
-                                // call populate adapter
-                                PopulateNewsObjectAdapter();
-                                RefreshTxtDataLastUpdated();
-                                DebugDisplayMarketImpacts();
-                            });
-
-                            // Set Multichoice Items
-                            dialog.SetMultiChoiceItems(marketImpact_titlesArray, marketImpact_selectedBoolArray,
-                               (sender2, event2) =>
-                               {
-                                   int index = event2.Which;
-                                   bool isChecked = event2.IsChecked;
-                                   marketImpact_selectedBoolArray[index] = isChecked;
-
-                                   // add item to list if now selected - ie isChecked is now TRUE  
-                                   if (isChecked)
-                                       marketImpact_selectedList.Add(marketImpact_titlesArray[index]);
-                                   else
-                                       marketImpact_selectedList.Remove(marketImpact_titlesArray[index]);
-                               });
-                            dialog.Show();
-                        }
-                        break;
-
-
+                        
                     case Resource.Id.mainActivity_bottom_toolbar_option_selectCurrencies:
 
                         using (var dialog = new Android.Support.V7.App.AlertDialog.Builder(this))
@@ -282,30 +246,68 @@ namespace CurrencyAlertApp
                         break;
 
 
-                    case Resource.Id.mainActivity_bottom_toolbar_option_sampleData:
+                    case Resource.Id.mainActivity_bottom_toolbar_option_selectMarketImpacts:
 
-                        // get sample data (from xml file in assets folder) & pass to method
-                        XDocument xmlTestFile2 = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
+                        using (var dialog = new Android.Support.V7.App.AlertDialog.Builder(this))
+                        {
+                            dialog.SetTitle(GetString(Resource.String.mainActivity_dialogOption_selectmarketimpacts));
+                            dialog.SetPositiveButton(GetString(Resource.String.mainActivity_dialogOption_selectmarketimpacts_positiveButton), delegate
+                            {
+                                // clear list - get LINQ query result - populate list                                                              
+                                tempNewsObjectDisplayList.Clear();
+                                tempNewsObjectDisplayList = DataAccessHelpers.LINQ_SortAllByUserSelection(marketImpact_selectedList, currencies_selectedList);
 
-                        tempNewsObjectDisplayList.Clear();
-                        tempNewsObjectDisplayList = DataAccessHelpers.TestXMLDataFromAssetsFile(xmlTestFile2);
+                                // call populate adapter
+                                PopulateNewsObjectAdapter();
+                                RefreshTxtDataLastUpdated();
+                                DebugDisplayMarketImpacts();
+                            });
 
-                        // call populate adapter
-                        PopulateNewsObjectAdapter();
-                        txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataLastUpdated_warningTestDataOnlyAll);
+                            // Set Multichoice Items
+                            dialog.SetMultiChoiceItems(marketImpact_titlesArray, marketImpact_selectedBoolArray,
+                               (sender2, event2) =>
+                               {
+                                   int index = event2.Which;
+                                   bool isChecked = event2.IsChecked;
+                                   marketImpact_selectedBoolArray[index] = isChecked;
+
+                                   // add item to list if now selected - ie isChecked is now TRUE  
+                                   if (isChecked)
+                                       marketImpact_selectedList.Add(marketImpact_titlesArray[index]);
+                                   else
+                                       marketImpact_selectedList.Remove(marketImpact_titlesArray[index]);
+                               });
+                            dialog.Show();
+                        }
                         break;
 
-                    case Resource.Id.mainActivity_bottom_toolbar_option_sampleLinqQuery:
 
-                        // get sample data (from xml file in assets folder) & pass to method & pass to LINQ query method
-                        XDocument xmlTestFile1 = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
-                        tempNewsObjectDisplayList.Clear();
-                        tempNewsObjectDisplayList = DataAccessHelpers.TestLINQQueryUsingXML(xmlTestFile1);
+                    //// old - not in use anymore - for demonstration purposes
+                    //case Resource.Id.mainActivity_bottom_toolbar_option_sampleData:
 
-                        // call populate adapter
-                        PopulateNewsObjectAdapter();
-                        txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataLastUpdated_WarningTestDataOnlyQuery);
-                        break;                    
+                    //    // get sample data (from xml file in assets folder) & pass to method
+                    //    XDocument xmlTestFile2 = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
+
+                    //    tempNewsObjectDisplayList.Clear();
+                    //    tempNewsObjectDisplayList = DataAccessHelpers.TestXMLDataFromAssetsFile(xmlTestFile2);
+
+                    //    // call populate adapter
+                    //    PopulateNewsObjectAdapter();
+                    //    txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataLastUpdated_warningTestDataOnlyAll);
+                    //    break;
+
+                    //// old - not in use anymore - for demonstration purposes
+                    //case Resource.Id.mainActivity_bottom_toolbar_option_sampleLinqQuery:
+
+                    //    // get sample data (from xml file in assets folder) & pass to method & pass to LINQ query method
+                    //    XDocument xmlTestFile1 = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));
+                    //    tempNewsObjectDisplayList.Clear();
+                    //    tempNewsObjectDisplayList = DataAccessHelpers.TestLINQQueryUsingXML(xmlTestFile1);
+
+                    //    // call populate adapter
+                    //    PopulateNewsObjectAdapter();
+                    //    txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataLastUpdated_WarningTestDataOnlyQuery);
+                    //    break;                    
 
                     default:
                         break;
@@ -418,7 +420,7 @@ namespace CurrencyAlertApp
 
                 // store date & time of xml download in Shared Preferences
                 DateTime dateTime = DateTime.Now;
-                MySharedPreferencesMethods mySharedPreferencesMethods = new MySharedPreferencesMethods(this);
+                SharedPreferencesMethods mySharedPreferencesMethods = new SharedPreferencesMethods(this);
                 string dateInPreferedFormat = dateTime.ToShortDateString();
                 mySharedPreferencesMethods.StoreToSharedPrefs(dateInPreferedFormat);
                 txtDataLastUpdated.Text = "Data Updated: " + dateInPreferedFormat;
@@ -459,16 +461,18 @@ namespace CurrencyAlertApp
                 case Resource.Id.mainActivity_top_toolbar_option_reports:
                     Toast.MakeText(this, GetString(Resource.String.generalMessage_forFutureDevelopment), ToastLength.Long).Show();
                     break;
-              
-                case Resource.Id.mainActivity_top_toolbar_option_alertsOldVersion:
-                    intent = new Intent(this, typeof(PersonalAlarmsActivity_OldVersion));
-                    StartActivity(intent);
-                    break;
 
-                case Resource.Id.mainActivity_top_toolbar_option_customAdapter:                    
-                    intent = new Intent(this, typeof(NewsObject_CustomAdapter_Test_Activity));
-                    StartActivity(intent);
-                    break;              
+                //// old - not in use anymore - for demonstration purposes
+                //case Resource.Id.mainActivity_top_toolbar_option_alertsOldVersion:
+                //    intent = new Intent(this, typeof(PersonalAlarmsActivity_OldVersion));
+                //    StartActivity(intent);
+                //    break;
+
+                //// old - not in use anymore - for demonstration purposes
+                //case Resource.Id.mainActivity_top_toolbar_option_customAdapter:                    
+                //    intent = new Intent(this, typeof(NewsObject_CustomAdapter_Test_Activity));
+                //    StartActivity(intent);
+                //    break;              
 
                 default:
                     break;
@@ -491,7 +495,7 @@ namespace CurrencyAlertApp
 
         void RefreshTxtDataLastUpdated()
         {
-            MySharedPreferencesMethods mySharedPreferencesMethods = new MySharedPreferencesMethods(this);
+            SharedPreferencesMethods mySharedPreferencesMethods = new SharedPreferencesMethods(this);
             string dateXmlUpdated = mySharedPreferencesMethods.GetDataFromSharedPrefs();
 
             txtDataLastUpdated.Text = GetString(Resource.String.mainActivity_txt_dataLastUpdated) + " " + dateXmlUpdated

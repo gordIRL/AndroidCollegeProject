@@ -13,24 +13,30 @@
     android:id="@+id/mainActivity_bottom_toolbar_option_displayAllCurrencyData"  
     local:showAsAction="never"
     android:title="@string/mainActivity_bottom_toolbar_option_displayAllCurrencyData" />
-
-  <item
-    android:id="@+id/mainActivity_bottom_toolbar_option_selectMarketImpacts"
-    local:showAsAction="never"
-    android:title="@string/mainActivity_bottom_toolbar_option_selectMarketImpacts" />
-
+  
   <item
     android:id="@+id/mainActivity_bottom_toolbar_option_selectCurrencies"
     local:showAsAction="never"
     android:title="@string/mainActivity_bottom_toolbar_option_selectCurrencies" />
+
+  <item
+    android:id="@+id/mainActivity_bottom_toolbar_option_selectMarketImpacts"
+    local:showAsAction="never"
+    android:title="@string/mainActivity_bottom_toolbar_option_selectMarketImpacts" />  
   
   <item
     android:id="@+id/mainActivity_bottom_toolbar_option_debugDisplay"
     android:icon="@mipmap/ic_menu_paste_holo_dark"
     local:showAsAction="never"
-    android:title="@string/mainActivity_bottom_toolbar_option_debugDisplay" />
+    android:title="@string/mainActivity_bottom_toolbar_option_debugDisplay" /> 
+ 
+</menu>
 
-  <item
+
+<!--  Old menu options - not in use any more-->
+
+<!--
+ <item
     android:id="@+id/mainActivity_bottom_toolbar_option_sampleData"
     local:showAsAction="never"
     android:title="@string/mainActivity_bottom_toolbar_option_sampleData" />
@@ -40,6 +46,4 @@
     android:icon="@mipmap/ic_menu_paste_holo_dark"
     local:showAsAction="never"
     android:title="@string/mainActivity_bottom_toolbar_option_sampleLinqQuery" />
-
- 
-</menu>
+-->

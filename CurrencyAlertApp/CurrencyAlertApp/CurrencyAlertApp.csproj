@@ -124,7 +124,7 @@
     <Compile Include="NewsObject_CustomAdapter.cs" />
     <Compile Include="DataAccess\NewsObject.cs" />
     <Compile Include="DataAccess\DataAccessHelpers.cs" />
-    <Compile Include="DataAccess\MySharedPreferencesMethods.cs" />
+    <Compile Include="DataAccess\SharedPreferencesMethods.cs" />
     <Compile Include="DataAccess\Trade.cs" />
     <Compile Include="DataAccess\URLObject.cs" />
     <Compile Include="NewsObject_CustomAdapter_Test_Activity.cs" />

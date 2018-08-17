@@ -23,8 +23,14 @@
     android:id="@+id/mainActivity_top_toolbar_option_reports"
     local:showAsAction="never"
     android:title="@string/mainActivity_top_toolbar_option_reports" /> 
-  
-  <item        
+</menu>
+
+
+
+
+<!--  Old menu options - not in use any more-->
+<!--
+<item        
     android:id="@+id/mainActivity_top_toolbar_option_alertsOldVersion"        
     android:icon="@mipmap/ic_action_content_save"        
     local:showAsAction="never"       
@@ -34,5 +40,4 @@
    android:id="@+id/mainActivity_top_toolbar_option_customAdapter"
    local:showAsAction="never"
    android:title="@string/mainActivity_top_toolbar_option_customAdapter" /> 
- 
-</menu>
+-->

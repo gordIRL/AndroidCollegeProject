@@ -2201,38 +2201,26 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f0700b0
 			public const int mainActivity_bottom_toolbar_option_displayAllCurrencyData = 2131165360;
 			
-			// aapt resource value: 0x7f0700b4
-			public const int mainActivity_bottom_toolbar_option_sampleData = 2131165364;
-			
-			// aapt resource value: 0x7f0700b5
-			public const int mainActivity_bottom_toolbar_option_sampleLinqQuery = 2131165365;
+			// aapt resource value: 0x7f0700b1
+			public const int mainActivity_bottom_toolbar_option_selectCurrencies = 2131165361;
 			
 			// aapt resource value: 0x7f0700b2
-			public const int mainActivity_bottom_toolbar_option_selectCurrencies = 2131165362;
-			
-			// aapt resource value: 0x7f0700b1
-			public const int mainActivity_bottom_toolbar_option_selectMarketImpacts = 2131165361;
+			public const int mainActivity_bottom_toolbar_option_selectMarketImpacts = 2131165362;
 			
 			// aapt resource value: 0x7f070067
 			public const int mainActivity_top_toolbar = 2131165287;
 			
-			// aapt resource value: 0x7f0700ba
-			public const int mainActivity_top_toolbar_option_alertsOldVersion = 2131165370;
-			
-			// aapt resource value: 0x7f0700bb
-			public const int mainActivity_top_toolbar_option_customAdapter = 2131165371;
-			
-			// aapt resource value: 0x7f0700b8
-			public const int mainActivity_top_toolbar_option_preferences = 2131165368;
-			
-			// aapt resource value: 0x7f0700b9
-			public const int mainActivity_top_toolbar_option_reports = 2131165369;
-			
 			// aapt resource value: 0x7f0700b6
-			public const int mainActivity_top_toolbar_option_updateXML = 2131165366;
+			public const int mainActivity_top_toolbar_option_preferences = 2131165366;
 			
 			// aapt resource value: 0x7f0700b7
-			public const int mainActivity_top_toolbar_option_userAlertsActivity = 2131165367;
+			public const int mainActivity_top_toolbar_option_reports = 2131165367;
+			
+			// aapt resource value: 0x7f0700b4
+			public const int mainActivity_top_toolbar_option_updateXML = 2131165364;
+			
+			// aapt resource value: 0x7f0700b5
+			public const int mainActivity_top_toolbar_option_userAlertsActivity = 2131165365;
 			
 			// aapt resource value: 0x7f070069
 			public const int mainActivity_txt_dataLastUpdated = 2131165289;
@@ -2303,8 +2291,8 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f070095
 			public const int personalAlertsActivity_toolbar = 2131165333;
 			
-			// aapt resource value: 0x7f0700bc
-			public const int personalAlertsActivity_top_toolbar_option_marketData = 2131165372;
+			// aapt resource value: 0x7f0700b8
+			public const int personalAlertsActivity_top_toolbar_option_marketData = 2131165368;
 			
 			// aapt resource value: 0x7f07009c
 			public const int personalAlertsActivity_txt_combinedDateTime = 2131165340;
@@ -2336,8 +2324,8 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f0700a0
 			public const int preferencesActivity_top_toolbar = 2131165344;
 			
-			// aapt resource value: 0x7f0700bd
-			public const int preferencesActivity_top_toolbar_option_marketData = 2131165373;
+			// aapt resource value: 0x7f0700b9
+			public const int preferencesActivity_top_toolbar_option_marketData = 2131165369;
 			
 			// aapt resource value: 0x7f070006
 			public const int progress_circular = 2131165190;
@@ -2534,14 +2522,14 @@ namespace CurrencyAlertApp
 			// aapt resource value: 0x7f0700ab
 			public const int userAlertsActivity_bottom_toolbar = 2131165355;
 			
-			// aapt resource value: 0x7f0700be
-			public const int userAlertsActivity_bottom_toolbar_option_personalAlerts = 2131165374;
+			// aapt resource value: 0x7f0700ba
+			public const int userAlertsActivity_bottom_toolbar_option_personalAlerts = 2131165370;
 			
 			// aapt resource value: 0x7f0700a8
 			public const int userAlertsActivity_top_toolbar = 2131165352;
 			
-			// aapt resource value: 0x7f0700bf
-			public const int userAlertsActivity_top_toolbar_menu_MainActivity = 2131165375;
+			// aapt resource value: 0x7f0700bb
+			public const int userAlertsActivity_top_toolbar_menu_MainActivity = 2131165371;
 			
 			// aapt resource value: 0x7f07002f
 			public const int withText = 2131165231;
