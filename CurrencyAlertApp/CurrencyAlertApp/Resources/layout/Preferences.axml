@@ -54,11 +54,7 @@
         android:text="@string/preferencesActivity_btn_setOffset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_state"
+		android:background="@drawable/button_no_State"
         android:layout_weight="1" />
-  </LinearLayout>
-  
-  
-  
-  
+  </LinearLayout>  
 </LinearLayout>

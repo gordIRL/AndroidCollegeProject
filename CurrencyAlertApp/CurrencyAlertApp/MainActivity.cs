@@ -353,20 +353,20 @@ namespace CurrencyAlertApp
             }
         }// end onCreate 
 
+        //public override void OnBackPressed()
+        //{           
+        //}
 
-
-        protected override void OnRestart()
-        {
-            GetAndDisplayDefaultData();
-            base.OnRestart();            
-        }
-
-        protected override void OnStart()
-        {
-            GetAndDisplayDefaultData();
-            base.OnStart();
+        protected override void OnResume()
+        {   // this seems to work when OnBackPressed() doesn't !!
+            base.OnResume();
             GetAndDisplayDefaultData();
         }
+
+
+
+      
+
 
 
 

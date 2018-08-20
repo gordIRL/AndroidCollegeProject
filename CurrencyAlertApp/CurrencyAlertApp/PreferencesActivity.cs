@@ -13,6 +13,7 @@ using Android.Support.V7.App;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Util;
 using CurrencyAlertApp.DataAccess;
+using System.Threading.Tasks;
 
 namespace CurrencyAlertApp
 {
@@ -40,16 +41,13 @@ namespace CurrencyAlertApp
             lbl_timesIsSetTo = FindViewById<TextView>(Resource.Id.preferencesActivity_lbl_timesIsSetTo);
             btnCancelOffset = FindViewById<Button>(Resource.Id.preferencesActivity_btn_cancelOffset);
             btnSetOffset = FindViewById<Button>(Resource.Id.preferencesActivity_btn_setOffset);
-            btnClear = FindViewById<Button>(Resource.Id.preferencesActivity_btn_clear);
-            
+            btnClear = FindViewById<Button>(Resource.Id.preferencesActivity_btn_clear);            
 
             btnCancelOffset.Click += BtnCancelOffset_Click;
             btnSetOffset.Click += BtnSetOffset_Click;
             btnClear.Click += BtnClear_Click;
 
             edtTimeBeforeAlert.RequestFocus();
-
-
         }// end OnCreate()
 
        
@@ -63,27 +61,37 @@ namespace CurrencyAlertApp
             if (edtTimeBeforeAlert.Text == string.Empty)
             {
                 edtTimeBeforeAlert.Text = "";
-                edtTimeBeforeAlert.Hint = GetString(Resource.String.personalAlertsActivity_validationMessage_empty);
+                edtTimeBeforeAlert.Hint = GetString(Resource.String.preferencesActivity_validationMessage_empty);
             }
             else if( validNumber == false)
             {
                 edtTimeBeforeAlert.Text = "";
-                edtTimeBeforeAlert.Hint = GetString(Resource.String.personalAlertsActivity_validationMessage_number);
+                edtTimeBeforeAlert.Hint = GetString(Resource.String.preferencesActivity_validationMessage_number);
             }
-            else if ( userInputOffset <= -60 || userInputOffset >= 60)
+            else if ( userInputOffset <= -61 || userInputOffset >= 1)
             {
                 edtTimeBeforeAlert.Text = "";
-                edtTimeBeforeAlert.Hint = GetString(Resource.String.personalAlertsActivity_validationMessage_numberBetween);
+                edtTimeBeforeAlert.Hint = GetString(Resource.String.preferencesActivity_validationMessage_rangeNumberBetween);
             }
             else
             {
-                // UPDATE PROPERTIES 
-                DataAccessHelpers.TimeToGoOffBeforeMarketAnnouncement = userInputOffset;
-                MainActivity.TimeOffsetUpdated = true;
+                // start a new thread - so as not to run on the UI thread - keep the UI thread responsive
+                Task.Factory.StartNew(() =>
+                {
+                    // UPDATE PROPERTIES 
+                    DataAccessHelpers.TimeToGoOffBeforeMarketAnnouncement = userInputOffset;  //  seems to work
+                    //MainActivity.TimeOffsetUpdated = true;  // breaks it !!!!!
 
-                Log.Debug("DEBUG", "\n\n\nSuccess - user input number accepted\n\n\n");
+                    Log.Debug("DEBUG", "\n\n\nSuccess - user input number accepted\n\n\n");
+                }); // end of thread
+
+
                 Intent intent = new Intent(this, typeof(MainActivity));
                 StartActivity(intent);
+
+                //////if (!isFinishing())
+                //////{ }
+
             }           
         }
 

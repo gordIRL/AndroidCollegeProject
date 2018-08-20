@@ -51,7 +51,7 @@
   <string name="mainActivity_top_toolbar_option_updateXML">Mettre à jour le XML (données de marché)</string>
   <string name="mainActivity_top_toolbar_option_userAlertsActivity">Alertes utilisateur</string>
   <string name="mainActivity_top_toolbar_option_preferences">Préférences</string>
-  <string name="mainActivity_top_toolbar_option_reports">Rapports (tba)</string>
+  <string name="mainActivity_top_toolbar_option_reports">Rapports (TBD)</string>
   <string name="mainActivity_top_toolbar_option_alertsOldVersion">Alertes (anciennes)</string>
   <string name="mainActivity_top_toolbar_option_customAdapter">Adaptateur personnalisé (ancien)</string>
 
@@ -107,7 +107,6 @@
   <string name="notificationsActivity_btn_back">Arriéré</string>
 
 
-
   <!--Preferences Activity-->
   <string name="preferencesActivity_lbl_enterTime">Veuillez définir les minutes requises avant l\'alerte</string>
   <string name="preferencesActivity_edt_enterTimeBeforeAlert">Nombre de minutes</string>
@@ -116,7 +115,14 @@
   <string name="preferencesActivity_btn_cancelOffset">Annuler</string>
   <string name="preferencesActivity_btn_setOffset">Installer</string>
   <string name="preferencesActivity_top_toolbar_title">Préférences</string>
-  <string name="personalAlertsActivity_top_toolbar_option_marketData">Accueil</string>
+
+  <string name="preferencesActivity_top_toolbar_option_marketData">Accueil</string>
+
+  <string name="preferencesActivity_validationMessage_empty">Input must not be blank</string>
+  <string name="preferencesActivity_validationMessage_number">Must be a number</string>
+  <string name="preferencesActivity_validationMessage_rangeNumberBetween">Number must be between plus or minus 60 mins</string>
+
+
 
 
 
