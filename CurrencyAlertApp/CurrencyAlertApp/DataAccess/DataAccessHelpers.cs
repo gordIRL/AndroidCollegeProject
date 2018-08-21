@@ -27,21 +27,22 @@ namespace CurrencyAlertApp.DataAccess
     {
         // General Declarations:
         // Create a single CultureInfo object (once so it can be reused) for correct Parsing of strings to DateTime object
-        static CultureInfo cultureInfo = new CultureInfo("en-US");
+        static readonly CultureInfo cultureInfo = new CultureInfo("en-US");
 
         // location of database
-        static string DBLocation = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "CurrencyAlertApp.db3");
+        static readonly string DBLocation = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "CurrencyAlertApp.db3");
 
         // To use test data from xml file in asset - set 'testMode = true'
         // Please manually select 'Update XML (Market Data)' Menu Option when app is running
-        static bool testMode = false;
+        static readonly bool testMode = false;
         
         //(no more call methods needed)
         public static XDocument XmlTestDataFile { get; set; }
         // 
         public static double TimeToGoOffBeforeMarketAnnouncement { get; set; }
+        ////////public static bool TimeOffsetUpdated { get; set; }  ////////////////////////////////////////////////
 
-        
+
 
         // NewsObject Declarations:
         // list to store newsObjects retrieved from database

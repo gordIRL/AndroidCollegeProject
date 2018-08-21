@@ -126,9 +126,29 @@ namespace CurrencyAlertApp
             // assign xml data file from Asset directory TO SetupData Property  
             DataAccessHelpers.XmlTestDataFile = xmlTestDataFile;
             //--------------------------------------------------------------------------------
-                      
 
 
+            if (TimeOffsetUpdated == false)
+            {
+                Log.Debug("DEBUG_MainActivity_OnCreate", "\n\n\nTime offset has NOT been updated\n\n\n");
+            }
+
+            if (TimeOffsetUpdated == true)
+            {
+                Log.Debug("DEBUG_MainActivity_OnCreate", "\n\n\nSUCCESS - Time offset HAS been updated\n\n\n");
+                //Toast.MakeText(this, GetString(Resource.String.mainActivity_txt_timeOffset_successMessage), ToastLength.Long).Show();
+                UpdateXML_Option();
+
+                // reset property for reuse on next occasion
+                TimeOffsetUpdated = false;
+            }
+
+
+
+
+
+
+            //----------------------------------------------------
             // bottom ToolBar Menu Selection
             toolbar_bottom.MenuItemClick += (sender, e) =>
             {
@@ -337,28 +357,23 @@ namespace CurrencyAlertApp
             }
 
 
-            if (TimeOffsetUpdated == false)
-            {
-                Log.Debug("DEBUG_MainActivity_OnCreate", "\n\n\nTime offset has NOT been updated\n\n\n");
-            }
-
-            if (TimeOffsetUpdated == true)
-            {
-                Log.Debug("DEBUG_MainActivity_OnCreate", "\n\n\nSUCCESS - Time offset HAS been updated\n\n\n");
-                Toast.MakeText(this, GetString(Resource.String.mainActivity_txt_timeOffset_successMessage), ToastLength.Long).Show();                              
-                UpdateXML_Option();
-
-                // reset property for reuse on next occasion
-                TimeOffsetUpdated = false;
-            }
+           
         }// end onCreate 
 
-        //public override void OnBackPressed()
-        //{           
-        //}
+
+
+        public override void OnBackPressed()
+        {
+            GetAndDisplayDefaultData();
+            base.OnBackPressed();
+            GetAndDisplayDefaultData();
+        }
+
+       
 
         protected override void OnResume()
         {   // this seems to work when OnBackPressed() doesn't !!
+            GetAndDisplayDefaultData();
             base.OnResume();
             GetAndDisplayDefaultData();
         }
