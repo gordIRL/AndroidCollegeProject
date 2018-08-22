@@ -12,7 +12,7 @@ using CurrencyAlertApp.DataAccess;
 namespace CurrencyAlertApp
 {
     [Activity(Label = "GordTestActivity",  Theme = "@style/MyTheme.Base")]
-    // MainLauncher = true,  //   Theme = "@style/MyTheme.Test"
+    
     public class NewsObject_CustomAdapter_Test_Activity : AppCompatActivity
     {
         public static string myResultStringMain = string.Empty;
@@ -106,7 +106,5 @@ namespace CurrencyAlertApp
         {
             myResultNewsObject = myNewsObjectInput;
         }
-
-
     }
 }

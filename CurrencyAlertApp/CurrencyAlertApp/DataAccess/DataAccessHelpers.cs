@@ -8,18 +8,6 @@ using Android.Util;
 using SQLite;
 using System.Globalization;
 
-using System.Text;
-using System.Xml;
-using System.Xml.XPath;
-using Android.App;
-using Android.Content;
-using Android.Content.Res;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-
-
 
 namespace CurrencyAlertApp.DataAccess
 {
@@ -40,9 +28,6 @@ namespace CurrencyAlertApp.DataAccess
         public static XDocument XmlTestDataFile { get; set; }
         // 
         public static double TimeToGoOffBeforeMarketAnnouncement { get; set; }
-        ////////public static bool TimeOffsetUpdated { get; set; }  ////////////////////////////////////////////////
-
-
 
         // NewsObject Declarations:
         // list to store newsObjects retrieved from database
@@ -50,18 +35,16 @@ namespace CurrencyAlertApp.DataAccess
         
         // UserAlert Declarations:
         // list to store userAlert retrieved from database
-        static List<UserAlert> userAlertList = new List<UserAlert>();
-        
+        static List<UserAlert> userAlertList = new List<UserAlert>();        
 
         // Dummy method to confirm unit tests are wired up correctly
         public static int MulitplyNumbers(int num1, int num2)
         {
             return num1 * num2;
         }
-
-
         
 
+        
         // UserAlert Methods
         
 
@@ -121,7 +104,8 @@ namespace CurrencyAlertApp.DataAccess
                 {
                     // insert new UserAlert into database                    
 
-                    conn.Insert(userAlert);  // this won't insert the 'ignored' C# DateTime into the database !! (only TICKS stored)
+                    // this won't insert the 'ignored' C# DateTime into the database (only TICKS stored)
+                    conn.Insert(userAlert);  
                     userAlertID = userAlert.UserAlertID;
 
                     // display output for testing
@@ -134,7 +118,7 @@ namespace CurrencyAlertApp.DataAccess
                     userAlertID = 0;
                 } 
                 Log.Debug("DEBUG", "FINISHED\n\n\n");
-            }// end using 
+            } 
 
             // IMPORTANT - set object properties to null - to clear existing data out
             //           - otherwise you get duplicate entries in the UserAlerts database
@@ -142,7 +126,7 @@ namespace CurrencyAlertApp.DataAccess
             UserAlertsActivity.SelectedUserAlert_PassedFrom_PersonalAlertsActivity = null;
 
             return userAlertID;
-        }//  
+        }
 
 
 
@@ -171,7 +155,7 @@ namespace CurrencyAlertApp.DataAccess
                     //userAlertList.Add(item);
                     tempUserAlertsList.Add(item);
                 }
-            }// end USING 
+            }
             
             // sort list by long DateInTicks
             var sortedUserAlertList = from myvar in tempUserAlertsList
@@ -203,10 +187,8 @@ namespace CurrencyAlertApp.DataAccess
         }
 
 
-
-        //---------------------------------------------------------------------------------------------------------------
-
-        // method to populate Table<UserAlert> with dummy data  -- use to add data passed from Main Activity
+        // method to populate Table<UserAlert> with dummy data   
+        // use to add data passed from Main Activity
         // don't use to repopulate adapter from database (ticks issue)
         public static void PopulateUserAlertTableWithDummyData()
         {
@@ -221,10 +203,11 @@ namespace CurrencyAlertApp.DataAccess
                 foreach (var tempUserAlert in userAlertsList)
                 {
                     // insert current UserAlert into database
-                    conn.Insert(tempUserAlert);  // this won't insert the 'ignored' C# DateTime into the database !! (only TICKS stored)
+                    // this won't insert the 'ignored' C# DateTime into the database (only TICKS stored)
+                    conn.Insert(tempUserAlert);  
 
                     Log.Debug("DEBUG", "INSERTED:\n" + tempUserAlert.ToString());
-                }// end foreach
+                }
 
                 // list of items currently in the database 
                 var retrievedDataList = conn.Table<UserAlert>();
@@ -232,14 +215,13 @@ namespace CurrencyAlertApp.DataAccess
                 // set breakpoint here when required
                 Log.Debug("DEBUG", "FINISHED\n\n\n");
 
-
                 // Display what's currently in the table
                 foreach (var item in retrievedDataList)
                 {
                     Log.Debug("DEBUG", item.ToString());
                 }
-            }// end using          
-        }// end  PopulateUserAlertTableWithDummyData()
+            }
+        }
 
 
         public static List<UserAlert> DummyDataForUserAlert()
@@ -297,10 +279,6 @@ namespace CurrencyAlertApp.DataAccess
             // Return List
             return userAlertsList;
         }// end DummyDataForUserAlert
-         //-----------------------------------------------------------------------------------------------
-
-            
-
 
 
 
@@ -339,7 +317,8 @@ namespace CurrencyAlertApp.DataAccess
         {
             using (SQLiteConnection conn = new SQLiteConnection(DBLocation))
             {
-                string url = conn.Get<URLObject>(1).URLAddress;  // 1st Database item is at '1' - ie not zero-based like arrays !!                
+                // 1st Database item is at '1' - ie not zero-based like arrays !! 
+                string url = conn.Get<URLObject>(1).URLAddress;                 
                 Log.Debug("DEBUG", "URL in DB: " + url);
                 return url;
             }
@@ -348,7 +327,7 @@ namespace CurrencyAlertApp.DataAccess
         public static DateTime Convert_Strings_DateAndTime_To_SingleDateTimeObject(string dateString, string timeString, CultureInfo cultureInfo)
         {
             // Returns a DateTime object from combining a date(string) and a time(string)
-            // - used to convert the xml format date (string) and time (string) into a C# DateTime object
+            // used to convert the xml format date (string) and time (string) into a C# DateTime object
 
             string dateAndTimeString = dateString +" " +  timeString;
 
@@ -483,7 +462,7 @@ namespace CurrencyAlertApp.DataAccess
 
                     newsObjectsList.Add(item);
                 }
-            }// end USING          
+            }         
             return newsObjectsList;
         }
 
@@ -495,7 +474,9 @@ namespace CurrencyAlertApp.DataAccess
             
             // call to database & populate newsObjectList with the result 
             newsObjectsList.Clear();
-            GetAllNewsObjectDataFromDatabase();  // returns List<NewsObject>  &&&& populates newsObjectList declared above (YES)            
+
+            // returns List<NewsObject>  &&&& populates newsObjectList declared above (YES)
+            GetAllNewsObjectDataFromDatabase();              
 
             // loop through MarketImpact List (ie. act on each - all HIGH, all Medium, all Low events)
             foreach (var marketImpactSelectedItem in marketImpact_selectedList)
@@ -513,8 +494,8 @@ namespace CurrencyAlertApp.DataAccess
                     {
                         tempNewsObjectsList.Add(linqResultItem);
                     }
-                }// end inner foreach
-            } // end outer foreach 
+                }
+            } 
 
             // sort list by long DateInTicks
             var sortedNewsObjectList = from myvar in tempNewsObjectsList
@@ -619,6 +600,9 @@ namespace CurrencyAlertApp.DataAccess
         ////    }
         ////    return linqQueryResultsList;
         ////}
-    }//
-}//
+        ///
+
+
+    }
+}
    

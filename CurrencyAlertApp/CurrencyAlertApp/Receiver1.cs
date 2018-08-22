@@ -1,5 +1,4 @@
-﻿using Android.Widget;
-using Android.Content;
+﻿using Android.Content;
 using Android.Util;
 
 namespace CurrencyAlertApp

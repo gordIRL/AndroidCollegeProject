@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Widget;
 using Android.Support.V7.Widget;
 using Android.Support.V7.App;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
@@ -12,15 +11,11 @@ using Android.Views;
 using System.Threading.Tasks;
 using CurrencyAlertApp.DataAccess;
 
-//using System.Linq;
-//using System.Text;
-//using Android.Runtime;
 
 namespace CurrencyAlertApp
 {
     [Activity(Theme = "@style/MyTheme.Base",     Label = "UserAlertActivity")]
-    //  MainLauncher = true,
-
+   
     public class UserAlertsActivity : AppCompatActivity
     {
         // list(s) used to populate adapter
@@ -54,7 +49,6 @@ namespace CurrencyAlertApp
 
             //// Dummy Data
             //userAlertDisplayList = SetUpData.DummyDataForUserAlert();
-
 
             // Get our RecyclerView layout:
             mRecyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView_UserAlert);
@@ -237,9 +231,7 @@ namespace CurrencyAlertApp
             //Log.Debug("DEBUG", "SetAlarm()  - UserAlert DateTimeObject:\n" + userAlert.DateAndTime.ToString("HH:mmtt"));
             //Log.Debug("DEBUG", "FINISHED\n\n\n");
         }
-
-
-
+               
 
         protected override void OnResume()
         {
@@ -364,7 +356,5 @@ namespace CurrencyAlertApp
             }
             mAdapter.NotifyDataSetChanged();
         }
-
-
-    }//
-}//
+    }
+}

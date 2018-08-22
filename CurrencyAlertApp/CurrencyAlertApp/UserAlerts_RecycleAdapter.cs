@@ -63,8 +63,7 @@ namespace CurrencyAlertApp
 
 
 
-        // Return the number of photos available in the photo album:
-        //public override int ItemCount =>  mNewsObjectList.Count;
+        // Return the number of items in list
         public override int ItemCount
         {
             get { return mUserAlertList.Count; }

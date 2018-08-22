@@ -14,7 +14,7 @@ using CurrencyAlertApp.DataAccess;
 namespace CurrencyAlertApp
 {
     [Activity(Label = "PersonalAlarmsActivity",  Theme = "@style/MyTheme.Base")]
-    // MainLauncher = true, 
+     
     public class PersonalAlertsActivity : AppCompatActivity
     {
         // control declarations
@@ -220,7 +220,7 @@ namespace CurrencyAlertApp
                 Log.Debug(TAG, selectedTime.ToLongTimeString());
                 timeSelectedHandler(selectedTime);
 
-                //  my stuff
+                //  my additional code
                 combinedDateTimeObject = new DateTime(combinedDateTimeObject.Year, combinedDateTimeObject.Month, combinedDateTimeObject.Day, hourOfDay, minute, 0);
                 // reference needed because outside of OnCreate()
                 TextView combinedDateTimeTextView = Activity.FindViewById<TextView>(Resource.Id.personalAlertsActivity_txt_combinedDateTime);
@@ -280,7 +280,7 @@ namespace CurrencyAlertApp
                 Log.Debug(TAG, selectedDate.ToLongDateString());
                 _dateSelectedHandler(selectedDate);
 
-                //  my stuff
+                //  additional code
                 combinedDateTimeObject = new DateTime(year, monthOfYear + 1, dayOfMonth, combinedDateTimeObject.Hour, combinedDateTimeObject.Minute, combinedDateTimeObject.Second);
                 // reference needed because outside of OnCreate()
                 TextView combinedDateTimeTextView = Activity.FindViewById<TextView>(Resource.Id.personalAlertsActivity_txt_combinedDateTime);

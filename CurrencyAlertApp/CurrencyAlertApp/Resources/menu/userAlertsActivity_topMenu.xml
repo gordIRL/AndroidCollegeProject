@@ -5,6 +5,5 @@
     android:id="@+id/userAlertsActivity_top_toolbar_menu_MainActivity"
     android:icon="@mipmap/ic_action_content_create"
     local:showAsAction="never"
-    android:title="@string/userAlertsActivity_top_toolbar_menu_MainActivity" />  
- 
+    android:title="@string/userAlertsActivity_top_toolbar_menu_MainActivity" />   
 </menu>

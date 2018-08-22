@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CurrencyAlertApp;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CurrencyAlertApp.DataAccess;
 
 namespace UnitTests_ForCurrencyTraderApp

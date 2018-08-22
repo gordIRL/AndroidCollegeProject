@@ -5,7 +5,6 @@
     android:id="@+id/preferencesActivity_top_toolbar_option_marketData"
     android:icon="@mipmap/ic_action_content_create"
     local:showAsAction="never"
-    android:title="@string/preferencesActivity_top_toolbar_option_marketData" />
-                              
+    android:title="@string/preferencesActivity_top_toolbar_option_marketData" />                              
 </menu>
 

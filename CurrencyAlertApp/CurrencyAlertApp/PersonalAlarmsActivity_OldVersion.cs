@@ -13,7 +13,7 @@ using CurrencyAlertApp.DataAccess;
 namespace CurrencyAlertApp
 {
     [Activity(Label = "PersonalAlarmsActivity", Theme = "@style/MyTheme.Base")]
-    // MainLauncher = true, 
+     
     public class PersonalAlarmsActivity_OldVersion : Activity
     {
         // declare controls for Set Alarm via seconds
@@ -180,16 +180,7 @@ namespace CurrencyAlertApp
             //alarmManager.Cancel(pendingIntent1);
             //alarmManager.Cancel(pendingIntent2);
 
-
-
-        } //////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
+        } 
 
 
 
@@ -279,7 +270,7 @@ namespace CurrencyAlertApp
                 Log.Debug(TAG, selectedTime.ToLongTimeString());
                 timeSelectedHandler(selectedTime);
 
-                //  my stuff
+                //  additional code
                 combinedDateTimeObject = new DateTime(combinedDateTimeObject.Year, combinedDateTimeObject.Month, combinedDateTimeObject.Day, hourOfDay, minute, 0);
                 TextView combinedDateTimeTextView = Activity.FindViewById<TextView>(Resource.Id.txtcombinedDateTime);
                 combinedDateTimeTextView.Text = combinedDateTimeObject.ToString();
@@ -335,7 +326,7 @@ namespace CurrencyAlertApp
                 Log.Debug(TAG, selectedDate.ToLongDateString());
                 _dateSelectedHandler(selectedDate);
 
-                //  my stuff
+                //  additional code
                 combinedDateTimeObject = new DateTime(year, monthOfYear + 1, dayOfMonth, combinedDateTimeObject.Hour, combinedDateTimeObject.Minute, combinedDateTimeObject.Second);
                 TextView combinedDateTimeTextView = Activity.FindViewById<TextView>(Resource.Id.txtcombinedDateTime);
                 combinedDateTimeTextView.Text = combinedDateTimeObject.ToString();

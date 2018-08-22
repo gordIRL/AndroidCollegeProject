@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 namespace CurrencyAlertApp
 {
     [Activity(Theme = "@style/MyTheme.Base",   Label = "CurrencyAlertApp",  Icon = "@drawable/icon")]
-    //  MainLauncher = true,      // must have an appCompat theme  
+                   // must have an appCompat theme  
 
     public class MainActivity : AppCompatActivity
     {
@@ -119,6 +119,8 @@ namespace CurrencyAlertApp
             // - Not needed or called if the user selects onBackPress() 
             GetAndDisplayDefaultData();
 
+
+
             //  for test data only------------------------------------------------------------
             // Get testdata from xml file in Assets folder             
             XDocument xmlTestDataFile = XDocument.Load(Assets.Open("ff_calendar_thisweek.xml"));           
@@ -126,6 +128,7 @@ namespace CurrencyAlertApp
             // assign xml data file from Asset directory TO SetupData Property  
             DataAccessHelpers.XmlTestDataFile = xmlTestDataFile;
             //--------------------------------------------------------------------------------
+
 
 
             if (TimeOffsetUpdated == false)
@@ -354,10 +357,7 @@ namespace CurrencyAlertApp
                 {
                     Log.Debug("DEBUG_MainActivity_DisplayMarketImpacts", item);
                 }
-            }
-
-
-           
+            }           
         }// end onCreate 
 
 
@@ -377,12 +377,6 @@ namespace CurrencyAlertApp
             base.OnResume();
             GetAndDisplayDefaultData();
         }
-
-
-
-      
-
-
 
 
 

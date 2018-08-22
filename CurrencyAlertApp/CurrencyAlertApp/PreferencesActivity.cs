@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Support.V7.App;
@@ -15,10 +10,11 @@ using Android.Util;
 using CurrencyAlertApp.DataAccess;
 using System.Threading.Tasks;
 
+
 namespace CurrencyAlertApp
 {
     [Activity(Label = "PreferencesActivity" ,   Theme = "@style/MyTheme.Base")]
-    // MainLauncher = true,
+   
     public class PreferencesActivity : AppCompatActivity
     {
         EditText edtTimeBeforeAlert;
@@ -87,13 +83,8 @@ namespace CurrencyAlertApp
                     Log.Debug("DEBUG", "\n\n\nSuccess - user input number accepted\n\n\n");
                 }); // end of thread
 
-
                 Intent intent = new Intent(this, typeof(MainActivity));
                 StartActivity(intent);
-
-                //////if (!isFinishing())
-                //////{ }
-
             }           
         }
 
@@ -132,6 +123,5 @@ namespace CurrencyAlertApp
             };
             return base.OnOptionsItemSelected(item);
         }
-
-    }//
-}//
+    }
+}

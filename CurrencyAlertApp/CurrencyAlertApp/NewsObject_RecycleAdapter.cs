@@ -46,7 +46,7 @@ namespace CurrencyAlertApp
             NewsObject_RecycleAdapter_NEW_ViewHolder vh = viewHolder as NewsObject_RecycleAdapter_NEW_ViewHolder;
             
             // Set the ImageView and TextView in this ViewHolder's CardView 
-            // from this position in the List<newsObject> (photo album)
+            // from this position in the List<newsObject> 
 
             //  Assign content (get currency icon 1st)
             string countryChar = mNewsObjectList[position].CountryChar.ToString().ToUpper();
@@ -62,8 +62,7 @@ namespace CurrencyAlertApp
 
 
 
-        // Return the number of photos available in the photo album:
-        //public override int ItemCount =>  mNewsObjectList.Count;
+        // Return the number of items in list        
         public override int ItemCount
         {
             get {return mNewsObjectList.Count; }
