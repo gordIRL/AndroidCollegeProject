@@ -49,7 +49,7 @@ namespace CurrencyAlertApp
         async void SimulateStartup ()
         {
             Log.Debug(TAG, "Performing some startup work that takes a bit of time.");
-            await Task.Delay (0);
+            await Task.Delay (10000);
             // Simulate a bit of startup work.         
             Log.Debug(TAG, "Startup work is finished - starting MainActivity.");
             StartActivity(new Intent(Application.Context, typeof (MainActivity)));
