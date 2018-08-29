@@ -1,4 +1,0 @@
-SharedPreferencesMethods:
-
-public bool StoreToSharedPrefs(string input)
-public string GetDataFromSharedPrefs()

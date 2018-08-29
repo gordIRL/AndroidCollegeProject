@@ -1,23 +1,5 @@
 <?xml version="1.0" encoding="windows-1252"?>
-<weeklyevents>
-  <event>
-    <title>Gordons Test One</title>
-    <country>USD</country>
-    <date><![CDATA[08-8-2018]]></date>
-    <time><![CDATA[4:26pm]]></time>
-    <impact><![CDATA[High]]></impact>
-    <forecast />
-    <previous><![CDATA[-0.5%]]></previous>
-  </event>
-  <event>
-    <title>Gordons Test Two</title>
-    <country>USD</country>
-    <date><![CDATA[08-8-2018]]></date>
-    <time><![CDATA[4:27pm]]></time>
-    <impact><![CDATA[High]]></impact>
-    <forecast />
-    <previous><![CDATA[-0.5%]]></previous>
-  </event>
+<weeklyevents> 
 	<event>
 		<title>FPI m/m</title>
 		<country>NZD</country>

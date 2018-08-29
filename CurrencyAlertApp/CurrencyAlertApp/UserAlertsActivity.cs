@@ -203,6 +203,7 @@ namespace CurrencyAlertApp
                     int alarmNumber = userAlert.UserAlertID;
 
                     // get no of milliseconds from datetime object
+                    //  DateTimeOffset should be considered the default date and time type for application development.(MSDN)
                     long MillisesondsOfUserAlertDateTime = new DateTimeOffset(userAlert.DateAndTime).ToUnixTimeMilliseconds();
 
                     // set alarm
